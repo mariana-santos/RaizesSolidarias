@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import jakarta.validation.Valid;
 import model.Doacao;
+import model.Doador;
 
 /**
  * Classe de acesso a dados para Doacao.
@@ -35,7 +36,15 @@ public class DoacaoDAO extends Repository {
 	 * @return uma lista de objetos Doacao com as doações cadastrados
 	 */
 	public ArrayList<Doacao> listarDoacoes() {
-	    String sql = "SELECT * FROM doacao ORDER BY id_doacao";
+		String sql = "SELECT doacao.id_doacao, doacao.id_usuario, " +
+	             "usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, " +
+	             "doador.nivel_doador, doador.moedas_doador, " +
+	             "doacao.data_doacao, doacao.qtd_moedas_doacao " +
+	             "FROM doacao " +
+	             "INNER JOIN doador ON doacao.id_usuario = doador.id_usuario " +
+	             "INNER JOIN usuario ON doador.id_usuario = usuario.id_usuario " +
+	             "ORDER BY doacao.id_doacao";
+
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
 	    ArrayList<Doacao> listaDoacoes = new ArrayList<>();
@@ -47,13 +56,24 @@ public class DoacaoDAO extends Repository {
 	        while (rs.next()) {
 	            Doacao doacao = new Doacao();
 	            doacao.setId_doacao(rs.getInt("id_doacao"));
-	            doacao.setCpf_doacao(rs.getString("cpf_doacao"));
-	            doacao.setNome_doacao(rs.getString("nome_doacao"));
-	            doacao.setEmail_doacao(rs.getString("email_doacao"));
-	            doacao.setCel_doacao(rs.getString("cel_doacao"));
-	            doacao.setSenha_doacao(rs.getString("senha_doacao"));
-	            doacao.setStatus_doacao(rs.getString("status_doacao"));
-	            listaDoacoes.add(doacao);
+	            
+	            Doador doador = new Doador();
+				doador.setId_usuario(rs.getInt("id_usuario"));
+				doador.setCpf_usuario(rs.getString("cpf_usuario"));
+				doador.setNome_usuario(rs.getString("nome_usuario"));
+				doador.setEmail_usuario(rs.getString("email_usuario"));
+				doador.setCel_usuario(rs.getString("cel_usuario"));
+				doador.setSenha_usuario(rs.getString("senha_usuario"));
+				doador.setStatus_usuario(rs.getString("status_usuario"));
+				doador.setNivel_doador(rs.getInt("nivel_doador"));
+				doador.setMoedas_doador(rs.getInt("moedas_doador"));
+				
+				doacao.setDoador(doador);
+				
+				doacao.setData_doacao(rs.getDate("data_doacao"));
+				doacao.setQtd_moedas_doacao(rs.getInt("qtd_moedas_doacao"));
+				
+				listaDoacoes.add(doacao);
 	        }
 
 	        if (listaDoacoes.isEmpty()) {
@@ -83,65 +103,81 @@ public class DoacaoDAO extends Repository {
 	}
 	
 	/**
-	 * Busca um usuário pelo ID.
+	 * Busca uma doação pelo ID.
 	 *
-	 * @param id_doacao o ID do usuário a ser buscado
+	 * @param id_doacao o ID da doação a ser buscado
 	 * @return o objeto Doacao correspondente ao ID fornecido, ou null se não encontrado
 	 */
-	public static Doacao buscarDoacaoPorId(int id_doacao) {
-		String sql = "SELECT * FROM doacao WHERE id_doacao = ?";
-		PreparedStatement ps = null;
-		ResultSet rs = null;
+	public Doacao buscarDoacaoPorId(int id_doacao) {
+	    String sql = "SELECT doacao.id_doacao, doacao.id_usuario, " +
+	                 "usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, " +
+	                 "doador.nivel_doador, doador.moedas_doador, " +
+	                 "doacao.data_doacao, doacao.qtd_moedas_doacao " +
+	                 "FROM doacao " +
+	                 "INNER JOIN doador ON doacao.id_usuario = doador.id_usuario " +
+	                 "INNER JOIN usuario ON doador.id_usuario = usuario.id_usuario " +
+	                 "WHERE doacao.id_doacao = ?";
 
-		try {
-			ps = getConnection().prepareStatement(sql);
-			ps.setInt(1, id_doacao);
-			rs = ps.executeQuery();
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    Doacao doacao = null;
 
-			if (rs.isBeforeFirst()) {
-				Doacao doacao = new Doacao();
-				while (rs.next()) {
-					doacao.setId_doacao(rs.getInt("id_doacao"));
-					doacao.setCpf_doacao(rs.getString("cpf_doacao"));
-					doacao.setNome_doacao(rs.getString("nome_doacao"));
-					doacao.setEmail_doacao(rs.getString("email_doacao"));
-					doacao.setCel_doacao(rs.getString("cel_doacao"));
-					doacao.setSenha_doacao(rs.getString("senha_doacao"));
-					doacao.setStatus_doacao(rs.getString("status_doacao"));
-				}
+	    try {
+	        ps = getConnection().prepareStatement(sql);
+	        ps.setInt(1, id_doacao);
+	        rs = ps.executeQuery();
 
-				return doacao;
+	        if (rs.next()) {
+	            doacao = new Doacao();
+	            doacao.setId_doacao(rs.getInt("id_doacao"));
 
-			} else {
-				System.out.println(
-						"Não foi possível encontrar o id: " + id_doacao + " na tabela DOACAO do banco de dados");
-			}
+	            Doador doador = new Doador();
+	            doador.setId_usuario(rs.getInt("id_usuario"));
+	            doador.setCpf_usuario(rs.getString("cpf_usuario"));
+	            doador.setNome_usuario(rs.getString("nome_usuario"));
+	            doador.setEmail_usuario(rs.getString("email_usuario"));
+	            doador.setCel_usuario(rs.getString("cel_usuario"));
+	            doador.setSenha_usuario(rs.getString("senha_usuario"));
+	            doador.setStatus_usuario(rs.getString("status_usuario"));
+	            doador.setNivel_doador(rs.getInt("nivel_doador"));
+	            doador.setMoedas_doador(rs.getInt("moedas_doador"));
 
-		} catch (SQLException e) {
-			System.out.println("Não foi possível consultar o DOACAO no banco de dados: " + e.getMessage());
-		} finally {
-			if (ps != null) {
-				try {
-					ps.close();
-				} catch (SQLException e) {
-					System.out.println("Não foi possível fechar o Prepared Statement: " + e.getMessage());
-				}
-			}
+	            doacao.setDoador(doador);
+	            
+	            doacao.setData_doacao(rs.getDate("data_doacao"));
+	            doacao.setQtd_moedas_doacao(rs.getInt("qtd_moedas_doacao"));
+	        }
 
-			if (rs != null) {
-				try {
-					rs.close();
-				} catch (SQLException e) {
-					System.out.println("Não foi possível fechar o Result Set: " + e.getMessage());
-				}
-			}
-		}
+	        if (doacao == null) {
+	            System.out.println("Não foi encontrada uma doação com o ID fornecido: " + id_doacao);
+	        }
 
-		return null;
+	    } catch (SQLException e) {
+	        System.out.println("Não foi possível buscar a doação: " + e.getMessage());
+	    } finally {
+	        if (rs != null) {
+	            try {
+	                rs.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar ResultSet: " + e.getMessage());
+	            }
+	        }
+	        if (ps != null) {
+	            try {
+	                ps.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar PreparedStatement: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return doacao;
 	}
+
+	// CONTINUAR A PARTIR DAQUI -------------------------------------------------------------------------------
 	
 	/**
-	 * Atualiza um usuário no banco de dados.
+	 * Atualiza um doação no banco de dados.
 	 *
 	 * @param doacao o objeto Doacao com as informações atualizadas
 	 * @return o objeto Doacao atualizado, ou null se a atualização não foi bem-sucedida
@@ -179,7 +215,7 @@ public class DoacaoDAO extends Repository {
 	}
 	
 	/**
-	 * Cadastra um novo usuário no banco de dados.
+	 * Cadastra um novo doação no banco de dados.
 	 *
 	 * @param doacao_novo o objeto Doacao a ser cadastrado
 	 * @return o objeto Doacao cadastrado, ou null se o cadastro não foi bem-sucedido
@@ -240,9 +276,9 @@ public class DoacaoDAO extends Repository {
 	}
 	
 	/**
-	 * Altera o status de um usuário para "excluído" no banco de dados.
+	 * Altera o status de um doação para "excluído" no banco de dados.
 	 *
-	 * @param id_doacao o ID do usuário a ter o status alterado
+	 * @param id_doacao o ID do doação a ter o status alterado
 	 * @return true se o status foi alterado com sucesso, false caso contrário
 	 */
 	public boolean deletarDoacao(int id_doacao) {
@@ -258,7 +294,7 @@ public class DoacaoDAO extends Repository {
 	        return rowsAffected > 0;
 
 	    } catch (SQLException e) {
-	        System.out.println("Não foi possível alterar o status do usuário no banco de dados: " + e.getMessage());
+	        System.out.println("Não foi possível alterar o status do doação no banco de dados: " + e.getMessage());
 	    } finally {
 	        if (ps != null) {
 	            try {
