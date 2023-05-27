@@ -269,9 +269,12 @@ public class Plantio_ColheitaDAO extends Repository {
 			cs.setInt(1, id_plantio_novo);
 			cs.setInt(2, id_plantio_antigo);
 			cs.setInt(3, id_colheita);
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return true;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o PLANTIO_COLHEITA no banco de dados: " + e.getMessage());
@@ -285,6 +288,8 @@ public class Plantio_ColheitaDAO extends Repository {
 				}
 			}
 		}
+		
+		return false;
 	}
 	
 	/**

@@ -212,7 +212,7 @@ public class VoluntarioDAO extends Repository {
 	 * @param voluntario O objeto Voluntario com as informações atualizadas.
 	 * @return O objeto Voluntario atualizado, ou null se a atualização falhar.
 	 */
-	public static Voluntario atualizarVoluntario(@Valid Voluntario voluntario) {
+	public static boolean atualizarVoluntario(@Valid Voluntario voluntario) {
 		String sql = "UPDATE voluntario SET data_registro_voluntario = ? WHERE id_usuario = ?";
 		CallableStatement cs = null;
 
@@ -220,9 +220,12 @@ public class VoluntarioDAO extends Repository {
 			cs = getConnection().prepareCall(sql);
 			cs.setDate(1, voluntario.getData_registro_voluntario());
 			cs.setInt(2, voluntario.getId_usuario());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return voluntario;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o VOLUNTARIO no banco de dados: " + e.getMessage());
@@ -236,7 +239,7 @@ public class VoluntarioDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -344,7 +347,7 @@ public class VoluntarioDAO extends Repository {
 	 * @param id_usuario o ID do usuário a ter o status alterado
 	 * @return true se o status foi alterado com sucesso, false caso contrário
 	 */
-	public boolean deletarVoluntario(int id_usuario) {
+	public static boolean deletarVoluntario(int id_usuario) {
 	    String sql = "UPDATE usuario SET status_usuario = ? WHERE id_usuario = ?";
 	    PreparedStatement ps = null;
 

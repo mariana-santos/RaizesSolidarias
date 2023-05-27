@@ -137,7 +137,7 @@ public class ColheitaDAO extends Repository {
 	 * @param colheita o objeto Colheita com as informações atualizadas
 	 * @return o objeto Colheita atualizado, ou null se a atualização não foi bem-sucedida
 	 */
-	public static Colheita atualizarColheita(@Valid Colheita colheita) {
+	public static boolean atualizarColheita(@Valid Colheita colheita) {
 		String sql = "UPDATE colheita SET data_colheita = ?, descricao_colheita = ? WHERE id_colheita = ?";
 		CallableStatement cs = null;
 
@@ -146,9 +146,12 @@ public class ColheitaDAO extends Repository {
 			cs.setDate(1, colheita.getData_colheita());
 			cs.setString(2, colheita.getDescricao_colheita());
 			cs.setInt(3, colheita.getId_colheita());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return colheita;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar a COLHEITA no banco de dados: " + e.getMessage());
@@ -162,7 +165,7 @@ public class ColheitaDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -220,7 +223,7 @@ public class ColheitaDAO extends Repository {
 	 * @param id_colheita O ID da colheita a ser deletada.
 	 * @return true se a colheita foi deletada com sucesso, false caso contrário.
 	 */
-	public boolean deletarColheita(int id_colheita) {
+	public static boolean deletarColheita(int id_colheita) {
 
 		Colheita colheita_deletar = null;
 		String sql = "DELETE FROM colheita WHERE id_colheita = ?";

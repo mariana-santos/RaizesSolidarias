@@ -93,14 +93,13 @@ public class AgendamentoDAO extends Repository {
 	    return listaAgendamentos;
 	}
 
-	
 	/**
 	 * Retorna o agendamento correspondente ao ID fornecido.
 	 *
 	 * @param idAgendamento o ID do agendamento a ser buscado
 	 * @return o objeto Agendamento correspondente ao ID fornecido, ou null se nenhum agendamento for encontrado
 	 */
-	public Agendamento buscarAgendamentoPorId(int id_agendamento) {
+	public static Agendamento buscarAgendamentoPorId(int id_agendamento) {
 	    String sql = "SELECT a.id_agendamento, a.data_agendamento, a.turno_agendamento, "
 	            + "u.id_agendamento, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario, u.data_registro_usuario "
 	            + "FROM agendamento a "
@@ -156,14 +155,13 @@ public class AgendamentoDAO extends Repository {
 	    return agendamento;
 	}
 
-	
 	/**
 	 * Atualiza as informações de um agendamento no banco de dados.
 	 *
 	 * @param agendamento O objeto Agendamento com as informações atualizadas.
 	 * @return O objeto Agendamento atualizado, ou null se a atualização falhar.
 	 */
-	public static Agendamento atualizarAgendamento(@Valid Agendamento agendamento) {		
+	public static boolean atualizarAgendamento(@Valid Agendamento agendamento) {		
 		String sql = "UPDATE agendamento SET data_agendamento = ?, turno_agendamento = ?, id_agendamento = ? WHERE id_agendamento = ?";
 		CallableStatement cs = null;
 
@@ -173,9 +171,12 @@ public class AgendamentoDAO extends Repository {
 			cs.setString(2, agendamento.getTurno_agendamento());
 			cs.setInt(3, agendamento.getUsuario().getId_usuario());
 			cs.setInt(4, agendamento.getId_agendamento());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return agendamento;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o AGENDAMENTO no banco de dados: " + e.getMessage());
@@ -189,7 +190,7 @@ public class AgendamentoDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -281,7 +282,7 @@ public class AgendamentoDAO extends Repository {
 	 * @param id_agendamento O ID do agendamento a ser deletado.
 	 * @return true se o agendamento foi deletado com sucesso, false caso contrário.
 	 */
-	public boolean deletarAgendamento(int id_agendamento) {
+	public static boolean deletarAgendamento(int id_agendamento) {
 
 		Agendamento agendamento_deletar = null;
 		String sql = "DELETE FROM agendamento WHERE id_agendamento = ?";

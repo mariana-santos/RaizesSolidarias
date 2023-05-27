@@ -141,7 +141,7 @@ public class DestinoDAO extends Repository {
 	 * @param destino o objeto Destino com as informações atualizadas
 	 * @return o objeto Destino atualizado, ou null se a atualização não foi bem-sucedida
 	 */
-	public static Destino atualizarDestino(@Valid Destino destino) {
+	public static boolean atualizarDestino(@Valid Destino destino) {
 		String sql = "UPDATE destino SET endereco_destino = ?, responsavel_destino = ?, cel_destino = ?, qtd_dependentes_destino = ? WHERE id_destino = ?";
 		CallableStatement cs = null;
 
@@ -152,9 +152,12 @@ public class DestinoDAO extends Repository {
 			cs.setString(3, destino.getCel_destino());
 			cs.setInt(4, destino.getQtd_dependentes_destino());
 			cs.setInt(5, destino.getId_destino());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return destino;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar a DESTINO no banco de dados: " + e.getMessage());
@@ -168,7 +171,7 @@ public class DestinoDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -232,7 +235,7 @@ public class DestinoDAO extends Repository {
 	 * @param id_destino O ID do destino a ser deletado.
 	 * @return true se o destino foi deletado com sucesso, false caso contrário.
 	 */
-	public boolean deletarDestino(int id_destino) {
+	public static boolean deletarDestino(int id_destino) {
 
 		Destino destino_deletar = null;
 		String sql = "DELETE FROM destino WHERE id_destino = ?";
