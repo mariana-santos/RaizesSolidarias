@@ -250,7 +250,7 @@ public class DestinoDAO extends Repository {
 			return true;
 
 		} catch (SQLException e) {
-			System.out.println("Não foi possível deletar a DESTINO no banco de dados: " + e.getMessage());
+			System.out.println("Não foi possível deletar o DESTINO no banco de dados: " + e.getMessage());
 		} finally {
 			if (ps != null) {
 				try {
