@@ -108,7 +108,7 @@ public class DoacaoDAO extends Repository {
 	 * @param id_doacao o ID da doação a ser buscado
 	 * @return o objeto Doacao correspondente ao ID fornecido, ou null se não encontrado
 	 */
-	public Doacao buscarDoacaoPorId(int id_doacao) {
+	public static Doacao buscarDoacaoPorId(int id_doacao) {
 	    String sql = "SELECT doacao.id_doacao, doacao.id_usuario, " +
 	                 "usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, " +
 	                 "doador.nivel_doador, doador.moedas_doador, " +
@@ -178,9 +178,9 @@ public class DoacaoDAO extends Repository {
 	 * Atualiza uma doação no banco de dados.
 	 *
 	 * @param doacao o objeto Doacao com as informações atualizadas
-	 * @return o objeto Doacao atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se a Doacao foi atualizada com sucesso, false caso contrário.
 	 */
-	public static Doacao atualizarDoacao(@Valid Doacao doacao) {
+	public static boolean atualizarDoacao(@Valid Doacao doacao) {
 		String sql = "UPDATE doacao SET id_usuario = ?, data_doacao = ?, qtd_moedas_doacao = ? WHERE id_doacao = ?";
 		CallableStatement cs = null;
 
@@ -190,9 +190,12 @@ public class DoacaoDAO extends Repository {
 			cs.setDate(2, doacao.getData_doacao());
 			cs.setInt(3, doacao.getQtd_moedas_doacao());
 			cs.setInt(4, doacao.getId_doacao());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return doacao;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar a DOACAO no banco de dados: " + e.getMessage());
@@ -206,7 +209,7 @@ public class DoacaoDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -267,7 +270,7 @@ public class DoacaoDAO extends Repository {
 	 * @param id_doacao O ID da doacao a ser deletada.
 	 * @return true se a doacao foi deletada com sucesso, false caso contrário.
 	 */
-	public boolean deletarDoacao(int id_doacao) {
+	public static boolean deletarDoacao(int id_doacao) {
 
 		Doacao doacao_deletar = null;
 		String sql = "DELETE FROM doacao WHERE id_doacao = ?";

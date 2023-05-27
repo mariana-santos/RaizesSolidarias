@@ -210,9 +210,9 @@ public class ReceptorDAO extends Repository {
 	 * Atualiza as informações de um receptor no banco de dados.
 	 *
 	 * @param receptor O objeto Receptor com as informações atualizadas.
-	 * @return O objeto Receptor atualizado, ou null se a atualização falhar.
+	 * @return true se o Receptor foi atualizado com sucesso, false caso contrário.
 	 */
-	public static Receptor atualizarReceptor(@Valid Receptor receptor) {
+	public static boolean atualizarReceptor(@Valid Receptor receptor) {
 		String sql = "UPDATE receptor SET carga_receptor = ?, endereco_receptor = ? WHERE id_usuario = ?";
 		CallableStatement cs = null;
 
@@ -221,9 +221,12 @@ public class ReceptorDAO extends Repository {
 			cs.setInt(1, receptor.getCarga_receptor());
 			cs.setString(2, receptor.getEndereco_receptor());
 			cs.setInt(3, receptor.getId_usuario());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return receptor;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o RECEPTOR no banco de dados: " + e.getMessage());
@@ -237,7 +240,7 @@ public class ReceptorDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -337,7 +340,7 @@ public class ReceptorDAO extends Repository {
 	 * @param id_usuario o ID do usuário a ter o status alterado
 	 * @return true se o status foi alterado com sucesso, false caso contrário
 	 */
-	public boolean deletarReceptor(int id_usuario) {
+	public static boolean deletarReceptor(int id_usuario) {
 	    String sql = "UPDATE usuario SET status_usuario = ? WHERE id_usuario = ?";
 	    PreparedStatement ps = null;
 

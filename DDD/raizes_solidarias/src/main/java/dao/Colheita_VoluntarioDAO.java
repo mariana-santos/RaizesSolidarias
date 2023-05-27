@@ -261,9 +261,12 @@ public class Colheita_VoluntarioDAO extends Repository {
 			cs.setInt(1, id_usuario_novo);
 			cs.setInt(2, id_usuario_antigo);
 			cs.setInt(3, id_colheita);
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return true;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o COLHEITA_VOLUNTARIO no banco de dados: " + e.getMessage());
@@ -277,6 +280,8 @@ public class Colheita_VoluntarioDAO extends Repository {
 				}
 			}
 		}
+		
+		return false;
 	}
 	
 	/**

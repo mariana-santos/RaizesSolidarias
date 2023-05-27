@@ -143,9 +143,9 @@ public class UsuarioDAO extends Repository {
 	 * Atualiza um usuário no banco de dados.
 	 *
 	 * @param usuario o objeto Usuario com as informações atualizadas
-	 * @return o objeto Usuario atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se o Usuario foi atualizado com sucesso, false caso contrário.
 	 */
-	public static Usuario atualizarUsuario(@Valid Usuario usuario) {
+	public static boolean atualizarUsuario(@Valid Usuario usuario) {
 		String sql = "UPDATE usuario SET cpf_usuario = ?, nome_usuario = ?, email_usuario = ?, cel_usuario = ?, senha_usuario = ?, status_usuario = ? WHERE id_usuario = ?";
 		CallableStatement cs = null;
 
@@ -158,9 +158,12 @@ public class UsuarioDAO extends Repository {
 			cs.setString(5, usuario.getSenha_usuario());
 			cs.setString(6, usuario.getStatus_usuario());
 			cs.setInt(7, usuario.getId_usuario());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return usuario;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o USUARIO no banco de dados: " + e.getMessage());
@@ -174,7 +177,7 @@ public class UsuarioDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -244,7 +247,7 @@ public class UsuarioDAO extends Repository {
 	 * @param id_usuario o ID do usuário a ter o status alterado
 	 * @return true se o status foi alterado com sucesso, false caso contrário
 	 */
-	public boolean deletarUsuario(int id_usuario) {
+	public static boolean deletarUsuario(int id_usuario) {
 	    String sql = "UPDATE usuario SET status_usuario = ? WHERE id_usuario = ?";
 	    PreparedStatement ps = null;
 

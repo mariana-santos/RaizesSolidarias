@@ -141,9 +141,9 @@ public class AlimentoDAO extends Repository {
 	 * Atualiza um alimento no banco de dados.
 	 *
 	 * @param alimento o objeto Alimento com as informações atualizadas
-	 * @return o objeto Alimento atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se o Alimento foi atualizado com sucesso, false caso contrário.
 	 */
-	public static Alimento atualizarAlimento(@Valid Alimento alimento) {
+	public static boolean atualizarAlimento(@Valid Alimento alimento) {
 		String sql = "UPDATE alimento SET nome_alimento = ?, tempo_colheita = ?, qtd_irrigacao = ?, preco_alimento = ?, qtd_alimento = ? WHERE id_alimento = ?";
 		CallableStatement cs = null;
 
@@ -155,9 +155,12 @@ public class AlimentoDAO extends Repository {
 			cs.setInt(4, alimento.getPreco_alimento());
 			cs.setInt(5, alimento.getQtd_alimento());
 			cs.setInt(6, alimento.getId_alimento());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return alimento;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o ALIMENTO no banco de dados: " + e.getMessage());
@@ -171,7 +174,7 @@ public class AlimentoDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -239,7 +242,7 @@ public class AlimentoDAO extends Repository {
 	 * @param id_alimento O ID do alimento a ser deletado.
 	 * @return true se o alimento foi deletado com sucesso, false caso contrário.
 	 */
-	public boolean deletarAlimento(int id_alimento) {
+	public static boolean deletarAlimento(int id_alimento) {
 
 		Alimento alimento_deletar = null;
 		String sql = "DELETE FROM alimento WHERE id_alimento = ?";

@@ -210,9 +210,9 @@ public class DoadorDAO extends Repository {
 	 * Atualiza as informações de um doador no banco de dados.
 	 *
 	 * @param doador O objeto Doador com as informações atualizadas.
-	 * @return O objeto Doador atualizado, ou null se a atualização falhar.
+	 * @return true se o Doador foi atualizado com sucesso, false caso contrário.
 	 */
-	public static Doador atualizarDoador(@Valid Doador doador) {
+	public static boolean atualizarDoador(@Valid Doador doador) {
 		String sql = "UPDATE doador SET nivel_doador = ?, moedas_doador = ? WHERE id_usuario = ?";
 		CallableStatement cs = null;
 
@@ -221,9 +221,12 @@ public class DoadorDAO extends Repository {
 			cs.setInt(1, doador.getNivel_doador());
 			cs.setInt(2, doador.getMoedas_doador());
 			cs.setInt(3, doador.getId_usuario());
-			cs.executeUpdate();
+			
+			int rowsAffected = cs.executeUpdate();
 
-			return doador;
+	        if (rowsAffected > 0) {
+	            return true;
+	        }
 
 		} catch (SQLException e) {
 			System.out.println("Não foi possível atualizar o DOADOR no banco de dados: " + e.getMessage());
@@ -237,7 +240,7 @@ public class DoadorDAO extends Repository {
 			}
 		}
 
-		return null;
+		return false;
 	}
 	
 	/**
@@ -337,7 +340,7 @@ public class DoadorDAO extends Repository {
 	 * @param id_usuario o ID do usuário a ter o status alterado
 	 * @return true se o status foi alterado com sucesso, false caso contrário
 	 */
-	public boolean deletarDoador(int id_usuario) {
+	public static boolean deletarDoador(int id_usuario) {
 	    String sql = "UPDATE usuario SET status_usuario = ? WHERE id_usuario = ?";
 	    PreparedStatement ps = null;
 

@@ -25,7 +25,6 @@ import jakarta.ws.rs.core.MediaType;
  * @author Raízes Solidárias
  * 
  */
-
 @Path("/")
 public class Index {
 
