@@ -173,34 +173,29 @@ public class DoacaoDAO extends Repository {
 
 	    return doacao;
 	}
-
-	// CONTINUAR A PARTIR DAQUI -------------------------------------------------------------------------------
 	
 	/**
-	 * Atualiza um doação no banco de dados.
+	 * Atualiza uma doação no banco de dados.
 	 *
 	 * @param doacao o objeto Doacao com as informações atualizadas
 	 * @return o objeto Doacao atualizado, ou null se a atualização não foi bem-sucedida
 	 */
 	public static Doacao atualizarDoacao(@Valid Doacao doacao) {
-		String sql = "UPDATE doacao SET cpf_doacao = ?, nome_doacao = ?, email_doacao = ?, cel_doacao = ?, senha_doacao = ?, status_doacao = ? WHERE id_doacao = ?";
+		String sql = "UPDATE doacao SET id_usuario = ?, data_doacao = ?, qtd_moedas_doacao = ? WHERE id_doacao = ?";
 		CallableStatement cs = null;
 
 		try {
 			cs = getConnection().prepareCall(sql);
-			cs.setString(1, doacao.getCpf_doacao());
-			cs.setString(2, doacao.getNome_doacao());
-			cs.setString(3, doacao.getEmail_doacao());
-			cs.setString(4, doacao.getCel_doacao());
-			cs.setString(5, doacao.getSenha_doacao());
-			cs.setString(6, doacao.getStatus_doacao());
-			cs.setInt(7, doacao.getId_doacao());
+			cs.setInt(1, doacao.getDoador().getId_usuario());
+			cs.setDate(2, doacao.getData_doacao());
+			cs.setInt(3, doacao.getQtd_moedas_doacao());
+			cs.setInt(4, doacao.getId_doacao());
 			cs.executeUpdate();
 
 			return doacao;
 
 		} catch (SQLException e) {
-			System.out.println("Não foi possível atualizar o DOACAO no banco de dados: " + e.getMessage());
+			System.out.println("Não foi possível atualizar a DOACAO no banco de dados: " + e.getMessage());
 		} finally {
 			if (cs != null) {
 				try {
@@ -215,7 +210,7 @@ public class DoacaoDAO extends Repository {
 	}
 	
 	/**
-	 * Cadastra um novo doação no banco de dados.
+	 * Cadastra uma nova doação no banco de dados.
 	 *
 	 * @param doacao_novo o objeto Doacao a ser cadastrado
 	 * @return o objeto Doacao cadastrado, ou null se o cadastro não foi bem-sucedido
@@ -225,17 +220,11 @@ public class DoacaoDAO extends Repository {
 		// @formatter:off
 		String sql = "BEGIN INSERT INTO doacao ("
 				+ " id_doacao,"
-				+ " cpf_doacao,"
-				+ " nome_doacao,"
-				+ " email_doacao,"
-				+ " cel_doacao,"
-				+ " senha_doacao,"
-				+ " status_doacao"
+				+ " id_usuario,"
+				+ " data_doacao,"
+				+ " qtd_moedas_doacao"
 				+ ") VALUES ("
 				+ " SQ_DOACAO.nextval,"
-				+ " ?,"
-				+ " ?,"
-				+ " ?,"
 				+ " ?,"
 				+ " ?,"
 				+ " ?"
@@ -247,20 +236,17 @@ public class DoacaoDAO extends Repository {
 
 		try {
 			cs = getConnection().prepareCall(sql);
-			cs.setString(1, doacao_novo.getCpf_doacao());
-			cs.setString(2, doacao_novo.getNome_doacao());
-			cs.setString(3, doacao_novo.getEmail_doacao());
-			cs.setString(4, doacao_novo.getCel_doacao());
-			cs.setString(5, doacao_novo.getSenha_doacao());
-			cs.setString(6, doacao_novo.getStatus_doacao());
-			cs.registerOutParameter(7, java.sql.Types.INTEGER);
+			cs.setInt(1, doacao_novo.getDoador().getId_usuario());
+			cs.setDate(2, doacao_novo.getData_doacao());
+			cs.setInt(3, doacao_novo.getQtd_moedas_doacao());
+			cs.registerOutParameter(4, java.sql.Types.INTEGER);
 			cs.executeUpdate();
-			doacao_novo.setId_doacao(cs.getInt(7));
+			doacao_novo.setId_doacao(cs.getInt(4));
 
 			return doacao_novo;
 
 		} catch (SQLException e) {
-			System.out.println("Não foi possível cadastrar novo DOACAO no banco de dados: " + e.getMessage());
+			System.out.println("Não foi possível cadastrar nova DOACAO no banco de dados: " + e.getMessage());
 		} finally {
 			if (cs != null) {
 				try {
@@ -276,35 +262,40 @@ public class DoacaoDAO extends Repository {
 	}
 	
 	/**
-	 * Altera o status de um doação para "excluído" no banco de dados.
+	 * Deleta uma doacao do banco de dados pelo ID da doacao.
 	 *
-	 * @param id_doacao o ID do doação a ter o status alterado
-	 * @return true se o status foi alterado com sucesso, false caso contrário
+	 * @param id_doacao O ID da doacao a ser deletada.
+	 * @return true se a doacao foi deletada com sucesso, false caso contrário.
 	 */
 	public boolean deletarDoacao(int id_doacao) {
-	    String sql = "UPDATE doacao SET status_doacao = ? WHERE id_doacao = ?";
-	    PreparedStatement ps = null;
 
-	    try {
-	        ps = getConnection().prepareStatement(sql);
-	        ps.setString(1, "Excluído");
-	        ps.setInt(2, id_doacao);
-	        int rowsAffected = ps.executeUpdate();
-	        
-	        return rowsAffected > 0;
+		Doacao doacao_deletar = null;
+		String sql = "DELETE FROM doacao WHERE id_doacao = ?";
+		PreparedStatement ps = null;
+		doacao_deletar = buscarDoacaoPorId(id_doacao);
 
-	    } catch (SQLException e) {
-	        System.out.println("Não foi possível alterar o status do doação no banco de dados: " + e.getMessage());
-	    } finally {
-	        if (ps != null) {
-	            try {
-	                ps.close();
-	            } catch (SQLException e) {
-	                System.out.println("Não foi possível fechar o Prepared Statement: " + e.getMessage());
-	            }
-	        }
-	    }
+		if (doacao_deletar == null) {
+			return false;
+		}
 
-	    return false;
+		try {
+			ps = getConnection().prepareStatement(sql);
+			ps.setInt(1, id_doacao);
+			ps.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+			System.out.println("Não foi possível deletar a DOAÇÃO no banco de dados: " + e.getMessage());
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					System.out.println("Não foi possível fechar o Prepared Statement: " + e.getMessage());
+				}
+			}
+		}
+
+		return false;
 	}
 }

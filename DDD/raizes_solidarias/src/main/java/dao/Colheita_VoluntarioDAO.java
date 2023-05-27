@@ -247,9 +247,10 @@ public class Colheita_VoluntarioDAO extends Repository {
 	/**
 	 * Atualiza um Colheita_Voluntario no banco de dados.
 	 *
-	 * @param colheita_voluntario o Colheita_Voluntario a ser atualizado
-	 * @param id_voluntario    o id do voluntario a ser atualizado
-	 * @return o Colheita_Voluntario atualizado ou null se a atualização falhar
+	 * @param id_usuario_novo  	o id do usuario que será atualizado.
+	 * @param id_usuario_antigo	o id do usuario a ser atualizado.
+	 * @param id_colheita 		o id da colheita a ser atualizada.
+	 * @return true se o Colheita_Voluntario for atualizado com sucesso, false caso contrário
 	 */
 	public static boolean atualizarColheita_Voluntario(int id_usuario_novo, int id_usuario_antigo, int id_colheita) {
 		String sql = "UPDATE colheita_voluntario SET id_usuario = ? WHERE id_usuario = ? AND id_colheita = ?";
