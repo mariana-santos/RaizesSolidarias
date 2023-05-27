@@ -141,7 +141,7 @@ public class AlimentoDAO extends Repository {
 	 * Atualiza um alimento no banco de dados.
 	 *
 	 * @param alimento o objeto Alimento com as informações atualizadas
-	 * @return o objeto Alimento atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se o Alimento foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarAlimento(@Valid Alimento alimento) {
 		String sql = "UPDATE alimento SET nome_alimento = ?, tempo_colheita = ?, qtd_irrigacao = ?, preco_alimento = ?, qtd_alimento = ? WHERE id_alimento = ?";

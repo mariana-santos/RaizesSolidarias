@@ -135,7 +135,7 @@ public class ColheitaDAO extends Repository {
 	 * Atualiza uma colheita no banco de dados.
 	 *
 	 * @param colheita o objeto Colheita com as informações atualizadas
-	 * @return o objeto Colheita atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se a Colheita foi atualizada com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarColheita(@Valid Colheita colheita) {
 		String sql = "UPDATE colheita SET data_colheita = ?, descricao_colheita = ? WHERE id_colheita = ?";

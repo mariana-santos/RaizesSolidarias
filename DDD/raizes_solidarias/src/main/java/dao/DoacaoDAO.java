@@ -178,7 +178,7 @@ public class DoacaoDAO extends Repository {
 	 * Atualiza uma doação no banco de dados.
 	 *
 	 * @param doacao o objeto Doacao com as informações atualizadas
-	 * @return o objeto Doacao atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se a Doacao foi atualizada com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarDoacao(@Valid Doacao doacao) {
 		String sql = "UPDATE doacao SET id_usuario = ?, data_doacao = ?, qtd_moedas_doacao = ? WHERE id_doacao = ?";

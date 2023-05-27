@@ -159,7 +159,7 @@ public class AgendamentoDAO extends Repository {
 	 * Atualiza as informações de um agendamento no banco de dados.
 	 *
 	 * @param agendamento O objeto Agendamento com as informações atualizadas.
-	 * @return O objeto Agendamento atualizado, ou null se a atualização falhar.
+	 * @return true se o Agendamento foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarAgendamento(@Valid Agendamento agendamento) {		
 		String sql = "UPDATE agendamento SET data_agendamento = ?, turno_agendamento = ?, id_agendamento = ? WHERE id_agendamento = ?";

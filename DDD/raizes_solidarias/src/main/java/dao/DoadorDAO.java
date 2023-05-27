@@ -210,7 +210,7 @@ public class DoadorDAO extends Repository {
 	 * Atualiza as informações de um doador no banco de dados.
 	 *
 	 * @param doador O objeto Doador com as informações atualizadas.
-	 * @return O objeto Doador atualizado, ou null se a atualização falhar.
+	 * @return true se o Doador foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarDoador(@Valid Doador doador) {
 		String sql = "UPDATE doador SET nivel_doador = ?, moedas_doador = ? WHERE id_usuario = ?";

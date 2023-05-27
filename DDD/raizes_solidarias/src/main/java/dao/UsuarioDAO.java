@@ -143,7 +143,7 @@ public class UsuarioDAO extends Repository {
 	 * Atualiza um usuário no banco de dados.
 	 *
 	 * @param usuario o objeto Usuario com as informações atualizadas
-	 * @return o objeto Usuario atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se o Usuario foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarUsuario(@Valid Usuario usuario) {
 		String sql = "UPDATE usuario SET cpf_usuario = ?, nome_usuario = ?, email_usuario = ?, cel_usuario = ?, senha_usuario = ?, status_usuario = ? WHERE id_usuario = ?";

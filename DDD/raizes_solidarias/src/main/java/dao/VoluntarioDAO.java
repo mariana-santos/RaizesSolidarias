@@ -210,7 +210,7 @@ public class VoluntarioDAO extends Repository {
 	 * Atualiza as informações de um voluntario no banco de dados.
 	 *
 	 * @param voluntario O objeto Voluntario com as informações atualizadas.
-	 * @return O objeto Voluntario atualizado, ou null se a atualização falhar.
+	 * @return true se o Voluntario foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarVoluntario(@Valid Voluntario voluntario) {
 		String sql = "UPDATE voluntario SET data_registro_voluntario = ? WHERE id_usuario = ?";

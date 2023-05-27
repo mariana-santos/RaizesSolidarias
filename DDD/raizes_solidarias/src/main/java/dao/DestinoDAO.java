@@ -139,7 +139,7 @@ public class DestinoDAO extends Repository {
 	 * Atualiza um destino no banco de dados.
 	 *
 	 * @param destino o objeto Destino com as informações atualizadas
-	 * @return o objeto Destino atualizado, ou null se a atualização não foi bem-sucedida
+	 * @return true se o Destino foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarDestino(@Valid Destino destino) {
 		String sql = "UPDATE destino SET endereco_destino = ?, responsavel_destino = ?, cel_destino = ?, qtd_dependentes_destino = ? WHERE id_destino = ?";

@@ -210,7 +210,7 @@ public class ReceptorDAO extends Repository {
 	 * Atualiza as informações de um receptor no banco de dados.
 	 *
 	 * @param receptor O objeto Receptor com as informações atualizadas.
-	 * @return O objeto Receptor atualizado, ou null se a atualização falhar.
+	 * @return true se o Receptor foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarReceptor(@Valid Receptor receptor) {
 		String sql = "UPDATE receptor SET carga_receptor = ?, endereco_receptor = ? WHERE id_usuario = ?";
