@@ -1,0 +1,26 @@
+.card-noticia{
+    background-size: cover;
+    padding: 0;
+}
+
+.card-noticia:hover{
+    transform: translateY(-7px);
+    opacity: .9;
+}
+
+.card-noticia h3{
+    font-size: .8em;
+    text-align: start;
+    background: linear-gradient(0deg, rgba(0,0,0,0.8968837535014006) 0%, rgba(255,255,255,0) 100%);
+    color: #ececec;
+    padding: 2em;
+    padding-top: 10em;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px){
+    .card-noticia h3{
+        padding: 1.5em;
+        padding-top: 10em;
+    }
+}
