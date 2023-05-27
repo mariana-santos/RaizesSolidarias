@@ -1,0 +1,84 @@
+.main{
+    background-image: url('./assets/img-horta.jpg');
+    min-height: 700px;
+    height: 100vh;
+    background-position: center center;
+    background-size: cover;
+    /* filter: blur(1px); */
+    position: relative;
+}
+
+.blur {
+    background: rgba(0, 0, 0, 0.582);
+    backdrop-filter: blur(2px);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 3;
+}
+
+.content{
+    position: absolute;
+    z-index: 5;
+    margin: auto;
+    left: 0;
+    right: 0;
+    width: 50%;
+    margin-top: 20em;
+    color: #fff;
+    text-align: center;
+}
+
+.content h2{
+    font-size: 2em;
+    line-height: 1.7em;
+    margin-bottom: 1em;
+}
+
+.content h2 strong{
+    color: #52AA5E;
+    font-weight: bolder;
+}
+
+.buttons, .cardsWrapper{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.container{
+    padding: 5em;
+}
+
+.cardsWrapper{
+    gap: 4em;
+}
+
+.metade{
+    max-width: 80%;
+    line-height: 1.5;
+    margin: 1em 0;
+    margin-bottom: 2em;
+    font-size: 1.3em;
+}
+
+.containerImage{
+    display: flex;
+    gap: 5em;
+    margin-top: 10em;
+}
+
+.containerImage p{
+    font-size: 1.3em;
+    margin-top: 1em;
+}
+
+.containerImage .buttons{
+    justify-content: flex-start;
+    color: #fff;
+}
+
+.containerImage .buttons .btn{
+    background: #52AA5E;
+}
