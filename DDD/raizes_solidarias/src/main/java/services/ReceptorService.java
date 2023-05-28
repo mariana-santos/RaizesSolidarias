@@ -84,4 +84,21 @@ public class ReceptorService {
 			return false;
 		}
 	}
+	
+	/**
+	 * Verifica se as credenciais de login do Receptor são válidas.
+	 *
+	 * @param email_usuario o email do Receptor
+	 * @param senha_usuario a senha do Receptor
+	 * @return o Receptor correspondente às credenciais de login válidas, ou null se as credenciais forem inválidas
+	 */
+	public static Receptor validarLoginReceptor(String email_usuario, String senha_usuario) {
+	    Receptor receptor_login = ReceptorDAO.buscarReceptorPorEmail(email_usuario);
+
+	    if (receptor_login != null && senha_usuario.equals(receptor_login.getSenha_usuario())) {
+	        return receptor_login;
+	    } else {
+	        return null;
+	    }
+	}
 }

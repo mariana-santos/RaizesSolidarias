@@ -84,4 +84,21 @@ public class VoluntarioService {
 			return false;
 		}
 	}
+	
+	/**
+	 * Verifica se as credenciais de login do Voluntario são válidas.
+	 *
+	 * @param email_usuario o email do Voluntario
+	 * @param senha_usuario a senha do Voluntario
+	 * @return o Voluntario correspondente às credenciais de login válidas, ou null se as credenciais forem inválidas
+	 */
+	public static Voluntario validarLoginVoluntario(String email_usuario, String senha_usuario) {
+	    Voluntario voluntario_login = VoluntarioDAO.buscarVoluntarioPorEmail(email_usuario);
+
+	    if (voluntario_login != null && senha_usuario.equals(voluntario_login.getSenha_usuario())) {
+	        return voluntario_login;
+	    } else {
+	        return null;
+	    }
+	}
 }

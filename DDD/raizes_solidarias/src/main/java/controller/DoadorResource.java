@@ -135,4 +135,34 @@ public class DoadorResource {
 			return response.build();
 		}
 	}
+	
+	/**
+	 * Valida o login de um doador.
+	 *
+	 * @param doadorLogin O objeto Doador contendo o email e a senha do doador a serem validados.
+	 * @return A resposta HTTP com o status e o objeto Doador logado em caso de sucesso,
+	 *         ou uma resposta HTTP de erro com uma mensagem em caso de falha na validação do login.
+	 */
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response validarLoginDoador(Doador doadorLogin) {
+		String email_usuario = doadorLogin.getEmail_usuario();
+		String senha_usuario = doadorLogin.getSenha_usuario();
+
+		try {
+			Doador doador_logado = DoadorService.validarLoginDoador(email_usuario, senha_usuario);
+
+			if (doador_logado != null) {
+				ResponseBuilder response = Response.ok();
+				response.entity(doador_logado);
+				return response.build();
+			} else {
+				return Response.status(401).entity("Email e/ou senha incorretos.").build();
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return Response.status(401).entity("Email e/ou senha incorretos.").build();
+		}
+	}
 }

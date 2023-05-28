@@ -135,4 +135,34 @@ public class ReceptorResource {
 			return response.build();
 		}
 	}
+	
+	/**
+	 * Valida o login de um receptor.
+	 *
+	 * @param receptorLogin O objeto Receptor contendo o email e a senha do receptor a serem validados.
+	 * @return A resposta HTTP com o status e o objeto Receptor logado em caso de sucesso,
+	 *         ou uma resposta HTTP de erro com uma mensagem em caso de falha na validação do login.
+	 */
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response validarLoginReceptor(Receptor receptorLogin) {
+		String email_usuario = receptorLogin.getEmail_usuario();
+		String senha_usuario = receptorLogin.getSenha_usuario();
+
+		try {
+			Receptor receptor_logado = ReceptorService.validarLoginReceptor(email_usuario, senha_usuario);
+
+			if (receptor_logado != null) {
+				ResponseBuilder response = Response.ok();
+				response.entity(receptor_logado);
+				return response.build();
+			} else {
+				return Response.status(401).entity("Email e/ou senha incorretos.").build();
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return Response.status(401).entity("Email e/ou senha incorretos.").build();
+		}
+	}
 }

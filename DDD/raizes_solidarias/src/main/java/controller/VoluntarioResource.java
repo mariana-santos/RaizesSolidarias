@@ -135,4 +135,34 @@ public class VoluntarioResource {
 			return response.build();
 		}
 	}
+	
+	/**
+	 * Valida o login de um voluntario.
+	 *
+	 * @param voluntarioLogin O objeto Voluntario contendo o email e a senha do voluntario a serem validados.
+	 * @return A resposta HTTP com o status e o objeto Voluntario logado em caso de sucesso,
+	 *         ou uma resposta HTTP de erro com uma mensagem em caso de falha na validação do login.
+	 */
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response validarLoginVoluntario(Voluntario voluntarioLogin) {
+		String email_usuario = voluntarioLogin.getEmail_usuario();
+		String senha_usuario = voluntarioLogin.getSenha_usuario();
+
+		try {
+			Voluntario voluntario_logado = VoluntarioService.validarLoginVoluntario(email_usuario, senha_usuario);
+
+			if (voluntario_logado != null) {
+				ResponseBuilder response = Response.ok();
+				response.entity(voluntario_logado);
+				return response.build();
+			} else {
+				return Response.status(401).entity("Email e/ou senha incorretos.").build();
+			}
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return Response.status(401).entity("Email e/ou senha incorretos.").build();
+		}
+	}
 }

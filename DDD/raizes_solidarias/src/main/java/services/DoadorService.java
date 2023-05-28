@@ -84,4 +84,21 @@ public class DoadorService {
 			return false;
 		}
 	}
+	
+	/**
+	 * Verifica se as credenciais de login do Doador são válidas.
+	 *
+	 * @param email_usuario o email do Doador
+	 * @param senha_usuario a senha do Doador
+	 * @return o Doador correspondente às credenciais de login válidas, ou null se as credenciais forem inválidas
+	 */
+	public static Doador validarLoginDoador(String email_usuario, String senha_usuario) {
+	    Doador doador_login = DoadorDAO.buscarDoadorPorEmail(email_usuario);
+
+	    if (doador_login != null && senha_usuario.equals(doador_login.getSenha_usuario())) {
+	        return doador_login;
+	    } else {
+	        return null;
+	    }
+	}
 }
