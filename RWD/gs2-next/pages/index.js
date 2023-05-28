@@ -1,19 +1,31 @@
 import Image from 'next/image'
-import styles from './page.module.css'
-import Menu from './Components/Menu'
+import styles from '../app/styles/page.module.css'
+import Menu from '../app/Components/Menu'
 
 import Link from 'next/link'
-import CardInfo from './Components/CardInfo'
+import CardInfo from '../app/Components/CardInfo'
+import Noticias from '../app/Components/Noticias'
+import Footer from '../app/Components/Footer'
+
+import { Raleway } from 'next/font/google'
+
+const font = Raleway({ subsets: ['latin'] })
+
+import '../app/globals.css'
+
+import { Quicksand } from 'next/font/google'
+
+const fontBody = Quicksand({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <>
+    <div className={fontBody.className} id='home'>
       <main className={styles.main}>
         <div className={styles.blur}></div>
         <Menu />
 
         <div className={styles.content}>
-          <h2>A fome é um problema global que afeta cerca de <strong>828.000.000</strong> de pessoas em todo o mundo.</h2>
+          <h2 className={font.className}>A fome é um problema global que afeta cerca de <strong>828.000.000</strong> de pessoas em todo o mundo.</h2>
           <p>Saiba como ajudar doando ou se voluntariando na nossa Horta Solidária. </p>
 
           <div className={styles.buttons}>
@@ -50,14 +62,20 @@ export default function Home() {
           </div>
 
           <div className={styles.column}>
-
             <Image src="/img-main.jpg" width={500} height={400} />
-
           </div>
+        </section>
+
+        <section id="noticias">
+
+          <h2 className='title'>Notícias</h2>
+          <Noticias />
 
         </section>
 
       </div>
-    </>
+
+      <Footer />
+    </div>
   )
 }

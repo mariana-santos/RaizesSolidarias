@@ -3,10 +3,10 @@ import { Quicksand } from 'next/font/google'
 
 const font = Quicksand({ subsets: ['latin'] })
 
-export const metadata = {
-  title: 'Raízes Solidárias',
-  description: 'um website ...',
-}
+// export const metadata = {
+//   title: 'Raízes Solidárias',
+//   description: 'um website ...',
+// }
 
 export default function RootLayout({ children }) {
   return (
