@@ -4,7 +4,7 @@ import dao.UsuarioDAO;
 import model.Usuario;
 
 /**
- * Classe de serviços para Usuário.
+ * Classe de serviços para Usuario.
  *
  * @since 1.0
  * @version 1.0
@@ -22,31 +22,31 @@ import model.Usuario;
 public class UsuarioService {
 
 	/**
-	 * Verifica se um Usuário com o ID especificado existe.
+	 * Verifica se um Usuario com o ID especificado existe.
 	 *
-	 * @param id_usuario o ID do Usuário
-	 * @return true se um Usuário com o ID especificado existe, caso contrário, false
+	 * @param id_usuario o ID do Usuario
+	 * @return true se um Usuario com o ID especificado existe, caso contrário, false
 	 */
 	public static boolean validarIdUsuario(int id_usuario) {
 		return UsuarioDAO.buscarUsuarioPorId(id_usuario) != null;
 	}
 
 	/**
-	 * Busca e retorna um Usuário pelo ID.
+	 * Busca e retorna um Usuario pelo ID.
 	 *
-	 * @param id_usuario o ID do Usuário
-	 * @return o Usuário correspondente ao ID, ou null se não encontrado
+	 * @param id_usuario o ID do Usuario
+	 * @return o Usuario correspondente ao ID, ou null se não encontrado
 	 */
 	public static Usuario exibirUsuarioPorId(int id_usuario) {
 		return UsuarioDAO.buscarUsuarioPorId(id_usuario);
 	}
 
 	/**
-	 * Atualiza um Usuário com as informações fornecidas.
+	 * Atualiza um Usuario com as informações fornecidas.
 	 *
-	 * @param id_usuario o ID do Usuário a ser atualizado
-	 * @param usuario o Usuário com as novas informações
-	 * @return o Usuário atualizado, ou null se o Usuário não existir
+	 * @param id_usuario o ID do Usuario a ser atualizado
+	 * @param usuario o Usuario com as novas informações
+	 * @return true se o Usuario foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarUsuario(int id_usuario, Usuario usuario) {
 		Usuario usuario_atualizar = exibirUsuarioPorId(id_usuario);
@@ -63,20 +63,20 @@ public class UsuarioService {
 	}
 
 	/**
-	 * Cadastra um novo Usuário.
+	 * Cadastra um novo Usuario.
 	 *
-	 * @param usuario_novo o novo Usuário a ser cadastrado
-	 * @return o Usuário cadastrado
+	 * @param usuario_novo o novo Usuario a ser cadastrado.
+	 * @return o Usuario cadastrado.
 	 */
 	public static Usuario cadastrarUsuario(Usuario usuario_novo) {
 		return UsuarioDAO.cadastrarUsuario(usuario_novo);
 	}
 
 	/**
-	 * Exclui um Usuário pelo ID.
+	 * Exclui um Usuario pelo ID.
 	 *
-	 * @param id_usuario o ID do Usuário a ser excluído
-	 * @return true se o Usuário foi excluído com sucesso, caso contrário, false
+	 * @param id_usuario o ID do Usuario a ser excluído.
+	 * @return true se o Usuario foi excluído com sucesso, caso contrário, false.
 	 */
 	public static boolean deletarUsuario(int id_usuario) {
 		if (validarIdUsuario(id_usuario)) {

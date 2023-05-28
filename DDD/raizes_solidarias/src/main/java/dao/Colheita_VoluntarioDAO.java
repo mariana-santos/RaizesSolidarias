@@ -245,6 +245,75 @@ public class Colheita_VoluntarioDAO extends Repository {
 	}
 	
 	/**
+	 * Retorna um Colheita_Voluntarios cadastrado no banco de dados de acordo com o ID da Colheita e o ID do Voluntario (Usuario).
+	 *
+	 * @return um Colheita_Voluntarios de acordo com o ID da Colheita e o ID do Voluntario (Usuario).
+	 */
+	public static Colheita_Voluntario buscarColheita_VoluntarioPorIds(int id_colheita, int id_usuario) {
+		String sql = "SELECT cv.id_colheita, c.data_colheita, c.descricao_colheita,"
+	            + " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
+	            + " v.data_registro_voluntario"
+	            + " FROM Colheita_Voluntario cv"
+	            + " JOIN Colheita c ON cv.id_colheita = c.id_colheita"
+	            + " JOIN Usuario u ON cv.id_usuario = u.id_usuario"
+	            + " JOIN Voluntario v ON u.id_usuario = v.id_usuario"
+	            + " WHERE cv.id_colheita = ? AND cv.id_usuario = ?";
+
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    Colheita_Voluntario colheita_voluntario = new Colheita_Voluntario();
+
+	    try {
+	        ps = getConnection().prepareStatement(sql);
+	        ps.setInt(1, id_colheita);
+	        ps.setInt(2, id_usuario);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+
+	            Colheita colheita = new Colheita();
+	            colheita.setId_colheita(rs.getInt("id_colheita"));
+	            colheita.setData_colheita(rs.getDate("data_colheita"));
+	            colheita.setDescricao_colheita(rs.getString("descricao_colheita"));
+
+	            colheita_voluntario.setColheita(colheita);
+
+	            Voluntario voluntario = new Voluntario();
+	            voluntario.setId_usuario(rs.getInt("id_usuario"));
+	            voluntario.setCpf_usuario(rs.getString("cpf_usuario"));
+	            voluntario.setNome_usuario(rs.getString("nome_usuario"));
+	            voluntario.setEmail_usuario(rs.getString("email_usuario"));
+	            voluntario.setCel_usuario(rs.getString("cel_usuario"));
+	            voluntario.setSenha_usuario(rs.getString("senha_usuario"));
+	            voluntario.setStatus_usuario(rs.getString("status_usuario"));
+	            voluntario.setData_registro_voluntario(rs.getDate("data_registro_voluntario"));
+
+	            colheita_voluntario.setVoluntario(voluntario);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Não foi possível buscar o Colheita_Voluntario com o ID do usuário " + id_usuario + ": " + e.getMessage());
+	    } finally {
+	        if (rs != null) {
+	            try {
+	                rs.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar ResultSet: " + e.getMessage());
+	            }
+	        }
+	        if (ps != null) {
+	            try {
+	                ps.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar PreparedStatement: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return colheita_voluntario;
+	}
+	
+	/**
 	 * Atualiza um Colheita_Voluntario no banco de dados.
 	 *
 	 * @param id_usuario_novo  	o id do usuario que será atualizado.

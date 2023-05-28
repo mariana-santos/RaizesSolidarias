@@ -3454,3 +3454,691 @@
 2023-05-28 14:49:30,724 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
 2023-05-28 14:49:30,730 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2023-05-28 14:49:30,730 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:27:11,008 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:11,008 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:27:11,013 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:11,014 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:27:28,857 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:28,858 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:27:28,859 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:28,860 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:27:33,604 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:33,604 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:27:33,606 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:33,606 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:27:44,806 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:44,807 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:27:44,810 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:27:44,810 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:28:43,265 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:28:43,266 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:28:43,267 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:28:43,268 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:29:33,327 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:29:33,327 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:29:33,329 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:29:33,329 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:30:04,570 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:30:04,571 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:30:04,572 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:30:04,573 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:30:27,030 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:30:27,030 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:30:27,032 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:30:27,032 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:30:57,049 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:30:57,050 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:30:57,051 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:30:57,052 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:31:26,396 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:31:26,396 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:31:26,398 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:31:26,399 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:31:35,542 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:31:35,543 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:31:35,546 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:31:35,546 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:32:02,900 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:02,900 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:32:02,902 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:02,903 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:32:09,602 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:09,603 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:32:09,605 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:09,605 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:32:17,985 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:17,986 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:32:17,987 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:17,987 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:32:22,184 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:22,185 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:32:22,186 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:22,187 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:32:34,588 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:34,588 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:32:34,590 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:34,590 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:32:51,864 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:51,865 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:32:51,866 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:32:51,866 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:33:04,687 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:33:04,687 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:33:04,689 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:33:04,690 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:33:10,460 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:33:10,461 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:33:10,463 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:33:10,463 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:33:24,374 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:33:24,374 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:33:24,376 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:33:24,377 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:34:05,575 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:34:05,576 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:34:05,577 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:34:05,577 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:35:16,370 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:35:16,370 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:35:16,372 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:35:16,373 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:35:28,191 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:35:28,191 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:35:28,194 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:35:28,194 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:36:08,055 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:08,055 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:36:08,057 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:08,057 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:36:29,293 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:29,293 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:36:29,296 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:29,297 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:36:35,848 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:35,848 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:36:35,850 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:35,851 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:36:55,276 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:55,276 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:36:55,278 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:36:55,278 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:37:26,949 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:37:26,949 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:37:26,951 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:37:26,951 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:37:44,252 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:37:44,252 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:37:44,253 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:37:44,253 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:37:54,735 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:37:54,736 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:37:54,738 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:37:54,738 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:38:00,099 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:38:00,099 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:38:00,101 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:38:00,101 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:38:03,559 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:38:03,559 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:38:03,561 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:38:03,561 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:38:15,099 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:38:15,100 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:38:15,102 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:38:15,102 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:39:00,536 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:00,537 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:39:00,539 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:00,540 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:39:22,459 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:22,460 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:39:22,462 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:22,462 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:39:25,672 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:25,672 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:39:25,673 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:25,674 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:39:45,282 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:45,282 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:39:45,284 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:45,284 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:39:57,852 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:57,853 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:39:57,854 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:39:57,855 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:40:03,302 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:03,303 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:40:03,304 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:03,304 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:40:07,930 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:07,931 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:40:07,935 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:07,935 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:40:19,230 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:19,231 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:40:19,232 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:19,232 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:40:30,694 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:30,694 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:40:30,696 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:30,696 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:40:39,999 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:40,000 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:40:40,001 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:40,001 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:40:50,255 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:50,256 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:40:50,257 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:50,257 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:40:59,123 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:59,123 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:40:59,124 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:40:59,124 [Worker-30: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:41:10,421 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:41:10,421 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:41:10,423 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:41:10,423 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:42:02,217 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:02,218 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:42:02,219 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:02,219 [Worker-38: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:42:26,272 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:26,272 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:42:26,273 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:26,273 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:42:34,391 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:34,391 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:42:34,392 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:34,393 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:42:43,026 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:43,026 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:42:43,027 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:43,027 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:42:49,721 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:49,722 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:42:49,723 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:49,724 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:42:57,519 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:57,519 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:42:57,520 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:42:57,521 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:43:05,326 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:43:05,327 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:43:05,329 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:43:05,329 [Worker-39: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:43:20,492 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:43:20,492 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:43:20,495 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:43:20,495 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:44:50,249 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:44:50,249 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:44:50,250 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:44:50,251 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:45:07,158 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:45:07,159 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:45:07,160 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:45:07,161 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:45:13,426 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:45:13,426 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:45:13,428 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:45:13,428 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:45:59,849 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:45:59,850 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:45:59,851 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:45:59,852 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:48:08,493 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:48:08,493 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:48:08,495 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:48:08,495 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:48:29,539 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:48:29,539 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:48:29,540 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:48:29,540 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:49:05,467 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:05,468 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:49:05,469 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:05,469 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:49:10,522 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:10,522 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:49:10,524 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:10,524 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:49:29,211 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:29,211 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:49:29,212 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:29,212 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:49:34,419 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:34,419 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:49:34,420 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:34,421 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:49:42,134 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:42,135 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:49:42,136 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:42,136 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:49:50,577 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:50,577 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:49:50,579 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:49:50,579 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:50:00,025 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:00,025 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:50:00,027 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:00,027 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:50:29,050 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:29,050 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:50:29,053 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:29,053 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:50:31,218 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:31,218 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:50:31,219 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:31,219 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:50:47,243 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:47,244 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:50:47,245 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:50:47,245 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:51:10,815 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:51:10,815 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:51:10,816 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:51:10,816 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:51:21,898 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:51:21,899 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:51:21,900 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:51:21,900 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:52:45,310 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:52:45,310 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:52:45,313 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:52:45,315 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:52:52,366 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:52:52,367 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:52:52,369 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:52:52,369 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:52:55,526 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:52:55,527 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:52:55,529 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:52:55,529 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:53:46,206 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:53:46,207 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:53:46,209 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:53:46,209 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:56:02,193 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:56:02,193 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:56:02,196 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:56:02,197 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:56:34,919 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:56:34,919 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:56:34,921 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:56:34,921 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:56:51,723 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:56:51,724 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:56:51,725 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:56:51,726 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:57:02,496 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:02,497 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:57:02,498 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:02,498 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:57:04,078 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:04,079 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:57:04,080 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:04,081 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:57:19,706 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:19,707 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:57:19,709 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:19,709 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:57:29,491 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:29,492 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:57:29,494 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:57:29,495 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:58:45,172 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:58:45,173 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:58:45,175 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:58:45,176 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:59:09,282 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:59:09,284 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:59:09,286 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:59:09,286 [Worker-34: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 15:59:41,257 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:59:41,258 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 15:59:41,259 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 15:59:41,259 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:02:53,157 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:02:53,158 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:02:53,160 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:02:53,161 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:03:30,041 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:03:30,041 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:03:30,043 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:03:30,044 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:04:30,625 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:04:30,627 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:04:30,630 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:04:30,630 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:04:37,460 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:04:37,460 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:04:37,463 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:04:37,464 [Worker-36: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:04:44,490 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:04:44,491 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:04:44,493 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:04:44,494 [Worker-41: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:06:06,763 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:06:06,763 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:06:06,765 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:06:06,766 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:06:28,035 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:06:28,035 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:06:28,038 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:06:28,039 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:06:54,601 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:06:54,602 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:06:54,605 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:06:54,606 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:07:08,544 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:07:08,545 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:07:08,548 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:07:08,549 [Worker-40: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:07:19,661 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:07:19,662 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:07:19,669 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:07:19,669 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:07:36,302 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:07:36,302 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:07:36,305 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:07:36,306 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:08:22,138 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:08:22,139 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:08:22,144 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:08:22,144 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:08:26,436 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:08:26,437 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:08:26,439 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:08:26,439 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:08:49,428 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:08:49,429 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:08:49,431 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:08:49,432 [Worker-45: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:09:05,160 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:09:05,161 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:09:05,163 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:09:05,164 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:09:15,956 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:09:15,957 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:09:15,961 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:09:15,961 [Worker-43: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:12:41,142 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:12:41,142 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:12:41,145 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:12:41,146 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:12:49,345 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:12:49,345 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:12:49,347 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:12:49,347 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:12:55,358 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:12:55,358 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:12:55,360 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:12:55,361 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:13:00,458 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:00,459 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:13:00,464 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:00,464 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:13:04,622 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:04,622 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:13:04,624 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:04,625 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:13:12,731 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:12,732 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:13:12,733 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:12,734 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:13:20,751 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:20,752 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:13:20,753 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:20,754 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:13:50,921 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:50,921 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:13:50,923 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:50,924 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:13:55,798 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:55,798 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:13:55,800 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:55,800 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:13:59,694 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:59,695 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:13:59,697 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:13:59,698 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:14:03,938 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:14:03,940 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:14:03,941 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:14:03,942 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:14:30,056 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:14:30,057 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:14:30,060 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:14:30,061 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:14:54,774 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:14:54,774 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:14:54,776 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:14:54,777 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:15:32,562 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:32,563 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:15:32,565 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:32,566 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:15:35,854 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:35,855 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:15:35,857 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:35,858 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:15:50,227 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:50,228 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:15:50,230 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:50,232 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:15:53,633 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:53,634 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:15:53,636 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:15:53,637 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:16:53,545 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:16:53,545 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:16:53,548 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:16:53,549 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:17:49,697 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:17:49,697 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:17:49,699 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:17:49,700 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:17:58,278 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:17:58,279 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:17:58,282 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:17:58,282 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:18:19,197 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:19,198 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:18:19,200 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:19,200 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:18:28,910 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:28,910 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:18:28,913 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:28,914 [Worker-48: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:18:35,178 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:35,179 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:18:35,181 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:35,181 [Worker-42: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:18:46,972 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:46,973 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:18:46,975 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:18:46,975 [Worker-46: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:23:02,712 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:23:02,713 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:23:02,714 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:23:02,715 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:23:29,398 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:23:29,399 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:23:29,402 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:23:29,402 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:23:49,977 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:23:49,977 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:23:49,979 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:23:49,979 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:24:13,965 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:24:13,965 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:24:13,967 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:24:13,968 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:24:47,361 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:24:47,361 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:24:47,364 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:24:47,364 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:24:52,892 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:24:52,892 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:24:52,895 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:24:52,896 [Worker-37: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:27:12,021 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:12,021 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:27:12,023 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:12,023 [Worker-50: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:27:29,420 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:29,421 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:27:29,424 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:29,424 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:27:37,152 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:37,152 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:27:37,155 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:37,155 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:27:51,639 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:51,639 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:27:51,641 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:27:51,641 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:28:18,574 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:18,575 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:28:18,576 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:18,576 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:28:33,619 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:33,619 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:28:33,621 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:33,622 [Worker-47: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:28:45,254 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:45,254 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:28:45,256 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:45,257 [Worker-49: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:28:56,728 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:56,728 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:28:56,731 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:28:56,732 [Worker-51: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 16:34:35,664 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:34:35,664 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 16:34:35,666 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 16:34:35,667 [Worker-52: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:00:28,073 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:00:28,073 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:00:28,074 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:00:28,074 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:01:48,032 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:01:48,032 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:01:48,034 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:01:48,034 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:02:00,220 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:02:00,221 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:02:00,222 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:02:00,222 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:02:27,610 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:02:27,611 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:02:27,611 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:02:27,612 [Worker-55: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:02:50,161 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:02:50,162 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:02:50,164 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:02:50,165 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:03:27,558 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:03:27,558 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:03:27,559 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:03:27,559 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:03:53,254 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:03:53,254 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:03:53,256 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:03:53,257 [Worker-58: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:07:34,794 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:07:34,794 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:07:34,795 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:07:34,796 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:08:27,290 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:08:27,292 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:08:27,293 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:08:27,293 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:08:34,345 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:08:34,345 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:08:34,347 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:08:34,347 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:10:04,597 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:04,597 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:10:04,598 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:04,598 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:10:23,020 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:23,020 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:10:23,021 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:23,021 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:10:37,346 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:37,347 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:10:37,348 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:37,348 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:10:55,643 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:55,644 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:10:55,646 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:10:55,646 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:11:20,346 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:20,346 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:11:20,347 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:20,348 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:11:34,797 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:34,797 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:11:34,799 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:34,800 [Worker-59: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:11:45,717 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:45,717 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:11:45,719 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:45,720 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:11:49,984 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:49,984 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:11:49,985 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:11:49,985 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:12:08,135 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:08,136 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:12:08,138 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:08,139 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:12:16,837 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:16,838 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:12:16,840 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:16,841 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:12:21,587 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:21,587 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:12:21,589 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:21,589 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:12:43,803 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:43,803 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:12:43,804 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:43,804 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:12:49,713 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:49,713 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:12:49,714 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:12:49,715 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:13:29,792 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:13:29,792 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:13:29,793 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:13:29,793 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:13:50,393 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:13:50,393 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:13:50,395 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:13:50,395 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:14:31,739 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:14:31,739 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:14:31,740 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:14:31,740 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:14:50,575 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:14:50,575 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:14:50,576 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:14:50,576 [Worker-60: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:15:37,322 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:15:37,322 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:15:37,324 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:15:37,324 [Worker-56: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:15:55,632 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:15:55,632 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:15:55,633 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:15:55,634 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:16:04,546 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:16:04,546 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:16:04,547 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:16:04,547 [Worker-61: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources
+2023-05-28 17:17:27,301 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:17:27,301 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\main\resources
+2023-05-28 17:17:27,303 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2023-05-28 17:17:27,303 [Worker-53: Building] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD\raizes_solidarias\src\test\resources

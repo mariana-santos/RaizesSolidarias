@@ -258,22 +258,96 @@ public class Receptor_DestinoDAO extends Repository {
 	}
 	
 	/**
+	 * Retorna um Receptor_Destinos cadastrado no banco de dados de acordo com o ID do Receptor (Usuario) e o ID do Destino.
+	 *
+	 * @return um Receptor_Destinos de acordo com o ID do Receptor (Usuario) e o ID do Destino.
+	 */
+	public static Receptor_Destino buscarReceptor_DestinoPorIds(int id_usuario, int id_destino) {
+		String sql = "SELECT rd.id_usuario,"
+	            + " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
+	            + " r.carga_receptor, r.endereco_receptor,"
+	            + " FROM Receptor_Destino rd"
+	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
+	            + " JOIN Usuario u ON rd.id_usuario = u.id_usuario"
+	            + " JOIN Destino d ON rd.id_destino = d.id_destino"
+	            + " ORDER BY rd.id_usuario"
+	            + " WHERE rd.id_usuario = ? AND rd.id_destino = ?";
+
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    Receptor_Destino receptor_destino_buscado = new Receptor_Destino();
+	    
+	    
+	    try {
+	        ps = getConnection().prepareStatement(sql);
+	        ps.setInt(1, id_usuario);
+	        ps.setInt(2, id_destino);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+
+	            Receptor receptor = new Receptor();
+				receptor.setId_usuario(rs.getInt("id_usuario"));
+				receptor.setCpf_usuario(rs.getString("cpf_usuario"));
+				receptor.setNome_usuario(rs.getString("nome_usuario"));
+				receptor.setEmail_usuario(rs.getString("email_usuario"));
+				receptor.setCel_usuario(rs.getString("cel_usuario"));
+				receptor.setSenha_usuario(rs.getString("senha_usuario"));
+				receptor.setStatus_usuario(rs.getString("status_usuario"));
+				receptor.setCarga_receptor(rs.getInt("carga_receptor"));
+				receptor.setEndereco_receptor(rs.getString("endereco_receptor"));
+				
+				receptor_destino_buscado.setReceptor(receptor);
+	            
+				Destino destino = new Destino();
+	            destino.setId_destino(rs.getInt("id_destino"));
+	            destino.setEndereco_destino(rs.getString("endereco_destino"));
+	            destino.setResponsavel_destino(rs.getString("responsavel_destino"));
+	            destino.setCel_destino(rs.getString("cel_destino"));
+	            destino.setQtd_dependentes_destino(rs.getInt("qtd_dependentes_destino"));
+
+	            receptor_destino_buscado.setDestino(destino);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Não foi possível buscar o Receptor_Destino com o ID do Destino " + id_destino + ": " + e.getMessage());
+	    } finally {
+	        if (rs != null) {
+	            try {
+	                rs.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar ResultSet: " + e.getMessage());
+	            }
+	        }
+	        if (ps != null) {
+	            try {
+	                ps.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar PreparedStatement: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return receptor_destino_buscado;
+	}
+	
+	/**
 	 * Atualiza um Receptor_Destino no banco de dados.
 	 *
-	 * @param id_receptor_novo  	o id do receptor que será atualizado.
-	 * @param id_receptor_antigo	o id do receptor a ser atualizado.
+	 * @param id_usuario_novo  	o id do receptor que será atualizado.
+	 * @param id_usuario_antigo	o id do receptor a ser atualizado.
 	 * @param id_destino 		o id da destino a ser atualizada.
 	 * @return true se o Receptor_Destino for atualizado com sucesso, false caso contrário
 	 */
-	public static boolean atualizarReceptor_Destino(int id_receptor_novo, int id_receptor_antigo, int id_destino_novo, int id_destino_antigo) {
-		String sql = "UPDATE receptor_destino SET id_receptor = ?, id_destino = ? WHERE id_receptor = ? AND id_destino = ?";
+	public static boolean atualizarReceptor_Destino(int id_usuario_novo, int id_usuario_antigo, int id_destino_novo, int id_destino_antigo) {
+		String sql = "UPDATE receptor_destino SET id_usuario = ?, id_destino = ? WHERE id_usuario = ? AND id_destino = ?";
 		CallableStatement cs = null;
 
 		try {
 			cs = getConnection().prepareCall(sql);
-			cs.setInt(1, id_receptor_novo);
+			cs.setInt(1, id_usuario_novo);
 			cs.setInt(2, id_destino_novo);
-			cs.setInt(3, id_receptor_antigo);
+			cs.setInt(3, id_usuario_antigo);
 			cs.setInt(4,  id_destino_antigo);
 			
 			int rowsAffected = cs.executeUpdate();
@@ -306,7 +380,7 @@ public class Receptor_DestinoDAO extends Repository {
 	 */
 	public static Receptor_Destino cadastrarReceptor_Destino(@Valid Receptor_Destino receptor_destino_novo) {
 	    String sql = "INSERT INTO receptor_destino ("
-	            + "    id_receptor,"
+	            + "    id_usuario,"
 	            + "    id_destino"
 	            + ") VALUES ("
 	            + "    ?,"
@@ -353,7 +427,7 @@ public class Receptor_DestinoDAO extends Repository {
 	/**
 	 * Deleta um Receptor_Destino do banco de dados.
 	 *
-	 * @param id_receptor	o id do receptor do Receptor_Destino a ser deletado
+	 * @param id_usuario	o id do receptor do Receptor_Destino a ser deletado
 	 * @param id_destino 	o id do destino do Receptor_Destino a ser deletado
 	 * @return true se o Receptor_Destino for deletado com sucesso, false caso contrário
 	 */
