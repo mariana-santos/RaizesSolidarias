@@ -200,7 +200,7 @@ public class Plantio_VoluntarioDAO extends Repository {
 	 *
 	 * @return uma Plantio_Voluntario de acordo com o ID do Voluntario.
 	 */
-	public ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdVoluntario(int id_usuario) {
+	public ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdUsuario(int id_usuario) {
 		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
 				+ " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 				+ " v.data_registro_voluntario"
