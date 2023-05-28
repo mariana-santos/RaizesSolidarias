@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import styles from './page.module.css'
+import styles from '../app/styles/page.module.css'
 import Menu from '../app/Components/Menu'
 
 import Link from 'next/link'
@@ -19,7 +19,7 @@ const fontBody = Quicksand({ subsets: ['latin'] })
 
 export default function Home() {
   return (
-    <div className={fontBody.className}>
+    <div className={fontBody.className} id='home'>
       <main className={styles.main}>
         <div className={styles.blur}></div>
         <Menu />

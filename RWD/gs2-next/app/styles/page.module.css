@@ -1,5 +1,5 @@
 .main{
-    background-image: url('../app/assets/img-horta.jpg');
+    background-image: url('../../app/assets/img-horta.jpg');
     min-height: 700px;
     height: 100vh;
     background-position: center center;

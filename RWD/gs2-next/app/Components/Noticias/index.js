@@ -1,4 +1,4 @@
-import styles from '../../../pages/page.module.css'
+import styles from '../../styles/page.module.css'
 
 import noticias from '../../assets/data/noticias.json'
 

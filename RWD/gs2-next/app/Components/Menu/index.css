@@ -1,6 +1,6 @@
 nav ul{
     display: flex;
-    gap: 3em;
+    gap: 2em;
 }
 
 nav li{
@@ -21,13 +21,19 @@ nav ul:hover a:hover{
 header{
     position: fixed;
     z-index: 10;
-    padding: 3.5em;
+    padding: 3.5em 1.5em;
     width: 100%;
     color: #fff;
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
     transition: .25s ease;
+    justify-content: space-between;
+    background: #3d8046c9;
+}
+
+#home header{
+    background: transparent;
 }
 
 header h1{
@@ -35,6 +41,7 @@ header h1{
     margin-bottom: 1em;
     font-size: 3em;
     transition: .25s;
+    text-align: center;
 }
 
 header h1:hover{
@@ -42,7 +49,7 @@ header h1:hover{
 }
 
 header.scroll{
-    background: #3d8046c9;
+    background: #3d8046c9 !important;
     /* color: #282828; */
     padding: 2em;
 }
@@ -52,7 +59,7 @@ header.scroll h1{
 }
 
 header.expanded{
-    background: #3d8046c9;
+    background: #3d8046c9 !important;
 }
 
 header.scroll nav ul:hover a:hover, header.expanded nav ul:hover a:hover{
@@ -61,6 +68,26 @@ header.scroll nav ul:hover a:hover, header.expanded nav ul:hover a:hover{
 
 #inicio{
     display: none;
+}
+
+header .space, header .login-area {
+    width: 20%;
+}
+
+.login-area{
+    text-align: end;
+}
+
+.login-area h2{
+    margin-bottom: .5em;
+}
+
+.login-area a{
+    font-weight: bold;
+}
+
+.login-area a:hover{
+    box-shadow: 0 1px 0 0 #fff;
 }
 
 @media screen and (max-width: 768px) {
@@ -78,6 +105,25 @@ header.scroll nav ul:hover a:hover, header.expanded nav ul:hover a:hover{
     }
 
     header, header.scroll, header.expanded{
-        padding: 1em;
+        padding: 1.5em 1em;
+        flex-direction: column-reverse;
+    }
+
+    .space{
+        display: none;
+    }
+
+    .login-area{
+        width: 100% !important;
+        text-align: end;
+    }
+
+    .login-area h2{
+        display: none;
+    }
+
+    .menu-wrapper{
+        width: 100%;
+        margin-top: 1em;
     }
 }
