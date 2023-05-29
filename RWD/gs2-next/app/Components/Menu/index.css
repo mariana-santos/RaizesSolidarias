@@ -21,7 +21,7 @@ nav ul:hover a:hover{
 header{
     position: fixed;
     z-index: 10;
-    padding: 3.5em 1.5em;
+    padding: 2.5em 1.5em;
     width: 100%;
     color: #fff;
     display: flex;
@@ -29,7 +29,7 @@ header{
     align-items: center;
     transition: .25s ease;
     justify-content: space-between;
-    background: #3d8046c9;
+    background: #3d8046f1;
 }
 
 #home header{
@@ -49,7 +49,7 @@ header h1:hover{
 }
 
 header.scroll{
-    background: #3d8046c9 !important;
+    background: #3d8046f1 !important;
     /* color: #282828; */
     padding: 2em;
 }
@@ -59,7 +59,7 @@ header.scroll h1{
 }
 
 header.expanded{
-    background: #3d8046c9 !important;
+    background: #3d8046f1 !important;
 }
 
 header.scroll nav ul:hover a:hover, header.expanded nav ul:hover a:hover{
@@ -124,6 +124,10 @@ header .space, header .login-area {
 
     .menu-wrapper{
         width: 100%;
-        margin-top: 1em;
+        /* margin-top: 1em; */
+    }
+
+    nav ul a{
+        color: #fff !important;
     }
 }

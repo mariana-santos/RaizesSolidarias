@@ -110,8 +110,9 @@
         padding: 2em;
     }
 
-    .metade{
+    .metade, .containerImage p{
         max-width: 100%;
+        font-size: 1em;
     }
 
     .cardsWrapper, .containerImage{

@@ -1,0 +1,33 @@
+.error{
+    font-size: .8rem;
+    text-align: start;
+    display: block;
+    color: #e60f00;
+}
+
+input, input:active{
+    border-style: none !important;
+    width: 85%;
+    box-sizing: border-box;
+    padding: 10px 0 !important;
+    outline: none;
+    transition: .24s;
+    font-family: 'Quicksand', sans-serif;
+}
+ 
+.wrap_input svg{
+    font-size: 1.2em;
+    margin: 0 10px;
+    color: #444;
+}
+
+.wrap_input{
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+.wrap_input:has(input:focus){
+    border: solid 1px #52AA5E;
+}

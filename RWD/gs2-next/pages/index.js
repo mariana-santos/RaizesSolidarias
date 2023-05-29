@@ -53,7 +53,7 @@ export default function Home() {
             <h2 className='title'>A solução</h2>
             <p>Pensando nisso, a <strong>Raízes Solidárias</strong> foi criada. Nosso projeto consiste em uma <strong>horta solidária </strong>mantida por doações e voluntários para a manutenção da horta e o transporte da colheita de alimentos para famílias necessitadas e ONGs responsáveis. </p>
 
-            <p>Nossos doadores tem a opção de escolher no que seu dinheiro será usado: em sementes de diferentes sementes importantes para a nutrição humana ou para a manutenção da horta, com a irrigação e outros itens voltados à nossa horta!</p>
+            <p>Nossos doadores tem a opção de escolher no que seu dinheiro será usado: em sementes de diferentes <strong>alimentos</strong> importantes para a nutrição humana ou para a manutenção da horta, com a irrigação e outros itens voltados ao <strong>bom funcionamento do sistema</strong></p>
 
             <div className={styles.buttons}>
               <Link href="/doar" className='btn'>Seja um doador</Link>

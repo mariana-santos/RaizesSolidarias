@@ -61,7 +61,7 @@ export default function Menu() {
 
             <div className='login-area'>
                     <h2>Bem vindo!</h2>
-                    <p>Faça <Link href="/login">login</Link> ou <Link href="/cadastro">cadastre-se</Link> para começar</p>
+                    <p>Faça <Link href="/login">login</Link> ou <Link href="/cadastro">cadastre-se</Link></p>
                 </div>
         </header>
     )
