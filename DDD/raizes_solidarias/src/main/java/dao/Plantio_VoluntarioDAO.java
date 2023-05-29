@@ -114,9 +114,9 @@ public class Plantio_VoluntarioDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna o Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Plantio.
+	 * Retorna uma lista de Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Plantio.
 	 *
-	 * @return uma Plantio_Voluntario de acordo com o ID do Plantio.
+	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Plantio.
 	 */
 	public ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdPlantio(int id_plantio) {
 		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
@@ -196,11 +196,11 @@ public class Plantio_VoluntarioDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna o Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Voluntario.
+	 * Retorna uma lista de Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Voluntario.
 	 *
-	 * @return uma Plantio_Voluntario de acordo com o ID do Voluntario.
+	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Voluntario.
 	 */
-	public ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdVoluntario(int id_usuario) {
+	public ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdUsuario(int id_usuario) {
 		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
 				+ " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 				+ " v.data_registro_voluntario"
@@ -278,22 +278,103 @@ public class Plantio_VoluntarioDAO extends Repository {
 	}
 	
 	/**
+	 * Retorna o Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Plantio e o ID do Voluntario.
+	 *
+	 * @return uma Plantio_Voluntario de acordo com o ID do Plantio e o ID do Voluntario.
+	 */
+	public static Plantio_Voluntario buscarPlantio_VoluntarioPorIds(int id_plantio, int id_usuario) {
+		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
+				+ " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
+				+ " v.data_registro_voluntario"
+	            + " FROM Plantio_Voluntario pv"
+	            + " JOIN Plantio p ON pv.id_plantio = p.id_plantio"
+	            + " JOIN Usuario u ON pv.id_usuario = u.id_usuario"
+	            + " JOIN Voluntario v ON u.id_usuario = v.id_usuario"
+	            + " ORDER BY pv.id_usuario"
+	            + " WHERE pv.id_plantio = ? AND pv.id_usuario = ?";
+
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+    	Plantio_Voluntario plantio_voluntario_buscado = new Plantio_Voluntario();
+	    
+	    try {
+	        ps = getConnection().prepareStatement(sql);
+	        ps.setInt(1, id_plantio);
+	        ps.setInt(2, id_usuario);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	        	
+	            Plantio plantio = new Plantio();
+	            plantio.setId_plantio(rs.getInt("id_plantio"));
+	            plantio.setData_plantio(rs.getDate("data_plantio"));
+	            plantio.setEspaco_plantio(rs.getInt("espaco_plantio"));
+	            
+	            Alimento alimento = new Alimento();
+	            alimento.setId_alimento(rs.getInt("id_alimento"));
+	            alimento.setNome_alimento(rs.getString("nome_alimento"));
+	            alimento.setTempo_colheita(rs.getInt("tempo_colheita"));
+	            alimento.setQtd_irrigacao(rs.getInt("qtd_irrigacao"));
+	            alimento.setPreco_alimento(rs.getInt("preco_alimento"));
+	            alimento.setQtd_alimento(rs.getInt("qtd_alimento"));
+	            
+	            plantio.setAlimento(alimento);
+
+	            plantio_voluntario_buscado.setPlantio(plantio);
+
+	            Voluntario voluntario = new Voluntario();
+	            voluntario.setId_usuario(rs.getInt("id_usuario"));
+				voluntario.setCpf_usuario(rs.getString("cpf_usuario"));
+				voluntario.setNome_usuario(rs.getString("nome_usuario"));
+				voluntario.setEmail_usuario(rs.getString("email_usuario"));
+				voluntario.setCel_usuario(rs.getString("cel_usuario"));
+				voluntario.setSenha_usuario(rs.getString("senha_usuario"));
+				voluntario.setStatus_usuario(rs.getString("status_usuario"));
+				voluntario.setData_registro_voluntario(rs.getDate("data_registro_voluntario"));
+				
+				plantio_voluntario_buscado.setVoluntario(voluntario);
+				
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Não foi possível buscar o Plantio_Voluntario com o ID do Voluntario " + id_usuario + ": " + e.getMessage());
+	    } finally {
+	        if (rs != null) {
+	            try {
+	                rs.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar ResultSet: " + e.getMessage());
+	            }
+	        }
+	        if (ps != null) {
+	            try {
+	                ps.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar PreparedStatement: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return plantio_voluntario_buscado;
+	}
+	
+	/**
 	 * Atualiza um Plantio_Voluntario no banco de dados.
 	 *
 	 * @param id_plantio		  	o id do plantio a ser atualizado.
 	 * @param id_usuario 		o id da voluntario a ser atualizada.
 	 * @return true se o Plantio_Voluntario for atualizado com sucesso, false caso contrário
 	 */
-	public static boolean atualizarPlantio_Voluntario(int id_plantio, int id_usuario) {
+	public static boolean atualizarPlantio_Voluntario(int id_plantio_novo, int id_plantio_antigo, int id_usuario_novo, int id_usuario_antigo) {
 		String sql = "UPDATE plantio_voluntario SET id_plantio = ?, id_usuario = ? WHERE id_plantio = ? AND id_usuario = ?";
 		CallableStatement cs = null;
 
 		try {
 			cs = getConnection().prepareCall(sql);
-			cs.setInt(1, id_plantio);
-			cs.setInt(2, id_usuario);
-			cs.setInt(3, id_plantio);
-			cs.setInt(4, id_usuario);
+			cs.setInt(1, id_plantio_novo);
+			cs.setInt(2, id_usuario_novo);
+			cs.setInt(3, id_plantio_antigo);
+			cs.setInt(4, id_usuario_antigo);
 
 			int rowsAffected = cs.executeUpdate();
 

@@ -111,7 +111,7 @@ public class Plantio_ColheitaDAO extends Repository {
 	 *
 	 * @return uma Plantio_Colheita de acordo com o ID do Plantio.
 	 */
-	public Plantio_Colheita buscarPlantio_ColheitaPorIdPlantio(int id_plantio) {
+	public static Plantio_Colheita buscarPlantio_ColheitaPorIdPlantio(int id_plantio) {
 		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
 	            + " pc.id_colheita, c.data_colheita, c.descricao_colheita"
 	            + " FROM Plantio_Colheita pc"
@@ -250,6 +250,78 @@ public class Plantio_ColheitaDAO extends Repository {
 	    }
 
 	    return listaPlantio_Colheitas;
+	}
+	
+	/**
+	 * Retorna o Plantio_Colheita cadastrados no banco de dados de acordo com o ID do Plantio e o ID da Colheita.
+	 *
+	 * @return uma Plantio_Colheita de acordo com o ID do Plantio e o ID da Colheita.
+	 */
+	public static Plantio_Colheita buscarPlantio_ColheitaPorIds(int id_plantio, int id_colheita) {
+		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
+	            + " pc.id_colheita, c.data_colheita, c.descricao_colheita"
+	            + " FROM Plantio_Colheita pc"
+	            + " JOIN Plantio p ON pc.id_plantio = p.id_plantio"
+	            + " JOIN Colheita c ON pc.id_colheita = c.id_colheita"
+	            + " ORDER BY pc.id_colheita "
+	            + " WHERE pc.id_plantio = ? AND pc.id_colheita = ?";
+
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    Plantio_Colheita plantio_colheita_buscado = new Plantio_Colheita();
+	    
+	    try {
+	        ps = getConnection().prepareStatement(sql);
+	        ps.setInt(1, id_plantio);
+	        ps.setInt(2, id_colheita);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            Plantio plantio = new Plantio();
+	            plantio.setId_plantio(rs.getInt("id_plantio"));
+	            plantio.setData_plantio(rs.getDate("data_plantio"));
+	            plantio.setEspaco_plantio(rs.getInt("espaco_plantio"));
+
+	            Alimento alimento = new Alimento();
+	            alimento.setId_alimento(rs.getInt("id_alimento"));
+	            alimento.setNome_alimento(rs.getString("nome_alimento"));
+	            alimento.setTempo_colheita(rs.getInt("tempo_colheita"));
+	            alimento.setQtd_irrigacao(rs.getInt("qtd_irrigacao"));
+	            alimento.setPreco_alimento(rs.getInt("preco_alimento"));
+	            alimento.setQtd_alimento(rs.getInt("qtd_alimento"));
+	            
+	            plantio.setAlimento(alimento);
+
+	            plantio_colheita_buscado.setPlantio(plantio);
+
+	            Colheita colheita = new Colheita();
+	            colheita.setId_colheita(rs.getInt("id_colheita"));
+	            colheita.setData_colheita(rs.getDate("data_colheita"));
+	            colheita.setDescricao_colheita(rs.getString("descricao_colheita"));
+
+	            plantio_colheita_buscado.setColheita(colheita);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Não foi possível buscar o Plantio_Colheita com o ID do Plantio " + id_plantio + ": " + e.getMessage());
+	    } finally {
+	        if (rs != null) {
+	            try {
+	                rs.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar ResultSet: " + e.getMessage());
+	            }
+	        }
+	        if (ps != null) {
+	            try {
+	                ps.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar PreparedStatement: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return plantio_colheita_buscado;
 	}
 	
 	/**
