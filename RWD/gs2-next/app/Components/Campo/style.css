@@ -26,6 +26,7 @@ input, input:active{
     border-radius: 3px;
     display: flex;
     align-items: center;
+    background: #fff;
 }
 
 .wrap_input:has(input:focus){

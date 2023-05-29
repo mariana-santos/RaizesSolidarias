@@ -45,9 +45,12 @@ export default function Cadastro() {
 
     const [carregando, setCarregando] = useState(false)
 
+    
     useEffect(() => {
-        $('#cpf').mask('000.000.000-00', { placeholder: '___.___.___-__'});
-        $('#celular').mask('(00) 0 0000-0000', { placeholder: '(__) _ ____ ____'});
+        if (typeof window !== 'undefined') {
+            $('#cpf').mask('000.000.000-00', { placeholder: '___.___.___-__'});
+            $('#celular').mask('(00) 0 0000-0000', { placeholder: '(__) _ ____ ____'});
+        }
     }, [])
 
     function handleSubmit(e) {
