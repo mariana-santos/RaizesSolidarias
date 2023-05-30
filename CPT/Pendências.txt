@@ -1,1 +1,1 @@
-Continuar a partir do que não está minimizado nas Funcoes: editar e excluir
+Continuar os métodos de Doador, Plantio, Receptor e Voluntário

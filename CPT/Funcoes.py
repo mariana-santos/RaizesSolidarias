@@ -1,7 +1,10 @@
-from datetime import datetime
-import time
-from tqdm import tqdm
 import cx_Oracle
+
+from datetime import datetime
+from tqdm import tqdm
+import time
+import sqlite3
+
 
 class Funcoes:
 
@@ -180,6 +183,13 @@ class Funcoes:
             conf_senha = input("CONFIRME A SUA SENHA: ")
         return senha_usuario
 
+    def validarCel(cel_usuario):
+        while (len(cel_usuario) != 11):
+            print("CELULAR INVÁLIDO OU JÁ CADASTRADO.")
+            cel_usuario = input("DIGITE O SEU CELULAR (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ")
+        
+        return cel_usuario
+
     def validarAgendamentoBuscado(agendamento_buscado, lista):
         while agendamento_buscado is None:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
@@ -284,10 +294,21 @@ class Funcoes:
         
         return email_usuario
 
+    def verificarCel(cel_usuario, cel_cadastrados):
+        while (cel_usuario in cel_cadastrados or cel_usuario == "" or len(cel_usuario) != 11):
+            print("CELULAR INVÁLIDO OU JÁ CADASTRADO.")
+            cel_usuario = input("DIGITE O SEU CELULAR (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ")
+        
+        return cel_usuario
+
     # FORMATAR - OK
     def formatarCpf(cpf_usuario):
         cpf_usuario_formatado = '{}.{}.{}-{}'.format(cpf_usuario[:3], cpf_usuario[3:6], cpf_usuario[6:9], cpf_usuario[9:])
         return cpf_usuario_formatado
+
+    def formatarCel(cel_usuario):
+        cel_usuario_formatado = '({}) {}-{}'.format(cel_usuario[:2], cel_usuario[2:7], cel_usuario[7:11])
+        return cel_usuario_formatado
 
     def formatarData(data):
         if isinstance(data, str):
@@ -332,7 +353,7 @@ class Funcoes:
             return None
         return plantio_buscado
     
-    def buscarPorIdUsuario(id_buscado, lista):
+    def buscarUsuarioPorId(id_buscado, lista):
         objeto_buscado = lista.get(id_buscado)
         if objeto_buscado is None:
             return None
@@ -342,169 +363,7 @@ class Funcoes:
     def editarNegativo():
         return("NÃO É POSSÍVEL EDITAR ESTA OPÇÃO.\n"
             "TECLE ENTER PARA VOLTAR AO MENU")
-
-    def editarNome(dsn, usuario_buscado):
-        novo_nome = input("DIGITE O NOVO NOME: ")
-        novo_nome = Funcoes.validarPreenchimento("DIGITE O NOVO NOME: ", novo_nome)
-        usuario_buscado.nome_usuario = novo_nome
-
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-        cursor = conn.cursor()
-        Funcoes.connect(dsn)
-
-        cursor.execute("UPDATE usuario SET nome_usuario = :novo_nome WHERE id_usuario = :id_usuario", {"novo_nome": novo_nome, "id_usuario": usuario_buscado.id_usuario})
-        cursor.connection.commit()
-        print("NOME DO USUÁRIO EDITADO COM SUCESSO!")
-
-        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-        Funcoes.disconnect(conn, cursor)
-
-    def editarEmail(dsn, usuario_buscado, emails_cadastrados, Aluno):
-        novo_email = input("DIGITE O NOVO EMAIL: ")
-        novo_email = Funcoes.validarPreenchimento("DIGITE O NOVO EMAIL: ", novo_email)
-        novo_email = Funcoes.verificarEmail(novo_email, emails_cadastrados)
-        if isinstance(usuario_buscado, Aluno):
-            emails_cadastrados.remove(usuario_buscado.email_usuario)
-            emails_cadastrados.add(novo_email)
-        usuario_buscado.email_usuario = novo_email
-
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-        cursor = conn.cursor()
-        Funcoes.connect(dsn)
-
-        cursor.execute("UPDATE usuario SET email_usuario = :novo_email WHERE id_usuario = :id_usuario", {"novo_email": novo_email, "id_usuario": usuario_buscado.id_usuario})
-        cursor.connection.commit()
-
-        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-        Funcoes.disconnect(conn, cursor)
-
-        print("EMAIL DO USUÁRIO EDITADO COM SUCESSO!")
-
-    def editarDataNasc(dsn, usuario_buscado):
-        nova_data_nasc = input("DIGITE A NOVA DATA DE NASCIMENTO DO USUÁRIO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
-        nova_data_nasc = Funcoes.validarPreenchimento("DIGITE A NOVA DATA DE NASCIMENTO DO USUÁRIO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", nova_data_nasc)
-        data_formatada = datetime.strptime(nova_data_nasc, '%d/%m/%Y')
-        data_formatada = data_formatada.strftime("%d/%m/%Y")
-        usuario_buscado.data_nasc_aluno = data_formatada
-        
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-        cursor = conn.cursor()
-        Funcoes.connect(dsn)
-        
-        cursor.execute("UPDATE aluno SET dt_nasc_aluno = TO_DATE(:nova_data, 'DD/MM/YYYY') WHERE id_usuario = :id_usuario", {"nova_data": data_formatada, "id_usuario": usuario_buscado.id_usuario})
-        cursor.connection.commit()
-        
-        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-        Funcoes.disconnect(conn, cursor)
-
-        print("DATA DE NASCIMENTO DO USUÁRIO EDITADO COM SUCESSO!")
-
-    def editarMoedas(dsn, usuario_buscado):
-        try:
-            moedas_adicionar = int(input(f"QUANTAS MOEDAS DESEJA ADICIONAR/SUBTRAIR DO USUÁRIO {usuario_buscado.nome_usuario}? "))
-        except ValueError:
-            print("POR FAVOR, DIGITE UM NÚMERO INTEIRO VÁLIDO.")
-            return
-        moedas_adicionar = int(Funcoes.validarPreenchimento("QUANTAS MOEDAS DESEJA ADICIONAR/SUBTRAIR DO USUÁRIO " + usuario_buscado.nome_usuario + "?", str(moedas_adicionar)))
-        novas_moedas = moedas_adicionar + usuario_buscado.moedas_aluno
-        usuario_buscado.moedas_aluno = novas_moedas
-
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-        cursor = conn.cursor()
-        Funcoes.connect(dsn)
-
-        cursor.execute("UPDATE aluno SET moedas_aluno = :novas_moedas WHERE id_usuario = :id_usuario", {"novas_moedas": novas_moedas, "id_usuario": usuario_buscado.id_usuario})
-        cursor.connection.commit()
-
-         # FECHANDO CONEXÃO COM O BANCO DE DADOS
-        Funcoes.disconnect(conn, cursor)
-
-        print("MOEDAS DO USUÁRIO ATUALIZADAS COM SUCESSO!")
-
-    def editarLevel(dsn, usuario_buscado):
-        novo_level = ("QUAL O NOVO LEVEL DO USUÁRIO {usuario_buscado['nome_usuario']}?" + "\n" +
-                        "01. Iniciante" + "\n" +
-                        "02. Intermediário" + "\n" + 
-                        "03. Avançado" + "\n" +
-                        "04. CURSO CONCLUÍDO" + "\n" + 
-                        Funcoes.menuRodape())
-        
-        opcao = int(input(novo_level))
-
-        opcao = int(Funcoes.validarOpcao(opcao, 1, 4, novo_level))
-
-        if (opcao == 1):
-            usuario_buscado.level_aluno = "Iniciante"
-
-        elif (opcao == 2):
-            usuario_buscado.level_aluno = "Intermediário"
-        
-        elif (opcao == 3):
-            usuario_buscado.level_aluno = "Avançado"
-
-        elif (opcao == 4):
-            usuario_buscado.level_aluno = "CURSO CONCLUÍDO"
-
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-        cursor = conn.cursor()
-        Funcoes.connect(dsn)
-        
-        cursor.execute("UPDATE aluno SET nivel_aluno = :novo_nivel WHERE id_usuario = :id_usuario", {"novo_nivel": usuario_buscado.level_aluno, "id_usuario": usuario_buscado.id_usuario})
-        cursor.connection.commit()
-
-         # FECHANDO CONEXÃO COM O BANCO DE DADOS
-        Funcoes.disconnect(conn, cursor)
-
-        print("LEVEL DO USUÁRIO ATUALIZADO COM SUCESSO!")
-
-    def editarSenha(dsn, usuario_buscado, StringClasse):
-        nova_senha_usuario = input("DIGITE A NOVA SENHA: ")
-        conf_senha = input("CONFIRME A NOVA SENHA: ")
-        nova_senha_usuario = Funcoes.validarSenha(nova_senha_usuario, conf_senha)
-
-         # CRIANDO CONEXÃO COM O BANCO DE DADOS
-        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-        cursor = conn.cursor()
-        Funcoes.connect(dsn)
-
-        if StringClasse == "Aluno":
-            usuario_buscado.senha_aluno = nova_senha_usuario
-            cursor.execute("UPDATE aluno SET senha_aluno = :nova_senha_usuario WHERE id_usuario = :id_usuario", {"nova_senha_usuario": nova_senha_usuario, "id_usuario": usuario_buscado.id_usuario})
-            cursor.connection.commit()
-        
-        elif StringClasse == "Funcionario":
-            usuario_buscado.senha_funcionario = nova_senha_usuario
-            cursor.execute("UPDATE funcionario SET senha_funcionario = :nova_senha_usuario WHERE id_usuario = :id_usuario", {"nova_senha_usuario": nova_senha_usuario, "id_usuario": usuario_buscado.id_usuario})
-            cursor.connection.commit()
-        
-        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-        Funcoes.disconnect(conn, cursor)
-
-        print("SENHA DO USUÁRIO EDITADA COM SUCESSO!")
-
-    def editarCargo(dsn, usuario_buscado):
-        novo_cargo = input("DIGITE O NOVO CARGO: ")
-        novo_cargo = Funcoes.validarPreenchimento("DIGITE O NOVO CARGO: ", novo_cargo)
-        usuario_buscado.cargo_funcionario = novo_cargo
-
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-        cursor = conn.cursor()
-        Funcoes.connect(dsn)
-
-        cursor.execute("UPDATE funcionario SET cargo_funcionario = :novo_cargo WHERE id_usuario = :id_usuario", {"novo_cargo": novo_cargo, "id_usuario": usuario_buscado.id_usuario})
-        cursor.connection.commit()
-
-        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-        Funcoes.disconnect(conn, cursor)
-
-        print("CARGO DO FUNCIONÁRIO EDITADO COM SUCESSO!")
-
+    
     # EXCLUIR - OK
     def excluirUsuario(dsn, lista, StringClasse):
         Funcoes.exibirUsuariosAdmin(lista)
@@ -518,9 +377,8 @@ class Funcoes:
             del lista[id_buscado]
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
+            conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
-            Funcoes.connect(dsn)
 
             if (StringClasse == "Aluno"):
                 cursor.execute("DELETE FROM aluno WHERE id_usuario = :id_usuario", {"id_usuario": usuario_buscado.id_usuario})
@@ -545,159 +403,6 @@ class Funcoes:
         
         elif (opcao == 2):
             input("TECLE ENTER PARA VOLTAR AO MENU.")
-
-    def excluirModulo(dsn, listaModulos):
-        if len(listaModulos) == 0:
-            print("NÃO EXISTEM MÓDULOS CADASTRADOS. TECLE ENTER PARA VOLTAR AO MENU")
-        
-        else:
-            Funcoes.exibirModulosAdmin(listaModulos)
-            id_buscado = int(input("DIGITE O ID DO MÓDULO QUE DESEJA EXCLUIR: \n"))
-            modulo_buscado = Funcoes.buscarPorIdModulo(id_buscado, listaModulos)
-            modulo_buscado = Funcoes.validarModuloBuscado(modulo_buscado, listaModulos)
-            opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR O MÓDULO")))
-            opcao = Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR O MÓDULO"))
-            
-            if opcao == 1:
-                for i in range(len(listaModulos)):
-                    if listaModulos[i].id_modulo == id_buscado:
-                        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-                        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-                        cursor = conn.cursor()
-                        Funcoes.connect(dsn)
-
-                        # EXCLUINDO DO BANCO DE DADOS E DA LISTA
-                        cursor.execute("DELETE FROM modulo_aula WHERE id_modulo = :1", (listaModulos[i].id_modulo,))
-                        cursor.connection.commit()
-
-                        cursor.execute("DELETE FROM modulo_questao WHERE id_modulo = :1", (listaModulos[i].id_modulo,))
-                        cursor.connection.commit()
-
-                        cursor.execute("DELETE FROM modulo WHERE id_modulo = :1", (listaModulos[i].id_modulo,))
-                        cursor.connection.commit()
-
-                        del listaModulos[i]
-
-                        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-                        Funcoes.disconnect(conn, cursor)
-
-                        print("MÓDULO EXCLUÍDO COM SUCESSO!")
-                        input("TECLE ENTER PARA VOLTAR AO MENU.")
-                        break
-                
-            elif opcao == 2:
-                input("TECLE ENTER PARA VOLTAR AO MENU.")
-    
-    def excluirAula(dsn, listaAulas):
-        if len(listaAulas) == 0:
-            print("NÃO EXISTEM AULAS CADASTRADOS. TECLE ENTER PARA VOLTAR AO MENU")
-        
-        else:
-            Funcoes.exibirAulasAdmin(listaAulas)
-            id_buscado = int(input("DIGITE O ID DA AULA QUE DESEJA EXCLUIR: \n"))
-            aula_buscada = Funcoes.buscarPorIdAula(id_buscado, listaAulas)
-            aula_buscada = Funcoes.validarAulaBuscada(aula_buscada, listaAulas)
-            opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR A AULA")))
-            opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR A AULA")))
-            
-            if (opcao == 1):
-                for i in range(len(listaAulas)):
-                    if listaAulas[i].id_aula == id_buscado:
-                        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-                        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-                        cursor = conn.cursor()
-                        Funcoes.connect(dsn)
-
-                        # EXCLUINDO DO BANCO DE DADOS E DA LISTA
-                        cursor.execute("DELETE FROM modulo_aula WHERE id_aula = :1", (listaAulas[i].id_aula,))
-                        cursor.connection.commit()
-
-                        cursor.execute("DELETE FROM aula WHERE id_aula = :1", (listaAulas[i].id_aula,))
-                        cursor.connection.commit()
-
-                        del listaAulas[i]
-
-                        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-                        Funcoes.disconnect(conn, cursor)
-
-                        print("AULA EXCLUÍDA COM SUCESSO!")
-                        input("TECLE ENTER PARA VOLTAR AO MENU.")
-            
-            elif (opcao == 2):
-                input("TECLE ENTER PARA VOLTAR AO MENU.")
-    
-    def excluirQuestao(dsn, listaQuestoes):
-        if len(listaQuestoes) == 0:
-            print("NÃO EXISTEM QUESTÕES CADASTRADAS. TECLE ENTER PARA VOLTAR AO MENU")
-        
-        else:
-            Funcoes.exibirQuestoesAdmin(listaQuestoes)
-            id_buscado = int(input("DIGITE O ID DA QUESTÃO QUE DESEJA EXCLUIR: \n"))
-            questao_buscada = Funcoes.buscarPorIdQuestao(id_buscado, listaQuestoes)
-            questao_buscada = Funcoes.validarQuestaoBuscada(questao_buscada, listaQuestoes)
-            opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR A QUESTÃO")))
-            opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR A QUESTÃO")))
-            
-            if (opcao == 1):
-                for i in range(len(listaQuestoes)):
-                    if listaQuestoes[i].id_questao == id_buscado:
-                        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-                        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-                        cursor = conn.cursor()
-                        Funcoes.connect(dsn)
-
-                        # EXCLUINDO DO BANCO DE DADOS E DA LISTA
-                        cursor.execute("DELETE FROM modulo_questao WHERE id_questao = :1", (listaQuestoes[i].id_questao,))
-                        cursor.connection.commit()
-
-                        cursor.execute("DELETE FROM questao WHERE id_questao = :1", (listaQuestoes[i].id_questao,))
-                        cursor.connection.commit()
-
-                        del listaQuestoes[i]
-
-                        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-                        Funcoes.disconnect(conn, cursor)
-
-                        print("QUESTÃO EXCLUÍDA COM SUCESSO!")
-                        input("TECLE ENTER PARA VOLTAR AO MENU.")
-                        
-            elif (opcao == 2):
-                input("TECLE ENTER PARA VOLTAR AO MENU.")
-
-    def excluirProduto(dsn, listaProdutos):
-        if len(listaProdutos) == 0:
-            print("NÃO EXISTEM PRODUTOS CADASTRADOS. TECLE ENTER PARA VOLTAR AO MENU")
-        
-        else:
-            Funcoes.exibirProdutosAdmin(listaProdutos)
-            id_buscado = int(input("DIGITE O ID DO PRODUTO QUE DESEJA EXCLUIR: \n"))
-            produto_buscado = Funcoes.buscarPorIdProduto(id_buscado, listaProdutos)
-            produto_buscado = Funcoes.validarAulaBuscada(produto_buscado, listaProdutos)
-            opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR O PRODUTO")))
-            opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR O PRODUTO")))
-            
-            if (opcao == 1):
-                for i in range(len(listaProdutos)):
-                    if listaProdutos[i].id_produto == id_buscado:
-                        # CRIANDO CONEXÃO COM O BANCO DE DADOS
-                        conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
-                        cursor = conn.cursor()
-                        Funcoes.connect(dsn)
-
-                        # EXCLUINDO DO BANCO DE DADOS E DA LISTA
-                        cursor.execute("DELETE FROM produto WHERE id_produto = :1", (listaProdutos[i].id_produto,))
-                        cursor.connection.commit()
-
-                        del listaProdutos[i]
-
-                        # FECHANDO CONEXÃO COM O BANCO DE DADOS
-                        Funcoes.disconnect(conn, cursor)
-
-                        print("PRODUTO EXCLUÍDO COM SUCESSO!")
-                        input("TECLE ENTER PARA VOLTAR AO MENU.")
-            
-            elif (opcao == 2):
-                input("TECLE ENTER PARA VOLTAR AO MENU.")
     
     # EXIBIR - OK
     def exibirAgendamentosAdmin(listaAgendamentos):
@@ -773,7 +478,7 @@ class Funcoes:
     # BANCO DE DADOS
     def connect(dsn):
         try:
-            conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
+            conn = Funcoes.connect(dsn)
             return conn
         except cx_Oracle.Error as e:
             print(f"ERRO AO CONECTAR COM O BANCO DE DADOS: {e}")
@@ -790,9 +495,8 @@ class Funcoes:
     def buscarIdMax(dsn, coluna_tabela, nome_tabela):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
+            conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
-            Funcoes.connect(dsn)
 
             cursor.execute(f"SELECT MAX({coluna_tabela}) FROM {nome_tabela}")
             result = cursor.fetchone()
@@ -811,9 +515,8 @@ class Funcoes:
     def buscarCpfsCadastrados(dsn):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
+            conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
-            Funcoes.connect(dsn)
 
             cpfs_cadastrados = set()
             cursor.execute("SELECT cpf_usuario FROM usuario")
@@ -831,10 +534,9 @@ class Funcoes:
     def buscarEmailsCadastrados(dsn):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = cx_Oracle.connect(user='RM96466', password='220693', dsn=dsn)
+            conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
-            Funcoes.connect(dsn)
-
+            
             emails_cadastrados = set()
             cursor.execute("SELECT email_usuario FROM usuario")
             results = cursor.fetchall()
