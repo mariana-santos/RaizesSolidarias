@@ -131,7 +131,7 @@ export default function Login() {
           <button type="submit" className="btn btn_primary arrow">Entrar</button>
 
           {/* <a className="outros_links" href="#">Esqueceu a senha? <strong>clique aqui</strong></a> */}
-          {/* <Link className="outros_links" to="/cadastro">Ainda não possui conta? <strong>clique aqui</strong></Link> */}
+          <Link className="outros_links" href="/cadastro">Ainda não possui conta? <strong>clique aqui</strong></Link>
 
         </form>
 

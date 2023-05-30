@@ -80,6 +80,7 @@ header .space, header .login-area {
 
 .login-area h2{
     margin-bottom: .5em;
+    font-weight: normal;
 }
 
 .login-area a{
@@ -119,7 +120,7 @@ header .space, header .login-area {
     }
 
     .login-area h2{
-        display: none;
+        /* display: none; */
     }
 
     .menu-wrapper{
@@ -129,5 +130,9 @@ header .space, header .login-area {
 
     nav ul a{
         color: #fff !important;
+    }
+
+    #home header{
+        background: #3d8046f1 !important;
     }
 }

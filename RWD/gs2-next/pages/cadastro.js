@@ -10,7 +10,7 @@ const fontBody = Quicksand({ subsets: ['latin'] })
 
 import '../app/globals.css'
 
-import validator from "validator";
+import validator from "validator"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -21,10 +21,12 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 import { RxPerson } from 'react-icons/rx'
 import { BsTelephone } from 'react-icons/bs'
 
+import { PatternFormat } from 'react-number-format';
+
 import '../app/styles/form.css'
 
-import $ from 'jquery';
-import 'jquery-mask-plugin/dist/jquery.mask.min'; 
+// import $ from 'jquery';
+// import 'jquery-mask-plugin/dist/jquery.mask.min'
 
 export default function Cadastro() {
 
@@ -44,11 +46,6 @@ export default function Cadastro() {
     const [errorCel, setErrorCel] = useState(null)
 
     const [carregando, setCarregando] = useState(false)
-
-    useEffect(() => {
-        $('#cpf').mask('000.000.000-00', { placeholder: '___.___.___-__'});
-        $('#celular').mask('(00) 0 0000-0000', { placeholder: '(__) _ ____ ____'});
-    }, [])
 
     function handleSubmit(e) {
 
@@ -156,7 +153,10 @@ export default function Cadastro() {
                         errorMsg={errorCel}
                         value={celular}
                         onChange={e => setCelular(e.target.value)}
-                    />
+                        temMask
+                    >
+                        <PatternFormat format="(##) 9 #### ####" allowEmptyFormatting mask="_" />
+                    </Campo>
 
                     <Campo
                         label="CPF"
@@ -166,8 +166,11 @@ export default function Cadastro() {
                         icon={<HiOutlineIdentification />}
                         errorMsg={errorCpf}
                         value={cpf}
+                        temMask
                         onChange={e => setCpf(e.target.value)}
-                    />
+                    >
+                        <PatternFormat format="###.###.###-##" allowEmptyFormatting mask="_" />
+                    </Campo>
 
                     <Campo
                         label="Senha"
@@ -183,7 +186,7 @@ export default function Cadastro() {
                     <button type="submit" className="btn btn_primary arrow">Entrar</button>
 
                     {/* <a className="outros_links" href="#">Esqueceu a senha? <strong>clique aqui</strong></a> */}
-                    {/* <Link className="outros_links" to="/cadastro">Ainda não possui conta? <strong>clique aqui</strong></Link> */}
+                    <Link className="outros_links" href="/login">Já possui conta? <strong>clique aqui</strong></Link>
 
                 </form>
 
