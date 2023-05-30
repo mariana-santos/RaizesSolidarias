@@ -1,7 +1,7 @@
 .wrap-profile{
     padding-top: 16em;
     padding-bottom: 3em;
-    max-width: 65%;
+    max-width: 70%;
     margin: auto;
 }
 
@@ -21,6 +21,10 @@
     font-family: 'Quicksand' !important;
 }
 
+.tab:not(:last-child){
+    border-bottom: solid 1px #ccc !important;
+}
+
 .tab:hover{
     background: #9e857688 !important;
 }
@@ -32,8 +36,87 @@
 
 .tab-list{
     border-right: solid 1px #9e857688;
+    width: 25%;
 }
 
 button{
     transition: .24s ease;
+}
+
+.tab-content{
+    width: 75%;
+    padding: 0 !important;
+    padding-left: 2em !important;
+}
+
+.wrap-profile form{
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1em;
+}
+
+.wrap-profile form h2, .wrap-profile form small{
+    width: 100%;
+}
+
+.campo, .wrap-profile form button{
+    width: calc(50% - .5em);
+}
+
+.wrap-profile form button{
+    margin-top: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    .wrap-profile{
+        padding-top: 12em;
+        max-width: 90%;
+    }
+
+    .wrap-tabs{
+        padding: 1.5em;
+        flex-direction: column;
+    }
+
+    .tab-list, .tab-content{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .tab{
+        width: 50%;
+        padding: 0 !important;
+        align-items: center !important;
+    }
+
+    .tab:hover{
+        background: transparent !important;
+    }
+
+    .tab-content{
+        padding: 0 !important;
+        padding-top: 1.5em !important;
+    }
+
+    .css-heg063-MuiTabs-flexContainer{
+        flex-wrap: wrap !important;
+    }
+
+    .tab-list{
+        border-right: none;
+        border-bottom: solid 1px #9e8576dc;
+        /* padding-bottom: 1em; */
+    }
+
+    .campo, .wrap-profile form button{
+        width: 100%;
+    }
+
+    .css-fgwl1b-MuiTabs-indicator{
+        display: none;
+    }
+
+    .tab.Mui-selected{
+        border-bottom: solid 2px #685a51 !important;
+    }
 }

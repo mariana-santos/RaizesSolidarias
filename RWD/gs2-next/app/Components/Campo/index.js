@@ -6,7 +6,7 @@ export default function Campo (props){
             onChange, accept, onKeyUp,
         } = props
     return(
-        <>
+        <div className='campo'>
             <label htmlFor={id}>{label}</label>
             <div className="wrap_input">
                 {icon}
@@ -23,6 +23,6 @@ export default function Campo (props){
                 }
             </div>
             { errorMsg != null && <span className='error' > {errorMsg} </span> }
-        </>
+        </div>
     )
 }

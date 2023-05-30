@@ -169,7 +169,7 @@ export default function Cadastro() {
                         temMask
                         onChange={e => setCpf(e.target.value)}
                     >
-                        <PatternFormat format="###.###.###-##" allowEmptyFormatting mask="_" />;
+                        <PatternFormat format="###.###.###-##" allowEmptyFormatting mask="_" />
                     </Campo>
 
                     <Campo
