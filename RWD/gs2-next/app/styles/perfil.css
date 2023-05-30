@@ -1,0 +1,39 @@
+.wrap-profile{
+    padding-top: 16em;
+    padding-bottom: 3em;
+    max-width: 65%;
+    margin: auto;
+}
+
+.wrap-tabs{
+    padding: 2.5em;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    background: #f2f2f2b5;
+    box-shadow: 0px 0px 5px #cdcdcd;
+    display: flex;
+}
+
+.tab{
+    align-items: flex-start !important;
+    border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
+    font-family: 'Quicksand' !important;
+}
+
+.tab:hover{
+    background: #9e857688 !important;
+}
+
+.Mui-selected{
+    color: #685a51 !important;
+    font-weight: 600 !important;
+}
+
+.tab-list{
+    border-right: solid 1px #9e857688;
+}
+
+button{
+    transition: .24s ease;
+}

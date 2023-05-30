@@ -30,6 +30,12 @@ label{
     text-align: start;
 }
 
+.outros_links{
+    display: block;
+    text-align: start;
+    margin-top: 1em;
+}
+
 @media screen and (max-width: 768px) {
     .form-wrapper{
         padding-top: 10em;
