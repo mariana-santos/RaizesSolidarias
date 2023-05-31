@@ -14,6 +14,7 @@ import '../app/styles/perfil.css'
 import Menu from '../app/Components/Menu'
 import Footer from '../app/Components/Footer'
 import DadosGerais from '../app/Components/DadosGerais';
+import AreaVoluntario from '../app/Components/AreaVoluntario';
 
 import { useEffect, useState } from 'react';
 
@@ -51,7 +52,9 @@ export default function Perfil() {
                         <TabPanel value="geral" className='tab-content'>
                             <DadosGerais />
                         </TabPanel>
-                        <TabPanel value="voluntario" className='tab-content'>Área do voluntário</TabPanel>
+                        <TabPanel value="voluntario" className='tab-content'>
+                            <AreaVoluntario />
+                        </TabPanel>
                         <TabPanel value="transportador" className='tab-content'>Área do transportador</TabPanel>
                         <TabPanel value="doador" className='tab-content'>Área do doador</TabPanel>
                     </TabContext>

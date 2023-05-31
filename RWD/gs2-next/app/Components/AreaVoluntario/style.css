@@ -1,0 +1,25 @@
+.row-heading{
+    display: flex;
+    justify-content: space-between;
+}
+
+.row-heading .heading{
+    width: 55%;
+}
+
+.css-1f2kvjf-MuiFormControlLabel-root .MuiFormControlLabel-label{
+    /* width: 50%; */
+    font-family: 'QuickSand';
+    font-weight: bold;
+}
+
+INSERT INTO colheita_voluntario VALUES(1, );
+INSERT INTO colheita_voluntario VALUES(2, );
+INSERT INTO colheita_voluntario VALUES(5, );
+INSERT INTO colheita_voluntario VALUES(3, );
+INSERT INTO colheita_voluntario VALUES(4, );
+INSERT INTO colheita_voluntario VALUES(5, );
+INSERT INTO colheita_voluntario VALUES(9, );
+INSERT INTO colheita_voluntario VALUES(1, );
+INSERT INTO colheita_voluntario VALUES(7, );
+INSERT INTO colheita_voluntario VALUES(10,);
