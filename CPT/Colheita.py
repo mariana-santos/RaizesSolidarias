@@ -96,6 +96,7 @@ class Colheita:
             nova_colheita.data_colheita = data_formatada
             nova_colheita.descricao_colheita = descricao_colheita
             listaColheitas.append(nova_colheita)
+            id_colheita = id_colheita + 1
 
             print("COLHEITA CADASTRADA COM SUCESSO!")
 

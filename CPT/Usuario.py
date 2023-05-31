@@ -186,6 +186,7 @@ class Usuario:
             novo_usuario.senha_usuario = senha_usuario
             novo_usuario.status_usuario = status_usuario
             listaUsuarios.append(novo_usuario)
+            id_usuario = id_usuario + 1
 
             print("USUARIO CADASTRADO COM SUCESSO!")
 
@@ -488,27 +489,56 @@ class Usuario:
             print("OCORREU UM ERRO DURANTE A ATUALIZAÇÃO DO STATUS DO USUÁRIO:")
             print(str(e))
 
-    def excluirUsuario(dsn, usuario_buscado):
-        novo_status_usuario = "INATIVO"
+    def excluirUsuario(dsn, listaUsuarios):
+        
+        if len(listaUsuarios) == 0:
+            print("NÃO EXISTEM USUARIOS CADASTRADOS. TECLE ENTER PARA VOLTAR AO MENU")
+        
+        else:
+            Funcoes.exibirUsuariosAdmin(listaUsuarios)
+            try:
+                id_buscado = int(input("DIGITE O ID DO USUARIO QUE DESEJA EXCLUIR: \n"))
+                usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuarios)
+                usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuarios)
+                opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR O USUARIO")))
+                opcao = Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR O USUARIO"))
 
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
-        conn = Funcoes.connect(dsn)
-        cursor = conn.cursor()
+                if opcao == 1:
+                    for i in range(len(listaUsuarios)):
+                        if listaUsuarios[i].id_usuario == id_buscado:
+                            novo_status_usuario = "INATIVO"
 
-        try:           
-            # FAZENDO UPDATE NO BANCO DE DADOS - OK
-            cursor.execute("UPDATE usuario SET status_usuario = :novo_status_usuario WHERE id_usuario = :id_usuario", {"novo_status_usuario": novo_status_usuario, "id_usuario": usuario_buscado.id_usuario})
-            cursor.connection.commit()
+                            # CRIANDO CONEXÃO COM O BANCO DE DADOS
+                            conn = Funcoes.connect(dsn)
+                            cursor = conn.cursor()
 
-            # FAZENDO UPDATE NO CONSOLE - OK
-            usuario_buscado.status_usuario = novo_status_usuario
+                            try:
+                                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                                cursor.execute("UPDATE usuario SET status_usuario = :novo_status_usuario WHERE id_usuario = :id_usuario", {"novo_status_usuario": novo_status_usuario, "id_usuario": usuario_buscado.id_usuario})
+                                cursor.connection.commit()
 
-            print("USUÁRIO EXCLUÍDO COM SUCESSO!")
+                                # FAZENDO UPDATE NO CONSOLE - OK
+                                usuario_buscado.status_usuario = novo_status_usuario
 
-        except sqlite3.DatabaseError as db_error:
-            print("ERRO NO BANCO DE DADOS DURANTE A EXCLUSÃO DO USUÁRIO:")
-            print(str(db_error))
+                                print("STATUS DO USUARIO ALTERADO PARA INATIVO COM SUCESSO!")
+                                input("TECLE ENTER PARA VOLTAR AO MENU.")
+                                break
+                            
+                            except sqlite3.DatabaseError as db_error:
+                                print("ERRO NO BANCO DE DADOS DURANTE A ALTERAÇÃO DO STATUS DO USUARIO:")
+                                print(str(db_error))
 
-        finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
-            Funcoes.disconnect(conn, cursor)
+                            finally:
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                Funcoes.disconnect(conn, cursor)
+
+                elif opcao == 2:
+                    input("TECLE ENTER PARA VOLTAR AO MENU.")
+            
+            except ValueError as value_error:
+                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO USUARIO A SER EXCLUÍDO:")
+                print(str(value_error))
+
+            except Exception as e:
+                print("OCORREU UM ERRO DURANTE A EXCLUSÃO DO USUARIO:")
+                print(str(e))

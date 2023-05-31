@@ -174,6 +174,7 @@ class Agendamento:
             novo_agendamento.turno_agendamento = turno_agendamento
             novo_agendamento.usuario = usuario_agendamento
             listaAgendamentos.append(novo_agendamento)
+            id_agendamento = id_agendamento + 1
 
             print("AGENDAMENTO CADASTRADO COM SUCESSO!")
 

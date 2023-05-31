@@ -142,6 +142,7 @@ class Destino:
             novo_destino.cel_destino = cel_destino
             novo_destino.qtd_dependentes_destino = qtd_dependentes_destino
             listaDestinos.append(novo_destino)
+            id_destino = id_destino + 1
 
             print("DESTINO CADASTRADO COM SUCESSO!")
 

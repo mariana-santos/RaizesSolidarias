@@ -164,6 +164,7 @@ class Alimento:
             novo_alimento.preco_alimento = preco_alimento
             novo_alimento.qtd_alimento = qtd_alimento
             listaAlimentos.append(novo_alimento)
+            id_alimento = id_alimento + 1
 
             print("ALIMENTO CADASTRADO COM SUCESSO!")
 
