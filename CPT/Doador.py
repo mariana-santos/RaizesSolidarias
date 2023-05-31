@@ -44,10 +44,10 @@ class Doador(Usuario):
         Doador.cadastrarUsuario(dsn, id_usuario, listaUsuarios)
         doador_buscado = Funcoes.buscarUsuarioPorId(id_usuario, listaDoadores)
 
-        # INSTANCIANDO NOVO DOADOR - OK
+        # INSTANCIANDO NOVO DOADOR
         novo_doador = Doador()
 
-        # SETANDO OS ATRIBUTOS DO NOVO DOADOR PARA O NOVO DOADOR - OK
+        # SETANDO OS ATRIBUTOS DO NOVO DOADOR PARA O NOVO DOADOR
         id_usuario = doador_buscado.id_usuario
         cpf_usuario = doador_buscado.cpf_usuario
         nome_usuario = doador_buscado.nome_usuario
@@ -56,22 +56,22 @@ class Doador(Usuario):
         senha_usuario = doador_buscado.senha_usuario
         status_usuario = doador_buscado.status_usuario
 
-        # SETANDO O NÍVEL DO NOVO DOADOR - OK
+        # SETANDO O NÍVEL DO NOVO DOADOR
         nivel_doador = 0
         
-        # SETANDO A QUANTIDADE DE MOEDAS DO NOVO DOADOR - OK
+        # SETANDO A QUANTIDADE DE MOEDAS DO NOVO DOADOR
         qtd_moedas_doador = 0
     
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO doador (id_usuario, nivel_doador, qtd_moedas_doador) VALUES (:1, :2, :3)", (id_usuario, nivel_doador, qtd_moedas_doador))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             novo_doador.id_usuario = id_usuario
             novo_doador.cpf_usuario = cpf_usuario
             novo_doador.nome_usuario = nome_usuario
@@ -91,7 +91,7 @@ class Doador(Usuario):
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarDoador(dsn, listaDoadores):
@@ -111,102 +111,102 @@ class Doador(Usuario):
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 9, Doador.perfilDoador(doador_buscado)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DO DOADOR - OK
+                    # EDITAR O ID DO DOADOR
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR O CPF DO DOADOR - OK
+                    # EDITAR O CPF DO DOADOR
                     input(Funcoes.editarNegativo())
 
                 elif (opcao == 3):
-                    # EDITAR O NOME DO DOADOR - OK
+                    # EDITAR O NOME DO DOADOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O NOME DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O NOME DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O NOME DO DOADOR - SIM - OK
+                       # EDITAR O NOME DO DOADOR - SIM
                        Doador.editarNome(dsn, doador_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O NOME DO DOADOR - NÃO - OK
+                        # EDITAR O NOME DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 4):
-                    # EDITAR O EMAIL DO DOADOR - OK
+                    # EDITAR O EMAIL DO DOADOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O EMAIL DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O EMAIL DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O EMAIL DO DOADOR - SIM - OK
+                       # EDITAR O EMAIL DO DOADOR - SIM
                        Doador.editarEmail(dsn, doador_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O EMAIL DO DOADOR - NÃO - OK
+                        # EDITAR O EMAIL DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 5):
-                    # EDITAR O CELULAR DO DOADOR - OK
+                    # EDITAR O CELULAR DO DOADOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O CELULAR DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O CELULAR DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O CELULAR DO DOADOR - SIM - OK
+                       # EDITAR O CELULAR DO DOADOR - SIM
                        Doador.editarCel(dsn, doador_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O CELULAR DO DOADOR - NÃO - OK
+                        # EDITAR O CELULAR DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 6):
-                    # EDITAR A SENHA DO DOADOR - OK
+                    # EDITAR A SENHA DO DOADOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A SENHA DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A SENHA DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR A SENHA DO DOADOR - SIM - OK
+                       # EDITAR A SENHA DO DOADOR - SIM
                        Doador.editarSenha(dsn, doador_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A SENHA DO DOADOR - NÃO - OK
+                        # EDITAR A SENHA DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 7):
-                    # EDITAR O STATUS DO DOADOR - OK
+                    # EDITAR O STATUS DO DOADOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O STATUS DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O STATUS DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O STATUS DO DOADOR - SIM - OK
+                       # EDITAR O STATUS DO DOADOR - SIM
                        Doador.editarStatus(dsn, doador_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O STATUS DO DOADOR - NÃO - OK
+                        # EDITAR O STATUS DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 8):
-                    # EDITAR O NÍVEL DO DOADOR - OK
+                    # EDITAR O NÍVEL DO DOADOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O NÍVEL DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O NÍVEL DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O NÍVEL DO DOADOR - SIM - OK
+                       # EDITAR O NÍVEL DO DOADOR - SIM
                        Doador.editarNivel(dsn, doador_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O NÍVEL DO DOADOR - NÃO - OK
+                        # EDITAR O NÍVEL DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 9):
-                    # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - OK
+                    # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE MOEDAS DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE MOEDAS DO DOADOR DE ID {doador_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - SIM - OK
+                       # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - SIM
                        Doador.editarMoedas(dsn, doador_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - NÃO - OK
+                        # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 9):
@@ -217,16 +217,16 @@ class Doador(Usuario):
             novo_nivel = int(input(f"DIGITE O NOVO NÍVEL DO DOADOR {usuario_buscado.nome_usuario}: "))
             novo_nivel = int(Funcoes.validarPreenchimento(f"DIGITE O NOVO NÍVEL DO DOADOR {usuario_buscado.nome_usuario}: ", novo_nivel))
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE doador SET nivel_doador = :novo_nivel WHERE id_usuario = :id_usuario", {"novo_nivel": novo_nivel, "id_usuario": usuario_buscado.id_usuario})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 usuario_buscado.nivel_doador = novo_nivel
 
                 print("NÍVEL DO DOADOR EDITADO COM SUCESSO!")
@@ -236,7 +236,7 @@ class Doador(Usuario):
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -253,16 +253,16 @@ class Doador(Usuario):
             moedas_adicionar = int(Funcoes.validarPreenchimento(f"QUANTAS MOEDAS DESEJA ADICIONAR/SUBTRAIR DO DOADOR {usuario_buscado.nome_usuario}? ", str(moedas_adicionar)))
             novas_moedas = moedas_adicionar + usuario_buscado.moedas_doador
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE doador SET moedas_doador = :novas_moedas WHERE id_usuario = :id_usuario", {"novas_moedas": novas_moedas, "id_usuario": usuario_buscado.id_usuario})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 usuario_buscado.moedas_doador = novas_moedas
 
                 print("MOEDAS DO DOADOR EDITADO COM SUCESSO!")
@@ -272,7 +272,7 @@ class Doador(Usuario):
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -307,11 +307,11 @@ class Doador(Usuario):
                             cursor = conn.cursor()
 
                             try:
-                                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                                # FAZENDO UPDATE NO BANCO DE DADOS
                                 cursor.execute("UPDATE usuario SET status_usuario = :novo_status_usuario WHERE id_usuario = :id_usuario", {"novo_status_usuario": novo_status_usuario, "id_usuario": doador_buscado.id_usuario})
                                 cursor.connection.commit()
 
-                                # FAZENDO UPDATE NO CONSOLE - OK
+                                # FAZENDO UPDATE NO CONSOLE
                                 doador_buscado.status_usuario = novo_status_usuario
 
                                 print("STATUS DO DOADOR ALTERADO PARA INATIVO COM SUCESSO!")
@@ -323,7 +323,7 @@ class Doador(Usuario):
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:

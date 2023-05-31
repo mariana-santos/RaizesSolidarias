@@ -55,15 +55,15 @@ class Doacao:
         return retornoPerfil
     
     def cadastrarDoacao(dsn, id_doacao, listaDoacoes, listaDoadores):
-        # INSTANCIANDA NOVA DOAÇÃO - OK
+        # INSTANCIANDA NOVA DOAÇÃO
         novo_doacao = Doacao()
 
         Funcoes.menuCabecalho
 
-        # SETANDO O ID DA NOVA DOAÇÃO - OK
+        # SETANDO O ID DA NOVA DOAÇÃO
         id_doacao = id_doacao
 
-        # SETANDO O DOADOR DA NOVA DOAÇÃO - OK
+        # SETANDO O DOADOR DA NOVA DOAÇÃO
         try:
             Funcoes.exibirDoacoesAdmin(listaDoacoes)
             id_buscado = int(input("DIGITE O ID DO DOADOR QUE DESEJA INCLUIR À DOAÇÃO: \n"))
@@ -89,7 +89,7 @@ class Doacao:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO DOADOR DA DOAÇÃO:")
             print(str(e))
 
-        # SETANDO A DATA DA NOVA DOAÇÃO - OK
+        # SETANDO A DATA DA NOVA DOAÇÃO
         try:
             data_doacao = input(f"DIGITE A DATA DA DOAÇÃO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_doacao = Funcoes.validarPreenchimento(f"DIGITE A DATA DA DOAÇÃO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_doacao)
@@ -104,7 +104,7 @@ class Doacao:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA DATA DA DOAÇÃO:")
             print(str(e))
 
-        # SETANDO A QUANTIDADE DE MOEDAS DA NOVA DOAÇÃO - OK
+        # SETANDO A QUANTIDADE DE MOEDAS DA NOVA DOAÇÃO
         try:
             qtd_moedas_doacao = int(input(f"DIGITE A QUANTIDADE DE MOEDAS DA DOAÇÃO (NÚMERO INTEIRO): "))
             qtd_moedas_doacao = int(Funcoes.validarPreenchimento(f"DIGITE A QUANTIDADE DE MOEDAS DA DOAÇÃO (NÚMERO INTEIRO): ", qtd_moedas_doacao))
@@ -117,16 +117,16 @@ class Doacao:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA QUANTIDADE DE MOEDAS DA DOAÇÃO:")
             print(str(e))
         
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO doacao (id_doacao, doador, data_doacao, qtd_moedas_doacao) VALUES (:1, :2, :3, :4)", (id_doacao, doador, data_formatada_banco, qtd_moedas_doacao))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             novo_doacao.id_doacao = id_doacao
             novo_doacao.doador = doador
             novo_doacao.data_doacao = data_formatada
@@ -141,7 +141,7 @@ class Doacao:
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarDoacao(dsn, listaDoacoes):
@@ -161,46 +161,46 @@ class Doacao:
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 5, Doacao.perfilDoacao(doacao_buscada)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DA DOAÇÃO - OK
+                    # EDITAR O ID DA DOAÇÃO
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR O DOADOR DA DOAÇÃO - OK
+                    # EDITAR O DOADOR DA DOAÇÃO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O DOADOR DA DOAÇÃO DE ID {doacao_buscada.id_doacao}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O DOADOR DA DOAÇÃO DE ID {doacao_buscada.id_doacao}")))
                     
                     if (opcao == 1):
-                       # EDITAR O DOADOR DA DOAÇÃO - SIM - OK
+                       # EDITAR O DOADOR DA DOAÇÃO - SIM
                        Doacao.editarDoador(dsn, doacao_buscada)
                     
                     elif (opcao == 2):
-                        # EDITAR O DOADOR DA DOAÇÃO - NÃO - OK
+                        # EDITAR O DOADOR DA DOAÇÃO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 3):
-                    # EDITAR A DATA DA DOAÇÃO - OK
+                    # EDITAR A DATA DA DOAÇÃO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A DATA DA DOAÇÃO DE ID {doacao_buscada.id_doacao}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A DATA DA DOAÇÃO DE ID {doacao_buscada.id_doacao}")))
                     
                     if (opcao == 1):
-                       # EDITAR A DATA DA DOAÇÃO - SIM - OK
+                       # EDITAR A DATA DA DOAÇÃO - SIM
                        Doacao.editarData(dsn, doacao_buscada)
                     
                     elif (opcao == 2):
-                        # EDITAR A DATA DA DOAÇÃO - NÃO - OK
+                        # EDITAR A DATA DA DOAÇÃO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 4):
-                    # EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO - OK
+                    # EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO DE ID {doacao_buscada.id_doacao}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO DE ID {doacao_buscada.id_doacao}")))
                     
                     if (opcao == 1):
-                        # EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO - SIM - OK
+                        # EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO - SIM
                        Doacao.editarQuantidadeMoedas(dsn, doacao_buscada)
                     
                     elif (opcao == 2):
-                        # EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO - NÃO - OK
+                        # EDITAR A QUANTIDADE DE MOEDAS DA DOAÇÃO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 5):
@@ -228,16 +228,16 @@ class Doacao:
                 novo_doador.nivel_doador = doador_buscado.nivel_doador
                 novo_doador.moedas_doador = doador_buscado.moedas_doador
                 
-                # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # CRIANDO CONEXÃO COM O BANCO DE DADOS
                 conn = Funcoes.connect(dsn)
                 cursor = conn.cursor()
 
                 try:           
-                    # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                    # FAZENDO UPDATE NO BANCO DE DADOS
                     cursor.execute("UPDATE doacao SET doador = :novo_doador WHERE id_doacao = :id_doacao", {"novo_doador": novo_doador, "id_doacao": doacao_buscada.id_doacao})
                     cursor.connection.commit()
 
-                    # FAZENDO UPDATE NO CONSOLE - OK
+                    # FAZENDO UPDATE NO CONSOLE
                     doacao_buscada.doador = novo_doador
 
                     print("USUÁRIO (DOADOR) DA DOAÇÃO EDITADO COM SUCESSO!")
@@ -247,7 +247,7 @@ class Doacao:
                     print(str(db_error))
 
                 finally:
-                    # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                    # FECHANDO CONEXÃO COM O BANCO DE DADOS
                     Funcoes.disconnect(conn, cursor)
         
         except ValueError as value_error:
@@ -265,16 +265,16 @@ class Doacao:
             data_formatada = datetime.strptime(data_doacao, "%d/%m/%Y").date()
             data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE doacao SET data_doacao = :data_formatada_banco WHERE id_doacao = :id_doacao", {"data_formatada_banco": data_formatada_banco, "id_doacao": doacao_buscada.id_doacao})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 doacao_buscada.data_doacao = data_formatada
 
                 print("DATA DA DOAÇÃO EDITADA COM SUCESSO!")
@@ -284,7 +284,7 @@ class Doacao:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -300,16 +300,16 @@ class Doacao:
             nova_qtd_moedas_doacao = int(input(f"DIGITE A NOVA QUANTIDADE DE MOEDAS DA DOAÇÃO DE ID {doacao_buscada.id_doacao} (NÚMERO INTEIRO): "))
             nova_qtd_moedas_doacao = int(Funcoes.validarPreenchimento(f"DIGITE A NOVA QUANTIDADE DE MOEDAS DA DOAÇÃO DE ID {doacao_buscada.id_doacao} (NÚMERO INTEIRO): ", nova_qtd_moedas_doacao))
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE doacao SET qtd_moedas_doacao = :nova_qtd_moedas_doacao WHERE id_doacao = :id_doacao", {"nova_qtd_moedas_doacao": nova_qtd_moedas_doacao, "id_doacao": doacao_buscada.id_doacao})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 doacao_buscada.qtd_moedas_doacao = nova_qtd_moedas_doacao
 
                 print("QUANTIDADE DE MOEDAS DA DOAÇÃO EDITADA COM SUCESSO!")
@@ -319,7 +319,7 @@ class Doacao:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -367,7 +367,7 @@ class Doacao:
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:

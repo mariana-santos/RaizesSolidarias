@@ -44,15 +44,15 @@ class Colheita:
         return retornoPerfil
     
     def cadastrarColheita(dsn, id_colheita, listaColheitas):
-        # INSTANCIANDO NOVA COLHEITA - OK
+        # INSTANCIANDO NOVA COLHEITA
         nova_colheita = Colheita()
 
         Funcoes.menuCabecalho
 
-        # SETANDO O ID DO NOVA COLHEITA - OK
+        # SETANDO O ID DO NOVA COLHEITA
         id_colheita = id_colheita
 
-        # SETANDO A DATA DA NOVA COLHEITA - OK
+        # SETANDO A DATA DA NOVA COLHEITA
         try:
             data_colheita = input(f"DIGITE A DATA DA COLHEITA (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_colheita = Funcoes.validarPreenchimento(f"DIGITE A DATA DA COLHEITA (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_colheita)
@@ -67,7 +67,7 @@ class Colheita:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA DATA DA COLHEITA:")
             print(str(e))
     
-        # SETANDO A DESCRIÇÃO DA NOVA COLHEITA - OK
+        # SETANDO A DESCRIÇÃO DA NOVA COLHEITA
         try:
             descricao_colheita = input(f"DIGITE A DESCRIÇÃO DA COLHEITA: ")
             descricao_colheita = Funcoes.validarPreenchimento(f"DIGITE A DESCRIÇÃO DA COLHEITA: ", descricao_colheita)
@@ -80,16 +80,16 @@ class Colheita:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA DESCRIÇÃO DA COLHEITA:")
             print(str(e))
 
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO colheita (id_colheita, data_colheita, descricao_colheita) VALUES (:1, :2, :3)", (id_colheita, data_formatada_banco, descricao_colheita))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             nova_colheita.id_colheita = id_colheita
             nova_colheita.data_colheita = data_formatada
             nova_colheita.descricao_colheita = descricao_colheita
@@ -103,7 +103,7 @@ class Colheita:
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarColheita(dsn, listaColheitas):
@@ -123,33 +123,33 @@ class Colheita:
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 4, Colheita.perfilColheita(colheita_buscada)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DA COLHEITA - OK
+                    # EDITAR O ID DA COLHEITA
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR A DATA DA COLHEITA - OK
+                    # EDITAR A DATA DA COLHEITA
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A DATA DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A DATA DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     
                     if (opcao == 1):
-                       # EDITAR A DATA DA COLHEITA - SIM - OK
+                       # EDITAR A DATA DA COLHEITA - SIM
                        Colheita.editarData(dsn, colheita_buscada)
                     
                     elif (opcao == 2):
-                        # EDITAR A DATA DA COLHEITA - NÃO - OK
+                        # EDITAR A DATA DA COLHEITA - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 3):
-                    # EDITAR A DESCRIÇÃO DA COLHEITA - OK
+                    # EDITAR A DESCRIÇÃO DA COLHEITA
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A DESCRIÇÃO DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A DESCRIÇÃO DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     
                     if (opcao == 1):
-                       # EDITAR A DESCRIÇÃO DA COLHEITA - SIM - OK
+                       # EDITAR A DESCRIÇÃO DA COLHEITA - SIM
                        Colheita.editarDescricao(dsn, colheita_buscada)
                     
                     elif (opcao == 2):
-                        # EDITAR A DESCRIÇÃO DA COLHEITA - NÃO - OK
+                        # EDITAR A DESCRIÇÃO DA COLHEITA - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 4):
@@ -162,16 +162,16 @@ class Colheita:
             data_formatada = datetime.strptime(nova_data, "%d/%m/%Y").date()
             data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE colheita SET data_colheita = :data_formatada_banco WHERE id_colheita = :id_colheita", {"data_formatada_banco": data_formatada_banco, "id_colheita": colheita_buscada.id_colheita})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 colheita_buscada.data_colheita = data_formatada
 
                 print("DATA DA COLHEITA EDITADA COM SUCESSO!")
@@ -181,7 +181,7 @@ class Colheita:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -197,16 +197,16 @@ class Colheita:
             nova_descricao = input(f"DIGITE A NOVA DESCRIÇÃO DA COLHEITA DE ID {colheita_buscada.id_colheita}: ")
             nova_descricao = Funcoes.validarPreenchimento(f"DIGITE A NOVA DESCRIÇÃO DA COLHEITA DE ID {colheita_buscada.id_colheita}: ", nova_descricao)
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE colheita SET descricao_colheita = :nova_descricao WHERE id_colheita = :id_colheita", {"nova_descricao": nova_descricao, "id_colheita": colheita_buscada.id_colheita})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 colheita_buscada.descricao_colheita = nova_descricao
 
                 print("DESCRIÇÃO DA COLHEITA EDITADA COM SUCESSO!")
@@ -216,7 +216,7 @@ class Colheita:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -264,7 +264,7 @@ class Colheita:
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:

@@ -82,15 +82,15 @@ class Usuario:
         return retornoPerfil
     
     def cadastrarUsuario(dsn, id_usuario, listaUsuarios):
-        # INSTANCIANDO NOVO USUARIO - OK
+        # INSTANCIANDO NOVO USUARIO
         novo_usuario = Usuario()
 
         Funcoes.menuCabecalho
 
-        # SETANDO O ID DO NOVO USUARIO - OK
+        # SETANDO O ID DO NOVO USUARIO
         id_usuario = id_usuario
 
-        # SETANDO O CPF DO NOVO USUARIO - OK
+        # SETANDO O CPF DO NOVO USUARIO
         try:
             cpf_usuario = input(f"DIGITE O CPF DO USUÁRIO (SEM PONTOS OU TRAÇOS, EXEMPLO: 74253599010): ")
             cpf_usuario = Funcoes.validarPreenchimento(f"DIGITE O CPF DO USUÁRIO (SEM PONTOS OU TRAÇOS, EXEMPLO: 74253599010): ", cpf_usuario)
@@ -105,7 +105,7 @@ class Usuario:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO CPF DO USUÁRIO:")
             print(str(e))
     
-       # SETANDO O NOME DO NOVO USUÁRIO - OK
+       # SETANDO O NOME DO NOVO USUÁRIO
         try:
             nome_usuario = input(f"DIGITE O NOME DO NOVO USUÁRIO: ")
             nome_usuario = Funcoes.validarPreenchimento(f"DIGITE O NOME DO NOVO USUÁRIO: ", nome_usuario)
@@ -118,7 +118,7 @@ class Usuario:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO NOME DO USUÁRIO:")
             print(str(e))
     
-        # SETANDO O EMAIL DO NOVO USUÁRIO - OK
+        # SETANDO O EMAIL DO NOVO USUÁRIO
         try:
             email_usuario = input(f"DIGITE O EMAIL DO NOVO USUÁRIO: ")
             email_usuario = Funcoes.validarPreenchimento(f"DIGITE O EMAIL DO NOVO USUÁRIO: ", email_usuario)
@@ -132,7 +132,7 @@ class Usuario:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO EMAIL DO USUÁRIO:")
             print(str(e))
         
-        # SETANDO O CELULAR DO NOVO USUÁRIO - OK
+        # SETANDO O CELULAR DO NOVO USUÁRIO
         try:
             cel_usuario = input(f"DIGITE O CELULAR DO USUÁRIO (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ")
             cel_usuario = Funcoes.validarPreenchimento(f"DIGITE O CELULAR DO USUÁRIO (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ", cel_usuario)
@@ -148,7 +148,7 @@ class Usuario:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO CELULAR DO USUÁRIO:")
             print(str(e))
 
-        # SETANDO A SENHA DO NOVO USUÁRIO - OK
+        # SETANDO A SENHA DO NOVO USUÁRIO
         try:
             senha_usuario = input("DIGITE A SENHA DO USUÁRIO: ")
             senha_usuario = Funcoes.validarPreenchimento("DIGITE A SENHA DO USUÁRIO: ", senha_usuario)
@@ -164,19 +164,19 @@ class Usuario:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA SENHA DO USUÁRIO:")
             print(str(e))
 
-        # SETANDO O STATUS DO NOVO USUÁRIO - OK
+        # SETANDO O STATUS DO NOVO USUÁRIO
         status_usuario = "ATIVO"
 
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO usuario (id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario) VALUES (:1, :2, :3, :4, :5, :6, :7)", (id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             novo_usuario.id_usuario = id_usuario
             novo_usuario.cpf_usuario = cpf_usuario
             novo_usuario.nome_usuario = nome_usuario
@@ -194,7 +194,7 @@ class Usuario:
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarUsuario(dsn, listaUsuarios):
@@ -214,76 +214,76 @@ class Usuario:
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 8, Usuario.perfilUsuario(usuario_buscado)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DO USUARIO - OK
+                    # EDITAR O ID DO USUARIO
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR O CPF DO USUARIO - OK
+                    # EDITAR O CPF DO USUARIO
                     input(Funcoes.editarNegativo())
 
                 elif (opcao == 3):
-                    # EDITAR O NOME DO USUARIO - OK
+                    # EDITAR O NOME DO USUARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O NOME DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O NOME DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O NOME DO USUARIO - SIM - OK
+                       # EDITAR O NOME DO USUARIO - SIM
                        Usuario.editarNome(dsn, usuario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O NOME DO USUARIO - NÃO - OK
+                        # EDITAR O NOME DO USUARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 4):
-                    # EDITAR O EMAIL DO USUARIO - OK
+                    # EDITAR O EMAIL DO USUARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O EMAIL DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O EMAIL DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O EMAIL DO USUARIO - SIM - OK
+                       # EDITAR O EMAIL DO USUARIO - SIM
                        Usuario.editarEmail(dsn, usuario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O EMAIL DO USUARIO - NÃO - OK
+                        # EDITAR O EMAIL DO USUARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 5):
-                    # EDITAR O CELULAR DO USUARIO - OK
+                    # EDITAR O CELULAR DO USUARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O CELULAR DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O CELULAR DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O CELULAR DO USUARIO - SIM - OK
+                       # EDITAR O CELULAR DO USUARIO - SIM
                        Usuario.editarCel(dsn, usuario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O CELULAR DO USUARIO - NÃO - OK
+                        # EDITAR O CELULAR DO USUARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 6):
-                    # EDITAR A SENHA DO USUARIO - OK
+                    # EDITAR A SENHA DO USUARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A SENHA DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A SENHA DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR A SENHA DO USUARIO - SIM - OK
+                       # EDITAR A SENHA DO USUARIO - SIM
                        Usuario.editarSenha(dsn, usuario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A SENHA DO USUARIO - NÃO - OK
+                        # EDITAR A SENHA DO USUARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 7):
-                    # EDITAR O STATUS DO USUARIO - OK
+                    # EDITAR O STATUS DO USUARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O STATUS DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O STATUS DO USUARIO DE ID {usuario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O STATUS DO USUARIO - SIM - OK
+                       # EDITAR O STATUS DO USUARIO - SIM
                        Usuario.editarStatus(dsn, usuario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O STATUS DO USUARIO - NÃO - OK
+                        # EDITAR O STATUS DO USUARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 8):
@@ -294,16 +294,16 @@ class Usuario:
             novo_nome = input(f"DIGITE O NOVO NOME DO USUÁRIO {usuario_buscado.nome_usuario}: ")
             novo_nome = Funcoes.validarPreenchimento(f"DIGITE O NOVO NOME DO USUÁRIO {usuario_buscado.nome_usuario}: ", novo_nome)
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE usuario SET nome_usuario = :novo_nome WHERE id_usuario = :id_usuario", {"novo_nome": novo_nome, "id_usuario": usuario_buscado.id_usuario})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 usuario_buscado.nome_usuario = novo_nome
 
                 print("NOME DO USUÁRIO EDITADO COM SUCESSO!")
@@ -313,7 +313,7 @@ class Usuario:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -330,12 +330,12 @@ class Usuario:
             novo_email = Funcoes.validarPreenchimento(f"DIGITE O NOVO EMAIL DO USUÁRIO {usuario_buscado.nome_usuario}: ", novo_email)
             novo_email = Funcoes.verificarEmail(novo_email, emails_cadastrados)
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
             
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE usuario SET email_usuario = :novo_email WHERE id_usuario = :id_usuario", {"novo_email": novo_email, "id_usuario": usuario_buscado.id_usuario})
                 cursor.connection.commit()
 
@@ -343,7 +343,7 @@ class Usuario:
                 emails_cadastrados.remove(usuario_buscado.email_usuario)
                 emails_cadastrados.add(novo_email) 
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 usuario_buscado.email_usuario = novo_email
 
                 print("EMAIL DO USUÁRIO EDITADO COM SUCESSO!")
@@ -353,7 +353,7 @@ class Usuario:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
         
         except ValueError as value_error:
@@ -372,12 +372,12 @@ class Usuario:
             novo_cel = Funcoes.verificarCel(novo_cel, cel_cadastrados)
             novo_cel = Funcoes.formatarCel(novo_cel)
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
             
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE usuario SET cel_usuario = :novo_cel WHERE id_usuario = :id_usuario", {"novo_cel": novo_cel, "id_usuario": usuario_buscado.id_usuario})
                 cursor.connection.commit()
 
@@ -385,7 +385,7 @@ class Usuario:
                 cel_cadastrados.remove(usuario_buscado.cel_usuario)
                 cel_cadastrados.add(novo_cel) 
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 usuario_buscado.cel_usuario = novo_cel
 
                 print("CELULAR DO USUÁRIO EDITADO COM SUCESSO!")
@@ -395,7 +395,7 @@ class Usuario:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
         
         except ValueError as value_error:
@@ -412,16 +412,16 @@ class Usuario:
             conf_senha = input(f"CONFIRME A NOVA SENHA DO USUÁRIO {usuario_buscado.nome_usuario}: ")
             nova_senha_usuario = Funcoes.validarSenha(nova_senha_usuario, conf_senha)
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE usuario SET senha_usuario = :nova_senha_usuario WHERE id_usuario = :id_usuario", {"nova_senha_usuario": nova_senha_usuario, "id_usuario": usuario_buscado.id_usuario})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 usuario_buscado.senha_usuario = nova_senha_usuario
 
                 print("SENHA DO USUÁRIO EDITADO COM SUCESSO!")
@@ -431,7 +431,7 @@ class Usuario:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -458,16 +458,16 @@ class Usuario:
             elif (opcao == 2):
                 novo_status_usuario = "INATIVO"
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:           
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE usuario SET status_usuario = :novo_status_usuario WHERE id_usuario = :id_usuario", {"novo_status_usuario": novo_status_usuario, "id_usuario": usuario_buscado.id_usuario})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 usuario_buscado.status_usuario = novo_status_usuario
 
                 print("STATUS DO USUÁRIO EDITADO COM SUCESSO!")
@@ -477,7 +477,7 @@ class Usuario:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
         
         except ValueError as value_error:
@@ -512,11 +512,11 @@ class Usuario:
                             cursor = conn.cursor()
 
                             try:
-                                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                                # FAZENDO UPDATE NO BANCO DE DADOS
                                 cursor.execute("UPDATE usuario SET status_usuario = :novo_status_usuario WHERE id_usuario = :id_usuario", {"novo_status_usuario": novo_status_usuario, "id_usuario": usuario_buscado.id_usuario})
                                 cursor.connection.commit()
 
-                                # FAZENDO UPDATE NO CONSOLE - OK
+                                # FAZENDO UPDATE NO CONSOLE
                                 usuario_buscado.status_usuario = novo_status_usuario
 
                                 print("STATUS DO USUARIO ALTERADO PARA INATIVO COM SUCESSO!")
@@ -528,7 +528,7 @@ class Usuario:
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:

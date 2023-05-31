@@ -55,15 +55,15 @@ class Plantio:
         return retornoPerfil
     
     def cadastrarPlantio(dsn, id_plantio, listaPlantios, listaAlimentos):
-        # INSTANCIANDO NOVO PLANTIO - OK
+        # INSTANCIANDO NOVO PLANTIO
         novo_plantio = Plantio()
 
         Funcoes.menuCabecalho
 
-        # SETANDO O ID DO NOVO PLANTIO - OK
+        # SETANDO O ID DO NOVO PLANTIO
         id_plantio = id_plantio
 
-        # SETANDO A DATA DO NOVO PLANTIO - OK
+        # SETANDO A DATA DO NOVO PLANTIO
         try:
             data_plantio = input(f"DIGITE A DATA DO PLANTIO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_plantio = Funcoes.validarPreenchimento(f"DIGITE A DATA DO PLANTIO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_plantio)
@@ -78,7 +78,7 @@ class Plantio:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA DATA DO PLANTIO:")
             print(str(e))
     
-        # SETANDO O ESPAÇO DO NOVO PLANTIO - OK
+        # SETANDO O ESPAÇO DO NOVO PLANTIO
         try:
             espaco_plantio = int(input(f"DIGITE O ESPAÇO DO PLANTIO: "))
             espaco_plantio = int(Funcoes.validarPreenchimento(f"DIGITE O ESPAÇO DO PLANTIO: ", espaco_plantio))
@@ -91,7 +91,7 @@ class Plantio:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO ESPAÇO DO PLANTIO:")
             print(str(e))
 
-        # SETANDO O ALIMENTO DO NOVO PLANTIO - OK
+        # SETANDO O ALIMENTO DO NOVO PLANTIO
         try:
             if (len(listaAlimentos) == 0):
                 input("NENHUM ALIMENTO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
@@ -118,16 +118,16 @@ class Plantio:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO ALIMENTO DO PLANTIO:")
             print(str(e))
         
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO plantio (id_plantio, data_plantio, espaco_plantio, id_alimento) VALUES (:1, :2, :3, :4)", (id_plantio, data_formatada_banco, espaco_plantio, alimento_plantio.id_alimento))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             novo_plantio.id_plantio = id_plantio
             novo_plantio.data_plantio = data_formatada
             novo_plantio.espaco_plantio = espaco_plantio
@@ -142,7 +142,7 @@ class Plantio:
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarPlantio(dsn, listaPlantios):
@@ -162,46 +162,46 @@ class Plantio:
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 5, Plantio.perfilPlantio(plantio_buscado)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DO PLANTIO - OK
+                    # EDITAR O ID DO PLANTIO
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR A DATA DO PLANTIO - OK
+                    # EDITAR A DATA DO PLANTIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A DATA DO PLANTIO DE ID {plantio_buscado.id_plantio}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A DATA DO PLANTIO DE ID {plantio_buscado.id_plantio}")))
                     
                     if (opcao == 1):
-                       # EDITAR A DATA DO PLANTIO - SIM - OK
+                       # EDITAR A DATA DO PLANTIO - SIM
                        Plantio.editarData(dsn, plantio_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A DATA DO PLANTIO - NÃO - OK
+                        # EDITAR A DATA DO PLANTIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 3):
-                    # EDITAR O ESPAÇO DO PLANTIO - OK
+                    # EDITAR O ESPAÇO DO PLANTIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O ESPAÇO DO PLANTIO DE ID {plantio_buscado.id_plantio}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O ESPAÇO DO PLANTIO DE ID {plantio_buscado.id_plantio}")))
                     
                     if (opcao == 1):
-                       # EDITAR O ESPAÇO DO PLANTIO - SIM - OK
+                       # EDITAR O ESPAÇO DO PLANTIO - SIM
                        Plantio.editarEspaco(dsn, plantio_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O ESPAÇO DO PLANTIO - NÃO - OK
+                        # EDITAR O ESPAÇO DO PLANTIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 4):
-                    # EDITAR O ALIMENTO DO PLANTIO - OK
+                    # EDITAR O ALIMENTO DO PLANTIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O ALIMENTO DO PLANTIO DE ID {plantio_buscado.id_plantio}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O ALIMENTO DO PLANTIO DE ID {plantio_buscado.id_plantio}")))
                     
                     if (opcao == 1):
-                       # EDITAR O ALIMENTO DO PLANTIO - SIM - OK
+                       # EDITAR O ALIMENTO DO PLANTIO - SIM
                        Plantio.editarAlimento(dsn, plantio_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O ALIMENTO DO PLANTIO - NÃO - OK
+                        # EDITAR O ALIMENTO DO PLANTIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 5):
@@ -214,16 +214,16 @@ class Plantio:
             data_formatada = datetime.strptime(nova_data, "%d/%m/%Y").date()
             data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE plantio SET data_plantio = :data_formatada_banco WHERE id_plantio = :id_plantio", {"data_formatada_banco": data_formatada_banco, "id_plantio": plantio_buscado.id_plantio})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 plantio_buscado.data_plantio = data_formatada
 
                 print("DATA DO PLANTIO EDITADA COM SUCESSO!")
@@ -233,7 +233,7 @@ class Plantio:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -249,16 +249,16 @@ class Plantio:
             novo_espaco = int(input(f"DIGITE O NOVO ESPAÇO DO PLANTIO DE ID {plantio_buscado.id_plantio}: "))
             novo_espaco = int(Funcoes.validarPreenchimento(f"DIGITE O NOVO ESPAÇO DO PLANTIO DE ID {plantio_buscado.id_plantio}: ", novo_espaco))
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE plantio SET espaco_plantio = :novo_espaco WHERE id_plantio = :id_plantio", {"novo_espaco": novo_espaco, "id_plantio": plantio_buscado.id_plantio})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 plantio_buscado.espaco_plantio = novo_espaco
 
                 print("ESPAÇO DO PLANTIO EDITADO COM SUCESSO!")
@@ -268,7 +268,7 @@ class Plantio:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -298,16 +298,16 @@ class Plantio:
                 novo_alimento.preco_alimento = alimento_buscado.preco_alimento
                 novo_alimento.qtd_alimento = alimento_buscado.qtd_alimento
 
-                # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # CRIANDO CONEXÃO COM O BANCO DE DADOS
                 conn = Funcoes.connect(dsn)
                 cursor = conn.cursor()
 
                 try:           
-                    # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                    # FAZENDO UPDATE NO BANCO DE DADOS
                     cursor.execute("UPDATE plantio SET id_alimento = :novo_alimento.id_alimento WHERE id_plantio = :id_plantio", {"novo_alimento.id_alimento": novo_alimento.id_alimento, "id_plantio": plantio_buscado.id_plantio})
                     cursor.connection.commit()
 
-                    # FAZENDO UPDATE NO CONSOLE - OK
+                    # FAZENDO UPDATE NO CONSOLE
                     plantio_buscado.alimento = novo_alimento
 
                     print("ALIMENTO DO PLANTIO EDITADO COM SUCESSO!")
@@ -317,7 +317,7 @@ class Plantio:
                     print(str(db_error))
 
                 finally:
-                    # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                    # FECHANDO CONEXÃO COM O BANCO DE DADOS
                     Funcoes.disconnect(conn, cursor)
         
         except ValueError as value_error:
@@ -365,7 +365,7 @@ class Plantio:
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:

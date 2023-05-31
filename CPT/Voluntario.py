@@ -36,10 +36,10 @@ class Voluntario(Usuario):
         Voluntario.cadastrarUsuario(dsn, id_usuario, listaUsuarios)
         voluntario_buscado = Funcoes.buscarUsuarioPorId(id_usuario, listaVoluntarios)
 
-        # INSTANCIANDO NOVO VOLUNTARIO - OK
+        # INSTANCIANDO NOVO VOLUNTARIO
         novo_voluntario = Voluntario()
 
-        # SETANDO OS ATRIBUTOS DO NOVO VOLUNTARIO PARA O NOVO VOLUNTARIO - OK
+        # SETANDO OS ATRIBUTOS DO NOVO VOLUNTARIO PARA O NOVO VOLUNTARIO
         id_usuario = voluntario_buscado.id_usuario
         cpf_usuario = voluntario_buscado.cpf_usuario
         nome_usuario = voluntario_buscado.nome_usuario
@@ -48,19 +48,19 @@ class Voluntario(Usuario):
         senha_usuario = voluntario_buscado.senha_usuario
         status_usuario = voluntario_buscado.status_usuario
 
-        # SETANDO A DATA DE REGISTRO DO NOVO VOLUNTARIO - OK
+        # SETANDO A DATA DE REGISTRO DO NOVO VOLUNTARIO
         data_registro_voluntario = datetime.fromtimestamp(datetime.now().timestamp()).strftime('%d/%m/%Y')
 
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO voluntario (id_usuario, data_registro_voluntario) VALUES (:1, :2)", (id_usuario, data_registro_voluntario))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             novo_voluntario.id_usuario = id_usuario
             novo_voluntario.cpf_usuario = cpf_usuario
             novo_voluntario.nome_usuario = nome_usuario
@@ -79,7 +79,7 @@ class Voluntario(Usuario):
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarVoluntario(dsn, listaVoluntarios):
@@ -99,80 +99,80 @@ class Voluntario(Usuario):
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 9, Voluntario.perfilVoluntario(voluntario_buscado)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DO VOLUNTARIO - OK
+                    # EDITAR O ID DO VOLUNTARIO
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR O CPF DO VOLUNTARIO - OK
+                    # EDITAR O CPF DO VOLUNTARIO
                     input(Funcoes.editarNegativo())
 
                 elif (opcao == 3):
-                    # EDITAR O NOME DO VOLUNTARIO - OK
+                    # EDITAR O NOME DO VOLUNTARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O NOME DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O NOME DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O NOME DO VOLUNTARIO - SIM - OK
+                       # EDITAR O NOME DO VOLUNTARIO - SIM
                        Voluntario.editarNome(dsn, voluntario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O NOME DO VOLUNTARIO - NÃO - OK
+                        # EDITAR O NOME DO VOLUNTARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 4):
-                    # EDITAR O EMAIL DO VOLUNTARIO - OK
+                    # EDITAR O EMAIL DO VOLUNTARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O EMAIL DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O EMAIL DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O EMAIL DO VOLUNTARIO - SIM - OK
+                       # EDITAR O EMAIL DO VOLUNTARIO - SIM
                        Voluntario.editarEmail(dsn, voluntario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O EMAIL DO VOLUNTARIO - NÃO - OK
+                        # EDITAR O EMAIL DO VOLUNTARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 5):
-                    # EDITAR O CELULAR DO VOLUNTARIO - OK
+                    # EDITAR O CELULAR DO VOLUNTARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O CELULAR DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O CELULAR DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O CELULAR DO VOLUNTARIO - SIM - OK
+                       # EDITAR O CELULAR DO VOLUNTARIO - SIM
                        Voluntario.editarCel(dsn, voluntario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O CELULAR DO VOLUNTARIO - NÃO - OK
+                        # EDITAR O CELULAR DO VOLUNTARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 6):
-                    # EDITAR A SENHA DO VOLUNTARIO - OK
+                    # EDITAR A SENHA DO VOLUNTARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A SENHA DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A SENHA DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR A SENHA DO VOLUNTARIO - SIM - OK
+                       # EDITAR A SENHA DO VOLUNTARIO - SIM
                        Voluntario.editarSenha(dsn, voluntario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A SENHA DO VOLUNTARIO - NÃO - OK
+                        # EDITAR A SENHA DO VOLUNTARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 7):
-                    # EDITAR O STATUS DO VOLUNTARIO - OK
+                    # EDITAR O STATUS DO VOLUNTARIO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O STATUS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O STATUS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
                     
                     if (opcao == 1):
-                       # EDITAR O STATUS DO VOLUNTARIO - SIM - OK
+                       # EDITAR O STATUS DO VOLUNTARIO - SIM
                        Voluntario.editarStatus(dsn, voluntario_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O STATUS DO VOLUNTARIO - NÃO - OK
+                        # EDITAR O STATUS DO VOLUNTARIO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 8):
-                    # EDITAR A DATA DE REGISTRO DO VOLUNTARIO - OK
+                    # EDITAR A DATA DE REGISTRO DO VOLUNTARIO
                     input(Funcoes.editarNegativo())
 
                 elif (opcao == 9):
@@ -202,11 +202,11 @@ class Voluntario(Usuario):
                             cursor = conn.cursor()
 
                             try:
-                                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                                # FAZENDO UPDATE NO BANCO DE DADOS
                                 cursor.execute("UPDATE usuario SET status_usuario = :novo_status_usuario WHERE id_usuario = :id_usuario", {"novo_status_usuario": novo_status_usuario, "id_usuario": usuario_buscado.id_usuario})
                                 cursor.connection.commit()
 
-                                # FAZENDO UPDATE NO CONSOLE - OK
+                                # FAZENDO UPDATE NO CONSOLE
                                 usuario_buscado.status_usuario = novo_status_usuario
 
                                 print("STATUS DO VOLUNTARIO ALTERADO PARA INATIVO COM SUCESSO!")
@@ -218,7 +218,7 @@ class Voluntario(Usuario):
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:

@@ -72,15 +72,15 @@ class Alimento:
         return retornoPerfil
     
     def cadastrarAlimento(dsn, id_alimento, listaAlimentos):
-        # INSTANCIANDO NOVO ALIMENTO - OK
+        # INSTANCIANDO NOVO ALIMENTO
         novo_alimento = Alimento()
 
         Funcoes.menuCabecalho
 
-        # SETANDO O ID DO NOVO ALIMENTO - OK
+        # SETANDO O ID DO NOVO ALIMENTO
         id_alimento = id_alimento
 
-        # SETANDO O NOME DO NOVO ALIMENTO - OK
+        # SETANDO O NOME DO NOVO ALIMENTO
         try:
             nome_alimento = input(f"DIGITE O NOME DO NOVO ALIMENTO: ")
             nome_alimento = Funcoes.validarPreenchimento(f"DIGITE O NOME DO NOVO ALIMENTO: ", nome_alimento)
@@ -93,7 +93,7 @@ class Alimento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO NOME DO ALIMENTO:")
             print(str(e))
     
-       # SETANDO O TEMPO DE COLHEITA DO NOVO ALIMENTO - OK
+       # SETANDO O TEMPO DE COLHEITA DO NOVO ALIMENTO
         try:
             tempo_colheita = int(input(f"DIGITE O TEMPO DE COLHEITA DO NOVO ALIMENTO (EM DIAS (NÚMERO INTEIRO)): "))
             tempo_colheita = int(Funcoes.validarPreenchimento(f"DIGITE O TEMPO DE COLHEITA DO NOVO ALIMENTO (EM DIAS (NÚMERO INTEIRO)): ", tempo_colheita))
@@ -106,7 +106,7 @@ class Alimento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO TEMPO DE COLHEITA DO ALIMENTO:")
             print(str(e))
         
-        # SETANDO A QUANTIDADE DE IRRIGAÇÃO DO NOVO ALIMENTO - OK
+        # SETANDO A QUANTIDADE DE IRRIGAÇÃO DO NOVO ALIMENTO
         try:
             qtd_irrigacao = int(input(f"DIGITE A QUANTIDADE DE IRRIGAÇÃO DO NOVO ALIMENTO (QUANTAS VEZES POR DIA (NÚMERO INTEIRO)): "))
             qtd_irrigacao = int(Funcoes.validarPreenchimento(f"DIGITE A QUANTIDADE DE IRRIGAÇÃO DO NOVO ALIMENTO (QUANTAS VEZES POR DIA (NÚMERO INTEIRO)): ", qtd_irrigacao))
@@ -119,7 +119,7 @@ class Alimento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO:")
             print(str(e))
 
-        # SETANDO O PREÇO DO NOVO ALIMENTO - OK
+        # SETANDO O PREÇO DO NOVO ALIMENTO
         try:
             preco_alimento = int(input(f"DIGITE O PREÇO DO NOVO ALIMENTO (EM MOEDAS (NÚMERO INTEIRO)): "))
             preco_alimento = int(Funcoes.validarPreenchimento(f"DIGITE O PREÇO DO NOVO ALIMENTO (EM MOEDAS (NÚMERO INTEIRO)): ", preco_alimento))
@@ -132,7 +132,7 @@ class Alimento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO PREÇO DO ALIMENTO:")
             print(str(e))
 
-        # SETANDO A QUANTIDADE DO NOVO ALIMENTO - OK
+        # SETANDO A QUANTIDADE DO NOVO ALIMENTO
         try:
             qtd_alimento = int(input(f"DIGITE A QUANTIDADE DO NOVO ALIMENTO (NÚMERO INTEIRO): "))
             qtd_alimento = int(Funcoes.validarPreenchimento(f"DIGITE A QUANTIDADE DO NOVO ALIMENTO (NÚMERO INTEIRO): ", qtd_alimento))
@@ -145,16 +145,16 @@ class Alimento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA QUANTIDADE DO ALIMENTO:")
             print(str(e))
         
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO alimento (id_alimento, nome_alimento, tempo_colheita, qtd_irrigacao, preco_alimento, qtd_alimento) VALUES (:1, :2, :3, :4, :5, :6)", (id_alimento, nome_alimento, tempo_colheita, qtd_irrigacao, preco_alimento, qtd_alimento))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             novo_alimento.id_alimento = id_alimento
             novo_alimento.nome_alimento = nome_alimento
             novo_alimento.tempo_colheita = tempo_colheita
@@ -171,7 +171,7 @@ class Alimento:
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarAlimento(dsn, listaAlimentos):
@@ -191,72 +191,72 @@ class Alimento:
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 7, Alimento.perfilAlimento(alimento_buscado)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DO ALIMENTO - OK
+                    # EDITAR O ID DO ALIMENTO
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR O NOME DO ALIMENTO - OK
+                    # EDITAR O NOME DO ALIMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O NOME DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O NOME DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     
                     if (opcao == 1):
-                       # EDITAR O NOME DO ALIMENTO - SIM - OK
+                       # EDITAR O NOME DO ALIMENTO - SIM
                        Alimento.editarNome(dsn, alimento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O NOME DO ALIMENTO - NÃO - OK
+                        # EDITAR O NOME DO ALIMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 3):
-                    # EDITAR O TEMPO DE COLHEITA DO ALIMENTO - OK
+                    # EDITAR O TEMPO DE COLHEITA DO ALIMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O TEMPO DE COLHEITA DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O TEMPO DE COLHEITA DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     
                     if (opcao == 1):
-                       # EDITAR O TEMPO DE COLHEITA DO ALIMENTO - SIM - OK
+                       # EDITAR O TEMPO DE COLHEITA DO ALIMENTO - SIM
                        Alimento.editarTempoColheita(dsn, alimento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O TEMPO DE COLHEITA DO ALIMENTO - NÃO - OK
+                        # EDITAR O TEMPO DE COLHEITA DO ALIMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 4):
-                    # EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO - OK
+                    # EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     
                     if (opcao == 1):
-                        # EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO - SIM - OK
+                        # EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO - SIM
                        Alimento.editarQtdIrrigacao(dsn, alimento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO - NÃO - OK
+                        # EDITAR A QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 5):
-                    # EDITAR O PREÇO DO ALIMENTO - OK
+                    # EDITAR O PREÇO DO ALIMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O PREÇO DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O PREÇO DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     
                     if (opcao == 1):
-                        # EDITAR O PREÇO DO ALIMENTO - SIM - OK
+                        # EDITAR O PREÇO DO ALIMENTO - SIM
                        Alimento.editarPreco(dsn, alimento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O PREÇO DO ALIMENTO - NÃO - OK
+                        # EDITAR O PREÇO DO ALIMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 6):
-                    # EDITAR A QUANTIDADE DO ALIMENTO - OK
+                    # EDITAR A QUANTIDADE DO ALIMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DO ALIMENTO DE ID {alimento_buscado.id_alimento}")))
                     
                     if (opcao == 1):
-                        # EDITAR A QUANTIDADE DO ALIMENTO - SIM - OK
+                        # EDITAR A QUANTIDADE DO ALIMENTO - SIM
                        Alimento.editarQuantidade(dsn, alimento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A QUANTIDADE DO ALIMENTO - NÃO - OK
+                        # EDITAR A QUANTIDADE DO ALIMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 7):
@@ -267,16 +267,16 @@ class Alimento:
             novo_nome = input(f"DIGITE O NOVO NOME DO ALIMENTO {alimento_buscado.nome_alimento}: ")
             novo_nome = Funcoes.validarPreenchimento(f"DIGITE O NOVO NOME DO ALIMENTO {alimento_buscado.nome_alimento}: ", novo_nome)
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE alimento SET nome_alimento = :novo_nome WHERE id_alimento = :id_alimento", {"novo_nome": novo_nome, "id_alimento": alimento_buscado.id_alimento})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 alimento_buscado.nome_alimento = novo_nome
 
                 print("NOME DO ALIMENTO EDITADO COM SUCESSO!")
@@ -286,7 +286,7 @@ class Alimento:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -302,16 +302,16 @@ class Alimento:
             novo_tempo_colheita = int(input(f"DIGITE O NOVO TEMPO DE COLHEITA DO ALIMENTO {alimento_buscado.nome_alimento} (EM DIAS (NÚMERO INTEIRO)): "))
             novo_tempo_colheita = int(Funcoes.validarPreenchimento(f"DIGITE O NOVO TEMPO DE COLHEITA DO ALIMENTO {alimento_buscado.nome_alimento} (EM DIAS (NÚMERO INTEIRO)): ", novo_tempo_colheita))
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE alimento SET tempo_colheita = :novo_tempo_colheita WHERE id_alimento = :id_alimento", {"novo_tempo_colheita": novo_tempo_colheita, "id_alimento": alimento_buscado.id_alimento})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 alimento_buscado.tempo_colheita = novo_tempo_colheita
 
                 print("TEMPO DE COLHEITA DO ALIMENTO EDITADO COM SUCESSO!")
@@ -321,7 +321,7 @@ class Alimento:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -337,16 +337,16 @@ class Alimento:
             nova_qtd_irrigacao = int(input(f"DIGITE A NOVA QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO {alimento_buscado.nome_alimento} (QUANTAS VEZES POR DIA (NÚMERO INTEIRO)): "))
             nova_qtd_irrigacao = int(Funcoes.validarPreenchimento(f"DIGITE A NOVA QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO {alimento_buscado.nome_alimento} (QUANTAS VEZES POR DIA (NÚMERO INTEIRO)): ", nova_qtd_irrigacao))
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE alimento SET qtd_irrigacao = :nova_qtd_irrigacao WHERE id_alimento = :id_alimento", {"nova_qtd_irrigacao": nova_qtd_irrigacao, "id_alimento": alimento_buscado.id_alimento})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 alimento_buscado.qtd_irrigacao = nova_qtd_irrigacao
 
                 print("QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO EDITADA COM SUCESSO!")
@@ -356,7 +356,7 @@ class Alimento:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -372,16 +372,16 @@ class Alimento:
             novo_preco_alimento = int(input(f"DIGITE O NOVO PREÇO DO ALIMENTO {alimento_buscado.nome_alimento} (EM MOEDAS (NÚMERO INTEIRO)): "))
             novo_preco_alimento = int(Funcoes.validarPreenchimento(f"DIGITE O NOVO PREÇO DO ALIMENTO {alimento_buscado.nome_alimento} (EM MOEDAS (NÚMERO INTEIRO)): ", novo_preco_alimento))
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE alimento SET preco_alimento = :novo_preco_alimento WHERE id_alimento = :id_alimento", {"novo_preco_alimento": novo_preco_alimento, "id_alimento": alimento_buscado.id_alimento})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 alimento_buscado.preco_alimento = novo_preco_alimento
 
                 print("PREÇO DO ALIMENTO EDITADA COM SUCESSO!")
@@ -391,7 +391,7 @@ class Alimento:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -407,16 +407,16 @@ class Alimento:
             nova_qtd_alimento = int(input(f"DIGITE A NOVA QUANTIDADE DO ALIMENTO {alimento_buscado.nome_alimento} (NÚMERO INTEIRO): "))
             nova_qtd_alimento = int(Funcoes.validarPreenchimento(f"DIGITE A NOVA QUANTIDADE DO ALIMENTO {alimento_buscado.nome_alimento} (NÚMERO INTEIRO): ", nova_qtd_alimento))
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE alimento SET qtd_alimento = :nova_qtd_alimento WHERE id_alimento = :id_alimento", {"nova_qtd_alimento": nova_qtd_alimento, "id_alimento": alimento_buscado.id_alimento})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 alimento_buscado.qtd_alimento = nova_qtd_alimento
 
                 print("QUANTIDADE DO ALIMENTO EDITADA COM SUCESSO!")
@@ -426,7 +426,7 @@ class Alimento:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -474,7 +474,7 @@ class Alimento:
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:

@@ -4,11 +4,9 @@ import time
 from datetime import datetime
 from tqdm import tqdm
 
-
-
 class Funcoes:
 
-    # MENUS - OK
+    # MENUS
     def menuCabecalho():
         return ("==> RAÍZES SOLIDÁRIAS - GLOBAL SOLUTIONS - 1TDSPR <==\n"
         "------------------------------------------\n")
@@ -118,7 +116,7 @@ class Funcoes:
             "05. SAIR\n" +
             Funcoes.menuRodape())
 
-    # CONFIRMAR - OK
+    # CONFIRMAR
     def confirmarAcao(acao):
         return ("TEM CERTEZA QUE DESEJA " + acao + "?\n"
         "01. SIM\n"
@@ -126,7 +124,7 @@ class Funcoes:
         "------------------------------------------\n"
         "DIGITE A OPÇÃO DESEJADA: \n")
     
-    # VALIDAR E VERIFICAR - OK
+    # VALIDAR
     def validarCPF(cpf_usuario):
         if (cpf_usuario == "00000000000" or cpf_usuario == "11111111111" or cpf_usuario == "22222222222" or cpf_usuario == "33333333333" or cpf_usuario == "44444444444" or cpf_usuario == "55555555555" or cpf_usuario == "66666666666" or cpf_usuario == "77777777777" or cpf_usuario == "88888888888" or cpf_usuario == "99999999999" or (len(cpf_usuario) != 11)):
             return False
@@ -280,6 +278,7 @@ class Funcoes:
         
         return voluntario_buscado
 
+    # VERIFICAR
     def verificarCPF(cpf_usuario, cpfs_cadastrados):
         while (cpf_usuario in cpfs_cadastrados or Funcoes.validarCPF(cpf_usuario) == False):
             print("CPF INVÁLIDO OU JÁ CADASTRADO.")
@@ -301,7 +300,7 @@ class Funcoes:
         
         return cel_usuario
 
-    # FORMATAR - OK
+    # FORMATAR
     def formatarCpf(cpf_usuario):
         cpf_usuario_formatado = '{}.{}.{}-{}'.format(cpf_usuario[:3], cpf_usuario[3:6], cpf_usuario[6:9], cpf_usuario[9:])
         return cpf_usuario_formatado
@@ -316,7 +315,7 @@ class Funcoes:
         data_formatada = data.strftime("%d/%m/%Y")
         return data_formatada
 
-    # BUSCAR - OK
+    # BUSCAR
     def buscarAgendamentoPorId(id_buscado, lista):
         agendamento_buscado = lista.get(id_buscado)
         if agendamento_buscado is None:
@@ -359,52 +358,12 @@ class Funcoes:
             return None
         return objeto_buscado
 
-    # EDITAR - OK
+    # EDITAR
     def editarNegativo():
         return("NÃO É POSSÍVEL EDITAR ESTA OPÇÃO.\n"
             "TECLE ENTER PARA VOLTAR AO MENU")
     
-    # EXCLUIR - OK
-    def excluirUsuario(dsn, lista, StringClasse):
-        Funcoes.exibirUsuariosAdmin(lista)
-        id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA EXCLUIR: \n"))
-        usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, lista)
-        usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, lista)
-        opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR O USUÁRIO {usuario_buscado.nome_usuario}")))
-        opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR O USUÁRIO {usuario_buscado.nome_usuario}")))
-        
-        if (opcao == 1):
-            del lista[id_buscado]
-
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
-            cursor = conn.cursor()
-
-            if (StringClasse == "Aluno"):
-                cursor.execute("DELETE FROM aluno WHERE id_usuario = :id_usuario", {"id_usuario": usuario_buscado.id_usuario})
-                cursor.execute("DELETE FROM usuario WHERE id_usuario = :id_usuario", {"id_usuario": usuario_buscado.id_usuario})
-                cursor.connection.commit()
-
-            elif (StringClasse == "Professor"):
-                cursor.execute("DELETE FROM professor WHERE id_usuario = :id_usuario", {"id_usuario": usuario_buscado.id_usuario})
-                cursor.execute("DELETE FROM usuario WHERE id_usuario = :id_usuario", {"id_usuario": usuario_buscado.id_usuario})
-                cursor.connection.commit()
-
-            elif (StringClasse == "Funcionario"):
-                cursor.execute("DELETE FROM funcionario WHERE id_usuario = :id_usuario", {"id_usuario": usuario_buscado.id_usuario})
-                cursor.execute("DELETE FROM usuario WHERE id_usuario = :id_usuario", {"id_usuario": usuario_buscado.id_usuario})
-                cursor.connection.commit()
-            
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS
-            Funcoes.disconnect(conn, cursor)
-
-            print("USUÁRIO EXCLUÍDO COM SUCESSO!")
-            input("TECLE ENTER PARA VOLTAR AO MENU.")
-        
-        elif (opcao == 2):
-            input("TECLE ENTER PARA VOLTAR AO MENU.")
-    
-    # EXIBIR - OK
+    # EXIBIR
     def exibirAgendamentosAdmin(listaAgendamentos):
         Funcoes.menuCabecalho()
 
@@ -474,7 +433,6 @@ class Funcoes:
             for usuario in lista:
                 print(f"ID: {usuario.id_usuario} | NOME: {usuario.nome_usuario}")
                 print(f"------------------------------------------")
-
 
     # BANCO DE DADOS
     def connect(dsn):

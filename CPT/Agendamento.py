@@ -55,15 +55,15 @@ class Agendamento:
         return retornoPerfil
     
     def cadastrarAgendamento(dsn, id_agendamento, listaReceptores, listaVoluntarios, listaAgendamentos):
-        # INSTANCIANDO NOVO AGENDAMENTO - OK
+        # INSTANCIANDO NOVO AGENDAMENTO
         novo_agendamento = Agendamento()
 
         Funcoes.menuCabecalho
 
-        # SETANDO O ID DO NOVO AGENDAMENTO - OK
+        # SETANDO O ID DO NOVO AGENDAMENTO
         id_agendamento = id_agendamento
 
-        # SETANDO A DATA DO NOVO AGENDAMENTO - OK
+        # SETANDO A DATA DO NOVO AGENDAMENTO
         try:
             data_agendamento = input(f"DIGITE A DATA DO AGENDAMENTO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_agendamento = Funcoes.validarPreenchimento(f"DIGITE A DATA DO AGENDAMENTO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_agendamento)
@@ -78,7 +78,7 @@ class Agendamento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA DATA DO AGENDAMENTO:")
             print(str(e))
     
-       # SETANDO O TURNO DO NOVO AGENDAMENTO - OK
+       # SETANDO O TURNO DO NOVO AGENDAMENTO
         try:
             turno_opcao = (f"SELECIONE O NOVO TURNO DO AGENDAMENTO: " + "\n" +
                             "01. MANHÃ" + "\n" +
@@ -102,7 +102,7 @@ class Agendamento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO TURNO DO AGENDAMENTO:")
             print(str(e))
 
-        # SETANDO O USUÁRIO DO NOVO AGENDAMENTO - OK
+        # SETANDO O USUÁRIO DO NOVO AGENDAMENTO
         try:
             tipo_usuario = (f"SELECIONE O TIPO DO NOVO USUÁRIO DO AGENDAMENTO: " + "\n" +
                             "01. RECEPTOR" + "\n" +
@@ -158,16 +158,16 @@ class Agendamento:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO USUÁRIO DO AGENDAMENTO:")
             print(str(e))
         
-        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
 
         try:           
-            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO agendamento (id_agendamento, data_agendamento, turno_agendamento, id_usuario) VALUES (:1, :2, :3, :4)", (id_agendamento, data_formatada_banco, turno_agendamento, usuario_agendamento.id_usuario))
             cursor.connection.commit()
 
-            # FAZENDO INSERT NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE
             novo_agendamento.id_agendamento = id_agendamento
             novo_agendamento.data_agendamento = data_formatada
             novo_agendamento.turno_agendamento = turno_agendamento
@@ -182,7 +182,7 @@ class Agendamento:
             print(str(db_error))
 
         finally:
-            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
     def editarAgendamento(dsn, listaAgendamentos):
@@ -202,46 +202,46 @@ class Agendamento:
                 opcao = int(Funcoes.validarOpcao(opcao, 1, 5, Agendamento.perfilAgendamento(agendamento_buscado)))
 
                 if (opcao == 1):
-                    # EDITAR O ID DO AGENDAMENTO - OK
+                    # EDITAR O ID DO AGENDAMENTO
                     input(Funcoes.editarNegativo())
                 
                 elif (opcao == 2):
-                    # EDITAR A DATA DO AGENDAMENTO - OK
+                    # EDITAR A DATA DO AGENDAMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A DATA DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A DATA DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento}")))
                     
                     if (opcao == 1):
-                       # EDITAR A DATA DO AGENDAMENTO - SIM - OK
+                       # EDITAR A DATA DO AGENDAMENTO - SIM
                        Agendamento.editarData(dsn, agendamento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR A DATA DO AGENDAMENTO - NÃO - OK
+                        # EDITAR A DATA DO AGENDAMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 3):
-                    # EDITAR O TURNO DO AGENDAMENTO - OK
+                    # EDITAR O TURNO DO AGENDAMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O TURNO DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O TURNO DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento}")))
                     
                     if (opcao == 1):
-                       # EDITAR O TURNO DO AGENDAMENTO - SIM - OK
+                       # EDITAR O TURNO DO AGENDAMENTO - SIM
                        Agendamento.editarTurno(dsn, agendamento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O TURNO DO AGENDAMENTO - NÃO - OK
+                        # EDITAR O TURNO DO AGENDAMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
                 elif (opcao == 4):
-                    # EDITAR O USUARIO DO AGENDAMENTO - OK
+                    # EDITAR O USUARIO DO AGENDAMENTO
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O USUÁRIO DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O USUÁRIO DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento}")))
                     
                     if (opcao == 1):
-                       # EDITAR O USUARIO DO AGENDAMENTO - SIM - OK
+                       # EDITAR O USUARIO DO AGENDAMENTO - SIM
                        Agendamento.editarUsuario(dsn, agendamento_buscado)
                     
                     elif (opcao == 2):
-                        # EDITAR O USUARIO DO AGENDAMENTO - NÃO - OK
+                        # EDITAR O USUARIO DO AGENDAMENTO - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 5):
@@ -254,16 +254,16 @@ class Agendamento:
             data_formatada = datetime.strptime(nova_data, "%d/%m/%Y").date()
             data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE agendamento SET data_agendamento = :data_formatada_banco WHERE id_agendamento = :id_agendamento", {"data_formatada_banco": data_formatada_banco, "id_agendamento": agendamento_buscado.id_agendamento})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 agendamento_buscado.data_agendamento = data_formatada
 
                 print("DATA DO AGENDAMENTO EDITADA COM SUCESSO!")
@@ -273,7 +273,7 @@ class Agendamento:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -300,16 +300,16 @@ class Agendamento:
             elif (opcao == 2):
                 novo_turno = "TARDE"
 
-            # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
             cursor = conn.cursor()
 
             try:
-                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                # FAZENDO UPDATE NO BANCO DE DADOS
                 cursor.execute("UPDATE agendamento SET turno_agendamento = :novo_turno WHERE id_agendamento = :id_agendamento", {"novo_turno": novo_turno, "id_agendamento": agendamento_buscado.id_agendamento})
                 cursor.connection.commit()
 
-                # FAZENDO UPDATE NO CONSOLE - OK
+                # FAZENDO UPDATE NO CONSOLE
                 agendamento_buscado.turno_agendamento = novo_turno
 
                 print("TURNO DO AGENDAMENTO EDITADO COM SUCESSO!")
@@ -319,7 +319,7 @@ class Agendamento:
                 print(str(db_error))
 
             finally:
-                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                 Funcoes.disconnect(conn, cursor)
 
         except ValueError as value_error:
@@ -359,16 +359,16 @@ class Agendamento:
                     novo_usuario.senha_usuario = receptor_buscado.senha_usuario
                     novo_usuario.status_usuario = receptor_buscado.status_usuario
                     
-                    # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+                    # CRIANDO CONEXÃO COM O BANCO DE DADOS
                     conn = Funcoes.connect(dsn)
                     cursor = conn.cursor()
 
                     try:           
-                        # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                        # FAZENDO UPDATE NO BANCO DE DADOS
                         cursor.execute("UPDATE agendamento SET id_usuario = :novo_usuario.id_usuario WHERE id_agendamento = :id_agendamento", {"novo_usuario.id_usuario": novo_usuario.id_usuario, "id_agendamento": agendamento_buscado.id_agendamento})
                         cursor.connection.commit()
 
-                        # FAZENDO UPDATE NO CONSOLE - OK
+                        # FAZENDO UPDATE NO CONSOLE
                         agendamento_buscado.usuario = novo_usuario
 
                         print("USUÁRIO (RECEPTOR) DO AGENDAMENTO EDITADO COM SUCESSO!")
@@ -378,7 +378,7 @@ class Agendamento:
                         print(str(db_error))
 
                     finally:
-                        # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                        # FECHANDO CONEXÃO COM O BANCO DE DADOS
                         Funcoes.disconnect(conn, cursor)
 
             elif (opcao == 2):
@@ -400,16 +400,16 @@ class Agendamento:
                     novo_usuario.senha_usuario = voluntario_buscado.senha_usuario
                     novo_usuario.status_usuario = voluntario_buscado.status_usuario
                     
-                    # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+                    # CRIANDO CONEXÃO COM O BANCO DE DADOS
                     conn = Funcoes.connect(dsn)
                     cursor = conn.cursor()
 
                     try:           
-                        # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                        # FAZENDO UPDATE NO BANCO DE DADOS
                         cursor.execute("UPDATE agendamento SET id_usuario = :novo_usuario.id_usuario WHERE id_agendamento = :id_agendamento", {"novo_usuario.id_usuario": novo_usuario.id_usuario, "id_agendamento": agendamento_buscado.id_agendamento})
                         cursor.connection.commit()
 
-                        # FAZENDO UPDATE NO CONSOLE - OK
+                        # FAZENDO UPDATE NO CONSOLE
                         agendamento_buscado.usuario = novo_usuario
 
                         print("USUÁRIO (VOLUNTÁRIO) DO AGENDAMENTO EDITADO COM SUCESSO!")
@@ -419,7 +419,7 @@ class Agendamento:
                         print(str(db_error))
 
                     finally:
-                        # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                        # FECHANDO CONEXÃO COM O BANCO DE DADOS
                         Funcoes.disconnect(conn, cursor) 
         
         except ValueError as value_error:
@@ -467,7 +467,7 @@ class Agendamento:
                                 print(str(db_error))
 
                             finally:
-                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS
                                 Funcoes.disconnect(conn, cursor)
 
                 elif opcao == 2:
