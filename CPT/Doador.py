@@ -1,4 +1,3 @@
-import cx_Oracle
 import sqlite3
 
 from Funcoes import Funcoes
@@ -25,6 +24,193 @@ class Doador(Usuario):
     @moedas_doador.setter
     def moedas_doador(self, moedas_doador: int):
         self._moedas_doador = moedas_doador
+
+    def perfilDoador(doador_buscado):
+        retornoPerfil = Funcoes.menuCabecalho()
+        retornoPerfil += f"01. ID: {doador_buscado.id_usuario}\n"
+        retornoPerfil += f"02. CPF: {doador_buscado.cpf_usuario}\n"
+        retornoPerfil += f"03. NOME: {doador_buscado.nome_usuario}\n"
+        retornoPerfil += f"04. EMAIL: {doador_buscado.email_usuario}\n"
+        retornoPerfil += f"05. CELULAR: {doador_buscado.cel_usuario}\n"
+        retornoPerfil += f"06. SENHA: {doador_buscado.senha_usuario}\n"
+        retornoPerfil += f"07. STATUS: {doador_buscado.status_usuario}\n"
+        retornoPerfil += f"08. NÍVEL: {doador_buscado.nivel_doador}\n"
+        retornoPerfil += f"09. MOEDAS: {doador_buscado.moedas_doador}\n"
+        retornoPerfil += "10. SAIR\n"
+        retornoPerfil += Funcoes.menuRodape()
+        return retornoPerfil
+    
+    def cadastrarDoador(dsn, id_usuario, listaUsuarios, listaDoadores):
+        Doador.cadastrarUsuario(dsn, id_usuario, listaUsuarios)
+        doador_buscado = Funcoes.buscarUsuarioPorId(id_usuario, listaDoadores)
+
+        # INSTANCIANDO NOVO DOADOR - OK
+        novo_doador = Doador()
+
+        # SETANDO OS ATRIBUTOS DO NOVO DOADOR PARA O NOVO DOADOR - OK
+        id_usuario = doador_buscado.id_usuario
+        cpf_usuario = doador_buscado.cpf_usuario
+        nome_usuario = doador_buscado.nome_usuario
+        email_usuario = doador_buscado.email_usuario
+        cel_usuario = doador_buscado.cel_usuario
+        senha_usuario = doador_buscado.senha_usuario
+        status_usuario = doador_buscado.status_usuario
+
+        # SETANDO O NÍVEL DO NOVO DOADOR - OK
+        nivel_doador = 0
+        
+        # SETANDO A QUANTIDADE DE MOEDAS DO NOVO DOADOR - OK
+        qtd_moedas_doador = 0
+    
+        # CRIANDO CONEXÃO COM O BANCO DE DADOS - OK
+        conn = Funcoes.connect(dsn)
+        cursor = conn.cursor()
+
+        try:           
+            # FAZENDO INSERT NO BANCO DE DADOS - OK
+            cursor.execute("INSERT INTO doador (id_usuario, nivel_doador, qtd_moedas_doador) VALUES (:1, :2, :3)", (id_usuario, nivel_doador, qtd_moedas_doador))
+            cursor.connection.commit()
+
+            # FAZENDO INSERT NO CONSOLE - OK
+            novo_doador.id_usuario = id_usuario
+            novo_doador.cpf_usuario = cpf_usuario
+            novo_doador.nome_usuario = nome_usuario
+            novo_doador.email_usuario = email_usuario
+            novo_doador.cel_usuario = cel_usuario
+            novo_doador.senha_usuario = senha_usuario
+            novo_doador.status_usuario = status_usuario
+            novo_doador.nivel_doador = nivel_doador
+            novo_doador.qtd_moedas_doador = qtd_moedas_doador
+            listaDoadores.append(novo_doador)
+            id_usuario = id_usuario + 1
+
+            print("DOADOR CADASTRADO COM SUCESSO!")
+
+        except sqlite3.DatabaseError as db_error:
+            print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO DOADOR:")
+            print(str(db_error))
+
+        finally:
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+            Funcoes.disconnect(conn, cursor)
+
+    def editarDoador(dsn, listaDoadores):
+        perfilDoador = True
+
+        if (len(listaDoadores) == 0):
+            input("NENHUM DOADOR CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+
+        else:
+            Funcoes.exibirUsuariosAdmin(listaDoadores)
+            id_buscado = int(input("DIGITE O ID DO DOADOR QUE DESEJA EDITAR: \n"))
+            doador_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaDoadores)
+            doador_buscado = Funcoes.validarUsuarioBuscado(doador_buscado, listaDoadores)
+
+            while (perfilDoador):
+                opcao = int(input(Doador.perfilDoador(doador_buscado)))
+                opcao = int(Funcoes.validarOpcao(opcao, 1, 9, Doador.perfilDoador(doador_buscado)))
+
+                if (opcao == 1):
+                    # EDITAR O ID DO DOADOR - OK
+                    input(Funcoes.editarNegativo())
+                
+                elif (opcao == 2):
+                    # EDITAR O CPF DO DOADOR - OK
+                    input(Funcoes.editarNegativo())
+
+                elif (opcao == 3):
+                    # EDITAR O NOME DO DOADOR - OK
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O NOME DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O NOME DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR O NOME DO DOADOR - SIM - OK
+                       Doador.editarNome(dsn, doador_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR O NOME DO DOADOR - NÃO - OK
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+                
+                elif (opcao == 4):
+                    # EDITAR O EMAIL DO DOADOR - OK
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O EMAIL DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O EMAIL DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR O EMAIL DO DOADOR - SIM - OK
+                       Doador.editarEmail(dsn, doador_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR O EMAIL DO DOADOR - NÃO - OK
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 5):
+                    # EDITAR O CELULAR DO DOADOR - OK
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O CELULAR DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O CELULAR DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR O CELULAR DO DOADOR - SIM - OK
+                       Doador.editarCel(dsn, doador_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR O CELULAR DO DOADOR - NÃO - OK
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 6):
+                    # EDITAR A SENHA DO DOADOR - OK
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A SENHA DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A SENHA DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR A SENHA DO DOADOR - SIM - OK
+                       Doador.editarSenha(dsn, doador_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR A SENHA DO DOADOR - NÃO - OK
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 7):
+                    # EDITAR O STATUS DO DOADOR - OK
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O STATUS DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O STATUS DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR O STATUS DO DOADOR - SIM - OK
+                       Doador.editarStatus(dsn, doador_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR O STATUS DO DOADOR - NÃO - OK
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 8):
+                    # EDITAR O NÍVEL DO DOADOR - OK
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O NÍVEL DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O NÍVEL DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR O NÍVEL DO DOADOR - SIM - OK
+                       Doador.editarNivel(dsn, doador_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR O NÍVEL DO DOADOR - NÃO - OK
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 9):
+                    # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - OK
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE MOEDAS DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A QUANTIDADE DE MOEDAS DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - SIM - OK
+                       Doador.editarMoedas(dsn, doador_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - NÃO - OK
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 9):
+                    perfilDoador = False
 
     def editarNivel(dsn, usuario_buscado):
         try:
@@ -96,3 +282,57 @@ class Doador(Usuario):
         except Exception as e:
             print("OCORREU UM ERRO DURANTE A ATUALIZAÇÃO DAS MOEDAS DO DOADOR:")
             print(str(e))
+
+    def excluirDoador(dsn, listaDoadores):
+        
+        if len(listaDoadores) == 0:
+            print("NÃO EXISTEM DOADORES CADASTRADOS. TECLE ENTER PARA VOLTAR AO MENU")
+        
+        else:
+            Funcoes.exibirUsuariosAdmin(listaDoadores)
+            try:
+                id_buscado = int(input("DIGITE O ID DO DOADOR QUE DESEJA EXCLUIR: \n"))
+                doador_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaDoadores)
+                doador_buscado = Funcoes.validarUsuarioBuscado(doador_buscado, listaDoadores)
+                opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR O DOADOR")))
+                opcao = Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR O DOADOR"))
+
+                if opcao == 1:
+                    for i in range(len(listaDoadores)):
+                        if listaDoadores[i].id_usuario == id_buscado:
+                            novo_status_usuario = "INATIVO"
+
+                            # CRIANDO CONEXÃO COM O BANCO DE DADOS
+                            conn = Funcoes.connect(dsn)
+                            cursor = conn.cursor()
+
+                            try:
+                                # FAZENDO UPDATE NO BANCO DE DADOS - OK
+                                cursor.execute("UPDATE usuario SET status_usuario = :novo_status_usuario WHERE id_usuario = :id_usuario", {"novo_status_usuario": novo_status_usuario, "id_usuario": doador_buscado.id_usuario})
+                                cursor.connection.commit()
+
+                                # FAZENDO UPDATE NO CONSOLE - OK
+                                doador_buscado.status_usuario = novo_status_usuario
+
+                                print("STATUS DO DOADOR ALTERADO PARA INATIVO COM SUCESSO!")
+                                input("TECLE ENTER PARA VOLTAR AO MENU.")
+                                break
+                            
+                            except sqlite3.DatabaseError as db_error:
+                                print("ERRO NO BANCO DE DADOS DURANTE A ALTERAÇÃO DO STATUS DO DOADOR:")
+                                print(str(db_error))
+
+                            finally:
+                                # FECHANDO CONEXÃO COM O BANCO DE DADOS - OK
+                                Funcoes.disconnect(conn, cursor)
+
+                elif opcao == 2:
+                    input("TECLE ENTER PARA VOLTAR AO MENU.")
+            
+            except ValueError as value_error:
+                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO DOADOR A SER EXCLUÍDO:")
+                print(str(value_error))
+
+            except Exception as e:
+                print("OCORREU UM ERRO DURANTE A EXCLUSÃO DO DOADOR:")
+                print(str(e))

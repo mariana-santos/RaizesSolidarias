@@ -1,5 +1,3 @@
-import cx_Oracle
-
 import sqlite3
 
 from Funcoes import Funcoes
@@ -156,7 +154,7 @@ class Alimento:
             cursor.execute("INSERT INTO alimento (id_alimento, nome_alimento, tempo_colheita, qtd_irrigacao, preco_alimento, qtd_alimento) VALUES (:1, :2, :3, :4, :5, :6)", (id_alimento, nome_alimento, tempo_colheita, qtd_irrigacao, preco_alimento, qtd_alimento))
             cursor.connection.commit()
 
-            # FAZENDO UPDATE NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE - OK
             novo_alimento.id_alimento = id_alimento
             novo_alimento.nome_alimento = nome_alimento
             novo_alimento.tempo_colheita = tempo_colheita

@@ -1,7 +1,6 @@
-import cx_Oracle
+import sqlite3
 
 from datetime import datetime
-import sqlite3
 
 from Doador import Doador
 from Funcoes import Funcoes
@@ -55,7 +54,7 @@ class Doacao:
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
-    def cadastrarDoacao(dsn, id_doacao, listaDoacoes, dicDoadores):
+    def cadastrarDoacao(dsn, id_doacao, listaDoacoes, listaDoadores):
         # INSTANCIANDA NOVA DOAÇÃO - OK
         novo_doacao = Doacao()
 
@@ -68,8 +67,8 @@ class Doacao:
         try:
             Funcoes.exibirDoacoesAdmin(listaDoacoes)
             id_buscado = int(input("DIGITE O ID DO DOADOR QUE DESEJA INCLUIR À DOAÇÃO: \n"))
-            doador_buscado = Funcoes.buscarPorIdUsuario(id_buscado, dicDoadores)
-            doador_buscado = Funcoes.validarUsuarioBuscado(doador_buscado, dicDoadores)
+            doador_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaDoadores)
+            doador_buscado = Funcoes.validarUsuarioBuscado(doador_buscado, listaDoadores)
 
             doador = Doador()
             doador.id_usuario = doador_buscado.id_usuario
@@ -127,7 +126,7 @@ class Doacao:
             cursor.execute("INSERT INTO doacao (id_doacao, doador, data_doacao, qtd_moedas_doacao) VALUES (:1, :2, :3, :4)", (id_doacao, doador, data_formatada_banco, qtd_moedas_doacao))
             cursor.connection.commit()
 
-            # FAZENDO UPDATE NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE - OK
             novo_doacao.id_doacao = id_doacao
             novo_doacao.doador = doador
             novo_doacao.data_doacao = data_formatada
@@ -207,16 +206,16 @@ class Doacao:
                 elif (opcao == 5):
                     perfilDoacao = False
 
-    def editarDoador(dsn, doacao_buscada, dicDoadores):
+    def editarDoador(dsn, doacao_buscada, listaDoadores):
         try:
-            if (len(dicDoadores) == 0):
+            if (len(listaDoadores) == 0):
                 input("NENHUM DOADOR CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
-                Funcoes.exibirUsuariosAdmin(dicDoadores)
+                Funcoes.exibirUsuariosAdmin(listaDoadores)
                 id_buscado = int(input("DIGITE O ID DO DOADOR QUE DESEJA INCLUIR À DOAÇÃO: \n"))
-                doador_buscado = Funcoes.buscarPorIdUsuario(id_buscado, dicDoadores)
-                doador_buscado = Funcoes.validarUsuarioBuscado(doador_buscado, dicDoadores)
+                doador_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaDoadores)
+                doador_buscado = Funcoes.validarUsuarioBuscado(doador_buscado, listaDoadores)
 
                 novo_doador = Doador()
                 novo_doador.id_usuario = doador_buscado.id_usuario

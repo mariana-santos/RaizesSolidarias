@@ -1,4 +1,3 @@
-import cx_Oracle
 import sqlite3
 
 from Funcoes import Funcoes
@@ -177,7 +176,7 @@ class Usuario:
             cursor.execute("INSERT INTO usuario (id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario) VALUES (:1, :2, :3, :4, :5, :6, :7)", (id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario))
             cursor.connection.commit()
 
-            # FAZENDO UPDATE NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE - OK
             novo_usuario.id_usuario = id_usuario
             novo_usuario.cpf_usuario = cpf_usuario
             novo_usuario.nome_usuario = nome_usuario

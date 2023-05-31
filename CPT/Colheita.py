@@ -1,7 +1,6 @@
-import cx_Oracle
+import sqlite3
 
 from datetime import datetime
-import sqlite3
 
 from Funcoes import Funcoes
 
@@ -58,7 +57,6 @@ class Colheita:
             data_colheita = input(f"DIGITE A DATA DA COLHEITA (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_colheita = Funcoes.validarPreenchimento(f"DIGITE A DATA DA COLHEITA (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_colheita)
             data_formatada = datetime.strptime(data_colheita, "%d/%m/%Y").date()
-            data_formatada = datetime.strptime(data_colheita, "%d/%m/%Y").date()
             data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
 
         except ValueError as value_error:
@@ -91,7 +89,7 @@ class Colheita:
             cursor.execute("INSERT INTO colheita (id_colheita, data_colheita, descricao_colheita) VALUES (:1, :2, :3)", (id_colheita, data_formatada_banco, descricao_colheita))
             cursor.connection.commit()
 
-            # FAZENDO UPDATE NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE - OK
             nova_colheita.id_colheita = id_colheita
             nova_colheita.data_colheita = data_formatada
             nova_colheita.descricao_colheita = descricao_colheita

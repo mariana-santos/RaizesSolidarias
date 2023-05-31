@@ -1,9 +1,9 @@
 import cx_Oracle
 
+import time
 from datetime import datetime
 from tqdm import tqdm
-import time
-import sqlite3
+
 
 
 class Funcoes:
@@ -267,7 +267,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirUsuariosAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO USUÁRIO NOVAMENTE: \n"))
-            usuario_buscado = Funcoes.buscarPorIdUsuario(id_buscado, lista)
+            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, lista)
         
         return usuario_buscado
 
@@ -368,7 +368,7 @@ class Funcoes:
     def excluirUsuario(dsn, lista, StringClasse):
         Funcoes.exibirUsuariosAdmin(lista)
         id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA EXCLUIR: \n"))
-        usuario_buscado = Funcoes.buscarPorIdUsuario(id_buscado, lista)
+        usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, lista)
         usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, lista)
         opcao = int(input(Funcoes.confirmarAcao(f"EXCLUIR O USUÁRIO {usuario_buscado.nome_usuario}")))
         opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EXCLUIR O USUÁRIO {usuario_buscado.nome_usuario}")))
@@ -465,15 +465,16 @@ class Funcoes:
                 print(f"ID: {plantio.id_plantio} | DATA DO PLANTIO: {plantio.data_plantio}")
                 print(f"------------------------------------------")
 
-    def exibirUsuariosAdmin(dicionario):
+    def exibirUsuariosAdmin(lista):
         Funcoes.menuCabecalho()
 
-        if len(dicionario) == 0:
+        if len(lista) == 0:
             print("NÃO EXISTEM USUÁRIOS CADASTRADOS.")
         else:
-            for id_usuario, usuario in dicionario.items():
-                print(f"ID: {id_usuario} | CPF: {Funcoes.formatarCpf(usuario.cpf_usuario)} | NOME: {usuario.nome_usuario}")
-                print("------------------------------------------")
+            for usuario in lista:
+                print(f"ID: {usuario.id_usuario} | NOME: {usuario.nome_usuario}")
+                print(f"------------------------------------------")
+
 
     # BANCO DE DADOS
     def connect(dsn):

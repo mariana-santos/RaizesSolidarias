@@ -1,7 +1,6 @@
-import cx_Oracle
+import sqlite3
 
 from datetime import datetime
-import sqlite3
 
 from Funcoes import Funcoes
 from Usuario import Usuario
@@ -55,7 +54,7 @@ class Agendamento:
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
-    def cadastrarAgendamento(dsn, id_agendamento, dicReceptores, dicVoluntarios, listaAgendamentos):
+    def cadastrarAgendamento(dsn, id_agendamento, listaReceptores, listaVoluntarios, listaAgendamentos):
         # INSTANCIANDO NOVO AGENDAMENTO - OK
         novo_agendamento = Agendamento()
 
@@ -114,14 +113,14 @@ class Agendamento:
             opcao = int(Funcoes.validarOpcao(opcao, 1, 2, tipo_usuario))
 
             if (opcao == 1):
-                if (len(dicReceptores) == 0):
+                if (len(listaReceptores) == 0):
                     input("NENHUM RECEPTOR CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
                 else:
-                    Funcoes.exibirUsuariosAdmin(dicReceptores)
+                    Funcoes.exibirUsuariosAdmin(listaReceptores)
                     id_buscado = int(input("DIGITE O ID DO RECEPTOR QUE DESEJA INCLUIR AO AGENDAMENTO: \n"))
-                    receptor_buscado = Funcoes.buscarPorIdUsuario(id_buscado, dicReceptores)
-                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, dicReceptores)
+                    receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaReceptores)
+                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, listaReceptores)
                     
                     usuario_agendamento = Usuario()
                     usuario_agendamento.id_usuario = receptor_buscado.id_usuario
@@ -133,14 +132,14 @@ class Agendamento:
                     usuario_agendamento.status_usuario = receptor_buscado.status_usuario
 
             elif (opcao == 2):
-                if (len(dicVoluntarios) == 0):
+                if (len(listaVoluntarios) == 0):
                     input("NENHUM VOLUNTÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
                 else:
-                    Funcoes.exibirUsuariosAdmin(dicVoluntarios)
+                    Funcoes.exibirUsuariosAdmin(listaVoluntarios)
                     id_buscado = int(input("DIGITE O ID DO VOLUNTÁRIO QUE DESEJA INCLUIR AO AGENDAMENTO: \n"))
-                    voluntario_buscado = Funcoes.buscarPorIdUsuario(id_buscado, dicVoluntarios)
-                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, dicVoluntarios)
+                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntarios)
+                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntarios)
                     
                     usuario_agendamento = Usuario()
                     usuario_agendamento.id_usuario = voluntario_buscado.id_usuario
@@ -168,7 +167,7 @@ class Agendamento:
             cursor.execute("INSERT INTO agendamento (id_agendamento, data_agendamento, turno_agendamento, id_usuario) VALUES (:1, :2, :3, :4)", (id_agendamento, data_formatada_banco, turno_agendamento, usuario_agendamento.id_usuario))
             cursor.connection.commit()
 
-            # FAZENDO UPDATE NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE - OK
             novo_agendamento.id_agendamento = id_agendamento
             novo_agendamento.data_agendamento = data_formatada
             novo_agendamento.turno_agendamento = turno_agendamento
@@ -331,7 +330,7 @@ class Agendamento:
             print("OCORREU UM ERRO DURANTE A ATUALIZAÇÃO DO TURNO DO AGENDAMENTO:")
             print(str(e))
 
-    def editarUsuario(dsn, agendamento_buscado, dicReceptores, dicVoluntarios):
+    def editarUsuario(dsn, agendamento_buscado, listaReceptores, listaVoluntarios):
         try:
             novo_tipo_usuario = (f"SELECIONE O TIPO DO NOVO USUÁRIO DO AGENDAMENTO: " + "\n" +
                             "01. RECEPTOR" + "\n" +
@@ -342,14 +341,14 @@ class Agendamento:
             opcao = int(Funcoes.validarOpcao(opcao, 1, 2, novo_tipo_usuario))
 
             if (opcao == 1):
-                if (len(dicReceptores) == 0):
+                if (len(listaReceptores) == 0):
                     input("NENHUM RECEPTOR CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
                 else:
-                    Funcoes.exibirUsuariosAdmin(dicReceptores)
+                    Funcoes.exibirUsuariosAdmin(listaReceptores)
                     id_buscado = int(input("DIGITE O ID DO RECEPTOR QUE DESEJA EDITAR: \n"))
-                    receptor_buscado = Funcoes.buscarPorIdUsuario(id_buscado, dicReceptores)
-                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, dicReceptores)
+                    receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaReceptores)
+                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, listaReceptores)
                     
                     novo_usuario = Usuario()
                     novo_usuario.id_usuario = receptor_buscado.id_usuario
@@ -383,14 +382,14 @@ class Agendamento:
                         Funcoes.disconnect(conn, cursor)
 
             elif (opcao == 2):
-                if (len(dicVoluntarios) == 0):
+                if (len(listaVoluntarios) == 0):
                     input("NENHUM VOLUNTÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
                 else:
-                    Funcoes.exibirUsuariosAdmin(dicVoluntarios)
+                    Funcoes.exibirUsuariosAdmin(listaVoluntarios)
                     id_buscado = int(input("DIGITE O ID DO VOLUNTÁRIO QUE DESEJA EDITAR: \n"))
-                    voluntario_buscado = Funcoes.buscarPorIdUsuario(id_buscado, dicVoluntarios)
-                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, dicVoluntarios)
+                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntarios)
+                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntarios)
                     
                     novo_usuario = Usuario()
                     novo_usuario.id_usuario = voluntario_buscado.id_usuario

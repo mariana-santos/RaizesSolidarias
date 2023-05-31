@@ -1,5 +1,3 @@
-import cx_Oracle
-
 import sqlite3
 
 from Funcoes import Funcoes
@@ -135,7 +133,7 @@ class Destino:
             cursor.execute("INSERT INTO destino (id_destino, endereco_destino, responsavel_destino, cel_destino, qtd_dependentes_destino) VALUES (:1, :2, :3, :4, :5)", (id_destino, endereco_destino, responsavel_destino, cel_destino, qtd_dependentes_destino))
             cursor.connection.commit()
 
-            # FAZENDO UPDATE NO CONSOLE - OK
+            # FAZENDO INSERT NO CONSOLE - OK
             novo_destino.id_destino = id_destino
             novo_destino.endereco_destino = endereco_destino
             novo_destino.responsavel_destino = responsavel_destino
