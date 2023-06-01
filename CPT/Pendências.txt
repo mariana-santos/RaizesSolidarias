@@ -1,3 +1,3 @@
-- Popular os objetos com as tabelas n para n
+- Popular os objetos com as tabelas n para n (parei no receptor_destino, classe Funções linha 621)
 
 - Programa
