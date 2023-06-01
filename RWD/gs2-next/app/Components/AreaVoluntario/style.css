@@ -12,3 +12,124 @@
     font-family: 'QuickSand';
     font-weight: bold;
 }
+
+.row-body{
+    display: flex;
+    gap: 2em;
+    padding: 2em 0;
+    position: relative;
+}
+
+.react-calendar{
+    border-color: #ccc !important;
+    border-radius: 5px;
+    font-family: 'Quicksand' !important;
+    width: 50% !important;
+}
+
+.react-calendar button{
+    margin-top: 0 !important;
+}
+
+.react-calendar button span, .react-calendar button abbr{
+    font-family: 'Quicksand' !important;
+}
+
+.react-calendar__navigation__label span{
+    font-weight: bold;
+    color: #444;
+}
+
+.agendamento .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1em;
+}
+
+.horarios{
+    display: flex;
+    gap: 1em;
+}
+
+input[type="radio"]{
+    position: absolute;
+    width: 0;
+}
+
+.horario{
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: .25s;
+    border: solid 1px #ccc;
+}
+
+.horario:has(input:checked){
+    background-color: #48875058;
+    font-weight: 600;
+}
+
+.novo-agendamento p{
+    font-weight: 500;
+    margin-top: 1.3em;
+}
+
+.novo-agendamento .campo, .novo-agendamento button{
+    width: 100% !important;
+}
+
+.agendamento-existente{
+    display: none;
+}
+
+.agendamento{
+    width: 50%;
+}
+
+.row-body:has(.mask) .calendario, .row-body:has(.mask) .novo-agendamento {
+    filter: blur(1.5px);
+}
+
+.mask{
+    background: #0000008a;
+    position: absolute;
+    max-width: calc(100% + 2em);
+    height: calc(100%);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: .5em;
+    /* left: -1em; */
+    /* right: -1em; */
+    color: #fff;
+    font-weight: 900;
+    font-size: 2em;
+    text-align: center;
+    padding: 2em;
+}
+
+@media screen and (max-width: 768px){
+    .row-heading{
+        flex-direction: column;
+    }
+
+    .row-heading .heading, .calendario, .agendamento{
+        width: 100% !important;
+    }
+
+    .wrap-switch label{
+        margin-left: 0;
+    }
+
+    .row-body{
+        flex-direction: column;
+    }
+
+    .mask{
+        font-size: 1.5em;
+        padding: 1em;
+        padding-top: 5em;
+        align-items: flex-start;
+    }
+}
