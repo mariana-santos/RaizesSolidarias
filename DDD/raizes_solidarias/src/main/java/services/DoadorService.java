@@ -67,8 +67,8 @@ public class DoadorService {
 	 * @param doador_novo o novo Doador a ser cadastrado.
 	 * @return o Doador cadastrado.
 	 */
-	public static Doador cadastrarDoador(Doador doador_novo) {
-		return DoadorDAO.cadastrarDoador(doador_novo);
+	public static Doador cadastrarUsuarioDoador(Doador doador_novo) {
+		return DoadorDAO.cadastrarUsuarioDoador(doador_novo);
 	}
 
 	/**

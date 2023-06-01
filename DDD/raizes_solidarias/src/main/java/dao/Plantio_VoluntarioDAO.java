@@ -39,11 +39,13 @@ public class Plantio_VoluntarioDAO extends Repository {
 	 * @return uma lista de Plantio_Voluntarios.
 	 */
 	public ArrayList<Plantio_Voluntario> listarPlantio_Voluntarios() {
-		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
+		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, "
+				+  "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, "
 				+ " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 				+ " v.data_registro_voluntario"
 	            + " FROM Plantio_Voluntario pv"
 	            + " JOIN Plantio p ON pv.id_plantio = p.id_plantio"
+	            + " JOIN Alimento a ON a.id_alimento = p.id_alimento "
 	            + " JOIN Usuario u ON pv.id_usuario = u.id_usuario"
 	            + " JOIN Voluntario v ON u.id_usuario = v.id_usuario"
 	            + " ORDER BY pv.id_usuario";
@@ -118,16 +120,18 @@ public class Plantio_VoluntarioDAO extends Repository {
 	 *
 	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Plantio.
 	 */
-	public ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdPlantio(int id_plantio) {
-		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
+	public static ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdPlantio(int id_plantio) {
+		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, "
+				+  "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, "
 				+ " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 				+ " v.data_registro_voluntario"
 	            + " FROM Plantio_Voluntario pv"
 	            + " JOIN Plantio p ON pv.id_plantio = p.id_plantio"
+	            + " JOIN Alimento a ON a.id_alimento = p.id_alimento "
 	            + " JOIN Usuario u ON pv.id_usuario = u.id_usuario"
 	            + " JOIN Voluntario v ON u.id_usuario = v.id_usuario"
-	            + " ORDER BY pv.id_usuario"
-	            + " WHERE pv.id_plantio = ?";
+	            + " WHERE pv.id_plantio = ?"
+	            + " ORDER BY pv.id_usuario";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -200,16 +204,18 @@ public class Plantio_VoluntarioDAO extends Repository {
 	 *
 	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Voluntario.
 	 */
-	public ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdUsuario(int id_usuario) {
-		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
+	public static ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdUsuario(int id_usuario) {
+		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, "
+				+  "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, "
 				+ " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 				+ " v.data_registro_voluntario"
 	            + " FROM Plantio_Voluntario pv"
 	            + " JOIN Plantio p ON pv.id_plantio = p.id_plantio"
+	            + " JOIN Alimento a ON a.id_alimento = p.id_alimento "
 	            + " JOIN Usuario u ON pv.id_usuario = u.id_usuario"
 	            + " JOIN Voluntario v ON u.id_usuario = v.id_usuario"
-	            + " ORDER BY pv.id_usuario"
-	            + " WHERE pv.id_usuario = ?";
+	            + " WHERE pv.id_usuario = ?"
+	            + " ORDER BY pv.id_usuario";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -283,15 +289,17 @@ public class Plantio_VoluntarioDAO extends Repository {
 	 * @return uma Plantio_Voluntario de acordo com o ID do Plantio e o ID do Voluntario.
 	 */
 	public static Plantio_Voluntario buscarPlantio_VoluntarioPorIds(int id_plantio, int id_usuario) {
-		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
+		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, "
+				+  "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, "
 				+ " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 				+ " v.data_registro_voluntario"
 	            + " FROM Plantio_Voluntario pv"
 	            + " JOIN Plantio p ON pv.id_plantio = p.id_plantio"
+	            + " JOIN Alimento a ON a.id_alimento = p.id_alimento "
 	            + " JOIN Usuario u ON pv.id_usuario = u.id_usuario"
 	            + " JOIN Voluntario v ON u.id_usuario = v.id_usuario"
-	            + " ORDER BY pv.id_usuario"
-	            + " WHERE pv.id_plantio = ? AND pv.id_usuario = ?";
+	            + " WHERE pv.id_plantio = ? AND pv.id_usuario = ?"
+	            + " ORDER BY pv.id_usuario";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -414,30 +422,17 @@ public class Plantio_VoluntarioDAO extends Repository {
 	            + ")";
 
 	    PreparedStatement ps = null;
-	    ResultSet rs = null;
 
 	    try {
 	        ps = getConnection().prepareStatement(sql, new String[] {"id_plantio", "id_usuario"});
 	        ps.setInt(1, plantio_voluntario_novo.getPlantio().getId_plantio());
 	        ps.setInt(2, plantio_voluntario_novo.getVoluntario().getId_usuario());
 	        ps.executeUpdate();
-	        rs = ps.getGeneratedKeys();
-	        if (rs.next()) {
-	            plantio_voluntario_novo.getPlantio().setId_plantio(rs.getInt("id_plantio"));
-	            plantio_voluntario_novo.getVoluntario().setId_usuario(rs.getInt("id_usuario"));
-	        }
 
 	        return plantio_voluntario_novo;
 	    } catch (SQLException e) {
 	        System.out.println("Não foi possível cadastrar novo PLANTIO_VOLUNTARIO no banco de dados: " + e.getMessage());
 	    } finally {
-	        if (rs != null) {
-	            try {
-	                rs.close();
-	            } catch (SQLException e) {
-	                System.out.println("Não foi possível fechar o ResultSet: " + e.getMessage());
-	            }
-	        }
 	        if (ps != null) {
 	            try {
 	                ps.close();

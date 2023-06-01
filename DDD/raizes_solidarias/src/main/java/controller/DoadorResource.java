@@ -85,8 +85,8 @@ public class DoadorResource {
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response cadastrarDoador(@Valid Doador doador_novo) {
-		Doador resp = DoadorService.cadastrarDoador(doador_novo);
+	public Response cadastrarUsuarioDoador(@Valid Doador doador_novo) {
+		Doador resp = DoadorService.cadastrarUsuarioDoador(doador_novo);
 		final URI doadorUri = UriBuilder.fromResource(DoadorResource.class).path("/doador/{id}")
 				.build(resp.getId_usuario());
 		ResponseBuilder response = Response.created(doadorUri);
@@ -116,6 +116,7 @@ public class DoadorResource {
 
 	}
 	
+	
 	/**
 	 * Remove um Doador do sistema.
 	 *
@@ -134,15 +135,8 @@ public class DoadorResource {
 					.entity("Não foi possível remover o DOADOR de id_usuario: " + id_usuario);
 			return response.build();
 		}
-	}
-	
-	/**
-	 * Valida o login de um doador.
-	 *
-	 * @param doadorLogin O objeto Doador contendo o email e a senha do doador a serem validados.
-	 * @return A resposta HTTP com o status e o objeto Doador logado em caso de sucesso,
-	 *         ou uma resposta HTTP de erro com uma mensagem em caso de falha na validação do login.
-	 */
+	}	
+
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)

@@ -105,8 +105,8 @@ public class PlantioDAO extends Repository {
 	             "alimento.id_alimento, alimento.nome_alimento, alimento.tempo_colheita, alimento.qtd_irrigacao, alimento.preco_alimento, alimento.qtd_alimento " +
 	             "FROM plantio " +
 	             "INNER JOIN alimento ON plantio.id_alimento = alimento.id_alimento " +
-	             "ORDER BY plantio.id_plantio " +
-	             "WHERE plantio.id_plantio = ?";
+	             "WHERE plantio.id_plantio = ? " +
+	             "ORDER BY plantio.id_plantio";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;

@@ -56,6 +56,50 @@ public class Plantio_VoluntarioResource {
 	}
 	
 	/**
+	 * Recupera um Plantio_Voluntario pelo seu ID Plantio.
+	 *
+	 * @param id_plantio o ID do Plantio a ser buscado.
+	 * @return uma resposta contendo uma lista de Plantio_Voluntario em formato JSON.
+	 */
+	@GET
+	@Path("/plantio/{id_plantio}")
+	public Response exibirPlantio_VoluntarioPorIdPlantio(@PathParam("id_plantio") int id_plantio) {
+		ArrayList<Plantio_Voluntario> plantio_voluntario_buscado = Plantio_VoluntarioDAO.buscarPlantio_VoluntarioPorIdPlantio(id_plantio);
+
+		if (plantio_voluntario_buscado != null) {
+			ResponseBuilder response = Response.ok();
+			response.entity(plantio_voluntario_buscado);
+			return response.build();
+		} else {
+			ResponseBuilder response = Response.status(404)
+					.entity("Não foi possível encontrar o PLANTIO_VOLUNTARIO de id_plantio: " + id_plantio);
+			return response.build();
+		}
+	}
+	
+	/**
+	 * Recupera um Plantio_Voluntario pelo seu ID Voluntário (Usuário).
+	 *
+	 * @param id_usuario o ID do Voluntário (Usuário) a ser buscado.
+	 * @return uma resposta contendo uma lista de Plantio_Voluntario em formato JSON.
+	 */
+	@GET
+	@Path("/voluntario/{id_usuario}")
+	public Response exibirPlantio_VoluntarioPorIdUsuario(@PathParam("id_usuario") int id_usuario) {
+		ArrayList<Plantio_Voluntario> plantio_voluntario_buscado = Plantio_VoluntarioDAO.buscarPlantio_VoluntarioPorIdUsuario(id_usuario);
+
+		if (plantio_voluntario_buscado != null) {
+			ResponseBuilder response = Response.ok();
+			response.entity(plantio_voluntario_buscado);
+			return response.build();
+		} else {
+			ResponseBuilder response = Response.status(404)
+					.entity("Não foi possível encontrar o PLANTIO_VOLUNTARIO de id_plantio: " + id_usuario);
+			return response.build();
+		}
+	}
+	
+	/**
 	 * Recupera um Plantio_Voluntario pelo seu ID Plantio e ID Voluntario (Usuario).
 	 *
 	 * @param id_plantio o ID do Plantio a ser buscado.
@@ -105,9 +149,9 @@ public class Plantio_VoluntarioResource {
 	 * @return uma resposta indicando o sucesso ou falha da operação.
 	 */
 	@PUT
-	@Path("/{id_plantio_antigo}/{id_usuario_antigo}")
+	@Path("/{id_plantio_antigo}-{id_usuario_antigo}/{id_plantio_novo}-{id_usuario_novo}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizarPlantio_Voluntario(int id_plantio_novo, @PathParam("id_plantio_antigo") int id_plantio_antigo, int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo) {
+	public Response atualizarPlantio_Voluntario(@PathParam("id_plantio_novo") int id_plantio_novo, @PathParam("id_plantio_antigo") int id_plantio_antigo, @PathParam("id_usuario_novo") int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo) {
 		if (Plantio_VoluntarioService.atualizarPlantio_Voluntario(id_plantio_novo, id_plantio_antigo, id_usuario_novo, id_usuario_antigo)) {
 			return Response.ok().build();
 		} else {

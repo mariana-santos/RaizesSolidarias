@@ -104,9 +104,9 @@ public class Colheita_VoluntarioResource {
 	 * @return uma resposta indicando o sucesso ou falha da operação.
 	 */
 	@PUT
-	@Path("/{id_colheita}/{id_usuario_antigo}")
+	@Path("/{id_colheita}/{id_usuario_antigo}/{id_usuario_novo}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizarColheita_Voluntario(int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo, @PathParam("id_colheita") int id_colheita) {
+	public Response atualizarColheita_Voluntario(@PathParam("id_usuario_novo") int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo, @PathParam("id_colheita") int id_colheita) {
 		if (Colheita_VoluntarioService.atualizarColheita_Voluntario(id_usuario_novo, id_usuario_antigo, id_colheita)) {
 			return Response.ok().build();
 		} else {

@@ -39,7 +39,7 @@ public class VoluntarioDAO extends Repository {
 	 * @return ArrayList contendo os objetos Voluntario correspondentes aos registros encontrados, ou uma lista vazia se nenhum registro for encontrado.
 	 */
 	public ArrayList<Voluntario> listarVoluntarios() {
-		String sql = "SELECT usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, voluntario.data_registro_voluntario FROM usuario INNER JOIN voluntario ON usuario.id_usuario = voluntario.id_usuario";
+		String sql = "SELECT usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, voluntario.data_registro_voluntario FROM usuario INNER JOIN voluntario ON usuario.id_usuario = voluntario.id_usuario ORDER BY voluntario.id_usuario";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<Voluntario> listaVoluntarios = new ArrayList<>();

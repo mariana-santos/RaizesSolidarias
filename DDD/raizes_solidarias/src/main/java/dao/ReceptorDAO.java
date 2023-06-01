@@ -36,7 +36,7 @@ public class ReceptorDAO extends Repository {
 	 * @return ArrayList contendo os objetos Receptor correspondentes aos registros encontrados, ou uma lista vazia se nenhum registro for encontrado.
 	 */
 	public ArrayList<Receptor> listarReceptores() {
-		String sql = "SELECT usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, receptor.carga_receptor, receptor.endereco_receptor FROM usuario INNER JOIN receptor ON usuario.id_usuario = receptor.id_usuario";
+		String sql = "SELECT usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, receptor.carga_receptor, receptor.endereco_receptor FROM usuario INNER JOIN receptor ON usuario.id_usuario = receptor.id_usuario ORDER BY receptor.id_usuario";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<Receptor> listaReceptores = new ArrayList<>();

@@ -56,6 +56,50 @@ public class Plantio_ColheitaResource {
 	}
 	
 	/**
+	 * Recupera um Plantio_Colheita pelo seu ID Plantio.
+	 *
+	 * @param id_plantio o ID do Plantio a ser buscado.
+	 * @return uma resposta contendo o Plantio_Colheita em formato JSON.
+	 */
+	@GET
+	@Path("/plantio/{id_plantio}")
+	public Response exibirPlantio_ColheitaPorIdPlantio(@PathParam("id_plantio") int id_plantio) {
+		Plantio_Colheita plantio_colheita_buscado = Plantio_ColheitaDAO.buscarPlantio_ColheitaPorIdPlantio(id_plantio);
+
+		if (plantio_colheita_buscado != null) {
+			ResponseBuilder response = Response.ok();
+			response.entity(plantio_colheita_buscado);
+			return response.build();
+		} else {
+			ResponseBuilder response = Response.status(404)
+					.entity("Não foi possível encontrar o PLANTIO_COLHEITA de id_plantio: " + id_plantio);
+			return response.build();
+		}
+	}
+	
+	/**
+	 * Recupera uma lista de Plantio_Colheita pelo seu ID Colheita.
+	 *
+	 * @param colheita o ID da Colheita a ser buscada.
+	 * @return uma resposta contendo uma lista de Plantio_Colheita em formato JSON.
+	 */
+	@GET
+	@Path("/colheita/{id_colheita}")
+	public Response exibirPlantio_ColheitaPorIdColheita(@PathParam("id_colheita") int id_colheita) {
+		ArrayList<Plantio_Colheita> plantio_colheita_buscado = Plantio_ColheitaDAO.buscarPlantio_ColheitaPorIdColheita(id_colheita);
+
+		if (plantio_colheita_buscado != null) {
+			ResponseBuilder response = Response.ok();
+			response.entity(plantio_colheita_buscado);
+			return response.build();
+		} else {
+			ResponseBuilder response = Response.status(404)
+					.entity("Não foi possível encontrar o PLANTIO_COLHEITA de id_colheita: " + id_colheita);
+			return response.build();
+		}
+	}
+	
+	/**
 	 * Recupera um Plantio_Colheita pelo seu ID Plantio e ID Colheita.
 	 *
 	 * @param id_plantio o ID do Plantio a ser buscado.
@@ -104,9 +148,9 @@ public class Plantio_ColheitaResource {
 	 * @return uma resposta indicando o sucesso ou falha da operação.
 	 */
 	@PUT
-	@Path("/{id_plantio_antigo}/{id_colheita}")
+	@Path("/{id_colheita}/{id_plantio_antigo}/{id_plantio_novo}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizarPlantio_Colheita(int id_plantio_novo, @PathParam("id_plantio_antigo") int id_plantio_antigo, @PathParam("id_colheita") int id_colheita) {
+	public Response atualizarPlantio_Colheita(@PathParam("id_plantio_novo") int id_plantio_novo, @PathParam("id_plantio_antigo") int id_plantio_antigo, @PathParam("id_colheita") int id_colheita) {
 		if (Plantio_ColheitaService.atualizarPlantio_Colheita(id_plantio_novo, id_plantio_antigo, id_colheita)) {
 			return Response.ok().build();
 		} else {

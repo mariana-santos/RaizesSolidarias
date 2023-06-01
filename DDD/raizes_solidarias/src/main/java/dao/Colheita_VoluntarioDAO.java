@@ -369,30 +369,17 @@ public class Colheita_VoluntarioDAO extends Repository {
 	            + ")";
 
 	    PreparedStatement ps = null;
-	    ResultSet rs = null;
 
 	    try {
-	        ps = getConnection().prepareStatement(sql, new String[] {"id_colheita", "id_usuario"});
+	        ps = getConnection().prepareStatement(sql);
 	        ps.setInt(1, colheita_voluntario_novo.getColheita().getId_colheita());
 	        ps.setInt(2, colheita_voluntario_novo.getVoluntario().getId_usuario());
 	        ps.executeUpdate();
-	        rs = ps.getGeneratedKeys();
-	        if (rs.next()) {
-	            colheita_voluntario_novo.getColheita().setId_colheita(rs.getInt("id_colheita"));
-	            colheita_voluntario_novo.getVoluntario().setId_usuario(rs.getInt("id_usuario"));
-	        }
 
 	        return colheita_voluntario_novo;
 	    } catch (SQLException e) {
 	        System.out.println("Não foi possível cadastrar novo COLHEITA_VOLUNTARIO no banco de dados: " + e.getMessage());
 	    } finally {
-	        if (rs != null) {
-	            try {
-	                rs.close();
-	            } catch (SQLException e) {
-	                System.out.println("Não foi possível fechar o ResultSet: " + e.getMessage());
-	            }
-	        }
 	        if (ps != null) {
 	            try {
 	                ps.close();
@@ -408,8 +395,8 @@ public class Colheita_VoluntarioDAO extends Repository {
 	/**
 	 * Deleta um Colheita_Voluntario do banco de dados.
 	 *
-	 * @param id_usuario    o id do usuário do Colheita_Voluntario a ser deletado
-	 * @param id_voluntario o id do voluntario do Colheita_Voluntario a ser deletado
+	 * @param id_colheita   o id da Colheita_Voluntario a ser deletado
+	 * @param id_usuario 	o id do Voluntario do Colheita_Voluntario a ser deletado
 	 * @return true se o Colheita_Voluntario for deletado com sucesso, false caso contrário
 	 */
 	public static boolean deletarColheita_Voluntario(int id_colheita, int id_usuario) {

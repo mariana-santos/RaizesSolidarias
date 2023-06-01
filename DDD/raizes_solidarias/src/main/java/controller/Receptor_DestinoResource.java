@@ -13,6 +13,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
@@ -107,7 +108,7 @@ public class Receptor_DestinoResource {
 	@PUT
 	@Path("/{id_usuario_antigo}/{id_destino_antigo}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizarReceptor_Destino(int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo, int id_destino_novo, @PathParam("id_destino_antigo") int id_destino_antigo) {
+	public Response atualizarReceptor_Destino(@QueryParam("id_usuario_novo") int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo, @QueryParam("id_destino_novo") int id_destino_novo, @PathParam("id_destino_antigo") int id_destino_antigo) {
 		if (Receptor_DestinoService.atualizarReceptor_Destino(id_usuario_novo, id_usuario_antigo, id_destino_novo, id_destino_antigo)) {
 			return Response.ok().build();
 		} else {

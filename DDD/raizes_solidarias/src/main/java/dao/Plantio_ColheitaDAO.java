@@ -39,12 +39,14 @@ public class Plantio_ColheitaDAO extends Repository {
 	 * @return uma lista de Plantio_Colheitas.
 	 */
 	public ArrayList<Plantio_Colheita> listarPlantio_Colheitas() {
-	    String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
-	            + " pc.id_colheita, c.data_colheita, c.descricao_colheita"
-	            + " FROM Plantio_Colheita pc"
-	            + " JOIN Plantio p ON pc.id_plantio = p.id_plantio"
-	            + " JOIN Colheita c ON pc.id_colheita = c.id_colheita"
-	            + " ORDER BY pc.id_colheita";
+		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, " +
+	             "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, " +
+	             "pc.id_colheita, c.data_colheita, c.descricao_colheita " +
+	             "FROM Plantio_Colheita pc " +
+	             "JOIN Plantio p ON pc.id_plantio = p.id_plantio " +
+	             "JOIN Alimento a ON a.id_alimento = p.id_alimento " +
+	             "JOIN Colheita c ON pc.id_colheita = c.id_colheita " +
+	             "ORDER BY pc.id_colheita";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -112,13 +114,15 @@ public class Plantio_ColheitaDAO extends Repository {
 	 * @return uma Plantio_Colheita de acordo com o ID do Plantio.
 	 */
 	public static Plantio_Colheita buscarPlantio_ColheitaPorIdPlantio(int id_plantio) {
-		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
-	            + " pc.id_colheita, c.data_colheita, c.descricao_colheita"
-	            + " FROM Plantio_Colheita pc"
-	            + " JOIN Plantio p ON pc.id_plantio = p.id_plantio"
-	            + " JOIN Colheita c ON pc.id_colheita = c.id_colheita"
-	            + " ORDER BY pc.id_colheita "
-	            + " WHERE pc.id_plantio = ?";
+		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, " +
+                "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, " +
+                "pc.id_colheita, c.data_colheita, c.descricao_colheita " +
+                "FROM Plantio_Colheita pc " +
+                "JOIN Plantio p ON pc.id_plantio = p.id_plantio " +
+                "JOIN Alimento a ON a.id_alimento = p.id_alimento " +
+                "JOIN Colheita c ON pc.id_colheita = c.id_colheita " +
+                "WHERE pc.id_plantio = ? " +
+                "ORDER BY pc.id_colheita";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -182,14 +186,16 @@ public class Plantio_ColheitaDAO extends Repository {
 	 *
 	 * @return uma lista de Plantio_Colheitas de acordo com o ID do Colheita.
 	 */
-	public ArrayList<Plantio_Colheita> buscarPlantio_ColheitaPorIdColheita(int id_colheita) {
-		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
-	            + " pc.id_colheita, c.data_colheita, c.descricao_colheita"
-	            + " FROM Plantio_Colheita pc"
-	            + " JOIN Plantio p ON pc.id_plantio = p.id_plantio"
-	            + " JOIN Colheita c ON pc.id_colheita = c.id_colheita"
-	            + " ORDER BY pc.id_colheita "
-	            + " WHERE pc.id_colheita = ?";
+	public static ArrayList<Plantio_Colheita> buscarPlantio_ColheitaPorIdColheita(int id_colheita) {
+		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, " +
+                "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, " +
+                "pc.id_colheita, c.data_colheita, c.descricao_colheita " +
+                "FROM Plantio_Colheita pc " +
+                "JOIN Plantio p ON pc.id_plantio = p.id_plantio " +
+                "JOIN Alimento a ON a.id_alimento = p.id_alimento " +
+                "JOIN Colheita c ON pc.id_colheita = c.id_colheita " +
+                "WHERE pc.id_colheita = ? " +
+                "ORDER BY pc.id_colheita";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -258,13 +264,15 @@ public class Plantio_ColheitaDAO extends Repository {
 	 * @return uma Plantio_Colheita de acordo com o ID do Plantio e o ID da Colheita.
 	 */
 	public static Plantio_Colheita buscarPlantio_ColheitaPorIds(int id_plantio, int id_colheita) {
-		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, p.alimento,"
-	            + " pc.id_colheita, c.data_colheita, c.descricao_colheita"
-	            + " FROM Plantio_Colheita pc"
-	            + " JOIN Plantio p ON pc.id_plantio = p.id_plantio"
-	            + " JOIN Colheita c ON pc.id_colheita = c.id_colheita"
-	            + " ORDER BY pc.id_colheita "
-	            + " WHERE pc.id_plantio = ? AND pc.id_colheita = ?";
+		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, " +
+                "p.id_alimento, a.nome_alimento, a.tempo_colheita, a.qtd_irrigacao, a.preco_alimento, a.qtd_alimento, " +
+                "pc.id_colheita, c.data_colheita, c.descricao_colheita " +
+                "FROM Plantio_Colheita pc " +
+                "JOIN Plantio p ON pc.id_plantio = p.id_plantio " +
+                "JOIN Alimento a ON a.id_alimento = p.id_alimento " +
+                "JOIN Colheita c ON pc.id_colheita = c.id_colheita " +
+                "WHERE pc.id_plantio = ? AND pc.id_colheita = ? " +
+                "ORDER BY pc.id_colheita";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -380,30 +388,17 @@ public class Plantio_ColheitaDAO extends Repository {
 	            + ")";
 
 	    PreparedStatement ps = null;
-	    ResultSet rs = null;
 
 	    try {
 	        ps = getConnection().prepareStatement(sql, new String[] {"id_plantio", "id_colheita"});
 	        ps.setInt(1, plantio_colheita_novo.getPlantio().getId_plantio());
 	        ps.setInt(2, plantio_colheita_novo.getColheita().getId_colheita());
 	        ps.executeUpdate();
-	        rs = ps.getGeneratedKeys();
-	        if (rs.next()) {
-	            plantio_colheita_novo.getPlantio().setId_plantio(rs.getInt("id_plantio"));
-	            plantio_colheita_novo.getColheita().setId_colheita(rs.getInt("id_colheita"));
-	        }
 
 	        return plantio_colheita_novo;
 	    } catch (SQLException e) {
 	        System.out.println("Não foi possível cadastrar novo PLANTIO_COLHEITA no banco de dados: " + e.getMessage());
 	    } finally {
-	        if (rs != null) {
-	            try {
-	                rs.close();
-	            } catch (SQLException e) {
-	                System.out.println("Não foi possível fechar o ResultSet: " + e.getMessage());
-	            }
-	        }
 	        if (ps != null) {
 	            try {
 	                ps.close();

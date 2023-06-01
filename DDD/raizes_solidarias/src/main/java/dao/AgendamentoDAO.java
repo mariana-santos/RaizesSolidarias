@@ -38,11 +38,12 @@ public class AgendamentoDAO extends Repository {
 	 * @return ArrayList contendo os objetos Agendamento correspondentes aos registros encontrados, ou uma lista vazia se nenhum registro for encontrado.
 	 */
 	public ArrayList<Agendamento> listarAgendamentos() {
-	    String sql = "SELECT a.id_agendamento, a.data_agendamento, a.turno_agendamento, "
-	            + "u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario, u.data_registro_usuario "
+		String sql = "SELECT a.id_agendamento, a.data_agendamento, a.turno_agendamento, "
+	            + "u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario "
 	            + "FROM agendamento a "
 	            + "LEFT JOIN usuario u ON a.id_usuario = u.id_usuario "
-	            + "WHERE a.id_agendamento IS NOT NULL";
+	            + "WHERE a.id_agendamento IS NOT NULL "
+	            + "ORDER BY id_agendamento";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -101,9 +102,9 @@ public class AgendamentoDAO extends Repository {
 	 */
 	public static Agendamento buscarAgendamentoPorId(int id_agendamento) {
 	    String sql = "SELECT a.id_agendamento, a.data_agendamento, a.turno_agendamento, "
-	            + "u.id_agendamento, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario, u.data_registro_usuario "
+	            + "u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario "
 	            + "FROM agendamento a "
-	            + "LEFT JOIN usuario u ON a.id_agendamento = u.id_agendamento "
+	            + "LEFT JOIN usuario u ON a.id_usuario = u.id_usuario "
 	            + "WHERE a.id_agendamento = ?";
 
 	    PreparedStatement ps = null;
@@ -162,7 +163,7 @@ public class AgendamentoDAO extends Repository {
 	 * @return true se o Agendamento foi atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarAgendamento(@Valid Agendamento agendamento) {		
-		String sql = "UPDATE agendamento SET data_agendamento = ?, turno_agendamento = ?, id_agendamento = ? WHERE id_agendamento = ?";
+		String sql = "UPDATE agendamento SET data_agendamento = ?, turno_agendamento = ?, id_usuario = ? WHERE id_agendamento = ?";
 		CallableStatement cs = null;
 
 		try {
@@ -200,82 +201,48 @@ public class AgendamentoDAO extends Repository {
 	 * @return O objeto Agendamento cadastrado, ou null se o cadastro falhar.
 	 */
 	public static Agendamento cadastrarAgendamento(@Valid Agendamento agendamento_novo) {
-
-	// @formatter:off
-    String sql_usuario = "BEGIN INSERT INTO agendamento ("
-            + " id_agendamento,"
-            + " data_agendamento,"
-            + " turno_agendamento,"
-			+ " id_agendamento"
-            + ") VALUES ("
-            + " SQ_AGENDAMENTO.nextval,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?"
-			+ ") "
-            + "RETURNING id_agendamento INTO ?; END;";
-    // @formatter:on
-
-		CallableStatement cs_usuario = null;
-
-		try {
-			cs_usuario = getConnection().prepareCall(sql_usuario);
-			cs_usuario.setDate(1, agendamento_novo.getData_agendamento());
-			cs_usuario.setString(2, agendamento_novo.getTurno_agendamento());
-			cs_usuario.setInt(3, agendamento_novo.getUsuario().getId_usuario());
-			cs_usuario.registerOutParameter(4, java.sql.Types.INTEGER);
-			cs_usuario.executeUpdate();
-			agendamento_novo.setId_agendamento(cs_usuario.getInt(4));
-		} catch (SQLException e) {
-			System.out.println("Não foi possível cadastrar novo AGENDAMENTO no banco de dados: " + e.getMessage());
-			return null;
-		} finally {
-			if (cs_usuario != null) {
-				try {
-					cs_usuario.close();
-				} catch (SQLException e) {
-					System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
-				}
-			}
-		}
-
-	// @formatter:off
-    String sql_agendamento = "INSERT INTO agendamento ("
-            + " id_agendamento,"
-    		+ " data_agendamento,"
-            + " id_usuario"
-            + ") VALUES ("
-            + " ?,"
-            + " ?,"
-            + " ?"
-            + ") ";
-    // @formatter:on
-
-		CallableStatement cs_agendamento = null;
-
-		try {
-			cs_agendamento = getConnection().prepareCall(sql_agendamento);
-			cs_agendamento.setInt(1, agendamento_novo.getId_agendamento());
-			cs_agendamento.setDate(2, agendamento_novo.getData_agendamento());
-			cs_agendamento.setInt(3,  agendamento_novo.getUsuario().getId_usuario());
-			
-			cs_agendamento.executeUpdate();
-		} catch (SQLException e) {
-			System.out.println("Não foi possível cadastrar novo AGENDAMENTO no banco de dados: " + e.getMessage());
-			return null;
-		} finally {
-			if (cs_agendamento != null) {
-				try {
-					cs_agendamento.close();
-				} catch (SQLException e) {
-					System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
-				}
-			}
-		}
-
-		return agendamento_novo;
-	}
 	
+	    // @formatter:off
+	    String sql = "BEGIN INSERT INTO agendamento ("
+	            + " id_agendamento,"
+	            + " data_agendamento,"
+	            + " turno_agendamento,"
+	            + " id_usuario"
+	            + ") VALUES ("
+	            + " SQ_AGENDAMENTO.nextval,"
+	            + " ?,"
+	            + " ?,"
+	            + " ?"
+	            + ") "
+	            + "RETURNING id_agendamento INTO ?; END;";
+	    // @formatter:on
+	
+	    CallableStatement cs = null;
+	
+	    try {
+	    	cs = getConnection().prepareCall(sql);
+	    	cs.setDate(1, agendamento_novo.getData_agendamento());
+	    	cs.setString(2, agendamento_novo.getTurno_agendamento());
+	    	cs.setInt(3, agendamento_novo.getUsuario().getId_usuario());
+	    	cs.registerOutParameter(4, java.sql.Types.INTEGER);
+	    	cs.executeUpdate();
+	        agendamento_novo.setId_agendamento(cs.getInt(4));
+	    } catch (SQLException e) {
+	        System.out.println("Não foi possível cadastrar novo AGENDAMENTO no banco de dados: " + e.getMessage());
+	        return null;
+	    } finally {
+	        if (cs != null) {
+	            try {
+	            	cs.close();
+	            } catch (SQLException e) {
+	                System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
+	            }
+	        }
+	    }
+	
+	    return agendamento_novo;
+	}
+
 	/**
 	 * Deleta um agendamento do banco de dados pelo ID do agendamento.
 	 *

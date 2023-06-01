@@ -36,7 +36,7 @@ public class DoadorDAO extends Repository {
 	 * @return ArrayList contendo os objetos Doador correspondentes aos registros encontrados, ou uma lista vazia se nenhum registro for encontrado.
 	 */
 	public ArrayList<Doador> listarDoadores() {
-		String sql = "SELECT usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, doador.nivel_doador, doador.moedas_doador FROM usuario INNER JOIN doador ON usuario.id_usuario = doador.id_usuario";
+		String sql = "SELECT usuario.id_usuario, usuario.cpf_usuario, usuario.nome_usuario, usuario.email_usuario, usuario.cel_usuario, usuario.senha_usuario, usuario.status_usuario, doador.nivel_doador, doador.moedas_doador FROM usuario INNER JOIN doador ON usuario.id_usuario = doador.id_usuario ORDER BY doador.id_usuario";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		ArrayList<Doador> listaDoadores = new ArrayList<>();
@@ -249,7 +249,7 @@ public class DoadorDAO extends Repository {
 	 * @param doador_novo O objeto Doador contendo as informações do novo doador.
 	 * @return O objeto Doador cadastrado, ou null se o cadastro falhar.
 	 */
-	public static Doador cadastrarDoador(@Valid Doador doador_novo) {
+	public static Doador cadastrarUsuarioDoador(@Valid Doador doador_novo) {
 
 	// @formatter:off
     String sql_usuario = "BEGIN INSERT INTO usuario ("
