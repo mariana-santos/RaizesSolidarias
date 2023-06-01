@@ -1,0 +1,18 @@
+#transporte .row-body{
+    width: 100%;
+}
+
+.transporte .novo-agendamento{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1em;
+}
+
+#transporte .campo, #transporte button{
+    width: calc(50% - 0.5em) !important;
+}
+
+.transporte h3, .transporte p, .transporte small{
+    width: 100%;
+}

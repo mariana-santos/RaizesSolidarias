@@ -7,12 +7,16 @@
 
 input, input:active{
     border-style: none !important;
-    width: 85%;
+    width: 100%;
     box-sizing: border-box;
-    padding: 10px 0 !important;
+    padding: 10px;
     outline: none;
     transition: .24s;
     font-family: 'Quicksand', sans-serif;
+}
+
+.has-icon input{
+    padding: 10px 0 !important;
 }
  
 .wrap_input svg{

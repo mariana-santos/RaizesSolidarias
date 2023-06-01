@@ -107,6 +107,7 @@ input[type="radio"]{
     font-size: 2em;
     text-align: center;
     padding: 2em;
+    
 }
 
 @media screen and (max-width: 768px){

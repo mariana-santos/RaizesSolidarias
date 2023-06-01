@@ -15,24 +15,26 @@ import 'react-calendar/dist/Calendar.css';
 
 import Moment from "react-moment"
 import Campo from "../Campo"
-import { BsCalendarDate } from "react-icons/bs"
+import { GiWeight } from "react-icons/gi"
 
 import moment from "moment"
 import { ToastContainer, toast } from "react-toastify"
 
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function AreaVoluntario() {
+export default function AreaTransportador() {
 
     const [carregando, setCarregando] = useState(false)
 
     const [habilitado, setHabilitado] = useState(false)
 
-    const hoje = new Date();
-    const amanha = new Date(hoje.getTime() + 24 * 60 * 60 * 1000);
-    const [data, setData] = useState(amanha);
+    const [carga, setCarga] = useState(0);
 
-    const [turno, setTurno] = useState('Manhã');
+    const [cep, setCep] = useState('');
+    const cidade = useState('São Paulo');
+    const [logradouro, setLogradouro] = useState('')
+    const [numero, setNumero] = useState('')
+    const [complemento, setComplemento] = useState('')
 
     function handleSubmit(e) {
 
@@ -77,19 +79,19 @@ export default function AreaVoluntario() {
         else setData(data)
     }
 
-    function handleDataAgendamento(e){
+    function handleDataAgendamento(e) {
         if (data <= new Date()) {
-            
+
         }
     }
 
-    function handleSelecaoChange (e) {
+    function handleSelecaoChange(e) {
         setTurno(e.target.value);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <ToastContainer 
+        <form onSubmit={handleSubmit} id="transporte">
+            <ToastContainer
                 position="bottom-right"
                 autoClose={2000}
                 closeOnClick
@@ -97,73 +99,78 @@ export default function AreaVoluntario() {
             />
             <div className="row-heading">
                 <div className="heading">
-                    <h2>Área do voluntário</h2>
-                    <small>Bem vindo(a) à área do voluntário! Aqui você pode agendar suas visitas para contribuição da nossa horta solidária.</small>
+                    <h2>Área do transportador</h2>
+                    <small>Bem vindo(a) à área do transportador! Aqui você pode cadastrar os dados do seu veículo e das colheitas disponíveis para entrega.</small>
                 </div>
 
                 <div className="wrap-switch">
                     <FormControlLabel
                         value="habilitado"
                         control={<Switch value={habilitado} onChange={(e) => setHabilitado(e.target.checked)} />}
-                        label={`${habilitado ? 'Desabilitar' : 'Habilitar'} área do voluntário`}
+                        label={`${habilitado ? 'Desabilitar' : 'Habilitar'} área do transportador`}
                         labelPlacement="start"
                     />
                 </div>
             </div>
 
             <div className="row-body">
-                { !habilitado && <div className="mask"> 
-                    Para agendar um trabalho voluntário, habilite a área do voluntário no botão acima
-                </div> }
+                {!habilitado && <div className="mask">
+                    Para transportar uma nova colheita a algum de nossos destinos, habilite a área do transportador no botão acima
+                </div>}
 
-                <Calendar
-                    value={data}
-                    onChange={(data) => handleData(data)}
-                    className="calendario"
-                />
+                <div className="transporte">
 
-                <div className="agendamento">
-
-                    {/* Se tiver um dia selecionado já tiver agendamento, vai ser esse bloco */}
-                    <div className="agendamento-existente">
-                        <h3>Agendamento no dia selecionado: </h3>
-                        <div className="row">
-                            <p><strong>Dia:</strong> <Moment format="DD/MM/YYYY">{data}</Moment></p>
-                            <p><strong>Turno:</strong> Tarde</p>
-                        </div>
-                    </div>
-
-                    {/* Esse bloco só aparece se for um dia futuro e ainda não existir nenhum agendamento no dia */}
+                    {/* Se a tabela transporte ainda não existir pra esse usuário, vai ser mostrado esse bloco pra cadastrar os dados iniciais da tabela */}
                     <div className="novo-agendamento">
-                        <h3>Novo agendamento: </h3>
+                        <h3>Dados iniciais: </h3>
 
-                        <p>Selecione a data no calendário ao lado:</p>
-                        <Campo 
+                        <p>Endereço:</p>
+                        <small>É importante que seu endereço seja na cidade de <strong>São Paulo</strong>, que é onde nossa horta é realizada</small>
+
+                        <Campo
                             type="text"
-                            icon={<BsCalendarDate />}
-                            disabled
-                            value={moment(data).format("DD/MM/YYYY")}
-                            onChange={(e) => handleDataAgendamento(e)}
+                            value={cep}
+                            onChange={(e) => setCep(e.target.value)}
+                            label="CEP"
+                            placeholder="Digite seu CEP"
                         />
 
-                        <p>Selecione o turno: </p>
+                        <Campo
+                            type="text"
+                            value={logradouro}
+                            onChange={(e) => setLogradouro(e.target.value)}
+                            label="Logradouro (rua)"
+                            placeholder="Digite seu logradouro"
+                        />
 
-                        <div className="horarios">
-                            <label className="horario" htmlFor="manha">
-                                Manhã
-                                <input type="radio" name="turno" value="Manhã" id="manha" defaultChecked onChange={handleSelecaoChange} />
-                            </label>
+                        <Campo
+                            type="text"
+                            value={numero}
+                            onChange={(e) => setNumero(e.target.value)}
+                            label="Número"
+                            placeholder="Digite seu número"
+                        />
 
-                            <label className="horario" htmlFor="tarde">
-                                Tarde
-                                <input type="radio" name="turno" value="Tarde" id="tarde" onChange={handleSelecaoChange} />
-                            </label>
-                        </div>
+                        <Campo
+                            type="text"
+                            value={complemento}
+                            onChange={(e) => setComplemento(e.target.value)}
+                            label="Complemento"
+                            placeholder="Digite seu complemento"
+                        />
 
-                        
+                        <p>Capacidade de carga do veículo:</p>
+                        <Campo
+                            type="number"
+                            icon={<GiWeight />}
+                            value={carga}
+                            onChange={(e) => setCarga(e.target.value)}
+                            min={1}
+                        />
+
                         <button type="submit" className="btn">Salvar</button>
                     </div>
-                    
+
                 </div>
             </div>
         </form>
