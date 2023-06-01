@@ -5,7 +5,7 @@ from Usuario import Usuario
 
 class Receptor(Usuario):
     def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, carga_receptor: int = None, endereco_receptor: str = None, destinos_receptor: list = None):
-        super().__init__(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
+        super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._carga_receptor = carga_receptor
         self._endereco_receptor = endereco_receptor
         self._destinos_receptor = destinos_receptor if destinos_receptor is not None else []

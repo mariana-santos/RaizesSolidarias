@@ -4,60 +4,60 @@ from Funcoes import Funcoes
 
 class Alimento:
     def __init__(self, id_alimento: int = None, nome_alimento: str = None, tempo_colheita: int = None, qtd_irrigacao: int = None, preco_alimento: int = None, qtd_alimento: int = None):
-        self.__id_alimento = id_alimento
-        self.__nome_alimento = nome_alimento
-        self.__tempo_colheita = tempo_colheita
-        self.__qtd_irrigacao = qtd_irrigacao
-        self.__preco_alimento = preco_alimento
-        self.__qtd_alimento = qtd_alimento
+        self._id_alimento = id_alimento
+        self._nome_alimento = nome_alimento
+        self._tempo_colheita = tempo_colheita
+        self._qtd_irrigacao = qtd_irrigacao
+        self._preco_alimento = preco_alimento
+        self._qtd_alimento = qtd_alimento
     
     @property
     def id_alimento(self) -> int:
-        return self.__id_alimento
+        return self._id_alimento
     
     @id_alimento.setter
     def id_alimento(self, id_alimento: int):
-        self.__id_alimento = id_alimento
+        self._id_alimento = id_alimento
     
     @property
     def nome_alimento(self) -> str:
-        return self.__nome_alimento
+        return self._nome_alimento
     
     @nome_alimento.setter
     def nome_alimento(self, nome_alimento: str):
-        self.__nome_alimento = nome_alimento
+        self._nome_alimento = nome_alimento
     
     @property
     def tempo_colheita(self) -> int:
-        return self.__tempo_colheita
+        return self._tempo_colheita
     
     @tempo_colheita.setter
     def tempo_colheita(self, tempo_colheita: int):
-        self.__tempo_colheita = tempo_colheita
+        self._tempo_colheita = tempo_colheita
     
     @property
     def qtd_irrigacao(self) -> int:
-        return self.__qtd_irrigacao
+        return self._qtd_irrigacao
     
     @qtd_irrigacao.setter
     def qtd_irrigacao(self, qtd_irrigacao: int):
-        self.__qtd_irrigacao = qtd_irrigacao
+        self._qtd_irrigacao = qtd_irrigacao
     
     @property
     def preco_alimento(self) -> int:
-        return self.__preco_alimento
+        return self._preco_alimento
     
     @preco_alimento.setter
     def preco_alimento(self, preco_alimento: int):
-        self.__preco_alimento = preco_alimento
+        self._preco_alimento = preco_alimento
     
     @property
     def qtd_alimento(self) -> int:
-        return self.__qtd_alimento
+        return self._qtd_alimento
     
     @qtd_alimento.setter
     def qtd_alimento(self, qtd_alimento: int):
-        self.__qtd_alimento = qtd_alimento
+        self._qtd_alimento = qtd_alimento
     
     def perfilAlimento(alimento_buscado):
         retornoPerfil = Funcoes.menuCabecalho()

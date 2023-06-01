@@ -4,52 +4,52 @@ from Funcoes import Funcoes
 
 class Destino:
     def __init__(self, id_destino: int = None, endereco_destino: str = None, responsavel_destino: str = None, cel_destino: str = None, qtd_dependentes_destino: int = None, receptores_destino: list = None):
-        self.__id_destino = id_destino
-        self.__endereco_destino = endereco_destino
-        self.__responsavel_destino = responsavel_destino
-        self.__cel_destino = cel_destino
-        self.__qtd_dependentes_destino = qtd_dependentes_destino
+        self._id_destino = id_destino
+        self._endereco_destino = endereco_destino
+        self._responsavel_destino = responsavel_destino
+        self._cel_destino = cel_destino
+        self._qtd_dependentes_destino = qtd_dependentes_destino
         self._receptores_destino = receptores_destino if receptores_destino is not None else []
 
     @property
     def id_destino(self) -> int:
-        return self.__id_destino
+        return self._id_destino
 
     @id_destino.setter
     def id_destino(self, id_destino: int):
-        self.__id_destino = id_destino
+        self._id_destino = id_destino
 
     @property
     def endereco_destino(self) -> str:
-        return self.__endereco_destino
+        return self._endereco_destino
 
     @endereco_destino.setter
     def endereco_destino(self, endereco_destino: str):
-        self.__endereco_destino = endereco_destino
+        self._endereco_destino = endereco_destino
 
     @property
     def responsavel_destino(self) -> str:
-        return self.__responsavel_destino
+        return self._responsavel_destino
 
     @responsavel_destino.setter
     def responsavel_destino(self, responsavel_destino: str):
-        self.__responsavel_destino = responsavel_destino
+        self._responsavel_destino = responsavel_destino
 
     @property
     def cel_destino(self) -> str:
-        return self.__cel_destino
+        return self._cel_destino
 
     @cel_destino.setter
     def cel_destino(self, cel_destino: str):
-        self.__cel_destino = cel_destino
+        self._cel_destino = cel_destino
 
     @property
     def qtd_dependentes_destino(self) -> int:
-        return self.__qtd_dependentes_destino
+        return self._qtd_dependentes_destino
 
     @qtd_dependentes_destino.setter
     def qtd_dependentes_destino(self, qtd_dependentes_destino: int):
-        self.__qtd_dependentes_destino = qtd_dependentes_destino
+        self._qtd_dependentes_destino = qtd_dependentes_destino
 
     @property
     def receptores_destino(self):
@@ -71,11 +71,11 @@ class Destino:
             retornoPerfil += "NENHUM RECEPTOR RESPONSÁVEL.\n"
         else:
             for i, receptor in enumerate(destino_buscado.receptores_destino):
-                destino_numero = f"{i+1:02d}"
+                receptor_numero = f"{i+1:02d}"
                 if i == 0:
-                    retornoPerfil += f"\n 06.{destino_numero}. ID: {receptor.id_usuario} | NOME: {receptor.nome_usuario}\n"
+                    retornoPerfil += f"\n 06.{receptor_numero}. ID: {receptor.id_usuario} | NOME: {receptor.nome_usuario}\n"
                 else:
-                    retornoPerfil += f" 06.{destino_numero}. ID: {receptor.id_usuario} | NOME: {receptor.nome_usuario}\n"
+                    retornoPerfil += f" 06.{receptor_numero}. ID: {receptor.id_usuario} | NOME: {receptor.nome_usuario}\n"
         retornoPerfil += "07. SAIR\n"
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
@@ -174,11 +174,11 @@ class Destino:
                         adicionar = False
 
         except ValueError as value_error:
-            print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO NOVO DESTINO:")
+            print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO NOVO RECEPTOR:")
             print(str(value_error))
 
         except Exception as e:
-            print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO DESTINO DO RECEPTOR:")
+            print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO RECEPTOR DO DESTINO:")
             print(str(e))
         
         # CRIANDO CONEXÃO COM O BANCO DE DADOS
