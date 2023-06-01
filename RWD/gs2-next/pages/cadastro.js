@@ -112,6 +112,7 @@ export default function Cadastro() {
     }
 
     return (
+        
         <div className={fontBody.className}>
             <Menu />
             <main className='form-wrapper' id='login'>

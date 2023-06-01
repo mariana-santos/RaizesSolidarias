@@ -3,10 +3,10 @@ import './style.css'
 export default function Campo (props){
     const { label, errorMsg, id, icon, 
             type, placeholder, value, temMask,
-            onChange, accept, onKeyUp,
+            onChange, accept, onKeyUp, disabled, min
         } = props
     return(
-        <div className='campo'>
+        <div className={`campo ${disabled ? 'disabled' : ''} ${icon ? 'has-icon' : ''}`}>
             <label htmlFor={id}>{label}</label>
             <div className="wrap_input">
                 {icon}
@@ -19,6 +19,8 @@ export default function Campo (props){
                         onChange={onChange}
                         onKeyUp={onKeyUp}
                         accept={accept}
+                        disabled={disabled}
+                        min={min}
                     />
                 }
             </div>
