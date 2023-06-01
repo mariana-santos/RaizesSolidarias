@@ -39,9 +39,9 @@ public class AgendamentoDAO extends Repository {
 	 */
 	public ArrayList<Agendamento> listarAgendamentos() {
 	    String sql = "SELECT a.id_agendamento, a.data_agendamento, a.turno_agendamento, "
-	            + "u.id_agendamento, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario, u.data_registro_usuario "
+	            + "u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario, u.data_registro_usuario "
 	            + "FROM agendamento a "
-	            + "LEFT JOIN usuario u ON a.id_agendamento = u.id_agendamento "
+	            + "LEFT JOIN usuario u ON a.id_usuario = u.id_usuario "
 	            + "WHERE a.id_agendamento IS NOT NULL";
 
 	    PreparedStatement ps = null;

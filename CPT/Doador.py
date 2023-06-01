@@ -5,7 +5,7 @@ from Usuario import Usuario
 
 class Doador(Usuario):
     def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, nivel_doador: int = None, moedas_doador: int = None):
-        super().__init__(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
+        super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._nivel_doador = nivel_doador
         self._moedas_doador = moedas_doador
 

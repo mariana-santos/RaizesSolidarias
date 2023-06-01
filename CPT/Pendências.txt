@@ -1,6 +1,3 @@
-- Tabelas Relacionais:
-    Colheita_Voluntario
-    Plantio_Colheita
-    Plantio_Voluntario
+- Popular os objetos com as tabelas n para n (parei no receptor_destino, classe Funções linha 621)
 
 - Programa

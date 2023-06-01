@@ -7,42 +7,42 @@ from Usuario import Usuario
 
 class Agendamento:
     def __init__(self, id_agendamento: int = None, data_agendamento: str = None, turno_agendamento: str = None, usuario: Usuario = None):
-        self.__id_agendamento = id_agendamento
-        self.__data_agendamento = data_agendamento
-        self.__turno_agendamento = turno_agendamento
-        self.__usuario = usuario
+        self._id_agendamento = id_agendamento
+        self._data_agendamento = data_agendamento
+        self._turno_agendamento = turno_agendamento
+        self._usuario = usuario
 
     @property
     def id_agendamento(self) -> int:
-        return self.__id_agendamento
+        return self._id_agendamento
 
     @id_agendamento.setter
     def id_agendamento(self, id_agendamento: int):
-        self.__id_agendamento = id_agendamento
+        self._id_agendamento = id_agendamento
 
     @property
     def data_agendamento(self) -> str:
-        return self.__data_agendamento
+        return self._data_agendamento
 
     @data_agendamento.setter
     def data_agendamento(self, data_agendamento: str):
-        self.__data_agendamento = data_agendamento
+        self._data_agendamento = data_agendamento
 
     @property
     def turno_agendamento(self) -> str:
-        return self.__turno_agendamento
+        return self._turno_agendamento
 
     @turno_agendamento.setter
     def turno_agendamento(self, turno_agendamento: str):
-        self.__turno_agendamento = turno_agendamento
+        self._turno_agendamento = turno_agendamento
 
     @property
     def usuario(self) -> Usuario:
-        return self.__usuario
+        return self._usuario
 
     @usuario.setter
     def usuario(self, usuario: Usuario):
-        self.__usuario = usuario
+        self._usuario = usuario
 
     def perfilAgendamento(agendamento_buscado):
         retornoPerfil = Funcoes.menuCabecalho()

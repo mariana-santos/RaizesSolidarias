@@ -7,42 +7,42 @@ from Funcoes import Funcoes
 
 class Doacao:
     def __init__(self, id_doacao: int = None, doador: Doador = None, data_doacao: str = None, qtd_moedas_doacao: int = None):
-        self.__id_doacao = id_doacao
-        self.__doador = doador
-        self.__data_doacao = data_doacao
-        self.__qtd_moedas_doacao = qtd_moedas_doacao
+        self._id_doacao = id_doacao
+        self._doador = doador
+        self._data_doacao = data_doacao
+        self._qtd_moedas_doacao = qtd_moedas_doacao
 
     @property
     def id_doacao(self) -> int:
-        return self.__id_doacao
+        return self._id_doacao
 
     @id_doacao.setter
     def id_doacao(self, id_doacao: int):
-        self.__id_doacao = id_doacao
+        self._id_doacao = id_doacao
 
     @property
     def doador(self) -> Doador:
-        return self.__doador
+        return self._doador
 
     @doador.setter
     def doador(self, doador: Doador):
-        self.__doador = doador
+        self._doador = doador
 
     @property
     def data_doacao(self) -> str:
-        return self.__data_doacao
+        return self._data_doacao
 
     @data_doacao.setter
     def data_doacao(self, data_doacao: str):
-        self.__data_doacao = data_doacao
+        self._data_doacao = data_doacao
 
     @property
     def qtd_moedas_doacao(self) -> int:
-        return self.__qtd_moedas_doacao
+        return self._qtd_moedas_doacao
 
     @qtd_moedas_doacao.setter
     def qtd_moedas_doacao(self, qtd_moedas_doacao: int):
-        self.__qtd_moedas_doacao = qtd_moedas_doacao
+        self._qtd_moedas_doacao = qtd_moedas_doacao
 
     def perfilDoacao(doacao_buscada):
         retornoPerfil = Funcoes.menuCabecalho()

@@ -4,6 +4,8 @@ import time
 from datetime import datetime
 from tqdm import tqdm
 
+from Receptor import Receptor
+
 class Funcoes:
 
     # MENUS
@@ -616,25 +618,57 @@ class Funcoes:
             print(f"OCORREU UM ERRO AO BUSCAR AS COLHEITAS NO BANCO DE DADOS: {str(e)}")
             return None
 
+    # PAREI AQUI!
+
     def buscarDestinosBanco(dsn, Destino):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
-            cursor = conn.cursor()
+            cursor_destino = conn.cursor()
 
             listaDestinos = []
-            cursor.execute("""
+            cursor_destino.execute("""
                 SELECT * FROM destino ORDER BY id_destino
             """)
 
-            for row in cursor:
+            for destino_row in cursor_destino:
                 destino_banco = Destino(
-                    id_destino = row[0],
-                    endereco_destino = row[1],
-                    responsavel_destino = row[2],
-                    cel_destino = row[3],
-                    qtd_dependentes_destino = row[4]
+                    id_destino = destino_row[0],
+                    endereco_destino = destino_row[1],
+                    responsavel_destino = destino_row[2],
+                    cel_destino = destino_row[3],
+                    qtd_dependentes_destino = destino_row[4],
+                    receptores_destino = []
                 )
+
+                cursor_receptor = conn.cursor()
+                cursor_receptor.execute("""
+                    SELECT rd.id_usuario, 
+                    u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario, 
+                    r.carga_receptor, r.endereco_receptor 
+                    FROM Receptor_Destino rd 
+                    JOIN Receptor r ON rd.id_usuario = r.id_usuario 
+                    JOIN Usuario u ON rd.id_usuario = u.id_usuario 
+                    JOIN Destino d ON rd.id_destino = d.id_destino 
+                    WHERE rd.id_destino = :id_destino 
+                    ORDER BY rd.id_usuario
+                """, {"id_destino": destino_banco.id_destino})
+
+                for receptor_row in cursor_receptor:
+                    receptor_destino_banco = Receptor(
+                        id_usuario = receptor_row[0],
+                        cpf_usuario = receptor_row[1],
+                        nome_usuario = receptor_row[2],
+                        email_usuario = receptor_row[3],
+                        senha_usuario = receptor_row[4],
+                        status_usuario = receptor_row[5],
+                        carga_receptor = receptor_row[6],
+                        endereco_receptor = receptor_row[7]
+                    )
+                    autor_banco.livros.append(livro)
+
+                cursor_livro.close()
+                lista_autores.append(autor_banco)
 
                 listaDestinos.append(destino_banco)
 
@@ -645,7 +679,7 @@ class Funcoes:
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE DESTINOS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
-            Funcoes.disconnect(conn, cursor)
+            Funcoes.disconnect(conn, cursor_destino)
 
             return listaDestinos
         except Exception as e:

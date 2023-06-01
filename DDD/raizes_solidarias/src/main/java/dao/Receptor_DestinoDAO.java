@@ -39,7 +39,7 @@ public class Receptor_DestinoDAO extends Repository {
 	 */
 	public ArrayList<Receptor_Destino> listarReceptor_Destinos() {
 		String sql = "SELECT rd.id_usuario,"
-	            + " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
+	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
@@ -112,7 +112,7 @@ public class Receptor_DestinoDAO extends Repository {
 	 */
 	public ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdUsuario(int id_usuario) {
 		String sql = "SELECT rd.id_usuario,"
-	            + " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
+	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
@@ -188,7 +188,7 @@ public class Receptor_DestinoDAO extends Repository {
 	 */
 	public ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdDestino(int id_destino) {
 		String sql = "SELECT rd.id_usuario,"
-	            + " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
+	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
@@ -264,7 +264,7 @@ public class Receptor_DestinoDAO extends Repository {
 	 */
 	public static Receptor_Destino buscarReceptor_DestinoPorIds(int id_usuario, int id_destino) {
 		String sql = "SELECT rd.id_usuario,"
-	            + " u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
+	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
