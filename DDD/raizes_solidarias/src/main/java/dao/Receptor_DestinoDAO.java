@@ -41,6 +41,8 @@ public class Receptor_DestinoDAO extends Repository {
 		String sql = "SELECT rd.id_usuario,"
 	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
+	            + " rd.id_destino,"
+	            + " d.id_destino, d.endereco_destino, d.responsavel_destino, d.cel_destino, d.qtd_dependentes_destino"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
 	            + " JOIN Usuario u ON rd.id_usuario = u.id_usuario"
@@ -114,12 +116,14 @@ public class Receptor_DestinoDAO extends Repository {
 		String sql = "SELECT rd.id_usuario,"
 	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
+	            + " rd.id_destino,"
+	            + " d.id_destino, d.endereco_destino, d.responsavel_destino, d.cel_destino, d.qtd_dependentes_destino"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
 	            + " JOIN Usuario u ON rd.id_usuario = u.id_usuario"
 	            + " JOIN Destino d ON rd.id_destino = d.id_destino"
-	            + " ORDER BY rd.id_usuario"
-	            + " WHERE rd.id_usuario = ?";
+	            + " WHERE rd.id_usuario = ?"
+	            + " ORDER BY rd.id_usuario";	            
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
