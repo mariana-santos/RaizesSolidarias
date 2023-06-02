@@ -134,4 +134,38 @@ public class UsuarioResource {
 			return response.build();
 		}
 	}
+
+	/**
+	 * Valida o login de um usuário.
+	 *
+	 * @param usuarioLogin O objeto Usuário contendo o email e a senha do usuário a serem validados.
+	 * @return A resposta HTTP com o status e o objeto Usuário logado em caso de sucesso,
+	 *         ou uma resposta HTTP de erro com uma mensagem em caso de falha na validação do login.
+	 */
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Response validarLogin(Usuario usuarioLogin) {
+	    String email_usuario = usuarioLogin.getEmail_usuario();
+	    String senha_usuario = usuarioLogin.getSenha_usuario();
+
+	    try {
+	        Usuario usuario_logado = UsuarioService.validarLogin(email_usuario, senha_usuario);
+
+	        if (usuario_logado != null) {
+	            if ("Excluído".equals(usuario_logado.getStatus_usuario())) {
+	                return Response.status(401).entity("Usuário inativo, favor entrar em contato com a administração.").build();
+	            } else {
+	                ResponseBuilder response = Response.ok();
+	                response.entity(usuario_logado);
+	                return response.build();
+	            }
+	        } else {
+	            return Response.status(401).entity("Email e/ou senha incorretos.").build();
+	        }
+	    } catch (NullPointerException e) {
+	        e.printStackTrace();
+	        return Response.status(401).entity("Email e/ou senha incorretos.").build();
+	    }
+	}
 }

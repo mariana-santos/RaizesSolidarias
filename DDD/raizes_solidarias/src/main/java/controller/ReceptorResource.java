@@ -80,20 +80,22 @@ public class ReceptorResource {
 	/**
 	 * Cadastra um novo Receptor no sistema.
 	 *
-	 * @param receptor_novo o objeto Receptor contendo os dados do Receptor (Usuario) a ser cadastrado.
+	 * @param idUsuarioExistente O ID do usuário existente.
+	 * @param receptor_novo     O objeto Receptor contendo os dados do Receptor (Usuario) a ser cadastrado.
 	 * @return uma resposta contendo o Receptor cadastrado em formato JSON.
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrarReceptor(@Valid Receptor receptor_novo) {
-		Receptor resp = ReceptorService.cadastrarReceptor(receptor_novo);
-		final URI receptorUri = UriBuilder.fromResource(ReceptorResource.class).path("/receptor/{id}")
-				.build(resp.getId_usuario());
-		ResponseBuilder response = Response.created(receptorUri);
+	    Receptor resp = ReceptorService.cadastrarReceptor(receptor_novo);
+	    final URI receptorUri = UriBuilder.fromResource(ReceptorResource.class)
+	            .path("/receptor/{id}")
+	            .build(resp.getId_usuario());
+	    ResponseBuilder response = Response.created(receptorUri);
 		response.entity(resp);
 		return response.build();
 	}
-	
+
 	/**
 	 * Atualiza os dados de um Receptor existente no sistema.
 	 *

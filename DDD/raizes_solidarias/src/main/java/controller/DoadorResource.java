@@ -85,8 +85,8 @@ public class DoadorResource {
 	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response cadastrarUsuarioDoador(@Valid Doador doador_novo) {
-		Doador resp = DoadorService.cadastrarUsuarioDoador(doador_novo);
+	public Response cadastrarDoador(@Valid Doador doador_novo) {
+		Doador resp = DoadorService.cadastrarDoador(doador_novo);
 		final URI doadorUri = UriBuilder.fromResource(DoadorResource.class).path("/doador/{id}")
 				.build(resp.getId_usuario());
 		ResponseBuilder response = Response.created(doadorUri);
@@ -102,9 +102,9 @@ public class DoadorResource {
 	 * @return uma resposta indicando o sucesso ou falha da operação.
 	 */
 	@PUT
-	@Path("/{id}")
+	@Path("/{id_usuario}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizarDoador(@PathParam("id") int id_usuario, @Valid Doador doador) {
+	public Response atualizarDoador(@PathParam("id_usuario") int id_usuario, @Valid Doador doador) {
 		if (DoadorService.atualizarDoador(id_usuario, doador)) {
 			return Response.ok().build();
 		} else {
@@ -115,7 +115,6 @@ public class DoadorResource {
 		}
 
 	}
-	
 	
 	/**
 	 * Remove um Doador do sistema.

@@ -85,4 +85,21 @@ public class UsuarioService {
 			return false;
 		}
 	}
+
+	/**
+	 * Verifica se as credenciais de login do Usuário são válidas.
+	 *
+	 * @param email_usuario o email do Usuário
+	 * @param senha_usuario a senha do Usuário
+	 * @return o Usuário correspondente às credenciais de login válidas, ou null se as credenciais forem inválidas
+	 */
+	public static Usuario validarLogin(String email_usuario, String senha_usuario) {
+	    Usuario usuario_login = UsuarioDAO.buscarUsuarioPorEmail(email_usuario);
+
+	    if (usuario_login != null && senha_usuario.equals(usuario_login.getSenha_usuario())) {
+	        return usuario_login;
+	    } else {
+	        return null;
+	    }
+	}
 }

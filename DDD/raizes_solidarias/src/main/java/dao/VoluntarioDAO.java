@@ -251,53 +251,6 @@ public class VoluntarioDAO extends Repository {
 	public static Voluntario cadastrarVoluntario(@Valid Voluntario voluntario_novo) {
 
 	// @formatter:off
-    String sql_usuario = "BEGIN INSERT INTO usuario ("
-            + " id_usuario,"
-            + " cpf_usuario,"
-            + " nome_usuario,"
-			+ " email_usuario,"
-			+ " cel_usuario,"
-			+ " senha_usuario,"
-			+ " status_usuario"
-            + ") VALUES ("
-            + " SQ_USUARIO.nextval,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?"
-			+ ") "
-            + "RETURNING id_usuario INTO ?; END;";
-    // @formatter:on
-
-		CallableStatement cs_usuario = null;
-
-		try {
-			cs_usuario = getConnection().prepareCall(sql_usuario);
-			cs_usuario.setString(1, voluntario_novo.getCpf_usuario());
-			cs_usuario.setString(2, voluntario_novo.getNome_usuario());
-			cs_usuario.setString(3, voluntario_novo.getEmail_usuario());
-			cs_usuario.setString(4, voluntario_novo.getCel_usuario());
-			cs_usuario.setString(5, voluntario_novo.getSenha_usuario());
-			cs_usuario.setString(6, voluntario_novo.getStatus_usuario());
-			cs_usuario.registerOutParameter(7, java.sql.Types.INTEGER);
-			cs_usuario.executeUpdate();
-			voluntario_novo.setId_usuario(cs_usuario.getInt(7));
-		} catch (SQLException e) {
-			System.out.println("Não foi possível cadastrar novo USUARIO no banco de dados: " + e.getMessage());
-			return null;
-		} finally {
-			if (cs_usuario != null) {
-				try {
-					cs_usuario.close();
-				} catch (SQLException e) {
-					System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
-				}
-			}
-		}
-
-	// @formatter:off
     String sql_voluntario = "INSERT INTO voluntario ("
             + " id_usuario,"
     		+ " data_registro_voluntario"

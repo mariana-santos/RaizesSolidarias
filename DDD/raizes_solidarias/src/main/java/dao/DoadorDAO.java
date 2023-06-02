@@ -249,57 +249,9 @@ public class DoadorDAO extends Repository {
 	 * @param doador_novo O objeto Doador contendo as informações do novo doador.
 	 * @return O objeto Doador cadastrado, ou null se o cadastro falhar.
 	 */
-	public static Doador cadastrarUsuarioDoador(@Valid Doador doador_novo) {
-
+	public static Doador cadastrarDoador(@Valid Doador doador_novo) {
 	// @formatter:off
-    String sql_usuario = "BEGIN INSERT INTO usuario ("
-            + " id_usuario,"
-            + " cpf_usuario,"
-            + " nome_usuario,"
-			+ " email_usuario,"
-			+ " cel_usuario,"
-			+ " senha_usuario,"
-			+ " status_usuario"
-            + ") VALUES ("
-            + " SQ_USUARIO.nextval,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?"
-			+ ") "
-            + "RETURNING id_usuario INTO ?; END;";
-    // @formatter:on
-
-		CallableStatement cs_usuario = null;
-
-		try {
-			cs_usuario = getConnection().prepareCall(sql_usuario);
-			cs_usuario.setString(1, doador_novo.getCpf_usuario());
-			cs_usuario.setString(2, doador_novo.getNome_usuario());
-			cs_usuario.setString(3, doador_novo.getEmail_usuario());
-			cs_usuario.setString(4, doador_novo.getCel_usuario());
-			cs_usuario.setString(5, doador_novo.getSenha_usuario());
-			cs_usuario.setString(6, doador_novo.getStatus_usuario());
-			cs_usuario.registerOutParameter(7, java.sql.Types.INTEGER);
-			cs_usuario.executeUpdate();
-			doador_novo.setId_usuario(cs_usuario.getInt(7));
-		} catch (SQLException e) {
-			System.out.println("Não foi possível cadastrar novo USUARIO no banco de dados: " + e.getMessage());
-			return null;
-		} finally {
-			if (cs_usuario != null) {
-				try {
-					cs_usuario.close();
-				} catch (SQLException e) {
-					System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
-				}
-			}
-		}
-
-	// @formatter:off
-    String sql_doador = "INSERT INTO doador ("
+    String sql = "INSERT INTO doador ("
             + " id_usuario,"
     		+ " nivel_doador,"
             + " moedas_doador"
@@ -310,21 +262,21 @@ public class DoadorDAO extends Repository {
             + ") ";
     // @formatter:on
 
-		CallableStatement cs_doador = null;
+		CallableStatement cs = null;
 
 		try {
-			cs_doador = getConnection().prepareCall(sql_doador);
-			cs_doador.setInt(1, doador_novo.getId_usuario());
-			cs_doador.setInt(2, doador_novo.getNivel_doador());
-			cs_doador.setInt(3, doador_novo.getMoedas_doador());
-			cs_doador.executeUpdate();
+			cs = getConnection().prepareCall(sql);
+			cs.setInt(1, doador_novo.getId_usuario());
+			cs.setInt(2, doador_novo.getNivel_doador());
+			cs.setInt(3, doador_novo.getMoedas_doador());
+			cs.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Não foi possível cadastrar novo DOADOR no banco de dados: " + e.getMessage());
 			return null;
 		} finally {
-			if (cs_doador != null) {
+			if (cs != null) {
 				try {
-					cs_doador.close();
+					cs.close();
 				} catch (SQLException e) {
 					System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
 				}

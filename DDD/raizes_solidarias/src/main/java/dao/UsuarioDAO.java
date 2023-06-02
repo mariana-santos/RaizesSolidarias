@@ -140,6 +140,62 @@ public class UsuarioDAO extends Repository {
 	}
 	
 	/**
+	 * Busca um usuário no banco de dados pelo email do usuário.
+	 *
+	 * @param email_usuario O email do usuário do usuário a ser buscado.
+	 * @return O objeto Usuário correspondente ao registro encontrado, ou null se nenhum registro for encontrado.
+	 */
+	public static Usuario buscarUsuarioPorEmail(String email_usuario) {
+		String sql = "SELECT * FROM usuario WHERE UPPER(usuario.email_usuario) = UPPER(?)";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			ps = getConnection().prepareStatement(sql);
+			ps.setString(1, email_usuario);
+			rs = ps.executeQuery();
+
+			if (rs.isBeforeFirst()) {
+				Usuario usuario = new Usuario();
+				while (rs.next()) {
+					usuario.setId_usuario(rs.getInt("id_usuario"));
+					usuario.setCpf_usuario(rs.getString("cpf_usuario"));
+					usuario.setNome_usuario(rs.getString("nome_usuario"));
+					usuario.setEmail_usuario(rs.getString("email_usuario"));
+					usuario.setCel_usuario(rs.getString("cel_usuario"));
+					usuario.setSenha_usuario(rs.getString("senha_usuario"));
+					usuario.setStatus_usuario(rs.getString("status_usuario"));
+				}
+
+				return usuario;
+
+			} else {
+				System.out.println("Não foi possível encontrar o email: " + email_usuario + " na tabela USUARIO do banco de dados");
+				return null;
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Não foi possível consultar o USUARIO no banco de dados: " + e.getMessage());
+			return null;
+		} finally {
+			if (ps != null) {
+				try {
+					ps.close();
+				} catch (SQLException e) {
+					System.out.println("Não foi possível fechar o Prepared Statement: " + e.getMessage());
+				}
+			}
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					System.out.println("Não foi possível fechar o Result Set: " + e.getMessage());
+				}
+			}
+		}
+	}	
+	
+	/**
 	 * Atualiza um usuário no banco de dados.
 	 *
 	 * @param usuario o objeto Usuario com as informações atualizadas
