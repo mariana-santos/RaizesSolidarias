@@ -60,7 +60,8 @@ a {
   color: #fff;
   transition: .25s;
   border: none;
-  font-family: 'QuickSand', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  cursor: pointer;
 }
 
 .btn:hover{
