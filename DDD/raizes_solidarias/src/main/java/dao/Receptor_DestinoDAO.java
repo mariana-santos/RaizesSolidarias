@@ -112,7 +112,7 @@ public class Receptor_DestinoDAO extends Repository {
 	 *
 	 * @return uma Receptor_Destino de acordo com o ID do Receptor.
 	 */
-	public ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdUsuario(int id_usuario) {
+	public static ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdUsuario(int id_usuario) {
 		String sql = "SELECT rd.id_usuario,"
 	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
@@ -128,7 +128,6 @@ public class Receptor_DestinoDAO extends Repository {
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
 	    ArrayList<Receptor_Destino> listaReceptor_Destinos = new ArrayList<>();
-	    
 	    
 	    try {
 	        ps = getConnection().prepareStatement(sql);
@@ -190,16 +189,18 @@ public class Receptor_DestinoDAO extends Repository {
 	 *
 	 * @return uma lista de Receptor_Destinos de acordo com o ID do Destino.
 	 */
-	public ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdDestino(int id_destino) {
+	public static ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdDestino(int id_destino) {
 		String sql = "SELECT rd.id_usuario,"
 	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
+	            + " rd.id_destino,"
+	            + " d.id_destino, d.endereco_destino, d.responsavel_destino, d.cel_destino, d.qtd_dependentes_destino"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
 	            + " JOIN Usuario u ON rd.id_usuario = u.id_usuario"
 	            + " JOIN Destino d ON rd.id_destino = d.id_destino"
-	            + " ORDER BY rd.id_usuario"
-	            + " WHERE rd.id_destino = ?";
+	            + " WHERE rd.id_destino = ?"
+	            + " ORDER BY rd.id_usuario";	 
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -270,12 +271,14 @@ public class Receptor_DestinoDAO extends Repository {
 		String sql = "SELECT rd.id_usuario,"
 	            + " u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario,"
 	            + " r.carga_receptor, r.endereco_receptor,"
+	            + " rd.id_destino,"
+	            + " d.id_destino, d.endereco_destino, d.responsavel_destino, d.cel_destino, d.qtd_dependentes_destino"
 	            + " FROM Receptor_Destino rd"
 	            + " JOIN Receptor r ON rd.id_usuario = r.id_usuario"
 	            + " JOIN Usuario u ON rd.id_usuario = u.id_usuario"
 	            + " JOIN Destino d ON rd.id_destino = d.id_destino"
-	            + " ORDER BY rd.id_usuario"
-	            + " WHERE rd.id_usuario = ? AND rd.id_destino = ?";
+	            + " WHERE rd.id_usuario = ? AND rd.id_destino = ?"
+	            + " ORDER BY rd.id_usuario";
 
 	    PreparedStatement ps = null;
 	    ResultSet rs = null;
@@ -343,7 +346,7 @@ public class Receptor_DestinoDAO extends Repository {
 	 * @param id_destino 		o id da destino a ser atualizada.
 	 * @return true se o Receptor_Destino for atualizado com sucesso, false caso contrário
 	 */
-	public static boolean atualizarReceptor_Destino(int id_usuario_novo, int id_usuario_antigo, int id_destino_novo, int id_destino_antigo) {
+	public static boolean atualizarReceptor_Destino(int id_destino_novo, int id_destino_antigo, int id_usuario_novo, int id_usuario_antigo) {
 		String sql = "UPDATE receptor_destino SET id_usuario = ?, id_destino = ? WHERE id_usuario = ? AND id_destino = ?";
 		CallableStatement cs = null;
 
@@ -392,30 +395,17 @@ public class Receptor_DestinoDAO extends Repository {
 	            + ")";
 
 	    PreparedStatement ps = null;
-	    ResultSet rs = null;
 
 	    try {
 	        ps = getConnection().prepareStatement(sql, new String[] {"id_usuario", "id_destino"});
 	        ps.setInt(1, receptor_destino_novo.getReceptor().getId_usuario());
 	        ps.setInt(2, receptor_destino_novo.getDestino().getId_destino());
 	        ps.executeUpdate();
-	        rs = ps.getGeneratedKeys();
-	        if (rs.next()) {
-	            receptor_destino_novo.getReceptor().setId_usuario(rs.getInt("id_usuario"));
-	            receptor_destino_novo.getDestino().setId_destino(rs.getInt("id_destino"));
-	        }
 
 	        return receptor_destino_novo;
 	    } catch (SQLException e) {
 	        System.out.println("Não foi possível cadastrar novo RECEPTOR_DESTINO no banco de dados: " + e.getMessage());
 	    } finally {
-	        if (rs != null) {
-	            try {
-	                rs.close();
-	            } catch (SQLException e) {
-	                System.out.println("Não foi possível fechar o ResultSet: " + e.getMessage());
-	            }
-	        }
 	        if (ps != null) {
 	            try {
 	                ps.close();

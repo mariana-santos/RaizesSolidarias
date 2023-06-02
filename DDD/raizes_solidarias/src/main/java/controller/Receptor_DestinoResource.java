@@ -13,7 +13,6 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
@@ -55,12 +54,56 @@ public class Receptor_DestinoResource {
 		response.entity(retorno);
 		return response.build();
 	}
+
+	/**
+	 * Recupera uma lista Receptor_Destino pelo seu ID Receptor (Usuário).
+	 *
+	 * @param id_usuario o ID do Receptor (Usuário) a ser buscado.
+	 * @return uma resposta contendo uma lista de Receptor_Destino em formato JSON.
+	 */
+	@GET
+	@Path("/receptor/{id_usuario}")
+	public Response exibirReceptor_DestinoPorIdUsuario(@PathParam("id_usuario") int id_usuario) {
+		ArrayList<Receptor_Destino> receptor_destino_buscado = Receptor_DestinoDAO.buscarReceptor_DestinoPorIdUsuario(id_usuario);
+
+		if (receptor_destino_buscado != null) {
+			ResponseBuilder response = Response.ok();
+			response.entity(receptor_destino_buscado);
+			return response.build();
+		} else {
+			ResponseBuilder response = Response.status(404)
+					.entity("Não foi possível encontrar o RECEPTOR_DESTINO de id_usuario: " + id_usuario);
+			return response.build();
+		}
+	}
 	
 	/**
-	 * Recupera um Receptor_Destino pelo seu ID Receptor e ID Destino (Usuario).
+	 * Recupera uma lista de Receptor_Destino pelo seu ID Destino.
 	 *
-	 * @param id_usuario o ID do Receptor a ser buscado.
-	 * @param id_destino o ID do Destino (Usuario) a ser buscado.
+	 * @param id_destino o ID do Destino a ser buscado.
+	 * @return uma resposta contendo uma lista de Receptor_Destino em formato JSON.
+	 */
+	@GET
+	@Path("/destino/{id_destino}")
+	public Response exibirReceptor_DestinoPorIdDestino(@PathParam("id_destino") int id_destino) {
+		ArrayList<Receptor_Destino> receptor_destino_buscado = Receptor_DestinoDAO.buscarReceptor_DestinoPorIdDestino(id_destino);
+
+		if (receptor_destino_buscado != null) {
+			ResponseBuilder response = Response.ok();
+			response.entity(receptor_destino_buscado);
+			return response.build();
+		} else {
+			ResponseBuilder response = Response.status(404)
+					.entity("Não foi possível encontrar o RECEPTOR_DESTINO de id_destino: " + id_destino);
+			return response.build();
+		}
+	}
+	
+	/**
+	 * Recupera um Receptor_Destino pelo seu ID Receptor (Usuário) e ID Destino.
+	 *
+	 * @param id_usuario o ID do Receptor (Usuário) a ser buscado.
+	 * @param id_destino o ID do Destino a ser buscado.
 	 * @return uma resposta contendo o Receptor_Destino em formato JSON.
 	 */
 	@GET
@@ -99,25 +142,24 @@ public class Receptor_DestinoResource {
 	/**
 	 * Atualiza os dados de um Receptor_Destino existente no sistema.
 	 *
-	 * @param id_usuario_novo	o ID do Receptor a ser atualizado.
-	 * @param id_usuario_antigo o ID do Receptor que será atualizado.
-	 * @param id_destino_novo 	o ID do Usuario a ser atualizado.
-	 * @param id_destino_antigo	o ID do Usuario que será atualizado.
+	 * @param id_destino_novo	o ID do Destino a ser atualizado.
+	 * @param id_destino_antigo o ID do Destino que será atualizado.
+	 * @param id_usuario_novo 	o ID do Receptor (Usuário) a ser atualizado.
+	 * @param id_usuario_antigo	o ID do Receptor (Usuário) que será atualizado.
 	 * @return uma resposta indicando o sucesso ou falha da operação.
 	 */
 	@PUT
-	@Path("/{id_usuario_antigo}/{id_destino_antigo}")
+	@Path("/{id_destino_antigo}-{id_usuario_antigo}/{id_destino_novo}-{id_usuario_novo}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizarReceptor_Destino(@QueryParam("id_usuario_novo") int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo, @QueryParam("id_destino_novo") int id_destino_novo, @PathParam("id_destino_antigo") int id_destino_antigo) {
-		if (Receptor_DestinoService.atualizarReceptor_Destino(id_usuario_novo, id_usuario_antigo, id_destino_novo, id_destino_antigo)) {
+	public Response atualizarReceptor_Destino(@PathParam("id_destino_novo") int id_destino_novo, @PathParam("id_destino_antigo") int id_destino_antigo, @PathParam("id_usuario_novo") int id_usuario_novo, @PathParam("id_usuario_antigo") int id_usuario_antigo) {
+		if (Receptor_DestinoService.atualizarReceptor_Destino(id_destino_novo, id_destino_antigo, id_usuario_novo, id_usuario_antigo)) {
 			return Response.ok().build();
 		} else {
 			return Response.status(404)
-					.entity("Não foi possível atualizar o RECEPTOR_DESTINO de id_usuario: " + id_usuario_antigo + " e id_destino: " + id_destino_antigo
+					.entity("Não foi possível atualizar o RECEPTOR_DESTINO de id_destino: " + id_destino_antigo + " e id_usuario: " + id_usuario_antigo
 							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
 					.build();
 		}
-
 	}
 	
 	/**

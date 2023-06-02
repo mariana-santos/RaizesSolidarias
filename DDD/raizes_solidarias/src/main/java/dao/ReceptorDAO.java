@@ -250,54 +250,7 @@ public class ReceptorDAO extends Repository {
 	 * @return O objeto Receptor cadastrado, ou null se o cadastro falhar.
 	 */
 	public static Receptor cadastrarReceptor(@Valid Receptor receptor_novo) {
-
-	// @formatter:off
-    String sql_usuario = "BEGIN INSERT INTO usuario ("
-            + " id_usuario,"
-            + " cpf_usuario,"
-            + " nome_usuario,"
-			+ " email_usuario,"
-			+ " cel_usuario,"
-			+ " senha_usuario,"
-			+ " status_usuario"
-            + ") VALUES ("
-            + " SQ_USUARIO.nextval,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?,"
-			+ " ?"
-			+ ") "
-            + "RETURNING id_usuario INTO ?; END;";
-    // @formatter:on
-
-		CallableStatement cs_usuario = null;
-
-		try {
-			cs_usuario = getConnection().prepareCall(sql_usuario);
-			cs_usuario.setString(1, receptor_novo.getCpf_usuario());
-			cs_usuario.setString(2, receptor_novo.getNome_usuario());
-			cs_usuario.setString(3, receptor_novo.getEmail_usuario());
-			cs_usuario.setString(4, receptor_novo.getCel_usuario());
-			cs_usuario.setString(5, receptor_novo.getSenha_usuario());
-			cs_usuario.setString(6, receptor_novo.getStatus_usuario());
-			cs_usuario.registerOutParameter(7, java.sql.Types.INTEGER);
-			cs_usuario.executeUpdate();
-			receptor_novo.setId_usuario(cs_usuario.getInt(7));
-		} catch (SQLException e) {
-			System.out.println("Não foi possível cadastrar novo USUARIO no banco de dados: " + e.getMessage());
-			return null;
-		} finally {
-			if (cs_usuario != null) {
-				try {
-					cs_usuario.close();
-				} catch (SQLException e) {
-					System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
-				}
-			}
-		}
-
+		
 	// @formatter:off
     String sql_receptor = "INSERT INTO receptor ("
             + " id_usuario,"
