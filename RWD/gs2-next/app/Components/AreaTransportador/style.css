@@ -73,3 +73,9 @@
 .btn-secondary:hover{
     background: transparent;
 }
+
+@media screen and (max-width: 768px){
+    .destino{
+        width: 100%;
+    }
+}

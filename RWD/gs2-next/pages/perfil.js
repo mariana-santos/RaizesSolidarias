@@ -15,6 +15,7 @@ import Menu from '../app/Components/Menu'
 import Footer from '../app/Components/Footer'
 import DadosGerais from '../app/Components/DadosGerais';
 import AreaVoluntario from '../app/Components/AreaVoluntario';
+import AreaDoador from '../app/Components/AreaDoador';
 
 import { useEffect, useState } from 'react';
 import AreaTransportador from '../app/Components/AreaTransportador';
@@ -59,7 +60,9 @@ export default function Perfil() {
                         <TabPanel value="transportador" className='tab-content'>
                             <AreaTransportador />
                         </TabPanel>
-                        <TabPanel value="doador" className='tab-content'>Área do doador</TabPanel>
+                        <TabPanel value="doador" className='tab-content'>
+                            <AreaDoador />
+                        </TabPanel>
                     </TabContext>
                 </div>
             </main>
