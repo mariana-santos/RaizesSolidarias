@@ -219,8 +219,6 @@ class Plantio:
             for voluntario in voluntarios_plantio:
                 voluntario.adicionar_voluntario(novo_plantio)
 
-            id_plantio = id_plantio + 1
-
             print("PLANTIO CADASTRADO COM SUCESSO!")
 
         except sqlite3.DatabaseError as db_error:

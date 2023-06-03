@@ -73,20 +73,27 @@ class Voluntario(Usuario):
         return retornoPerfil
     
     def cadastrarVoluntario(dsn, id_usuario, listaUsuarios, listaVoluntarios, listaColheitas, listaPlantios):
-        Voluntario.cadastrarUsuario(dsn, id_usuario, listaUsuarios)
-        voluntario_buscado = Funcoes.buscarUsuarioPorId(id_usuario, listaVoluntarios)
+        
+        if (len(listaUsuarios) == 0):
+            input("NENHUM USUÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+
+        else:
+            Funcoes.exibirUsuariosAdmin(listaUsuarios)
+            id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO DOADOR: \n"))
+            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuarios)
+            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuarios)
 
         # INSTANCIANDO NOVO VOLUNTARIO
         novo_voluntario = Voluntario()
 
         # SETANDO OS ATRIBUTOS DO NOVO VOLUNTARIO PARA O NOVO VOLUNTARIO
-        id_usuario = voluntario_buscado.id_usuario
-        cpf_usuario = voluntario_buscado.cpf_usuario
-        nome_usuario = voluntario_buscado.nome_usuario
-        email_usuario = voluntario_buscado.email_usuario
-        cel_usuario = voluntario_buscado.cel_usuario
-        senha_usuario = voluntario_buscado.senha_usuario
-        status_usuario = voluntario_buscado.status_usuario
+        id_usuario = usuario_buscado.id_usuario
+        cpf_usuario = usuario_buscado.cpf_usuario
+        nome_usuario = usuario_buscado.nome_usuario
+        email_usuario = usuario_buscado.email_usuario
+        cel_usuario = usuario_buscado.cel_usuario
+        senha_usuario = usuario_buscado.senha_usuario
+        status_usuario = usuario_buscado.status_usuario
 
         # SETANDO A DATA DE REGISTRO DO NOVO VOLUNTARIO
         data_registro_voluntario = datetime.fromtimestamp(datetime.now().timestamp()).strftime('%d/%m/%Y')
@@ -129,8 +136,6 @@ class Voluntario(Usuario):
             novo_voluntario.plantios_voluntario = plantios_voluntario
 
             listaVoluntarios.append(novo_voluntario)
-
-            id_usuario = id_usuario + 1
 
             print("VOLUNTARIO CADASTRADO COM SUCESSO!")
 
