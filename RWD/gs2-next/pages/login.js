@@ -21,6 +21,8 @@ import { RiLockPasswordLine } from 'react-icons/ri'
 
 import '../app/styles/form.css'
 
+import { useMutation } from 'react-query'
+
 export default function Login() {
 
   const [email, setEmail] = useState('')
@@ -29,35 +31,59 @@ export default function Login() {
   const [senha, setSenha] = useState('')
   const [errorSenha, setErrorSenha] = useState(null)
 
-  const [carregando, setCarregando] = useState(false)
+  const handleLogin = async (dados_usuario) => {
+    const response = await fetch('http://localhost:8080/usuario/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dados_usuario),
+    });
+
+    // TODO: Verificar a razão de não vir response pra mostrar o erro
+    const data = await response.json();
+
+    console.log(data)
+
+    if (!response.ok || data.error) {
+      toast.error(data.error)
+      throw new Error('Erro ao fazer login');
+    }
+
+    else {
+      sessionStorage.setItem('usuario', JSON.stringify(data));
+
+      toast.success('Sucesso no login! Aguarde para ser redirecionado')
+      //Limpando os dados
+      setEmail('')
+      setSenha('')
+
+      setTimeout(() => {
+        window.location.href = '/perfil'
+      }, 2000)
+    }
+
+    return data;
+  };
+
+  const { mutate } = useMutation(handleLogin);
 
   function handleSubmit(e) {
-
     e.preventDefault();
 
     if (validaEmail() && validaSenha()) {
-      // setCarregando(true)
 
-      // fetch(`http://localhost:8080/InvestiumAPI/rest/usuario/${email}/${senha}`)
-      //   .then((resp) => resp.json())
-      //   .then((data) => {
-      //     setCarregando(false)
-      //     if (data.nome && data.email && data.senha) {
-      //       toast.success('Usuário autenticado! Aguarde para ser direcionado.')
-      //       const dadosString = JSON.stringify(data);
-      //       sessionStorage.setItem("dadosUsuario", dadosString);
-      //       setUser(data)
-      //       setTimeout(() => {
-      //         window.location.href = '/perfil'
-      //       }, 2000)
-      //     } else {
-      //       toast.error('Email ou senha incorretos.')
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     console.error(error)
-      //     setCarregando(false)
-      //   });
+      const dados_usuario = {
+        cel_usuario: '(11) 90000-0000)',
+        cpf_usuario: "000.000.000-00",
+        email_usuario: email,
+        id_usuario: 1,
+        nome_usuario: '',
+        senha_usuario: senha,
+        status_usuario: 'Ativo',
+      };
+
+      mutate(dados_usuario)
     }
   }
 
@@ -100,11 +126,16 @@ export default function Login() {
       <Menu />
       <main className='form-wrapper' id='login'>
 
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          closeOnClick
+          pauseOnHover
+        />
+
         <form onSubmit={handleSubmit}>
           <h2>Bem vindo de volta!</h2>
           <small>Para continuar, por favor insira seus dados.</small>
-
-          {/* <img src={ilustracao} /> */}
 
           <Campo
             label="Email"
@@ -130,7 +161,6 @@ export default function Login() {
 
           <button type="submit" className="btn btn_primary arrow">Entrar</button>
 
-          {/* <a className="outros_links" href="#">Esqueceu a senha? <strong>clique aqui</strong></a> */}
           <Link className="outros_links" href="/cadastro">Ainda não possui conta? <strong>clique aqui</strong></Link>
 
         </form>

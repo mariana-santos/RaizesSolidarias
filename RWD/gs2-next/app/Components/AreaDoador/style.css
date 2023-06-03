@@ -50,6 +50,8 @@
 #nova-doacao{
     width: 100%;
     align-items: end;
+        display: flex;
+    flex-wrap: wrap;
 }
 
 .wrap-profile #nova-doacao button{
@@ -60,6 +62,16 @@
 
 #nova-doacao h3{
     width: 100%;
+}
+
+.wrap-btn{
+    width: 50%;
+    padding-left: 1em;
+}
+
+.wrap-btn button{
+    width: calc(100% - 1em) !important;
+    margin-left: auto;
 }
 
 .moeda img.shake {

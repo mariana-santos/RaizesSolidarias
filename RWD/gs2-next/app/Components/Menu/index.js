@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import styles from './index.css'
 import Button from '../Button'
@@ -9,9 +7,16 @@ import { Raleway } from 'next/font/google'
 
 const font = Raleway({ subsets: ['latin'] })
 
+import { useRouter } from 'next/router';
+
+import { useState, useEffect } from 'react';
+
 export default function Menu() {
 
-    React.useEffect(() => {
+    const router = useRouter();
+    const [domLoaded, setDomLoaded] = useState(false);
+
+    useEffect(() => {
         let prevScrollpos = window.pageYOffset;
         window.onscroll = function () {
             let currentScrollPos = window.pageYOffset;
@@ -30,7 +35,18 @@ export default function Menu() {
                 prevScrollpos = currentScrollPos;
             }
         }
+        setDomLoaded(true);
     }, [])
+
+    const usuario = typeof window !== 'undefined' ? JSON.parse(sessionStorage.getItem("usuario")) : null;
+
+    const handleLogout = () => {
+        // Limpeza dos dados no sessionStorage
+        if (typeof window !== 'undefined') {
+            sessionStorage.removeItem('usuario')
+            router.push('/login')
+        }
+    }
 
     return (
         <header>
@@ -44,7 +60,7 @@ export default function Menu() {
                             <Link href="/" id='inicio'>Início</Link>
                         </li>
                         <li>
-                            <a href="/#noticias">Notícias</a>
+                            <Link href="/#noticias">Notícias</Link>
                         </li>
                         <li>
                             <Link href="/combate-a-fome">Combate à fome</Link>
@@ -59,12 +75,24 @@ export default function Menu() {
                 </nav>
             </div>
 
-            <div className='login-area'>
-                    <Link href="/perfil">
-                        <h2>Bem vindo(a), <strong>Mariana!</strong></h2>
-                    </Link>
-                    <p>Faça <Link href="/login">login</Link> ou <Link href="/cadastro">cadastre-se</Link></p>
+            {/* O domloaded garante que tudo foi renderizado antes de pegar os dados do usuário pra prevenir o erro "hydration" do nextjs */}
+            {domLoaded && (
+                <div className='login-area'>
+
+                    {usuario ?
+                        (<h2>Olá, <Link href="/perfil">{usuario.nome_usuario.split(' ')[0]}!</Link></h2>) :
+                        (<h2><Link href="/login">Bem vindo(a)!</Link></h2>)}
+
+                    {usuario ? (
+                        <button onClick={handleLogout}>
+                            sair da minha conta
+                        </button>
+                    ) : (
+                        <p>Faça <Link href="/login">login</Link> ou <Link href="/cadastro">cadastre-se</Link></p>
+                    )}
+
                 </div>
+            )}
         </header>
     )
 }

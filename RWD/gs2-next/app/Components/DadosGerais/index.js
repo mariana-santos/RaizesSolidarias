@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 import Campo from "../Campo"
 
@@ -11,53 +11,81 @@ import { BsTelephone } from 'react-icons/bs'
 
 import { PatternFormat } from 'react-number-format';
 
+import { useMutation } from 'react-query'
+
+import { toast } from "react-toastify"
+
 import '../../styles/form.css'
 
 export default function DadosGerais() {
-    const [nome, setNome] = useState('Mariana Santos')
+    const [nome, setNome] = useState('')
     const [errorNome, setErrorNome] = useState(null)
 
-    const [email, setEmail] = useState('mariana@gmail.com')
+    const [email, setEmail] = useState('')
     const [errorEmail, setErrorEmail] = useState(null)
 
-    const [senha, setSenha] = useState('senha123')
+    const [senha, setSenha] = useState('')
     const [errorSenha, setErrorSenha] = useState(null)
 
     const [cpf, setCpf] = useState('')
     const [errorCpf, setErrorCpf] = useState(null)
 
-    const [celular, setCelular] = useState('(11) 9 5042-6440')
+    const [celular, setCelular] = useState('')
     const [errorCel, setErrorCel] = useState(null)
 
-    const [carregando, setCarregando] = useState(false)
+    const [id, setId] = useState(0)
+
+    useEffect(() => {
+        const usuario = typeof window !== 'undefined' ? JSON.parse(sessionStorage.getItem("usuario")) : null;
+
+        //populando os campos do usuário com os valores existentes
+        if (usuario) {
+            setNome(usuario.nome_usuario);
+            setCelular(usuario.cel_usuario);
+            setCpf(usuario.cpf_usuario);
+            setSenha(usuario.senha_usuario)
+            setEmail(usuario.email_usuario)
+            setId(usuario.id_usuario)
+        }
+    }, [])
+
+    const handleAtualizarUsuario = async (dados_usuario) => {
+        const response = await fetch(`http://localhost:8080/usuario/${dados_usuario.id_usuario}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dados_usuario),
+        });
+
+        if (!response.ok) {
+            toast.error('Erro ao atualizar o usuário');
+            throw new Error('Erro ao atualizar o usuário');
+        }
+    
+        sessionStorage.setItem('usuario', JSON.stringify(dados_usuario));
+        toast.success('Sucesso ao atualizar os dados!');
+    };
+
+    const { mutate } = useMutation(handleAtualizarUsuario);
 
     function handleSubmit(e) {
-
         e.preventDefault();
 
-        if (validaEmail() && validaSenha()) {
-            // setCarregando(true)
+        if (validaCampo(nome, setErrorNome) && validaEmail() && validaCampo(celular, setErrorCel)
+            && validaCampo(cpf, setErrorCpf) && validaSenha()) {
 
-            // fetch(`http://localhost:8080/InvestiumAPI/rest/usuario/${email}/${senha}`)
-            //   .then((resp) => resp.json())
-            //   .then((data) => {
-            //     setCarregando(false)
-            //     if (data.nome && data.email && data.senha) {
-            //       toast.success('Usuário autenticado! Aguarde para ser direcionado.')
-            //       const dadosString = JSON.stringify(data);
-            //       sessionStorage.setItem("dadosUsuario", dadosString);
-            //       setUser(data)
-            //       setTimeout(() => {
-            //         window.location.href = '/perfil'
-            //       }, 2000)
-            //     } else {
-            //       toast.error('Email ou senha incorretos.')
-            //     }
-            //   })
-            //   .catch((error) => {
-            //     console.error(error)
-            //     setCarregando(false)
-            //   });
+            const dados_usuario = {
+                cel_usuario: celular,
+                cpf_usuario: cpf,
+                email_usuario: email,
+                id_usuario: id,
+                nome_usuario: nome,
+                senha_usuario: senha,
+                status_usuario: 'Ativo'
+            };
+
+            mutate(dados_usuario)
         }
     }
 
@@ -95,9 +123,22 @@ export default function DadosGerais() {
         }
     }
 
+    function validaCampo(campo, setError) {
+        //função pra validar se o campo tá vazio ou _ (vindos do patternFormat)
+        if (!validator.isEmpty(campo) && !campo.includes('_')) {
+            setError(null)
+            return true
+        }
+
+        //se cair aqui o campo tá vazio
+        setError('Campo obrigatório!')
+        return false
+    }
+
     return (
         <form onSubmit={handleSubmit}>
-            <h2>Olá, Mariana!</h2>
+
+            <h2>Olá, {nome.split(' ')[0]}!</h2>
             <small>Esses são seus dados de cadastro</small>
 
             <Campo
@@ -130,10 +171,14 @@ export default function DadosGerais() {
                 icon={<BsTelephone />}
                 errorMsg={errorCel}
                 value={celular}
-                onChange={e => setCelular(e.target.value)}
                 temMask
             >
-                <PatternFormat format="(##) 9 #### ####" allowEmptyFormatting mask="_" defaultValue="(11) 9 5042 6440" />
+                <PatternFormat
+                    format="(##) 9#### ####"
+                    allowEmptyFormatting mask="_"
+                    value={celular}
+                    onValueChange={(cel) => setCelular(cel.formattedValue)}
+                />
             </Campo>
 
             <Campo
@@ -143,11 +188,14 @@ export default function DadosGerais() {
                 type="text"
                 icon={<HiOutlineIdentification />}
                 errorMsg={errorCpf}
-                value={cpf}
                 temMask
-                onChange={e => setCpf(e.target.value)}
             >
-                <PatternFormat format="###.###.###-##" allowEmptyFormatting mask="_" />
+                <PatternFormat
+                    format="###.###.###-##"
+                    allowEmptyFormatting mask="_"
+                    value={cpf}
+                    onValueChange={(cpf) => setCpf(cpf.formattedValue)}
+                />
             </Campo>
 
             <Campo
@@ -160,6 +208,8 @@ export default function DadosGerais() {
                 value={senha}
                 onChange={e => setSenha(e.target.value)}
             />
+
+            {/* TODO: ADICIONAR OS CAMPOS DE ENDEREÇO CASO ESSE USUARIO SEJA UM TRANSPORTADOR */}
 
             <button type="submit" className="btn btn_primary arrow">Salvar</button>
 

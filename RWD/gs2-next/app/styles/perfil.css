@@ -59,7 +59,7 @@ button{
     width: 100%;
 }
 
-.campo, .wrap-profile form button{
+.wrap-profile .campo, .wrap-profile form button{
     width: calc(50% - .5em);
 }
 
