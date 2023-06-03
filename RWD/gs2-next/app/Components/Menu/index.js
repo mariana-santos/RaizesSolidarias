@@ -75,6 +75,7 @@ export default function Menu() {
                 </nav>
             </div>
 
+            {/* O domloaded garante que tudo foi renderizado antes de pegar os dados do usuário pra prevenir o erro "hydration" do nextjs */}
             {domLoaded && (
                 <div className='login-area'>
 

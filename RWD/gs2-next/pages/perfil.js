@@ -20,6 +20,8 @@ import AreaDoador from '../app/Components/AreaDoador';
 import { useEffect, useState } from 'react';
 import AreaTransportador from '../app/Components/AreaTransportador';
 
+import { ToastContainer } from 'react-toastify';
+
 export default function Perfil() {
 
     const [value, setValue] = useState("geral");
@@ -31,19 +33,25 @@ export default function Perfil() {
     const [orientation, setOrientation] = useState('vertical')
 
     useEffect(() => {
-        if(typeof window !== undefined)
-            if(window.innerWidth < 768) setOrientation('horizontal')
+        if (typeof window !== undefined)
+            if (window.innerWidth < 768) setOrientation('horizontal')
     }, [])
 
     return (
         <div className={fontBody.className}>
             <Menu />
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                closeOnClick
+                pauseOnHover
+            />
             <main className='wrap-profile'>
                 <div className='wrap-tabs'>
                     <TabContext value={value} id="tab-context">
-                        <TabList onChange={handleChange} aria-label="Perfil do usuário" 
-                                 orientation={orientation} className='tab-list' scrollButtons={false}
-                                 TabIndicatorProps={{sx: {background: '#685a51'}}}
+                        <TabList onChange={handleChange} aria-label="Perfil do usuário"
+                            orientation={orientation} className='tab-list' scrollButtons={false}
+                            TabIndicatorProps={{ sx: { background: '#685a51' } }}
                         >
                             <Tab label="Dados gerais" value="geral" className='tab' />
                             <Tab label="Área do voluntário" value="voluntario" className='tab' />

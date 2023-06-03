@@ -57,28 +57,27 @@ export default function Cadastro() {
         // TODO: Verificar a razão de não vir response pra mostrar o erro
         const data = await response.json();
 
-        if (!response.ok) {
-            toast.error(response)
+        if (!response.ok || data.error) {
+            toast.error(response.error)
             throw new Error('Erro ao cadastrar o usuário');
         }
-
-        console.log(data)
-
-        sessionStorage.setItem('usuario', JSON.stringify(data));
-
-        toast.success('Sucesso no cadastro! Aguarde para ser redirecionado')   
-
-        //Limpando os dados
-        setNome('')
-        setCelular('')
-        setCpf('')
-        setEmail('')
-        setCelular('')
-        setSenha('') 
-
-        setTimeout(() => {
-            window.location.href = '/perfil'
-        }, 2000)
+        else{
+            console.log(data)
+            sessionStorage.setItem('usuario', JSON.stringify(data));
+            toast.success('Sucesso no cadastro! Aguarde para ser redirecionado')   
+    
+            //Limpando os dados
+            setNome('')
+            setCelular('')
+            setCpf('')
+            setEmail('')
+            setCelular('')
+            setSenha('') 
+    
+            setTimeout(() => {
+                window.location.href = '/perfil'
+            }, 2000)
+        }
 
         return data;
     };
