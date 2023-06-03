@@ -82,6 +82,8 @@ public class UsuarioResource {
 	 * @param usuario_novo o objeto Usuario contendo os dados do Usuario a ser cadastrado.
 	 * @return uma resposta contendo o Usuario cadastrado em formato JSON.
 	 */
+
+	//TODO: Enviar os erros de chave restrita violada do banco (email, cpf, celular) na response, caso existam
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrarUsuario(@Valid Usuario usuario_novo) {
@@ -108,8 +110,8 @@ public class UsuarioResource {
 			return Response.ok().build();
 		} else {
 			return Response.status(404)
-					.entity("Não foi possível atualizar o USUARIO de id_usuario: " + id_usuario
-							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
+					.entity("{\"error\": \"Não foi possível atualizar o USUARIO de id_usuario: " + id_usuario
+							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.\"}")
 					.build();
 		}
 
@@ -130,7 +132,7 @@ public class UsuarioResource {
 		} else {
 			System.out.println("Não foi possível remover o USUARIO: " + id_usuario);
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível remover o USUARIO de id_usuario: " + id_usuario);
+					.entity("{\"error\": \"Não foi possível remover o USUARIO de id_usuario: " + id_usuario + "\"}");
 			return response.build();
 		}
 	}
@@ -154,18 +156,18 @@ public class UsuarioResource {
 
 	        if (usuario_logado != null) {
 	            if ("Excluído".equals(usuario_logado.getStatus_usuario())) {
-	                return Response.status(401).entity("Usuário inativo, favor entrar em contato com a administração.").build();
+	                return Response.status(401).entity("{\"error\":\"Usuário inativo, favor entrar em contato com a administração.\"}").build();
 	            } else {
 	                ResponseBuilder response = Response.ok();
 	                response.entity(usuario_logado);
 	                return response.build();
 	            }
 	        } else {
-	            return Response.status(401).entity("Email e/ou senha incorretos.").build();
+	            return Response.status(401).entity("{\"error\":\"Email e/ou senha incorretos.\"}").build();
 	        }
 	    } catch (NullPointerException e) {
 	        e.printStackTrace();
-	        return Response.status(401).entity("Email e/ou senha incorretos.").build();
+	        return Response.status(401).entity("{\"error\":\"Email e/ou senha incorretos.\"}").build();
 	    }
 	}
 }
