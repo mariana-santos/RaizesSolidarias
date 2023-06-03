@@ -11,10 +11,10 @@ const fontBody = Quicksand({ subsets: ['latin'] })
 import '../app/globals.css'
 
 import validator from "validator"
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { HiOutlineEnvelope, HiOutlineIdentification } from 'react-icons/hi2'
 import { RiLockPasswordLine } from 'react-icons/ri'
@@ -45,8 +45,6 @@ export default function Cadastro() {
     const [celular, setCelular] = useState('')
     const [errorCel, setErrorCel] = useState(null)
 
-    const [carregando, setCarregando] = useState(false)
-
     const cadastrarUsuario = async (dados_usuario) => {
         const response = await fetch('http://localhost:8080/usuario', {
             method: 'POST',
@@ -57,14 +55,15 @@ export default function Cadastro() {
         });
      
         // TODO: Verificar a razão de não vir response pra mostrar o erro
-        console.log(response)
+        const data = await response.json();
 
         if (!response.ok) {
             toast.error(response)
             throw new Error('Erro ao cadastrar o usuário');
         }
 
-        const data = await response.json();
+        console.log(data)
+
         sessionStorage.setItem('usuario', JSON.stringify(data));
 
         toast.success('Sucesso no cadastro! Aguarde para ser redirecionado')   

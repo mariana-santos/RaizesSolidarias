@@ -83,11 +83,19 @@ header .space, header .login-area {
     font-weight: normal;
 }
 
-.login-area a{
+.login-area a, .login-area button{
     font-weight: bold;
 }
 
-.login-area a:hover{
+.login-area button{
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1em;
+}
+
+.login-area a:hover, .login-area button:hover{
     box-shadow: 0 1px 0 0 #fff;
 }
 
