@@ -23,10 +23,10 @@ import { BsTelephone } from 'react-icons/bs'
 
 import { PatternFormat } from 'react-number-format';
 
+import { useMutation } from 'react-query'
+
 import '../app/styles/form.css'
 
-// import $ from 'jquery';
-// import 'jquery-mask-plugin/dist/jquery.mask.min'
 
 export default function Cadastro() {
 
@@ -47,72 +47,115 @@ export default function Cadastro() {
 
     const [carregando, setCarregando] = useState(false)
 
-    function handleSubmit(e) {
+    const cadastrarUsuario = async (dados_usuario) => {
+        const response = await fetch('http://localhost:8080/usuario', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dados_usuario),
+        });
+     
+        // TODO: Verificar a razão de não vir response pra mostrar o erro
+        console.log(response)
 
+        if (!response.ok) {
+            toast.error(response)
+            throw new Error('Erro ao cadastrar o usuário');
+        }
+
+        const data = await response.json();
+        sessionStorage.setItem('usuario', JSON.stringify(data));
+
+        toast.success('Sucesso no cadastro! Aguarde para ser redirecionado')   
+
+        //Limpando os dados
+        setNome('')
+        setCelular('')
+        setCpf('')
+        setEmail('')
+        setCelular('')
+        setSenha('') 
+
+        setTimeout(() => {
+            window.location.href = '/perfil'
+        }, 2000)
+
+        return data;
+    };
+
+    const { mutate } = useMutation(cadastrarUsuario);
+
+    function handleSubmit(e) {
         e.preventDefault();
 
-        if (validaEmail() && validaSenha()) {
-            // setCarregando(true)
+        if (validaCampo(nome, setErrorNome) && validaEmail() && validaCampo(celular, setErrorCel)
+            && validaCampo(cpf, setErrorCpf) && validaSenha()) {
 
-            // fetch(`http://localhost:8080/InvestiumAPI/rest/usuario/${email}/${senha}`)
-            //   .then((resp) => resp.json())
-            //   .then((data) => {
-            //     setCarregando(false)
-            //     if (data.nome && data.email && data.senha) {
-            //       toast.success('Usuário autenticado! Aguarde para ser direcionado.')
-            //       const dadosString = JSON.stringify(data);
-            //       sessionStorage.setItem("dadosUsuario", dadosString);
-            //       setUser(data)
-            //       setTimeout(() => {
-            //         window.location.href = '/perfil'
-            //       }, 2000)
-            //     } else {
-            //       toast.error('Email ou senha incorretos.')
-            //     }
-            //   })
-            //   .catch((error) => {
-            //     console.error(error)
-            //     setCarregando(false)
-            //   });
+            const dados_usuario = {
+                cel_usuario: celular,
+                cpf_usuario: cpf,
+                email_usuario: email,
+                id_usuario: 11,
+                nome_usuario: nome,
+                senha_usuario: senha,
+                status_usuario: 'Ativo',
+            };
+
+            mutate(dados_usuario)
         }
     }
 
-    function validaEmail() {
+    function validaCampo(campo, setError) {
+        console.log(campo.includes('_'), campo)
+        //função pra validar se o campo tá vazio ou _ (vindos do patternFormat)
+        if (!validator.isEmpty(campo) && !campo.includes('_')) {
+            setError(null)
+            return true
+        }
 
+        //se cair aqui o campo tá vazio
+        setError('Campo obrigatório!')
+        return false
+    }
+
+    function validaEmail() {
         //se for válido e não for vazio retorna true e remove o erro
-        if (email !== '' && email !== null && validator.isEmail(email)) {
+        if (!validator.isEmpty(email) && validator.isEmail(email)) {
             setErrorEmail(null)
             return true
         }
 
         //se cair aqui tem algo errado e entram as validações especificas
         else {
-            if (email === '' || email === null || email === undefined) {
+            if (validator.isEmpty(email))
                 setErrorEmail('Email é obrigatório!')
-                return false
-            }
 
-            if (!validator.isEmail(email)) {
+            if (!validator.isEmail(email))
                 setErrorEmail('Email inválido!')
-                return false
-            }
-        }
 
+            //Futuramente aqui terá outro if validando se o email é encontrado na nossa base de dados
+            return false
+        }
     }
 
     function validaSenha() {
-        if (senha !== '' && senha !== null) {
+        if (!validator.isEmpty(senha) && validator.isLength(senha, { min: 8 })) {
             setErrorSenha(null)
             return true
         }
         else {
-            setErrorSenha('Senha é obrigatória!')
+            if (!validator.isLength(senha, { min: 8 }))
+                setErrorSenha('Senha muito curta!')
+
+            if (senha == '') {
+                setErrorSenha('Senha é obrigatória!')
+            }
             return false
         }
     }
 
     return (
-        
         <div className={fontBody.className}>
             <Menu />
             <main className='form-wrapper' id='login'>
@@ -150,13 +193,16 @@ export default function Cadastro() {
                         id="celular"
                         placeholder="Digite seu celular"
                         type="text"
-                        icon={ <BsTelephone /> }
+                        icon={<BsTelephone />}
                         errorMsg={errorCel}
                         value={celular}
-                        onChange={e => setCelular(e.target.value)}
                         temMask
                     >
-                        <PatternFormat format="(##) 9 #### ####" allowEmptyFormatting mask="_" />
+                        <PatternFormat
+                            format="(##) 9#### ####"
+                            allowEmptyFormatting mask="_"
+                            onValueChange={(cel) => setCelular(cel.formattedValue)}
+                        />
                     </Campo>
 
                     <Campo
@@ -168,9 +214,12 @@ export default function Cadastro() {
                         errorMsg={errorCpf}
                         value={cpf}
                         temMask
-                        onChange={e => setCpf(e.target.value)}
                     >
-                        <PatternFormat format="###.###.###-##" allowEmptyFormatting mask="_" />
+                        <PatternFormat
+                            format="###.###.###-##"
+                            allowEmptyFormatting mask="_"
+                            onValueChange={(cpf) => setCpf(cpf.formattedValue)}
+                        />
                     </Campo>
 
                     <Campo
@@ -184,7 +233,7 @@ export default function Cadastro() {
                         onChange={e => setSenha(e.target.value)}
                     />
 
-                    <button type="submit" className="btn btn_primary arrow">Entrar</button>
+                    <button type="submit" className="btn btn_primary arrow">Cadastrar</button>
 
                     {/* <a className="outros_links" href="#">Esqueceu a senha? <strong>clique aqui</strong></a> */}
                     <Link className="outros_links" href="/login">Já possui conta? <strong>clique aqui</strong></Link>

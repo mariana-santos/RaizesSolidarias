@@ -8,22 +8,19 @@ import '../../styles/form.css'
 
 import './style.css'
 
-import { Switch, FormControlLabel, } from "@mui/material"
-
-import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 
-import Moment from "react-moment"
 import Campo from "../Campo"
-import { BsCalendarDate } from "react-icons/bs"
 
 import moment from "moment"
 import { ToastContainer, toast } from "react-toastify"
 
 import 'react-toastify/dist/ReactToastify.css';
-import { MdMoney } from "react-icons/md"
 import { RiMoneyDollarCircleFill } from "react-icons/ri"
-import { NumericFormat, PatternFormat } from "react-number-format"
+import { NumericFormat } from "react-number-format"
+
+import { QueryClient, QueryClientProvider } from 'react-query'
+import Alimentos from "./Alimentos";
 
 export default function AreaVoluntario() {
 
@@ -99,6 +96,8 @@ export default function AreaVoluntario() {
         console.log(animation)
     }
 
+    const queryClient = new QueryClient()
+
     return (
         <form onSubmit={handleSubmit} id="doacao">
             <ToastContainer 
@@ -129,7 +128,7 @@ export default function AreaVoluntario() {
                         <button className="btn" 
                             onClick={() => setNovoDeposito(!novoDeposito)}>Novo depósito</button>
                     ) : (
-                        <form id="nova-doacao">
+                        <div id="nova-doacao">
                             <h3>Nova doação</h3>
                             <Campo 
                                 type="text"
@@ -151,12 +150,13 @@ export default function AreaVoluntario() {
                             </Campo>
                             
                             <button type="button" className="btn" onClick={handleNovaDoacao}>Enviar</button>
-                        </form>
+                        </div>
                     ) }
-                    
-
-                    
                 </div>
+
+                <QueryClientProvider client={queryClient}>
+                    <Alimentos />
+                </QueryClientProvider>
 
 
                 <div className="agendamento">
