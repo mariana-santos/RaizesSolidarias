@@ -22,6 +22,10 @@ import { NumericFormat } from "react-number-format"
 import { QueryClient, QueryClientProvider } from 'react-query'
 import Alimentos from "./Alimentos";
 
+import { validaCampo } from "../../utils/validacao";
+
+import { useMutation } from "react-query";
+
 export default function AreaVoluntario() {
 
     const [carregando, setCarregando] = useState(false)
@@ -31,10 +35,13 @@ export default function AreaVoluntario() {
     const [data, setData] = useState(hoje);
 
     const [novoDeposito, setNovoDeposito] = useState(false)
-    const [valorDoacao, setValor] = useState(1)
+
+    const [valorDoacao, setValor] = useState(0)
+    const [errorValor, setErrorValor] = useState(null)
 
     const [animation, setAnimation] = useState('')
 
+    const [saldo, setSaldo] = useState(0)
 
     function handleSubmit(e) {
 
@@ -68,44 +75,98 @@ export default function AreaVoluntario() {
         console.log(data)
     }
 
-    function handleData(data) {
-        if (data <= new Date()) {
-            handleDataAgendamento()
-            // Futuramente esse erro só vai aparecer caso seja um novo agendamento: 
-            // ou seja, se o dia selecionado não tiver nenhum agendamento cadastrado 
-            // (que é quando o formulário de novo agendamento é mostrado)
-            toast.error("A data não pode ser hoje ou dias anteriores!")
-        }
-        else setData(data)
-    }
+    const cadastrarDoador = async (dados_doador) => {
+        const response = await fetch('http://localhost:8080/doador', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dados_doador),
+        });
+     
+        const data = await response.json();
 
-    function handleDataAgendamento(e){
-        if (data <= new Date()) {
-            
+        if (!response.ok || data.error) {
+            toast.error(response.error)
+            throw new Error('Erro ao cadastrar o doador');
         }
-    }
+        else{
+            console.log(data)
+            sessionStorage.setItem('doador', JSON.stringify(data));
+            toast.success('Depósito realizado com sucesso! Obrigada pela sua contribuição.')
+        }
+
+        return data;
+    };
+
+    const atualizarDoador = async (dados_doador) => {
+        const response = await fetch(`http://localhost:8080/doador/${dados_doador.id_usuario}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dados_doador),
+        });
+
+        if (!response.ok) {
+            toast.error('Erro ao atualizar dados');
+            throw new Error('Erro ao atualizar o usuário');
+        }
+        else{
+            sessionStorage.setItem('doador', JSON.stringify(dados_doador));
+            // TODO: AQUI VAMOS FAZER MAIS UMA REQUISIÇÃO P CADASTRAR A DOAÇÃO
+        }
+
+        toast.success('Sucesso ao atualizar os dados!');
+    };
+
+    const { mutate } = useMutation(cadastrarDoador);
+    const { depositar } = useMutation(atualizarDoador);
 
     function handleNovaDoacao(e) {
         e.preventDefault();
-        toast.success('Depósito realizado com sucesso! Obrigada pela sua contribuição.')
-        setNovoDeposito(!novoDeposito)
-        setAnimation('shake')
 
-        setTimeout(() => setAnimation(''), 500)
+        // console.log(valorDoacao)
+        if(validaCampo(valorDoacao, setErrorValor)){
 
-        console.log(animation)
+            const usuario = typeof window !== 'undefined' ? JSON.parse(sessionStorage.getItem("usuario")) : null;
+
+            if(!sessionStorage.getItem("doador")){
+
+                const usuario_doador = {
+                    ...usuario,
+                    nivel_doador: 1,
+                    moedas_doador: valorDoacao
+                };
+    
+                mutate(usuario_doador)
+
+            } else{
+                // TODO: nesse caso, como o usuario doador ja existe pegar o valor das moedas e só acrescentar a doação, 
+                // além criar uma lógica pra atualizar o nível
+                const usuario_doador = {
+                    ...usuario,
+                    nivel_doador: 1,
+                    moedas_doador: valorDoacao
+                };
+    
+                atualizarDoador(usuario_doador)
+            }
+
+            // toast.success('Depósito realizado com sucesso! Obrigada pela sua contribuição.')
+            // setNovoDeposito(!novoDeposito)
+            // setAnimation('shake')
+    
+            // setTimeout(() => setAnimation(''), 500)
+        }
+
+        
     }
 
     const queryClient = new QueryClient()
 
     return (
         <form onSubmit={handleSubmit} id="doacao">
-            <ToastContainer 
-                position="bottom-right"
-                autoClose={2000}
-                closeOnClick
-                pauseOnHover
-            />
             <div className="row-heading">
                 <div className="heading">
                     <h2>Olá, Mariana!</h2>
@@ -134,9 +195,8 @@ export default function AreaVoluntario() {
                                 type="text"
                                 label="Valor do depósito (R$)"
                                 icon={<RiMoneyDollarCircleFill />}
-                                value={moment(data).format("DD/MM/YYYY")}
                                 temMask
-                                onChange={(e) => handleDataAgendamento(e)}
+                                errorMsg={errorValor}
                             >
                                 <NumericFormat 
                                     prefix={'R$ '}
@@ -146,10 +206,15 @@ export default function AreaVoluntario() {
                                     thousandSeparator="."
                                     allowNegative={false}
                                     placeholder="Digite o valor"
+                                    value={valorDoacao}
+                                    onValueChange={(valor) => setValor(valor.floatValue)}
                                 />
                             </Campo>
+                            <div className="wrap-btn">
+                                <button type="button" className="btn" onClick={handleNovaDoacao}>Enviar</button>
+                                { errorValor && <span class="error"> &nbsp; </span>}
+                            </div>
                             
-                            <button type="button" className="btn" onClick={handleNovaDoacao}>Enviar</button>
                         </div>
                     ) }
                 </div>

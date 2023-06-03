@@ -63,12 +63,6 @@ export default function DadosGerais() {
             throw new Error('Erro ao atualizar o usuário');
         }
     
-        else if (response.status === 204) {
-            toast.success('Sucesso ao atualizar os dados!');
-            sessionStorage.setItem('usuario', JSON.stringify(dados_usuario));
-            return dados_usuario;
-        }
-    
         sessionStorage.setItem('usuario', JSON.stringify(dados_usuario));
         toast.success('Sucesso ao atualizar os dados!');
     };

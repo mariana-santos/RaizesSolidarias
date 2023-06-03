@@ -137,7 +137,6 @@ export default function Login() {
           <h2>Bem vindo de volta!</h2>
           <small>Para continuar, por favor insira seus dados.</small>
 
-
           <Campo
             label="Email"
             id="email"

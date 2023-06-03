@@ -8,7 +8,7 @@ import '../../styles/form.css'
 
 import './style.css'
 
-import { Switch, FormControlLabel, } from "@mui/material"
+import { useQuery } from "react-query"
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -18,21 +18,23 @@ import Campo from "../Campo"
 import { BsCalendarDate } from "react-icons/bs"
 
 import moment from "moment"
-import { ToastContainer, toast } from "react-toastify"
-
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify"
 
 export default function AreaVoluntario() {
-
-    const [carregando, setCarregando] = useState(false)
-
-    const [habilitado, setHabilitado] = useState(false)
 
     const hoje = new Date();
     const amanha = new Date(hoje.getTime() + 24 * 60 * 60 * 1000);
     const [data, setData] = useState(amanha);
 
     const [turno, setTurno] = useState('Manhã');
+
+    const { isLoading, error, agendamentos } = useQuery('repoData', () =>
+        fetch('http://localhost:8080/agendamento').then(res => res.json())
+    )
+
+    if (isLoading) return 'Carregando...'
+
+    if (error) return 'Ocorreu um erro: ' + error.message
 
     function handleSubmit(e) {
 
@@ -89,32 +91,14 @@ export default function AreaVoluntario() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <ToastContainer 
-                position="bottom-right"
-                autoClose={2000}
-                closeOnClick
-                pauseOnHover
-            />
             <div className="row-heading">
                 <div className="heading">
                     <h2>Área do voluntário</h2>
                     <small>Bem vindo(a) à área do voluntário! Aqui você pode agendar suas visitas para contribuição da nossa horta solidária.</small>
                 </div>
-
-                <div className="wrap-switch">
-                    <FormControlLabel
-                        value="habilitado"
-                        control={<Switch value={habilitado} onChange={(e) => setHabilitado(e.target.checked)} />}
-                        label={`${habilitado ? 'Desabilitar' : 'Habilitar'} área do voluntário`}
-                        labelPlacement="start"
-                    />
-                </div>
             </div>
 
             <div className="row-body">
-                { !habilitado && <div className="mask"> 
-                    Para agendar um trabalho voluntário, habilite a área do voluntário no botão acima
-                </div> }
 
                 <Calendar
                     value={data}
