@@ -68,11 +68,11 @@ class Plantio:
         retornoPerfil += f"01. ID: {plantio_buscado.id_plantio}\n"
         retornoPerfil += f"02. DATA: {plantio_buscado.data_plantio}\n"
         retornoPerfil += f"03. ESPAÇO: {plantio_buscado.espaco_plantio}\n"
-        retornoPerfil += f"04. ALIMENTO: {plantio_buscado.alimento}"
+        retornoPerfil += f"04. ALIMENTO: {plantio_buscado.alimento.nome_alimento}"
         if (plantio_buscado.colheita == None):
             retornoPerfil += f"05. COLHEITA: A COLHEITA AINDA NÃO FOI REALIZADA."
         else:
-            retornoPerfil += f"05. COLHEITA: {plantio_buscado.colheita}"
+            retornoPerfil += f"05. COLHEITA: ID: {plantio_buscado.colheita.id_colheita} | DATA: {plantio_buscado.colheita.data_colheita}"
         retornoPerfil += "06. VOLUNTÁRIOS: "
         if len(plantio_buscado.voluntarios_plantio) == 0:
             retornoPerfil += "NENHUM VOLUNTÁRIO RESPONSÁVEL.\n"
@@ -229,7 +229,7 @@ class Plantio:
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarPlantio(dsn, listaPlantios):
+    def editarPlantio(dsn, listaPlantios, listaAlimentos, listaColheitas, listaVoluntarios):
         perfilPlantio = True
 
         if (len(listaPlantios) == 0):
@@ -282,7 +282,7 @@ class Plantio:
                     
                     if (opcao == 1):
                        # EDITAR O ALIMENTO DO PLANTIO - SIM
-                       Plantio.editarAlimento(dsn, plantio_buscado)
+                       Plantio.editarAlimento(dsn, plantio_buscado, listaAlimentos)
                     
                     elif (opcao == 2):
                         # EDITAR O ALIMENTO DO PLANTIO - NÃO
@@ -295,7 +295,7 @@ class Plantio:
                     
                     if (opcao == 1):
                        # EDITAR A COLHEITA DO PLANTIO - SIM
-                       Plantio.editarColheita(dsn, plantio_buscado)
+                       Plantio.editarColheita(dsn, plantio_buscado, listaColheitas)
                     
                     elif (opcao == 2):
                         # EDITAR A COLHEITA DO PLANTIO - NÃO
@@ -308,7 +308,7 @@ class Plantio:
                     
                     if (opcao == 1):
                        # EDITAR OS VOLUNTÁRIOS DO PLANTIO - SIM
-                       Plantio.editarVoluntarios(dsn, plantio_buscado)
+                       Plantio.editarVoluntarios(dsn, plantio_buscado, listaVoluntarios)
                     
                     elif (opcao == 2):
                         # EDITAR OS VOLUNTÁRIOS DO PLANTIO - NÃO

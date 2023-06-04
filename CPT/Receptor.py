@@ -4,11 +4,12 @@ from Funcoes import Funcoes
 from Usuario import Usuario
 
 class Receptor(Usuario):
-    def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, carga_receptor: int = None, endereco_receptor: str = None, destinos_receptor: list = None):
+    def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, carga_receptor: int = None, endereco_receptor: str = None, destinos_receptor: list = None, agendamentos_receptor: list = None):
         super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._carga_receptor = carga_receptor
         self._endereco_receptor = endereco_receptor
         self._destinos_receptor = destinos_receptor if destinos_receptor is not None else []
+        self._agendamentos_receptor = agendamentos_receptor if agendamentos_receptor is not None else []
 
     @property
     def carga_receptor(self) -> int:
@@ -33,6 +34,14 @@ class Receptor(Usuario):
     @destinos_receptor.setter
     def destinos_receptor(self, destinos_receptor: list):
         self._destinos_receptor = destinos_receptor
+
+    @property
+    def agendamentos_receptor(self):
+        return self._agendamentos_receptor
+
+    @agendamentos_receptor.setter
+    def agendamentos_receptor(self, agendamentos_receptor: list):
+        self._agendamentos_receptor = agendamentos_receptor
 
     def perfilReceptor(receptor_buscado):
         retornoPerfil = Funcoes.menuCabecalho()
@@ -406,11 +415,11 @@ class Receptor(Usuario):
                     
                     novos_destinos_receptor.append(destino_buscado)
 
-                    opcao = int(input("DESEJA ADICIONAR MAIS UM DESTINO AO NOVO RECEPTOR?\n" + 
+                    opcao = int(input("DESEJA ADICIONAR MAIS UM DESTINO AO RECEPTOR?\n" + 
                                           "01. SIM\n" + 
                                           "02. NÃO\n"))
                     
-                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, "DESEJA ADICIONAR MAIS UM DESTINO AO NOVO RECEPTOR?\n01. SIM\n02. NÃO\n"))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, "DESEJA ADICIONAR MAIS UM DESTINO AO RECEPTOR?\n01. SIM\n02. NÃO\n"))
 
                     if (opcao == 1):
                         adicionar = True

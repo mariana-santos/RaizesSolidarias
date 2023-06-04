@@ -238,7 +238,7 @@ class Colheita:
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarColheita(dsn, listaColheitas):
+    def editarColheita(dsn, listaColheitas, listaVoluntarios, listaPlantios):
         perfilColheita = True
 
         if (len(listaColheitas) == 0):
@@ -252,7 +252,7 @@ class Colheita:
 
             while (perfilColheita):
                 opcao = int(input(Colheita.perfilColheita(colheita_buscada)))
-                opcao = int(Funcoes.validarOpcao(opcao, 1, 6, Colheita.perfilColheita(colheita_buscada)))
+                opcao = int(Funcoes.validarOpcao(opcao, 1, 7, Colheita.perfilColheita(colheita_buscada)))
 
                 if (opcao == 1):
                     # EDITAR O ID DA COLHEITA
@@ -284,40 +284,27 @@ class Colheita:
                         # EDITAR A DESCRIÇÃO DA COLHEITA - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
-                elif (opcao == 3):
+                elif (opcao == 4):
                     # EDITAR OS VOLUNTÁRIOS DA COLHEITA
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR OS VOLUNTÁRIOS DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR OS VOLUNTÁRIOS DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     
                     if (opcao == 1):
                        # EDITAR OS VOLUNTÁRIOS DA COLHEITA - SIM
-                       Colheita.editarVoluntarios(dsn, colheita_buscada)
+                       Colheita.editarVoluntarios(dsn, colheita_buscada, listaVoluntarios)
                     
                     elif (opcao == 2):
                         # EDITAR OS VOLUNTÁRIOS DA COLHEITA - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
-                elif (opcao == 3):
-                    # EDITAR A DESCRIÇÃO DA COLHEITA
-                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A DESCRIÇÃO DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
-                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A DESCRIÇÃO DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
-                    
-                    if (opcao == 1):
-                       # EDITAR A DESCRIÇÃO DA COLHEITA - SIM
-                       Colheita.editarDescricao(dsn, colheita_buscada)
-                    
-                    elif (opcao == 2):
-                        # EDITAR A DESCRIÇÃO DA COLHEITA - NÃO
-                        input("TECLE ENTER PARA VOLTAR AO MENU.")
-                
-                elif (opcao == 4):
+                elif (opcao == 5):
                     # EDITAR OS PLANTIOS DA COLHEITA
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR OS PLANTIOS DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR OS PLANTIOS DA COLHEITA DE ID {colheita_buscada.id_colheita}")))
                     
                     if (opcao == 1):
                        # EDITAR OS PLANTIOS DA COLHEITA - SIM
-                       Colheita.editarPlantios(dsn, colheita_buscada)
+                       Colheita.editarPlantios(dsn, colheita_buscada, listaPlantios)
                     
                     elif (opcao == 2):
                         # EDITAR OS PLANTIOS DA COLHEITA - NÃO
