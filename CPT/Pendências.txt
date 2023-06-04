@@ -1,5 +1,3 @@
-- Popular os objetos com as tabelas n para n (parei no receptor_destino, destino esta ok, precisa testar e receptor ainda não foi feito)
-- Mudar todos os perfis para pegar as infos certas das relações 1n e nn
-- Mudar os editar também para os n para n
-
 - Programa (testar)
+- Se possível, fazer as edições n para n, mostrando a lista e editando apenas 1
+- Se possível, ir deletando das listas de acordo com as adições ou remoções
