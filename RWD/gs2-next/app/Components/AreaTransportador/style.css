@@ -60,20 +60,6 @@
     padding: 7px 15px;
 }
 
-.btn-secondary{
-    text-align: start;
-    padding: 0;
-    color: #3E7F46;
-    background-color: transparent;
-    cursor: pointer;
-    font-family: 'Raleway';
-    font-weight: 900;
-}
-
-.btn-secondary:hover{
-    background: transparent;
-}
-
 @media screen and (max-width: 768px){
     .destino{
         width: 100%;

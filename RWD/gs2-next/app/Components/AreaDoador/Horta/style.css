@@ -1,0 +1,86 @@
+#horta{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.plantios{
+    background-image: url('../../../../public/terra.png');
+    width: 50%;
+    height: 100px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+}
+
+.plantio{
+    width: 25%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    cursor: pointer;
+}
+
+.plantio strong{
+    font-size: .8em;
+    color: #eaeaea;
+}
+
+.plantio .wrap-icon{
+    margin: 0;
+    position: relative;
+    width: 100%;
+}
+
+.plantio .wrap-icon .alimento-menor{
+    width: 50%;
+    height: 50%;
+    display: inline-block;
+    position: absolute;
+}
+
+.plantio .alimento-menor:first-of-type{
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin: 0 auto;
+}
+
+.plantio .alimento-menor:last-of-type{
+    right: 0;
+    left: auto;
+}
+
+.informacoes-plantio{
+    background: #fff;
+    width: 170px;
+    color: #444;
+    padding: .5em;
+    border-radius: 5px;
+    font-size: .8em;
+    position: absolute;
+    top: 100%;
+    opacity: 0;
+    transition: .5s;
+}
+
+.informacoes-plantio strong{
+    color: #444;
+    font-size: 1em;
+}
+
+.plantio:hover .informacoes-plantio{
+    opacity: 1;
+}
+
+.informacoes-plantio .btn{
+    width: fit-content !important;
+    font-size: .8em;
+    margin-top: .5em;
+    padding: 5px 10px;
+    display: flex;
+    gap: 1em
+}

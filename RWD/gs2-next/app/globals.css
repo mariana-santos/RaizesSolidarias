@@ -89,6 +89,20 @@ button{
   cursor: pointer;
 }
 
+.btn-secondary{
+  text-align: start;
+  padding: 0 !important;
+  color: #3e7f46;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.btn-secondary:hover{
+  background: transparent;
+  opacity: .8;
+}
+
 @media screen and (max-width: 768px) {
   .title{
     font-size: 1.8em;

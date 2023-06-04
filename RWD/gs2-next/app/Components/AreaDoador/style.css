@@ -78,7 +78,7 @@
     animation: shake 0.5s;
 }
   
-  @keyframes shake {
+@keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }
     10% { transform: translate(-1px, -2px) rotate(-1deg); }
     20% { transform: translate(-3px, 0px) rotate(1deg); }
@@ -90,4 +90,32 @@
     80% { transform: translate(-1px, -1px) rotate(1deg); }
     90% { transform: translate(1px, 2px) rotate(0deg); }
     100% { transform: translate(1px, -2px) rotate(-1deg); }
-  }
+}
+
+.column img{
+    width: 50%;
+    aspect-ratio: 1 / 1;
+}
+
+.row.inicio{
+    display: flex;
+    gap: 2em;
+}
+
+.row.inicio .column{
+    width: 50%;
+    text-align: center;
+}
+
+.wrap-profile form .inicio button{
+    width: fit-content !important;
+}
+
+.row.inicio .column p{
+    font-size: .9em;
+}
+
+#doacao .btn-secondary{
+    margin-top: 0;
+    margin-bottom: 1em;
+}
