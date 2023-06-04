@@ -71,7 +71,7 @@ public class ColheitaResource {
 			return response.build();
 		} else {
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível encontrar o COLHEITA de id_colheita: " + id_colheita);
+					.entity("{\"error\": \"Não foi possível encontrar o COLHEITA de id_colheita: " + id_colheita + "\"}");
 			return response.build();
 		}
 	}
@@ -108,8 +108,8 @@ public class ColheitaResource {
 			return Response.ok().build();
 		} else {
 			return Response.status(404)
-					.entity("Não foi possível atualizar o COLHEITA de id_colheita: " + id_colheita
-							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
+					.entity("{\"error\": \"Não foi possível atualizar o COLHEITA de id_colheita: " + id_colheita
+							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.\"}")
 					.build();
 		}
 
@@ -130,7 +130,7 @@ public class ColheitaResource {
 		} else {
 			System.out.println("Não foi possível remover o COLHEITA: " + id_colheita);
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível remover o COLHEITA de id_colheita: " + id_colheita);
+					.entity("{\"error\": \"Não foi possível remover o COLHEITA de id_colheita: " + id_colheita + "\"}");
 			return response.build();
 		}
 	}

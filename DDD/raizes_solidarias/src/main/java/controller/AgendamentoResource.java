@@ -71,7 +71,7 @@ public class AgendamentoResource {
 			return response.build();
 		} else {
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível encontrar o AGENDAMENTO de id_agendamento: " + id_agendamento);
+					.entity("{\"error\": \"Não foi possível encontrar o AGENDAMENTO de id_agendamento: " + id_agendamento + "\"}");
 			return response.build();
 		}
 	}
@@ -108,8 +108,8 @@ public class AgendamentoResource {
 			return Response.ok().build();
 		} else {
 			return Response.status(404)
-					.entity("Não foi possível atualizar o AGENDAMENTO de id_agendamento: " + id_agendamento
-							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
+					.entity("{\"error\": \"Não foi possível atualizar o AGENDAMENTO de id_agendamento: " + id_agendamento
+							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.\"}")
 					.build();
 		}
 
@@ -128,9 +128,9 @@ public class AgendamentoResource {
 			ResponseBuilder response = Response.noContent();
 			return response.build();
 		} else {
-			System.out.println("Não foi possível remover o AGENDAMENTO: " + id_agendamento);
+			System.out.println("{\"error\": \"Não foi possível remover o AGENDAMENTO: " + id_agendamento + "\"}");
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível remover o AGENDAMENTO de id_agendamento: " + id_agendamento);
+					.entity("{\"error\": \"Não foi possível remover o AGENDAMENTO de id_agendamento: " + id_agendamento + "\"}");
 			return response.build();
 		}
 	}

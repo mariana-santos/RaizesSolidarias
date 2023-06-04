@@ -71,7 +71,7 @@ public class DoacaoResource {
 			return response.build();
 		} else {
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível encontrar o DOACAO de id_doacao: " + id_doacao);
+					.entity("{\"error\": \"Não foi possível encontrar o DOACAO de id_doacao: " + id_doacao + "\"}");
 			return response.build();
 		}
 	}
@@ -108,8 +108,8 @@ public class DoacaoResource {
 			return Response.ok().build();
 		} else {
 			return Response.status(404)
-					.entity("Não foi possível atualizar o DOACAO de id_doacao: " + id_doacao
-							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
+					.entity("{\"error\": \"Não foi possível atualizar o DOACAO de id_doacao: " + id_doacao
+							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.\"}")
 					.build();
 		}
 
@@ -130,7 +130,7 @@ public class DoacaoResource {
 		} else {
 			System.out.println("Não foi possível remover o DOACAO: " + id_doacao);
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível remover o DOACAO de id_doacao: " + id_doacao);
+					.entity("{\"error\": \"Não foi possível remover o DOACAO de id_doacao: " + id_doacao + "\"}");
 			return response.build();
 		}
 	}

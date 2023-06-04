@@ -33,10 +33,8 @@ import services.DoadorService;
  * @see services.DoadorService
  * @see model.Doador
  * @see model.Usuario
- *
  * @author Raízes Solidárias
  */
-
 @Path("/doador")
 public class DoadorResource {
 	
@@ -72,7 +70,7 @@ public class DoadorResource {
 			return response.build();
 		} else {
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível encontrar o DOADOR de id_usuario: " + id_usuario);
+					.entity("{\"error\": \"Não foi possível encontrar o DOADOR de id_usuario: " + id_usuario + "\"}");
 			return response.build();
 		}
 	}
@@ -109,8 +107,8 @@ public class DoadorResource {
 			return Response.ok().build();
 		} else {
 			return Response.status(404)
-					.entity("Não foi possível atualizar o DOADOR de id_usuario: " + id_usuario
-							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
+					.entity("{\"error\": \"Não foi possível atualizar o DOADOR de id_usuario: " + id_usuario
+							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.\"}")
 					.build();
 		}
 
@@ -131,7 +129,7 @@ public class DoadorResource {
 		} else {
 			System.out.println("Não foi possível remover o DOADOR: " + id_usuario);
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível remover o DOADOR de id_usuario: " + id_usuario);
+					.entity("{\"error\": \"Não foi possível remover o DOADOR de id_usuario: " + id_usuario + "\"}");
 			return response.build();
 		}
 	}	
@@ -151,11 +149,11 @@ public class DoadorResource {
 				response.entity(doador_logado);
 				return response.build();
 			} else {
-				return Response.status(401).entity("Email e/ou senha incorretos.").build();
+				return Response.status(401).entity("{\"error\": \"Email e/ou senha incorretos.\"}").build();
 			}
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			return Response.status(401).entity("Email e/ou senha incorretos.").build();
+			return Response.status(401).entity("{\"error\": \"Email e/ou senha incorretos.\"}").build();
 		}
 	}
 }
