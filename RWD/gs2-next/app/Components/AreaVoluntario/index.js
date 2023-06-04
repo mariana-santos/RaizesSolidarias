@@ -40,31 +40,6 @@ export default function AreaVoluntario() {
 
         e.preventDefault();
 
-        // if (validaEmail() && validaSenha()) {
-        // setCarregando(true)
-
-        // fetch(`http://localhost:8080/InvestiumAPI/rest/usuario/${email}/${senha}`)
-        //   .then((resp) => resp.json())
-        //   .then((data) => {
-        //     setCarregando(false)
-        //     if (data.nome && data.email && data.senha) {
-        //       toast.success('Usuário autenticado! Aguarde para ser direcionado.')
-        //       const dadosString = JSON.stringify(data);
-        //       sessionStorage.setItem("dadosUsuario", dadosString);
-        //       setUser(data)
-        //       setTimeout(() => {
-        //         window.location.href = '/perfil'
-        //       }, 2000)
-        //     } else {
-        //       toast.error('Email ou senha incorretos.')
-        //     }
-        //   })
-        //   .catch((error) => {
-        //     console.error(error)
-        //     setCarregando(false)
-        //   });
-        // }
-
         console.log(data)
     }
 

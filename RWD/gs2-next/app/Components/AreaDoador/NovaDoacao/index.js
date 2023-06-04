@@ -9,11 +9,19 @@ import { RiMoneyDollarCircleFill } from "react-icons/ri"
 import { NumericFormat } from "react-number-format"
 
 import { toast } from "react-toastify"
+import moment from "moment";
+
+import useSound from "use-sound";
 
 export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
 
     const [valorDoacao, setValor] = useState(0)
     const [errorValor, setErrorValor] = useState(null)
+
+    const [somSaldo] = useSound(
+        '/coins.wav',
+        { volume: 0.25 }
+    )
 
     const cadastrarDoacao = async (dados_doacao) => {
         const response = await fetch('http://localhost:8080/doacao', {
@@ -35,6 +43,7 @@ export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
             toast.success('Depósito realizado com sucesso! Obrigado pela sua contribuição.')
             setAnimation('shake')
             setTimeout(() => setAnimation(''), 500)
+            somSaldo()
         }
         return data;
     };
@@ -59,10 +68,10 @@ export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
         }
         else {
             sessionStorage.setItem('doador', JSON.stringify(data));
+            setSaldo(dados_doador.moedas_doador)
             const dados_doacao = {
                 id_doacao: 0,
-                // TODO: Formatar a data de acordo com o que o json pede
-                data_doacao: new Date(),
+                data_doacao: moment(new Date()).format('DD/MM/YYYY'),
                 qtd_moedas_doacao: valorDoacao,
                 ...dados_doador,
             }
@@ -86,6 +95,7 @@ export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
         }
         else {
             sessionStorage.setItem('doador', JSON.stringify(dados_doador));
+            setSaldo(dados_doador.moedas_doador)
             const dados_doacao = {
                 id_doacao: 0,
                 // TODO: Formatar a data de acordo com o que o json pede

@@ -1,27 +1,37 @@
 #horta{
     display: flex;
     flex-wrap: wrap;
+    row-gap: 2em;
+}
+
+#horta button{
+    margin-top: 0;
 }
 
 .plantios{
     background-image: url('../../../../public/terra.png');
-    width: 50%;
-    height: 100px;
+    width: 100%;
+    height: 200px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .plantio{
-    width: 25%;
-    height: 100%;
+    width: calc(100% / 8);
+    height: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
     cursor: pointer;
+    background-image: url('../../../../public/terra_molhada.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .plantio strong{
@@ -40,6 +50,11 @@
     height: 50%;
     display: inline-block;
     position: absolute;
+    transition: .2s;
+}
+
+.plantio:hover .wrap-icon .alimento-menor{
+    transform: scale(1.3);
 }
 
 .plantio .alimento-menor:first-of-type{
@@ -56,15 +71,22 @@
 
 .informacoes-plantio{
     background: #fff;
-    width: 170px;
+    width: 200px;
     color: #444;
     padding: .5em;
     border-radius: 5px;
     font-size: .8em;
     position: absolute;
-    top: 100%;
-    opacity: 0;
-    transition: .5s;
+    top: 50px;
+    display: none;
+    transition: .2s;
+}
+
+.nome-alimento{
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: .5em;
 }
 
 .informacoes-plantio strong{
@@ -73,14 +95,27 @@
 }
 
 .plantio:hover .informacoes-plantio{
-    opacity: 1;
+    display: block;
+    z-index: 2;
 }
 
-.informacoes-plantio .btn{
+#horta .informacoes-plantio .btn{
     width: fit-content !important;
     font-size: .8em;
     margin-top: .5em;
     padding: 5px 10px;
     display: flex;
-    gap: 1em
+    gap: 1em;
+}
+
+#horta .metade{
+    width: 70%;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: -2em;
+}
+
+.row.plantios:nth-of-type(3) .informacoes-plantio, .row.plantios:nth-of-type(4) .informacoes-plantio{
+    /* bottom: 50px; */
+    top: -100px;
 }

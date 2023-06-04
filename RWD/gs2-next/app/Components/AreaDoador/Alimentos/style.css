@@ -1,7 +1,8 @@
 #alimentos{
-    /* display: flex;
-    gap: 1em; */
+    display: flex;
+    /* gap: 1em;  */
     width: 100%;
+    flex-direction: column;
 }
 
 .alimento{
@@ -69,5 +70,13 @@
 #alimentos small{
     width: 100%;
     display: block;
-    margin-bottom: 20px;
+    /* margin-top: 20px; */
+    text-align: end;
+}
+
+#alimentos .btn{
+    margin-top: .5em;
+    margin-bottom: 1.5em;
+    margin-left: auto;
+    margin-right: 0;
 }

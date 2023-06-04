@@ -20,7 +20,11 @@ export default function AreaVoluntario() {
 
     const [animation, setAnimation] = useState('')
 
-    const [saldo, setSaldo] = useState(0)
+    const [saldo, setSaldo] = useState(50)
+
+    const atualizarSaldo = (novoSaldo) => {
+        setSaldo(novoSaldo);
+    };
 
     useEffect(() => {
 
@@ -65,11 +69,16 @@ export default function AreaVoluntario() {
                         (<NovaDoacao 
                             setTela={setTela} 
                             setAnimation={setAnimation}
-                            setSaldo={setAnimation}
+                            setSaldo={setSaldo}
+                            saldo={saldo}
                         />)
                     :
-                        (<GerenciarHorta setTela={setTela}  />)}
-
+                        (<GerenciarHorta 
+                            setTela={setTela} 
+                            saldo={saldo}
+                            setSaldo={atualizarSaldo}
+                            setAnimation={setAnimation}
+                        />)}
             </div>
         </form>
     )
