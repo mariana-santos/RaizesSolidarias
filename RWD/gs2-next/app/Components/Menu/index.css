@@ -38,7 +38,7 @@ header{
 
 header h1{
     margin-top: 0;
-    margin-bottom: 1em;
+    margin-bottom: .3em;
     font-size: 3em;
     transition: .25s;
     text-align: center;
@@ -125,10 +125,6 @@ header .space, header .login-area {
     .login-area{
         width: 100% !important;
         text-align: end;
-    }
-
-    .login-area h2{
-        /* display: none; */
     }
 
     .menu-wrapper{
