@@ -4,10 +4,11 @@ from Funcoes import Funcoes
 from Usuario import Usuario
 
 class Doador(Usuario):
-    def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, nivel_doador: int = None, moedas_doador: int = None):
+    def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, nivel_doador: int = None, moedas_doador: int = None, doacoes_doador: list = None):
         super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._nivel_doador = nivel_doador
         self._moedas_doador = moedas_doador
+        self._doacoes_doador = doacoes_doador if doacoes_doador is not None else []
 
     @property
     def nivel_doador(self) -> int:
@@ -25,6 +26,14 @@ class Doador(Usuario):
     def moedas_doador(self, moedas_doador: int):
         self._moedas_doador = moedas_doador
 
+    @property
+    def doacoes_doador(self):
+        return self._doacoes_doador
+
+    @doacoes_doador.setter
+    def doacoes_doador(self, doacoes_doador: list):
+        self._doacoes_doador = doacoes_doador
+
     def perfilDoador(doador_buscado):
         retornoPerfil = Funcoes.menuCabecalho()
         retornoPerfil += f"01. ID: {doador_buscado.id_usuario}\n"
@@ -36,7 +45,17 @@ class Doador(Usuario):
         retornoPerfil += f"07. STATUS: {doador_buscado.status_usuario}\n"
         retornoPerfil += f"08. NÍVEL: {doador_buscado.nivel_doador}\n"
         retornoPerfil += f"09. MOEDAS: {doador_buscado.moedas_doador}\n"
-        retornoPerfil += "10. SAIR\n"
+        retornoPerfil += "10. DOAÇÕES: "
+        if len(doador_buscado.doacoes_doador) == 0:
+            retornoPerfil += "NENHUMA DOAÇÃO REALIZADA.\n"
+        else:
+            for i, doacao in enumerate(doador_buscado.doacoes_doador):
+                doacao_numero = f"{i+1:02d}"
+                if i == 0:
+                    retornoPerfil += f"\n 10.{doacao_numero}. ID: {doacao.id_doacao} | DATA: {doacao.data_doacao}\n"
+                else:
+                    retornoPerfil += f" 10.{doacao_numero}. ID: {doacao.id_doacao} | DATA: {doacao.data_doacao}\n"
+        retornoPerfil += "11. SAIR\n"
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
@@ -68,6 +87,9 @@ class Doador(Usuario):
         
         # SETANDO A QUANTIDADE DE MOEDAS DO NOVO DOADOR
         qtd_moedas_doador = 0
+        
+        # SETANDO AS DOAÇÕES DO NOVO DOADOR
+        doacoes_doador = []
     
         # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
@@ -87,7 +109,8 @@ class Doador(Usuario):
             novo_doador.senha_usuario = senha_usuario
             novo_doador.status_usuario = status_usuario
             novo_doador.nivel_doador = nivel_doador
-            novo_doador.qtd_moedas_doador = qtd_moedas_doador
+            novo_doador.moedas_doador = qtd_moedas_doador
+            novo_doador.doacoes_doador = doacoes_doador
             listaDoadores.append(novo_doador)
 
             print("DOADOR CADASTRADO COM SUCESSO!")
@@ -100,7 +123,7 @@ class Doador(Usuario):
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarDoador(dsn, listaDoadores):
+    def editarDoador(dsn, listaDoadores, listaDoacoes):
         perfilDoador = True
 
         if (len(listaDoadores) == 0):
@@ -114,7 +137,7 @@ class Doador(Usuario):
 
             while (perfilDoador):
                 opcao = int(input(Doador.perfilDoador(doador_buscado)))
-                opcao = int(Funcoes.validarOpcao(opcao, 1, 9, Doador.perfilDoador(doador_buscado)))
+                opcao = int(Funcoes.validarOpcao(opcao, 1, 11, Doador.perfilDoador(doador_buscado)))
 
                 if (opcao == 1):
                     # EDITAR O ID DO DOADOR
@@ -215,7 +238,20 @@ class Doador(Usuario):
                         # EDITAR A QUANTIDADE DE MOEDAS DO DOADOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
-                elif (opcao == 9):
+                elif (opcao == 10):
+                    # EDITAR AS DOAÇÕES DO DOADOR
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR AS DOAÇÕES DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR AS DOAÇÕES DO DOADOR DE ID {doador_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR AS DOAÇÕES DO DOADOR - SIM
+                       Doador.editarDoador(dsn, doador_buscado, listaDoacoes)
+                    
+                    elif (opcao == 2):
+                        # EDITAR AS DOAÇÕES DO DOADOR - NÃO
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 11):
                     perfilDoador = False
 
     def editarNivel(dsn, usuario_buscado):
@@ -288,6 +324,88 @@ class Doador(Usuario):
         except Exception as e:
             print("OCORREU UM ERRO DURANTE A ATUALIZAÇÃO DAS MOEDAS DO DOADOR:")
             print(str(e))
+
+    def editarDoacoes(dsn, doador_buscado, listaDoacoes):
+        try:
+            novas_doacoes_doador = []
+
+            if (len(listaDoacoes) == 0):
+                input("NENHUMA DOAÇÃO CADASTRADA. TECLE ENTER PARA VOLTAR AO MENU\n")
+
+            else:
+                adicionar = True
+
+                while (adicionar):
+                    Funcoes.exibirDoacoesAdmin(listaDoacoes)
+                    id_buscado = int(input("DIGITE O ID DA DOAÇÃO QUE DESEJA INCLUIR AO DOADOR: \n"))
+                    doacao_buscada = Funcoes.buscarDoacaoPorId(id_buscado, listaDoacoes)
+                    doacao_buscada = Funcoes.validarDoacaoBuscada(doacao_buscada, listaDoacoes)
+                    
+                    novas_doacoes_doador.append(doacao_buscada)
+
+                    opcao = int(input("DESEJA ADICIONAR MAIS UMA DOAÇÃO AO DOADOR?\n" + 
+                                          "01. SIM\n" + 
+                                          "02. NÃO\n"))
+                    
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, "DESEJA ADICIONAR MAIS UMA DOAÇÃO AO DOADOR?\n01. SIM\n02. NÃO\n"))
+
+                    if (opcao == 1):
+                        adicionar = True
+                    
+                    elif (opcao == 2):
+                        adicionar = False
+
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
+            conn = Funcoes.connect(dsn)
+            cursor = conn.cursor()
+
+            try:
+                # FAZENDO UPDATE NO BANCO DE DADOS
+                cursor.execute("DELETE FROM doacao WHERE id_usuario = :id_usuario", {"id_usuario": doador_buscado.id_usuario})
+                cursor.connection.commit()
+                
+                for doacao_doador in novas_doacoes_doador:
+                    cursor.execute("INSERT INTO doacao (id_doacao, id_usuario, data_doacao, qtd_moedas_doacao) VALUES (:1, :2, :3, :4)", (doacao_doador.id_doacao, doador_buscado.id_usuario, doacao_doador.data_doacao, doacao_doador.qtd_moedas_doacao))
+                    cursor.connection.commit()
+
+                # FAZENDO UPDATE NO CONSOLE
+                for doacao in doador_buscado.doacoes_doador:
+                    doacao.remover_doacao(doacao)
+
+                doador_buscado.doacoes_doador = novas_doacoes_doador
+
+                for doacao in doador_buscado.doacoes_doador:
+                    doacao.adicionar_doacao(doacao)                    
+
+                print("DOAÇÕES DO DOADOR EDITADAS COM SUCESSO!")
+
+            except sqlite3.DatabaseError as db_error:
+                print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DAS DOAÇÕES:")
+                print(str(db_error))
+
+            finally:
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
+                Funcoes.disconnect(conn, cursor)
+
+        except ValueError as value_error:
+            print("ERRO DE VALOR DURANTE A DIGITAÇÃO DA NOVA DOAÇÃO:")
+            print(str(value_error))
+
+        except Exception as e:
+            print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DA DOAÇÃO DO DOADOR:")
+            print(str(e))
+
+    def adicionar_doacao(self, doacao_adicionar):
+        for doacao_existente in self.doacaos_receptor:
+            if doacao_existente.id_doacao == doacao_adicionar.id_doacao:
+                return
+        self.doacaos_receptor.append(doacao_adicionar)
+
+    def remover_doacao(self, doacao_remover):
+        for doacao_existente in self.doacaos_receptor:
+            if doacao_existente.id_doacao == doacao_remover.id_doacao:
+                self.doacaos_receptor.remove(doacao_existente)
+                return
 
     def excluirDoador(dsn, listaDoadores):
         

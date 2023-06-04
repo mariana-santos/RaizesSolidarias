@@ -71,7 +71,7 @@ public class AlimentoResource {
 			return response.build();
 		} else {
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível encontrar o ALIMENTO de id_alimento: " + id_alimento);
+					.entity("{\"error\": \"Não foi possível encontrar o ALIMENTO de id_alimento: " + id_alimento+ "\"}");
 			return response.build();
 		}
 	}
@@ -107,10 +107,10 @@ public class AlimentoResource {
 		if (AlimentoService.atualizarAlimento(id_alimento, alimento)) {
 			return Response.ok().build();
 		} else {
-			return Response.status(404)
-					.entity("Não foi possível atualizar o ALIMENTO de id_alimento: " + id_alimento
-							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
-					.build();
+			ResponseBuilder response = Response.status(404)
+					.entity("{\"error\": \"Não foi possível atualizar o ALIMENTO de id_alimento: " + id_alimento
+							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.\"}");
+			return response.build();
 		}
 
 	}
@@ -128,9 +128,8 @@ public class AlimentoResource {
 			ResponseBuilder response = Response.noContent();
 			return response.build();
 		} else {
-			System.out.println("Não foi possível remover o ALIMENTO: " + id_alimento);
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível remover o ALIMENTO de id_alimento: " + id_alimento);
+					.entity("{\"error\": \"Não foi possível remover o ALIMENTO de id_alimento: " + id_alimento + "\"}");
 			return response.build();
 		}
 	}

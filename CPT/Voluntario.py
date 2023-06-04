@@ -8,11 +8,12 @@ from Plantio import Plantio
 from Usuario import Usuario
 
 class Voluntario(Usuario):
-    def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, data_registro_voluntario: str = None, colheitas_voluntario: list = None, plantios_voluntario: list = None):
+    def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, data_registro_voluntario: str = None, colheitas_voluntario: list = None, plantios_voluntario: list = None, agendamentos_voluntario: list = None):
         super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._data_registro_voluntario = data_registro_voluntario
         self._colheitas_voluntario = colheitas_voluntario if colheitas_voluntario is not None else []
         self._plantios_voluntario = plantios_voluntario if plantios_voluntario is not None else []
+        self._agendamentos_voluntario = agendamentos_voluntario if agendamentos_voluntario is not None else []
 
     @property
     def data_registro_voluntario(self) -> str:
@@ -37,6 +38,14 @@ class Voluntario(Usuario):
     @plantios_voluntario.setter
     def plantios_voluntario(self, plantios_voluntario: list):
         self._plantios_voluntario = plantios_voluntario
+
+    @property
+    def agendamentos_voluntario(self):
+        return self._agendamentos_voluntario
+
+    @agendamentos_voluntario.setter
+    def agendamentos_voluntario(self, agendamentos_voluntario: list):
+        self._agendamentos_voluntario = agendamentos_voluntario
 
     def perfilVoluntario(voluntario_buscado):
         retornoPerfil = Funcoes.menuCabecalho()
@@ -72,7 +81,7 @@ class Voluntario(Usuario):
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
-    def cadastrarVoluntario(dsn, id_usuario, listaUsuarios, listaVoluntarios, listaColheitas, listaPlantios):
+    def cadastrarVoluntario(dsn, id_usuario, listaUsuarios, listaVoluntarios):
         
         if (len(listaUsuarios) == 0):
             input("NENHUM USUÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
@@ -147,7 +156,7 @@ class Voluntario(Usuario):
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarVoluntario(dsn, listaVoluntarios):
+    def editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios):
         perfilVoluntario = True
 
         if (len(listaVoluntarios) == 0):
@@ -241,6 +250,32 @@ class Voluntario(Usuario):
                     input(Funcoes.editarNegativo())
 
                 elif (opcao == 9):
+                    # EDITAR AS COLHEITAS DO VOLUNTARIO
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR AS COLHEITAS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR AS COLHEITAS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR AS COLHEITAS DO VOLUNTARIO - SIM
+                       Voluntario.editarColheitas(dsn, voluntario_buscado, listaColheitas)
+                    
+                    elif (opcao == 2):
+                        # EDITAR AS COLHEITAS DO VOLUNTARIO - NÃO
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 10):
+                    # EDITAR OS PLANTIOS DO VOLUNTARIO
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR OS PLANTIOS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR OS PLANTIOS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR OS PLANTIOS DO VOLUNTARIO - SIM
+                       Voluntario.editarPlantios(dsn, voluntario_buscado, listaPlantios)
+                    
+                    elif (opcao == 2):
+                        # EDITAR OS PLANTIOS DO VOLUNTARIO - NÃO
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 11):
                     perfilVoluntario = False
 
     def editarColheitas(dsn, voluntario_buscado, listaColheitas):

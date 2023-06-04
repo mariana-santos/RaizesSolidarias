@@ -71,7 +71,7 @@ public class UsuarioResource {
 			return response.build();
 		} else {
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível encontrar o USUARIO de id_usuario: " + id_usuario);
+					.entity("{\"error\": \"Não foi possível encontrar o USUARIO de id_usuario: " + id_usuario + "\"}");
 			return response.build();
 		}
 	}

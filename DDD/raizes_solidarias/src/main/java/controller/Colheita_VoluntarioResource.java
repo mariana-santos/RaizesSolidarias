@@ -33,10 +33,8 @@ import services.Colheita_VoluntarioService;
  * @see dao.Colheita_VoluntarioDAO
  * @see services.Colheita_VoluntarioService
  * @see model.Colheita_Voluntario
- *
  * @author Raízes Solidárias
  */
-
 @Path("/colheita_voluntario")
 public class Colheita_VoluntarioResource {
 	
@@ -73,7 +71,7 @@ public class Colheita_VoluntarioResource {
 			return response.build();
 		} else {
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível encontrar o COLHEITA_VOLUNTARIO de id_colheita: " + id_colheita + " e id_usuario: " + id_usuario);
+					.entity("{\"error\": \"Não foi possível encontrar o COLHEITA_VOLUNTARIO de id_colheita: " + id_colheita + " e id_usuario: " + id_usuario + "\"}");
 			return response.build();
 		}
 	}
@@ -110,10 +108,10 @@ public class Colheita_VoluntarioResource {
 		if (Colheita_VoluntarioService.atualizarColheita_Voluntario(id_usuario_novo, id_usuario_antigo, id_colheita)) {
 			return Response.ok().build();
 		} else {
-			return Response.status(404)
-					.entity("Não foi possível atualizar o COLHEITA_VOLUNTARIO de id_colheita: " + id_colheita + " e id_usuario: " + id_usuario_antigo
-							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.")
-					.build();
+			ResponseBuilder response = Response.status(404)
+					.entity("{\"error\": \"Não foi possível atualizar o COLHEITA_VOLUNTARIO de id_colheita: " + id_colheita + " e id_usuario: " + id_usuario_antigo
+							+ ". O id da URI e o ID do objeto JSON devem ser iguais e deve existir no banco de dados.\"}");
+			return response.build();
 		}
 
 	}
@@ -134,7 +132,7 @@ public class Colheita_VoluntarioResource {
 		} else {
 			System.out.println("Não foi possível remover o COLHEITA_VOLUNTARIO de id_colheita: " + id_colheita + " e id_usuario: " + id_usuario);
 			ResponseBuilder response = Response.status(404)
-					.entity("Não foi possível remover o COLHEITA_VOLUNTARIO de id_colheita: " + id_colheita + " e id_usuario: " + id_usuario);
+					.entity("{\"error\": \"Não foi possível remover o COLHEITA_VOLUNTARIO de id_colheita: " + id_colheita + " e id_usuario: " + id_usuario + "\"}");
 			return response.build();
 		}
 	}

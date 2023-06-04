@@ -184,7 +184,7 @@ class Agendamento:
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarAgendamento(dsn, listaAgendamentos):
+    def editarAgendamento(dsn, listaAgendamentos, listaReceptores, listaVoluntarios):
         perfilAgendamento = True
 
         if (len(listaAgendamentos) == 0):
@@ -237,7 +237,7 @@ class Agendamento:
                     
                     if (opcao == 1):
                        # EDITAR O USUARIO DO AGENDAMENTO - SIM
-                       Agendamento.editarUsuario(dsn, agendamento_buscado)
+                       Agendamento.editarUsuario(dsn, agendamento_buscado, listaReceptores, listaVoluntarios)
                     
                     elif (opcao == 2):
                         # EDITAR O USUARIO DO AGENDAMENTO - NÃO

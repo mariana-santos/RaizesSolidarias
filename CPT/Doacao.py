@@ -47,7 +47,7 @@ class Doacao:
     def perfilDoacao(doacao_buscada):
         retornoPerfil = Funcoes.menuCabecalho()
         retornoPerfil += f"01. ID: {doacao_buscada.id_doacao}\n"
-        retornoPerfil += f"02. DOADOR: {doacao_buscada.doador}\n"
+        retornoPerfil += f"02. DOADOR: {doacao_buscada.doador.nome_usuario}\n"
         retornoPerfil += f"03. DATA: {doacao_buscada.data_doacao}\n"
         retornoPerfil += f"04. QUANTIDADE DE MOEDAS: {doacao_buscada.qtd_moedas_doacao}\n"
         retornoPerfil += "05. SAIR\n"
@@ -143,7 +143,7 @@ class Doacao:
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarDoacao(dsn, listaDoacoes):
+    def editarDoacao(dsn, listaDoacoes, listaDoadores):
         perfilDoacao = True
 
         if (len(listaDoacoes) == 0):
@@ -170,7 +170,7 @@ class Doacao:
                     
                     if (opcao == 1):
                        # EDITAR O DOADOR DA DOAÇÃO - SIM
-                       Doacao.editarDoador(dsn, doacao_buscada)
+                       Doacao.editarDoador(dsn, doacao_buscada, listaDoadores)
                     
                     elif (opcao == 2):
                         # EDITAR O DOADOR DA DOAÇÃO - NÃO
