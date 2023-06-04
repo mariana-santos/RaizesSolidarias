@@ -185,7 +185,6 @@ class Usuario:
             novo_usuario.senha_usuario = senha_usuario
             novo_usuario.status_usuario = status_usuario
             listaUsuarios.append(novo_usuario)
-            id_usuario = id_usuario + 1
 
             print("USUARIO CADASTRADO COM SUCESSO!")
 

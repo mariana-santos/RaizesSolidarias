@@ -208,8 +208,6 @@ class Destino:
             for receptor in receptores_destino:
                 receptor.adicionar_destino(novo_destino)
 
-            id_destino = id_destino + 1
-
             print("DESTINO CADASTRADO COM SUCESSO!")
 
         except sqlite3.DatabaseError as db_error:

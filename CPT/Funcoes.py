@@ -4,8 +4,6 @@ import time
 from datetime import datetime
 from tqdm import tqdm
 
-from Receptor import Receptor
-
 class Funcoes:
 
     # MENUS
@@ -17,13 +15,7 @@ class Funcoes:
         return ("------------------------------------------\n"
         "DIGITE A OPÇÃO DESEJADA: \n")
 
-    def menuInicial(): 
-        return (Funcoes.menuCabecalho() + 
-            "01. LOGIN ADMIN\n"
-            "02. SAIR\n" +
-            Funcoes.menuRodape())
-
-    def menuAdmin():
+    def menuInicial():
         return (Funcoes.menuCabecalho() +
             "01. AGENDAMENTOS\n"
             "02. ALIMENTOS\n"
@@ -33,8 +25,9 @@ class Funcoes:
             "06. DOADORES\n"
             "07. PLANTIOS\n"
             "08. RECEPTORES\n"
-            "09. VOLUNTÁRIOS\n"
-            "10. SAIR\n" +
+            "09. USUÁRIOS\n"
+            "10. VOLUNTÁRIOS\n"
+            "11. SAIR\n" +
             Funcoes.menuRodape())
 
     def menuAdminAgendamentos():
@@ -106,6 +99,15 @@ class Funcoes:
             "02. EXIBIR RECEPTORES\n"
             "03. EDITAR RECEPTOR\n"
             "04. EXCLUIR RECEPTOR\n"
+            "05. SAIR\n" +
+            Funcoes.menuRodape())
+
+    def menuAdminUsuarios():
+        return (Funcoes.menuCabecalho() +
+            "01. CADASTRAR USUÁRIO\n"
+            "02. EXIBIR USUÁRIOS\n"
+            "03. EDITAR USUÁRIO\n"
+            "04. EXCLUIR USUÁRIO\n"
             "05. SAIR\n" +
             Funcoes.menuRodape())
 
@@ -456,8 +458,9 @@ class Funcoes:
     def buscarIdMax(dsn, coluna_tabela, nome_tabela):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             cursor.execute(f"SELECT MAX({coluna_tabela}) FROM {nome_tabela}")
             result = cursor.fetchone()
@@ -476,8 +479,9 @@ class Funcoes:
     def buscarCpfsCadastrados(dsn):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             cpfs_cadastrados = set()
             cursor.execute("SELECT cpf_usuario FROM usuario")
@@ -495,8 +499,9 @@ class Funcoes:
     def buscarEmailsCadastrados(dsn):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
             
             emails_cadastrados = set()
             cursor.execute("SELECT email_usuario FROM usuario")
@@ -511,11 +516,32 @@ class Funcoes:
             print(f"OCORREU UM ERRO: {str(e)}")
             return None
     
+    def buscarCelsCadastrados(dsn):
+        try:
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
+            cursor = conn.cursor()
+            Funcoes.connect(dsn)
+            
+            cels_cadastrados = set()
+            cursor.execute("SELECT cel_usuario FROM usuario")
+            results = cursor.fetchall()
+            for row in results:
+                cels_cadastrados.add(row[0])
+            
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
+            Funcoes.disconnect(conn, cursor)
+            return cels_cadastrados
+        except Exception as e:
+            print(f"OCORREU UM ERRO: {str(e)}")
+            return None
+    
     def buscarAgendamentosBanco(dsn, Agendamento):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaAgendamentos = []
             cursor.execute("""
@@ -549,8 +575,9 @@ class Funcoes:
     def buscarAlimentosBanco(dsn, Alimento):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaAlimentos = []
             cursor.execute("""
@@ -586,7 +613,7 @@ class Funcoes:
     def buscarColheitasBanco(dsn, Colheita):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
             Funcoes.connect(dsn)
 
@@ -618,13 +645,12 @@ class Funcoes:
             print(f"OCORREU UM ERRO AO BUSCAR AS COLHEITAS NO BANCO DE DADOS: {str(e)}")
             return None
 
-    # PAREI AQUI!
-
-    def buscarDestinosBanco(dsn, Destino):
+    def buscarDestinosBanco(dsn, Destino, Receptor):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor_destino = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaDestinos = []
             cursor_destino.execute("""
@@ -660,16 +686,15 @@ class Funcoes:
                         cpf_usuario = receptor_row[1],
                         nome_usuario = receptor_row[2],
                         email_usuario = receptor_row[3],
-                        senha_usuario = receptor_row[4],
-                        status_usuario = receptor_row[5],
-                        carga_receptor = receptor_row[6],
-                        endereco_receptor = receptor_row[7]
+                        cel_usuario = receptor_row[4],
+                        senha_usuario = receptor_row[5],
+                        status_usuario = receptor_row[6],
+                        carga_receptor = receptor_row[7],
+                        endereco_receptor = receptor_row[8]
                     )
-                    autor_banco.livros.append(livro)
+                    destino_banco.receptores_destino.append(receptor_destino_banco)
 
-                cursor_livro.close()
-                lista_autores.append(autor_banco)
-
+                cursor_receptor.close()
                 listaDestinos.append(destino_banco)
 
             # MOSTRANDO BARRA DE PROGRESSO
@@ -689,8 +714,9 @@ class Funcoes:
     def buscarDoacoesBanco(dsn, Doacao):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaDoacoes = []
             cursor.execute("""
@@ -724,8 +750,9 @@ class Funcoes:
     def buscarDoadoresBanco(dsn, Doador):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaDoadores = []
             cursor.execute("""
@@ -734,6 +761,7 @@ class Funcoes:
                     u.cpf_usuario, 
                     u.nome_usuario, 
                     u.email_usuario, 
+                    u.cel_usuario,
                     u.senha_usuario,
                     u.status_usuario,
                     d.nivel_doador,
@@ -749,10 +777,11 @@ class Funcoes:
                     cpf_usuario = row[1],
                     nome_usuario = row[2],
                     email_usuario = row[3],
-                    senha_usuario = row[4],
-                    status_usuario = row[5],
-                    nivel_doador = row[6],
-                    moedas_doador = row[7]
+                    cel_usuario = row[4],
+                    senha_usuario = row[5],
+                    status_usuario = row[6],
+                    nivel_doador = row[7],
+                    moedas_doador = row[8]
                 )
 
                 listaDoadores.append(doador_banco)
@@ -774,8 +803,9 @@ class Funcoes:
     def buscarPlantiosBanco(dsn, Plantio):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaPlantios = []
             cursor.execute("""
@@ -809,8 +839,9 @@ class Funcoes:
     def buscarReceptoresBanco(dsn, Receptor):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaReceptores = []
             cursor.execute("""
@@ -819,6 +850,7 @@ class Funcoes:
                     u.cpf_usuario, 
                     u.nome_usuario, 
                     u.email_usuario, 
+                    u.cel_usuario,
                     u.senha_usuario,
                     u.status_usuario,
                     r.carga_receptor,
@@ -834,10 +866,11 @@ class Funcoes:
                     cpf_usuario = row[1],
                     nome_usuario = row[2],
                     email_usuario = row[3],
-                    senha_usuario = row[4],
-                    status_usuario = row[5],
-                    carga_receptor = row[6],
-                    endereco_receptor = row[7]
+                    cel_usuario = row[4],
+                    senha_usuario = row[5],
+                    status_usuario = row[6],
+                    carga_receptor = row[7],
+                    endereco_receptor = row[8]
                 )
 
                 listaReceptores.append(receptor_banco)
@@ -855,12 +888,52 @@ class Funcoes:
         except Exception as e:
             print(f"OCORREU UM ERRO AO BUSCAR OS RECEPTORES NO BANCO DE DADOS: {str(e)}")
             return None
-        
+    
+    def buscarUsuariosBanco(dsn, Usuario):
+        try:
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
+            cursor = conn.cursor()
+            Funcoes.connect(dsn)
+
+            listaUsuarios = []
+            cursor.execute("""
+                SELECT * FROM usuario
+            """)
+
+            for row in cursor:
+                usuario_banco = Usuario(
+                    id_usuario = row[0],
+                    cpf_usuario = row[1],
+                    nome_usuario = row[2],
+                    email_usuario = row[3],
+                    cel_usuario = row[4],
+                    senha_usuario = row[5],
+                    status_usuario = row[6]
+                )
+
+                listaUsuarios.append(usuario_banco)
+
+            # MOSTRANDO BARRA DE PROGRESSO
+            barra_progresso = tqdm(listaUsuarios)
+            for i in barra_progresso:
+                time.sleep(0.25)
+                barra_progresso.set_description('CARREGANDO BASE DE DADOS DE USUÁRIOS: ')
+
+            # FECHANDO CONEXÃO COM O BANCO DE DADOS
+            Funcoes.disconnect(conn, cursor)
+
+            return listaUsuarios
+        except Exception as e:
+            print(f"OCORREU UM ERRO AO BUSCAR OS USUÁRIOS NO BANCO DE DADOS: {str(e)}")
+            return None
+    
     def buscarVoluntariosBanco(dsn, Voluntario):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             cursor = conn.cursor()
+            Funcoes.connect(dsn)
 
             listaVoluntarios = []
             cursor.execute("""
@@ -869,6 +942,7 @@ class Funcoes:
                     u.cpf_usuario, 
                     u.nome_usuario, 
                     u.email_usuario, 
+                    u.cel_usuario, 
                     u.senha_usuario,
                     u.status_usuario,
                     v.data_registro_voluntario, 
@@ -883,9 +957,10 @@ class Funcoes:
                     cpf_usuario = row[1],
                     nome_usuario = row[2],
                     email_usuario = row[3],
-                    senha_usuario = row[4],
-                    status_usuario = row[5],
-                    data_registro_voluntario = row[6]
+                    cel_usuario = row[4],
+                    senha_usuario = row[5],
+                    status_usuario = row[6],
+                    data_registro_voluntario = row[7]
                 )
 
                 listaVoluntarios.append(voluntario_banco)

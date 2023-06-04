@@ -228,8 +228,6 @@ class Colheita:
             for plantio in plantios_colheita:
                 plantio.adicionar_plantio(nova_colheita)
 
-            id_colheita = id_colheita + 1
-
             print("COLHEITA CADASTRADA COM SUCESSO!")
 
         except sqlite3.DatabaseError as db_error:

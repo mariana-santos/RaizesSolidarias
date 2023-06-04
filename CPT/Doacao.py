@@ -132,7 +132,6 @@ class Doacao:
             novo_doacao.data_doacao = data_formatada
             novo_doacao.qtd_moedas_doacao = qtd_moedas_doacao
             listaDoacoes.append(novo_doacao)
-            id_doacao = id_doacao + 1
 
             print("DOAÇÃO CADASTRADA COM SUCESSO!")
 

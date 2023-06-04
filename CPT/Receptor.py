@@ -60,20 +60,27 @@ class Receptor(Usuario):
         return retornoPerfil
     
     def cadastrarReceptor(dsn, id_usuario, listaUsuarios, listaReceptores, listaDestinos):
-        Receptor.cadastrarUsuario(dsn, id_usuario, listaUsuarios)
-        receptor_buscado = Funcoes.buscarUsuarioPorId(id_usuario, listaReceptores)
+        
+        if (len(listaUsuarios) == 0):
+            input("NENHUM USUÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+
+        else:
+            Funcoes.exibirUsuariosAdmin(listaUsuarios)
+            id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO DOADOR: \n"))
+            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuarios)
+            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuarios)
 
         # INSTANCIANDO NOVO RECEPTOR
         novo_receptor = Receptor()
 
         # SETANDO OS ATRIBUTOS DO NOVO RECEPTOR PARA O NOVO RECEPTOR
-        id_usuario = receptor_buscado.id_usuario
-        cpf_usuario = receptor_buscado.cpf_usuario
-        nome_usuario = receptor_buscado.nome_usuario
-        email_usuario = receptor_buscado.email_usuario
-        cel_usuario = receptor_buscado.cel_usuario
-        senha_usuario = receptor_buscado.senha_usuario
-        status_usuario = receptor_buscado.status_usuario
+        id_usuario = usuario_buscado.id_usuario
+        cpf_usuario = usuario_buscado.cpf_usuario
+        nome_usuario = usuario_buscado.nome_usuario
+        email_usuario = usuario_buscado.email_usuario
+        cel_usuario = usuario_buscado.cel_usuario
+        senha_usuario = usuario_buscado.senha_usuario
+        status_usuario = usuario_buscado.status_usuario
 
         # SETANDO A CARGA DO NOVO RECEPTOR
         try:
@@ -169,8 +176,6 @@ class Receptor(Usuario):
 
             for destino in destinos_receptor:
                 destino.adicionar_receptor(novo_receptor)
-
-            id_usuario = id_usuario + 1
 
             print("RECEPTOR CADASTRADO COM SUCESSO!")
 

@@ -41,20 +41,27 @@ class Doador(Usuario):
         return retornoPerfil
     
     def cadastrarDoador(dsn, id_usuario, listaUsuarios, listaDoadores):
-        Doador.cadastrarUsuario(dsn, id_usuario, listaUsuarios)
-        doador_buscado = Funcoes.buscarUsuarioPorId(id_usuario, listaDoadores)
+        
+        if (len(listaUsuarios) == 0):
+            input("NENHUM USUÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+
+        else:
+            Funcoes.exibirUsuariosAdmin(listaUsuarios)
+            id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO DOADOR: \n"))
+            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuarios)
+            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuarios)
 
         # INSTANCIANDO NOVO DOADOR
         novo_doador = Doador()
 
         # SETANDO OS ATRIBUTOS DO NOVO DOADOR PARA O NOVO DOADOR
-        id_usuario = doador_buscado.id_usuario
-        cpf_usuario = doador_buscado.cpf_usuario
-        nome_usuario = doador_buscado.nome_usuario
-        email_usuario = doador_buscado.email_usuario
-        cel_usuario = doador_buscado.cel_usuario
-        senha_usuario = doador_buscado.senha_usuario
-        status_usuario = doador_buscado.status_usuario
+        id_usuario = usuario_buscado.id_usuario
+        cpf_usuario = usuario_buscado.cpf_usuario
+        nome_usuario = usuario_buscado.nome_usuario
+        email_usuario = usuario_buscado.email_usuario
+        cel_usuario = usuario_buscado.cel_usuario
+        senha_usuario = usuario_buscado.senha_usuario
+        status_usuario = usuario_buscado.status_usuario
 
         # SETANDO O NÍVEL DO NOVO DOADOR
         nivel_doador = 0
@@ -82,7 +89,6 @@ class Doador(Usuario):
             novo_doador.nivel_doador = nivel_doador
             novo_doador.qtd_moedas_doador = qtd_moedas_doador
             listaDoadores.append(novo_doador)
-            id_usuario = id_usuario + 1
 
             print("DOADOR CADASTRADO COM SUCESSO!")
 
