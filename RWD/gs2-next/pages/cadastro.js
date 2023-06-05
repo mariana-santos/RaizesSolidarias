@@ -61,6 +61,7 @@ export default function Cadastro() {
             toast.error(response.error)
             throw new Error('Erro ao cadastrar o usuário');
         }
+        
         else{
             console.log(data)
             sessionStorage.setItem('usuario', JSON.stringify(data));
