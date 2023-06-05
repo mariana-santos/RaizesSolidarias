@@ -20,9 +20,30 @@ import jakarta.ws.rs.core.UriBuilder;
 import model.Receptor;
 import services.ReceptorService;
 
+/**
+ * Classe que representa o recurso de Receptor (Usuario) do sistema.
+ *
+ * Esta classe define as operações CRUD para os Receptores, incluindo listar, buscar por ID,
+ * cadastrar, atualizar e deletar Receptores.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see dao.ReceptorDAO
+ * @see services.ReceptorService
+ * @see model.Receptor
+ * @see model.Usuario
+ *
+ * @author Raízes Solidárias
+ */
 @Path("/receptor")
 public class ReceptorResource {
 
+	/**
+	 * Recupera a lista de Receptores cadastrados no sistema.
+	 *
+	 * @return uma resposta contendo a lista de Receptores em formato JSON.
+	 */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarReceptores() {
@@ -33,6 +54,12 @@ public class ReceptorResource {
         return response.build();
     }
 
+    /**
+	 * Recupera um Receptor pelo seu ID.
+	 *
+	 * @param id_usuario o ID do Receptor (Usuario) a ser buscado.
+	 * @return uma resposta contendo o Receptor em formato JSON.
+	 */
     @GET
     @Path("/{id}")
     public Response exibirReceptorPorId(@PathParam("id") int id_usuario) {
@@ -49,6 +76,13 @@ public class ReceptorResource {
         }
     }
 
+    /**
+	 * Cadastra um novo Receptor no sistema.
+	 *
+	 * @param idUsuarioExistente O ID do usuário existente.
+	 * @param receptor_novo     O objeto Receptor contendo os dados do Receptor (Usuario) a ser cadastrado.
+	 * @return uma resposta contendo o Receptor cadastrado em formato JSON.
+	 */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrarReceptor(@Valid Receptor receptor_novo) {
@@ -60,6 +94,13 @@ public class ReceptorResource {
         return response.build();
     }
 
+    /**
+	 * Atualiza os dados de um Receptor existente no sistema.
+	 *
+	 * @param id_usuario o ID do Receptor (Usuario) a ser atualizado.
+	 * @param receptor o objeto Receptor contendo os novos dados do Receptor.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -74,6 +115,12 @@ public class ReceptorResource {
         }
     }
 
+    /**
+	 * Remove um Receptor do sistema.
+	 *
+	 * @param id_usuario o ID do Receptor (Usuario) a ser removido.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
     @DELETE
     @Path("/{id}")
     public Response deletarReceptor(@PathParam("id") int id_usuario) {
@@ -88,6 +135,13 @@ public class ReceptorResource {
         }
     }
 
+    /**
+	 * Valida o login de um receptor.
+	 *
+	 * @param receptorLogin O objeto Receptor contendo o email e a senha do receptor a serem validados.
+	 * @return A resposta HTTP com o status e o objeto Receptor logado em caso de sucesso,
+	 *         ou uma resposta HTTP de erro com uma mensagem em caso de falha na validação do login.
+	 */
     @POST
     @Path("/login")
     @Consumes(MediaType.APPLICATION_JSON)

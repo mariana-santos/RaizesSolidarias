@@ -20,9 +20,30 @@ import jakarta.ws.rs.core.UriBuilder;
 import model.Plantio;
 import services.PlantioService;
 
+/**
+ * Classe que representa o recurso de Plantio do sistema.
+ *
+ * Esta classe define as operações CRUD para os Plantios, incluindo listar, buscar por ID,
+ * cadastrar, atualizar e deletar Plantios.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see dao.PlantioDAO
+ * @see services.PlantioService
+ * @see model.Plantio
+ *
+ * @author Raízes Solidárias
+ */
+
 @Path("/plantio")
 public class PlantioResource {
-
+	
+	/**
+	 * Recupera a lista de Plantios cadastrados no sistema.
+	 *
+	 * @return uma resposta contendo a lista de Plantios em formato JSON.
+	 */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarPlantios() {
@@ -33,6 +54,12 @@ public class PlantioResource {
         return response.build();
     }
 
+    /**
+	 * Recupera um Plantio pelo seu ID.
+	 *
+	 * @param id_plantio o ID do Plantio a ser buscado.
+	 * @return uma resposta contendo o Plantio em formato JSON.
+	 */
     @GET
     @Path("/{id}")
     public Response exibirPlantioPorId(@PathParam("id") int id_plantio) {
@@ -49,6 +76,12 @@ public class PlantioResource {
         }
     }
 
+    /**
+	 * Cadastra um novo Plantio no sistema.
+	 *
+	 * @param plantio_novo o objeto Plantio contendo os dados do Plantio a ser cadastrado.
+	 * @return uma resposta contendo o Plantio cadastrado em formato JSON.
+	 */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrarPlantio(@Valid Plantio plantio_novo) {
@@ -69,6 +102,13 @@ public class PlantioResource {
         return response.build();
     }
 
+    /**
+	 * Atualiza os dados de um Plantio existente no sistema.
+	 *
+	 * @param id_plantio o ID do Plantio a ser atualizado.
+	 * @param plantio o objeto Plantio contendo os novos dados do Plantio.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -83,7 +123,13 @@ public class PlantioResource {
         }
 
     }
-
+    
+    /**
+	 * Remove um Plantio do sistema.
+	 *
+	 * @param id_plantio o ID do Plantio a ser removido.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
     @DELETE
     @Path("/{id}")
     public Response deletarPlantio(@PathParam("id") int id_plantio) {

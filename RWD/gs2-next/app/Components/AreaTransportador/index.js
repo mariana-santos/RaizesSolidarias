@@ -119,7 +119,7 @@ export default function AreaTransportador() {
                 <div className="transporte">
 
                     {/* Se a tabela transporte ainda não existir pra esse usuário, vai ser mostrado esse bloco pra cadastrar os dados iniciais da tabela */}
-                    {false ? (
+                    {
                         <div className="novo-agendamento">
                             <h3>Dados iniciais: </h3>
 
@@ -175,7 +175,7 @@ export default function AreaTransportador() {
 
                             <button type="submit" className="btn">Salvar</button>
                         </div>
-                    ) : (
+}
                         <div>
                             <h3>Destinos transportados atualmente: </h3>
                             <small>Esses são os destinos que você já transportou anteriormente. Clique em um deles para mais informações</small>
@@ -233,7 +233,7 @@ export default function AreaTransportador() {
                                 })}
                             </div>
                         </div>
-                    )}
+                    
 
 
                 </div>

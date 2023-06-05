@@ -9,7 +9,8 @@
 }
 
 .plantios{
-    background-image: url('../../../../public/terra.png');
+    background: url('../../../../public/terra.png') #AE6C4F;
+    border-radius: 10px;
     width: 100%;
     height: 200px;
     background-size: contain;
