@@ -28,13 +28,13 @@ export default function AreaVoluntario() {
 
     const [turno, setTurno] = useState('Manhã');
 
-    const { isLoading, error, agendamentos } = useQuery('repoData', () =>
-        fetch('http://localhost:8080/agendamento').then(res => res.json())
-    )
+    // const { isLoading, error, agendamentos } = useQuery('repoData', () =>
+    //     fetch('http://localhost:8080/agendamento').then(res => res.json())
+    // )
 
-    if (isLoading) return 'Carregando...'
+    // if (isLoading) return 'Carregando...'
 
-    if (error) return 'Ocorreu um erro: ' + error.message
+    // if (error) return 'Ocorreu um erro: ' + error.message
 
     function handleSubmit(e) {
 

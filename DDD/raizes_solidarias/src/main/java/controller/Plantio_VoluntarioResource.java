@@ -20,9 +20,30 @@ import jakarta.ws.rs.core.UriBuilder;
 import model.Plantio_Voluntario;
 import services.Plantio_VoluntarioService;
 
+/**
+ * Classe que representa o recurso de Plantio_Voluntario do sistema.
+ *
+ * Esta classe define as operações CRUD para os Plantio_Voluntarios, incluindo listar, buscar por ID,
+ * cadastrar, atualizar e deletar Plantio_Voluntarios.
+ * Os Plantio_Voluntarios são registros de plantios associados a voluntarios e vice-versa.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see dao.Plantio_VoluntarioDAO
+ * @see services.Plantio_VoluntarioService
+ * @see model.Plantio_Voluntario
+ *
+ * @author Raízes Solidárias
+ */
 @Path("/plantio_voluntario")
 public class Plantio_VoluntarioResource {
-
+	
+	/**
+	 * Recupera a lista de Plantio_Voluntarios cadastrados no sistema.
+	 *
+	 * @return uma resposta contendo a lista de Plantio_Voluntarios em formato JSON.
+	 */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listarPlantio_Voluntarios() {
@@ -33,6 +54,12 @@ public class Plantio_VoluntarioResource {
         return response.build();
     }
 
+    /**
+	 * Recupera um Plantio_Voluntario pelo seu ID Plantio.
+	 *
+	 * @param id_plantio o ID do Plantio a ser buscado.
+	 * @return uma resposta contendo uma lista de Plantio_Voluntario em formato JSON.
+	 */
     @GET
     @Path("/plantio/{id_plantio}")
     public Response exibirPlantio_VoluntarioPorIdPlantio(@PathParam("id_plantio") int id_plantio) {
@@ -51,6 +78,12 @@ public class Plantio_VoluntarioResource {
         }
     }
 
+    /**
+	 * Recupera um Plantio_Voluntario pelo seu ID Voluntário (Usuário).
+	 *
+	 * @param id_usuario o ID do Voluntário (Usuário) a ser buscado.
+	 * @return uma resposta contendo uma lista de Plantio_Voluntario em formato JSON.
+	 */
     @GET
     @Path("/voluntario/{id_usuario}")
     public Response exibirPlantio_VoluntarioPorIdUsuario(@PathParam("id_usuario") int id_usuario) {
@@ -69,6 +102,13 @@ public class Plantio_VoluntarioResource {
         }
     }
 
+    /**
+	 * Recupera um Plantio_Voluntario pelo seu ID Plantio e ID Voluntario (Usuario).
+	 *
+	 * @param id_plantio o ID do Plantio a ser buscado.
+	 * @param id_usuario o ID do Voluntario (Usuario) a ser buscado.
+	 * @return uma resposta contendo o Plantio_Voluntario em formato JSON.
+	 */
     @GET
     @Path("/{id_plantio}/{id_usuario}")
     public Response exibirPlantio_VoluntarioPorIds(@PathParam("id_plantio") int id_plantio,
@@ -87,6 +127,12 @@ public class Plantio_VoluntarioResource {
         }
     }
 
+    /**
+	 * Cadastra um novo Plantio_Voluntario no sistema.
+	 *
+	 * @param plantio_voluntario_novo o objeto Plantio_Voluntario contendo os dados do Plantio_Voluntario a ser cadastrado.
+	 * @return uma resposta contendo o Plantio_Voluntario cadastrado em formato JSON.
+	 */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response cadastrarPlantio_Voluntario(@Valid Plantio_Voluntario plantio_voluntario_novo) {
@@ -99,6 +145,15 @@ public class Plantio_VoluntarioResource {
         return response.build();
     }
 
+    /**
+	 * Atualiza os dados de um Plantio_Voluntario existente no sistema.
+	 *
+	 * @param id_plantio_novo	o ID do Plantio a ser atualizado.
+	 * @param id_plantio_antigo o ID do Plantio que será atualizado.
+	 * @param id_usuario_novo 	o ID do Usuario a ser atualizado.
+	 * @param id_usuario_antigo	o ID do Usuario que será atualizado.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
     @PUT
     @Path("/{id_plantio_antigo}-{id_usuario_antigo}/{id_plantio_novo}-{id_usuario_novo}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -119,6 +174,13 @@ public class Plantio_VoluntarioResource {
 
     }
 
+    /**
+	 * Remove um Plantio_Voluntario do sistema.
+	 *
+	 * @param id_plantio 	o ID do Plantio a ser removido.
+	 * @param id_usuario	o ID da Voluntario a ser removida.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
     @DELETE
     @Path("/{id_plantio}/{id_usuario}")
     public Response deletarPlantio_Voluntario(@PathParam("id_plantio") int id_plantio,

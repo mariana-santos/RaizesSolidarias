@@ -20,9 +20,30 @@ import jakarta.ws.rs.core.UriBuilder;
 import model.Voluntario;
 import services.VoluntarioService;
 
+/**
+ * Classe que representa o recurso de Voluntario (Usuario) do sistema.
+ *
+ * Esta classe define as operações CRUD para os Voluntarios, incluindo listar, buscar por ID,
+ * cadastrar, atualizar e deletar Voluntarios.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see dao.VoluntarioDAO
+ * @see services.VoluntarioService
+ * @see model.Voluntario
+ * @see model.Usuario
+ *
+ * @author Raízes Solidárias
+ */
 @Path("/voluntario")
 public class VoluntarioResource {
 
+	/**
+	 * Recupera a lista de Voluntarios cadastrados no sistema.
+	 *
+	 * @return uma resposta contendo a lista de Voluntarios em formato JSON.
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listarVoluntarios() {
@@ -33,6 +54,12 @@ public class VoluntarioResource {
 		return response.build();
 	}
 
+	/**
+	 * Recupera um Voluntario pelo seu ID.
+	 *
+	 * @param id_usuario o ID do Voluntario (Usuario) a ser buscado.
+	 * @return uma resposta contendo o Voluntario em formato JSON.
+	 */
 	@GET
 	@Path("/{id}")
 	public Response exibirVoluntarioPorId(@PathParam("id") int id_usuario) {
@@ -49,6 +76,12 @@ public class VoluntarioResource {
 		}
 	}
 
+	/**
+	 * Cadastra um novo Voluntario no sistema.
+	 *
+	 * @param voluntario_novo o objeto Voluntario contendo os dados do Voluntario (Usuario) a ser cadastrado.
+	 * @return uma resposta contendo o Voluntario cadastrado em formato JSON.
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrarVoluntario(@Valid Voluntario voluntario_novo) {
@@ -60,6 +93,13 @@ public class VoluntarioResource {
 		return response.build();
 	}
 
+	/**
+	 * Atualiza os dados de um Voluntario existente no sistema.
+	 *
+	 * @param id_usuario o ID do Voluntario (Usuario) a ser atualizado.
+	 * @param voluntario o objeto Voluntario contendo os novos dados do Voluntario.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -74,6 +114,12 @@ public class VoluntarioResource {
 		}
 	}
 
+	/**
+	 * Remove um Voluntario do sistema.
+	 *
+	 * @param id_usuario o ID do Voluntario (Usuario) a ser removido.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
 	@DELETE
 	@Path("/{id}")
 	public Response deletarVoluntario(@PathParam("id") int id_usuario) {
@@ -88,6 +134,13 @@ public class VoluntarioResource {
 		}
 	}
 
+	/**
+	 * Valida o login de um voluntario.
+	 *
+	 * @param voluntarioLogin O objeto Voluntario contendo o email e a senha do voluntario a serem validados.
+	 * @return A resposta HTTP com o status e o objeto Voluntario logado em caso de sucesso,
+	 *         ou uma resposta HTTP de erro com uma mensagem em caso de falha na validação do login.
+	 */
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)

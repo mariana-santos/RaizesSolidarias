@@ -20,9 +20,30 @@ import jakarta.ws.rs.core.UriBuilder;
 import model.Plantio_Colheita;
 import services.Plantio_ColheitaService;
 
+/**
+ * Classe que representa o recurso de Plantio_Colheita do sistema.
+ *
+ * Esta classe define as operações CRUD para os Plantio_Colheitas, incluindo listar, buscar por ID,
+ * cadastrar, atualizar e deletar Plantio_Colheitas.
+ * Os Plantio_Colheitas são registros de plantios associados a colheitas e vice-versa.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see dao.Plantio_ColheitaDAO
+ * @see services.Plantio_ColheitaService
+ * @see model.Plantio_Colheita
+ *
+ * @author Raízes Solidárias
+ */
 @Path("/plantio_colheita")
 public class Plantio_ColheitaResource {
 
+	/**
+	 * Recupera a lista de Plantio_Colheitas cadastrados no sistema.
+	 *
+	 * @return uma resposta contendo a lista de Plantio_Colheitas em formato JSON.
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response listarPlantio_Colheitas() {
@@ -33,6 +54,12 @@ public class Plantio_ColheitaResource {
 		return response.build();
 	}
 
+	/**
+	 * Recupera um Plantio_Colheita pelo seu ID Plantio.
+	 *
+	 * @param id_plantio o ID do Plantio a ser buscado.
+	 * @return uma resposta contendo o Plantio_Colheita em formato JSON.
+	 */
 	@GET
 	@Path("/plantio/{id_plantio}")
 	public Response exibirPlantio_ColheitaPorIdPlantio(@PathParam("id_plantio") int id_plantio) {
@@ -49,6 +76,12 @@ public class Plantio_ColheitaResource {
 		}
 	}
 
+	/**
+	 * Recupera uma lista de Plantio_Colheita pelo seu ID Colheita.
+	 *
+	 * @param colheita o ID da Colheita a ser buscada.
+	 * @return uma resposta contendo uma lista de Plantio_Colheita em formato JSON.
+	 */
 	@GET
 	@Path("/colheita/{id_colheita}")
 	public Response exibirPlantio_ColheitaPorIdColheita(@PathParam("id_colheita") int id_colheita) {
@@ -66,6 +99,13 @@ public class Plantio_ColheitaResource {
 		}
 	}
 
+	/**
+	 * Recupera um Plantio_Colheita pelo seu ID Plantio e ID Colheita.
+	 *
+	 * @param id_plantio o ID do Plantio a ser buscado.
+	 * @param id_colheita o ID da Colheita a ser buscada.
+	 * @return uma resposta contendo o Plantio_Colheita em formato JSON.
+	 */
 	@GET
 	@Path("/{id_plantio}/{id_colheita}")
 	public Response exibirPlantio_ColheitaPorIds(@PathParam("id_plantio") int id_plantio,
@@ -83,6 +123,12 @@ public class Plantio_ColheitaResource {
 		}
 	}
 
+	/**
+	 * Cadastra um novo Plantio_Colheita no sistema.
+	 *
+	 * @param plantio_colheita_novo o objeto Plantio_Colheita contendo os dados do Plantio_Colheita a ser cadastrado.
+	 * @return uma resposta contendo o Plantio_Colheita cadastrado em formato JSON.
+	 */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrarPlantio_Colheita(@Valid Plantio_Colheita plantio_colheita_novo) {
@@ -94,6 +140,14 @@ public class Plantio_ColheitaResource {
 		return response.build();
 	}
 
+	/**
+	 * Atualiza os dados de um Plantio_Colheita existente no sistema.
+	 *
+	 * @param id_plantio_novo 	o ID do Plantio a ser atualizado.
+	 * @param id_plantio_antigo	o ID do Plantio que será atualizado.
+	 * @param id_colheita 		o ID da Colheita que será atualizada.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
 	@PUT
 	@Path("/{id_colheita}/{id_plantio_antigo}/{id_plantio_novo}")
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -110,6 +164,13 @@ public class Plantio_ColheitaResource {
 		}
 	}
 
+	/**
+	 * Remove um Plantio_Colheita do sistema.
+	 *
+	 * @param id_plantio 	o ID do Plantio a ser removido.
+	 * @param id_colheita	o ID da Colheita a ser removida.
+	 * @return uma resposta indicando o sucesso ou falha da operação.
+	 */
 	@DELETE
 	@Path("/{id_plantio}/{id_colheita}")
 	public Response deletarPlantio_Colheita(@PathParam("id_plantio") int id_plantio,
