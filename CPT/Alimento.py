@@ -164,6 +164,7 @@ class Alimento:
             listaAlimentos.append(novo_alimento)
 
             print("ALIMENTO CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO ALIMENTO:")
@@ -279,6 +280,7 @@ class Alimento:
                 alimento_buscado.nome_alimento = novo_nome
 
                 print("NOME DO ALIMENTO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO NOME:")
@@ -314,6 +316,7 @@ class Alimento:
                 alimento_buscado.tempo_colheita = novo_tempo_colheita
 
                 print("TEMPO DE COLHEITA DO ALIMENTO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO TEMPO DE COLHEITA:")
@@ -349,6 +352,7 @@ class Alimento:
                 alimento_buscado.qtd_irrigacao = nova_qtd_irrigacao
 
                 print("QUANTIDADE DE IRRIGAÇÃO DO ALIMENTO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA QUANTIDADE DE IRRIGAÇÃO:")
@@ -384,6 +388,7 @@ class Alimento:
                 alimento_buscado.preco_alimento = novo_preco_alimento
 
                 print("PREÇO DO ALIMENTO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO PREÇO DO ALIMENTO:")
@@ -419,6 +424,7 @@ class Alimento:
                 alimento_buscado.qtd_alimento = nova_qtd_alimento
 
                 print("QUANTIDADE DO ALIMENTO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA QUANTIDADE DO ALIMENTO:")

@@ -66,13 +66,13 @@ class Plantio:
     def perfilPlantio(plantio_buscado):
         retornoPerfil = Funcoes.menuCabecalho()
         retornoPerfil += f"01. ID: {plantio_buscado.id_plantio}\n"
-        retornoPerfil += f"02. DATA: {plantio_buscado.data_plantio}\n"
+        retornoPerfil += f"02. DATA: {Funcoes.formatarData(plantio_buscado.data_plantio)}\n"
         retornoPerfil += f"03. ESPAÇO: {plantio_buscado.espaco_plantio}\n"
-        retornoPerfil += f"04. ALIMENTO: {plantio_buscado.alimento.nome_alimento}"
+        retornoPerfil += f"04. ALIMENTO: {plantio_buscado.alimento.nome_alimento}\n"
         if (plantio_buscado.colheita == None):
-            retornoPerfil += f"05. COLHEITA: A COLHEITA AINDA NÃO FOI REALIZADA."
+            retornoPerfil += f"05. COLHEITA: A COLHEITA AINDA NÃO FOI REALIZADA.\n"
         else:
-            retornoPerfil += f"05. COLHEITA: ID: {plantio_buscado.colheita.id_colheita} | DATA: {plantio_buscado.colheita.data_colheita}"
+            retornoPerfil += f"05. COLHEITA: ID: {plantio_buscado.colheita.id_colheita} | DATA: {Funcoes.formatarData(plantio_buscado.colheita.data_colheita)}\n"
         retornoPerfil += "06. VOLUNTÁRIOS: "
         if len(plantio_buscado.voluntarios_plantio) == 0:
             retornoPerfil += "NENHUM VOLUNTÁRIO RESPONSÁVEL.\n"
@@ -101,7 +101,7 @@ class Plantio:
             data_plantio = input(f"DIGITE A DATA DO PLANTIO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_plantio = Funcoes.validarPreenchimento(f"DIGITE A DATA DO PLANTIO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_plantio)
             data_formatada = datetime.strptime(data_plantio, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
 
         except ValueError as value_error:
             print("ERRO DE VALOR DURANTE A DIGITAÇÃO DA DATA:")
@@ -198,7 +198,7 @@ class Plantio:
 
         try:           
             # FAZENDO INSERT NO BANCO DE DADOS
-            cursor.execute("INSERT INTO plantio (id_plantio, data_plantio, espaco_plantio, id_alimento) VALUES (:1, :2, :3, :4)", (id_plantio, data_formatada_banco, espaco_plantio, alimento_plantio.id_alimento))
+            cursor.execute("INSERT INTO plantio (id_plantio, data_plantio, espaco_plantio, id_alimento) VALUES (:1, TO_DATE(:2, 'DD/MM/YYYY'), :3, :4)", (id_plantio, data_formatada_banco, espaco_plantio, alimento_plantio.id_alimento))
             cursor.connection.commit()
 
             if len(voluntarios_plantio) != 0:
@@ -217,9 +217,10 @@ class Plantio:
             listaPlantios.append(novo_plantio)
 
             for voluntario in voluntarios_plantio:
-                voluntario.adicionar_voluntario(novo_plantio)
+                voluntario.adicionar_plantio(novo_plantio)
 
             print("PLANTIO CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO PLANTIO:")
@@ -322,7 +323,7 @@ class Plantio:
             nova_data = input(f"DIGITE A NOVA DATA DO PLANTIO DE ID {plantio_buscado.id_plantio} (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             nova_data = Funcoes.validarPreenchimento(f"DIGITE A NOVA DATA DO PLANTIO DE ID {plantio_buscado.id_plantio} (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", nova_data)
             data_formatada = datetime.strptime(nova_data, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
@@ -330,13 +331,14 @@ class Plantio:
 
             try:
                 # FAZENDO UPDATE NO BANCO DE DADOS
-                cursor.execute("UPDATE plantio SET data_plantio = :data_formatada_banco WHERE id_plantio = :id_plantio", {"data_formatada_banco": data_formatada_banco, "id_plantio": plantio_buscado.id_plantio})
+                cursor.execute("UPDATE plantio SET data_plantio = TO_DATE(:data_formatada_banco, 'DD/MM/YYYY') WHERE id_plantio = :id_plantio", {"data_formatada_banco": data_formatada_banco, "id_plantio": plantio_buscado.id_plantio})
                 cursor.connection.commit()
 
                 # FAZENDO UPDATE NO CONSOLE
                 plantio_buscado.data_plantio = data_formatada
 
                 print("DATA DO PLANTIO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA DATA:")
@@ -372,6 +374,7 @@ class Plantio:
                 plantio_buscado.espaco_plantio = novo_espaco
 
                 print("ESPAÇO DO PLANTIO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO ESPAÇO:")
@@ -399,14 +402,6 @@ class Plantio:
                 id_buscado = int(input("DIGITE O ID DO ALIMENTO QUE DESEJA INCLUIR AO PLANTIO: \n"))
                 alimento_buscado = Funcoes.buscarAlimentoPorId(id_buscado, listaAlimentos)
                 alimento_buscado = Funcoes.validarAlimentoBuscado(alimento_buscado, listaAlimentos)
-                
-                novo_alimento = Alimento()
-                novo_alimento.id_alimento = alimento_buscado.id_alimento
-                novo_alimento.nome_alimento = alimento_buscado.nome_alimento
-                novo_alimento.tempo_colheita = alimento_buscado.tempo_colheita
-                novo_alimento.qtd_irrigacao = alimento_buscado.qtd_irrigacao
-                novo_alimento.preco_alimento = alimento_buscado.preco_alimento
-                novo_alimento.qtd_alimento = alimento_buscado.qtd_alimento
 
                 # CRIANDO CONEXÃO COM O BANCO DE DADOS
                 conn = Funcoes.connect(dsn)
@@ -414,13 +409,14 @@ class Plantio:
 
                 try:           
                     # FAZENDO UPDATE NO BANCO DE DADOS
-                    cursor.execute("UPDATE plantio SET id_alimento = :novo_alimento.id_alimento WHERE id_plantio = :id_plantio", {"novo_alimento.id_alimento": novo_alimento.id_alimento, "id_plantio": plantio_buscado.id_plantio})
+                    cursor.execute("UPDATE plantio SET id_alimento = :id_alimento WHERE id_plantio = :id_plantio", {"id_alimento": alimento_buscado.id_alimento, "id_plantio": plantio_buscado.id_plantio})
                     cursor.connection.commit()
 
                     # FAZENDO UPDATE NO CONSOLE
-                    plantio_buscado.alimento = novo_alimento
+                    plantio_buscado.alimento = alimento_buscado
 
                     print("ALIMENTO DO PLANTIO EDITADO COM SUCESSO!")
+                    input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 except sqlite3.DatabaseError as db_error:
                     print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO ALIMENTO:")
@@ -448,13 +444,6 @@ class Plantio:
                 id_buscado = int(input("DIGITE O ID DA COLHEITA QUE DESEJA INCLUIR AO PLANTIO: \n"))
                 colheita_buscada = Funcoes.buscarColheitaPorId(id_buscado, listaColheitas)
                 colheita_buscada = Funcoes.validarColheitaBuscada(colheita_buscada, listaColheitas)
-                
-                nova_colheita = Colheita()
-                nova_colheita.id_colheita = colheita_buscada.id_colheita
-                nova_colheita.data_colheita = colheita_buscada.data_colheita
-                nova_colheita.descricao_colheita = colheita_buscada.descricao_colheita
-                nova_colheita.voluntarios_colheita = colheita_buscada.voluntarios_colheita
-                nova_colheita.plantios_colheita = colheita_buscada.plantios_colheita
 
                 # CRIANDO CONEXÃO COM O BANCO DE DADOS
                 conn = Funcoes.connect(dsn)
@@ -462,10 +451,11 @@ class Plantio:
 
                 try:           
                     # FAZENDO UPDATE NO BANCO DE DADOS
-                    cursor.execute("DELETE FROM plantio_colheita WHERE id_plantio = :id_plantio AND id_colheita = :id_colheita", {"id_plantio": plantio_buscado.id_plantio, "id_colheita": plantio_buscado.colheita.id_colheita})
-                    cursor.connection.commit()
+                    if (plantio_buscado.colheita != None):
+                        cursor.execute("DELETE FROM plantio_colheita WHERE id_plantio = :id_plantio AND id_colheita = :id_colheita", {"id_plantio": plantio_buscado.id_plantio, "id_colheita": plantio_buscado.colheita.id_colheita})
+                        cursor.connection.commit()
 
-                    cursor.execute("INSERT INTO plantio_colheita (id_plantio, id_colheita) VALUES (:1, :2)", (plantio_buscado.id_plantio, nova_colheita.id_colheita))
+                    cursor.execute("INSERT INTO plantio_colheita (id_plantio, id_colheita) VALUES (:1, :2)", (plantio_buscado.id_plantio, colheita_buscada.id_colheita))
                     cursor.connection.commit()
 
                     # FAZENDO UPDATE NO CONSOLE
@@ -473,12 +463,13 @@ class Plantio:
                         for colheita_buscada in listaColheitas:
                             colheita_buscada.remover_plantio(plantio_buscado)
 
-                    plantio_buscado.colheita = nova_colheita
+                    plantio_buscado.colheita = colheita_buscada
 
                     if plantio_buscado.colheita is not None:
-                        nova_colheita.adicionar_plantio(plantio_buscado)
+                        colheita_buscada.adicionar_plantio(plantio_buscado)
 
                     print("COLHEITA DO PLANTIO EDITADO COM SUCESSO!")
+                    input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 except sqlite3.DatabaseError as db_error:
                     print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA COLHEITA:")
@@ -541,14 +532,15 @@ class Plantio:
 
                 # FAZENDO UPDATE NO CONSOLE
                 for voluntario in plantio_buscado.voluntarios_plantio:
-                    voluntario.remover_voluntario(plantio_buscado)
+                    voluntario.remover_plantio(plantio_buscado)
 
-                voluntario_buscado.voluntarios_plantio = novos_voluntarios_plantio
+                plantio_buscado.voluntarios_plantio = novos_voluntarios_plantio
 
                 for voluntario in plantio_buscado.voluntarios_plantio:
-                    voluntario.adicionar_voluntario(plantio_buscado)   
+                    voluntario.adicionar_plantio(plantio_buscado)   
 
                 print("VOLUNTÁRIOS DO PLANTIO EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS VOLUNTÁRIOS:")
@@ -590,6 +582,9 @@ class Plantio:
                             try: 
                                 # EXCLUINDO DO BANCO DE DADOS E DA LISTA
                                 cursor.execute("DELETE FROM plantio_voluntario WHERE id_plantio = :1", (listaPlantios[i].id_plantio,))
+                                cursor.connection.commit()
+
+                                cursor.execute("DELETE FROM plantio_colheita WHERE id_plantio = :1", (listaPlantios[i].id_plantio,))
                                 cursor.connection.commit()
 
                                 cursor.execute("DELETE FROM plantio WHERE id_plantio = :1", (listaPlantios[i].id_plantio,))

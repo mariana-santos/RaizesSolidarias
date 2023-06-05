@@ -9,7 +9,7 @@ from Usuario import Usuario
 
 class Voluntario(Usuario):
     def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, data_registro_voluntario: str = None, colheitas_voluntario: list = None, plantios_voluntario: list = None, agendamentos_voluntario: list = None):
-        super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
+        super().__init__(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._data_registro_voluntario = data_registro_voluntario
         self._colheitas_voluntario = colheitas_voluntario if colheitas_voluntario is not None else []
         self._plantios_voluntario = plantios_voluntario if plantios_voluntario is not None else []
@@ -81,16 +81,16 @@ class Voluntario(Usuario):
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
-    def cadastrarVoluntario(dsn, id_usuario, listaUsuarios, listaVoluntarios):
+    def cadastrarVoluntario(dsn, id_usuario, listaUsuariosNaoVoluntarios, listaVoluntarios):
         
-        if (len(listaUsuarios) == 0):
-            input("NENHUM USUÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+        if (len(listaUsuariosNaoVoluntarios) == 0):
+            input("NENHUM USUÁRIO PARA CADASTRAR COMO VOLUNTÁRIO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
         else:
-            Funcoes.exibirUsuariosAdmin(listaUsuarios)
-            id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO DOADOR: \n"))
-            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuarios)
-            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuarios)
+            Funcoes.exibirUsuariosAdmin(listaUsuariosNaoVoluntarios)
+            id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO VOLUNTÁRIO: \n"))
+            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuariosNaoVoluntarios)
+            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuariosNaoVoluntarios)
 
         # INSTANCIANDO NOVO VOLUNTARIO
         novo_voluntario = Voluntario()
@@ -119,7 +119,7 @@ class Voluntario(Usuario):
 
         try:           
             # FAZENDO INSERT NO BANCO DE DADOS
-            cursor.execute("INSERT INTO voluntario (id_usuario, data_registro_voluntario) VALUES (:1, :2)", (id_usuario, data_registro_voluntario))
+            cursor.execute("INSERT INTO voluntario (id_usuario, data_registro_voluntario) VALUES (:1, TO_DATE(:2, 'DD/MM/YYYY'))", (id_usuario, data_registro_voluntario))
             cursor.connection.commit()
 
             if len(colheitas_voluntario) != 0:
@@ -145,8 +145,10 @@ class Voluntario(Usuario):
             novo_voluntario.plantios_voluntario = plantios_voluntario
 
             listaVoluntarios.append(novo_voluntario)
+            listaUsuariosNaoVoluntarios.remove(usuario_buscado)
 
             print("VOLUNTARIO CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO VOLUNTARIO:")
@@ -156,7 +158,7 @@ class Voluntario(Usuario):
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios):
+    def editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios, emails_cadastrados, cel_cadastrados):
         perfilVoluntario = True
 
         if (len(listaVoluntarios) == 0):
@@ -170,7 +172,7 @@ class Voluntario(Usuario):
 
             while (perfilVoluntario):
                 opcao = int(input(Voluntario.perfilVoluntario(voluntario_buscado)))
-                opcao = int(Funcoes.validarOpcao(opcao, 1, 9, Voluntario.perfilVoluntario(voluntario_buscado)))
+                opcao = int(Funcoes.validarOpcao(opcao, 1, 11, Voluntario.perfilVoluntario(voluntario_buscado)))
 
                 if (opcao == 1):
                     # EDITAR O ID DO VOLUNTARIO
@@ -200,7 +202,7 @@ class Voluntario(Usuario):
                     
                     if (opcao == 1):
                        # EDITAR O EMAIL DO VOLUNTARIO - SIM
-                       Voluntario.editarEmail(dsn, voluntario_buscado)
+                       Voluntario.editarEmail(dsn, voluntario_buscado, emails_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O EMAIL DO VOLUNTARIO - NÃO
@@ -213,7 +215,7 @@ class Voluntario(Usuario):
                     
                     if (opcao == 1):
                        # EDITAR O CELULAR DO VOLUNTARIO - SIM
-                       Voluntario.editarCel(dsn, voluntario_buscado)
+                       Voluntario.editarCel(dsn, voluntario_buscado, cel_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O CELULAR DO VOLUNTARIO - NÃO
@@ -331,6 +333,7 @@ class Voluntario(Usuario):
                     colheita.adicionar_voluntario(voluntario_buscado)   
 
                 print("COLHEITAS DO VOLUNTÁRIO EDITADAS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DAS COLHEITAS:")
@@ -401,6 +404,7 @@ class Voluntario(Usuario):
                     plantio.adicionar_voluntario(voluntario_buscado)   
 
                 print("PLANTIOS DO VOLUNTÁRIO EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS PLANTIOS:")

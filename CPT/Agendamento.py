@@ -68,7 +68,7 @@ class Agendamento:
             data_agendamento = input(f"DIGITE A DATA DO AGENDAMENTO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_agendamento = Funcoes.validarPreenchimento(f"DIGITE A DATA DO AGENDAMENTO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_agendamento)
             data_formatada = datetime.strptime(data_agendamento, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
 
         except ValueError as value_error:
             print("ERRO DE VALOR DURANTE A DIGITAÇÃO DA DATA:")
@@ -164,7 +164,7 @@ class Agendamento:
 
         try:           
             # FAZENDO INSERT NO BANCO DE DADOS
-            cursor.execute("INSERT INTO agendamento (id_agendamento, data_agendamento, turno_agendamento, id_usuario) VALUES (:1, :2, :3, :4)", (id_agendamento, data_formatada_banco, turno_agendamento, usuario_agendamento.id_usuario))
+            cursor.execute("INSERT INTO agendamento (id_agendamento, data_agendamento, turno_agendamento, id_usuario) VALUES (:1, TO_DATE(:2, 'DD/MM/YYYY'), :3, :4)", (id_agendamento, data_formatada_banco, turno_agendamento, usuario_agendamento.id_usuario))
             cursor.connection.commit()
 
             # FAZENDO INSERT NO CONSOLE
@@ -175,6 +175,7 @@ class Agendamento:
             listaAgendamentos.append(novo_agendamento)
 
             print("AGENDAMENTO CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO AGENDAMENTO:")
@@ -251,7 +252,7 @@ class Agendamento:
             nova_data = input(f"DIGITE A NOVA DATA DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento} (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             nova_data = Funcoes.validarPreenchimento(f"DIGITE A NOVA DATA DO AGENDAMENTO DE ID {agendamento_buscado.id_agendamento} (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", nova_data)
             data_formatada = datetime.strptime(nova_data, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
@@ -259,13 +260,14 @@ class Agendamento:
 
             try:
                 # FAZENDO UPDATE NO BANCO DE DADOS
-                cursor.execute("UPDATE agendamento SET data_agendamento = :data_formatada_banco WHERE id_agendamento = :id_agendamento", {"data_formatada_banco": data_formatada_banco, "id_agendamento": agendamento_buscado.id_agendamento})
+                cursor.execute("UPDATE agendamento SET data_agendamento = TO_DATE(:data_formatada_banco, 'DD/MM/YYYY') WHERE id_agendamento = :id_agendamento", {"data_formatada_banco": data_formatada_banco, "id_agendamento": agendamento_buscado.id_agendamento})
                 cursor.connection.commit()
 
                 # FAZENDO UPDATE NO CONSOLE
                 agendamento_buscado.data_agendamento = data_formatada
 
                 print("DATA DO AGENDAMENTO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA DATA:")
@@ -312,6 +314,7 @@ class Agendamento:
                 agendamento_buscado.turno_agendamento = novo_turno
 
                 print("TURNO DO AGENDAMENTO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO TURNO:")
@@ -349,28 +352,20 @@ class Agendamento:
                     receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaReceptores)
                     receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, listaReceptores)
                     
-                    novo_usuario = Usuario()
-                    novo_usuario.id_usuario = receptor_buscado.id_usuario
-                    novo_usuario.cpf_usuario = receptor_buscado.cpf_usuario
-                    novo_usuario.nome_usuario = receptor_buscado.nome_usuario
-                    novo_usuario.email_usuario = receptor_buscado.email_usuario
-                    novo_usuario.cel_usuario = receptor_buscado.cel_usuario
-                    novo_usuario.senha_usuario = receptor_buscado.senha_usuario
-                    novo_usuario.status_usuario = receptor_buscado.status_usuario
-                    
                     # CRIANDO CONEXÃO COM O BANCO DE DADOS
                     conn = Funcoes.connect(dsn)
                     cursor = conn.cursor()
 
                     try:           
                         # FAZENDO UPDATE NO BANCO DE DADOS
-                        cursor.execute("UPDATE agendamento SET id_usuario = :novo_usuario.id_usuario WHERE id_agendamento = :id_agendamento", {"novo_usuario.id_usuario": novo_usuario.id_usuario, "id_agendamento": agendamento_buscado.id_agendamento})
+                        cursor.execute("UPDATE agendamento SET id_usuario = :id_usuario WHERE id_agendamento = :id_agendamento", {"id_usuario": receptor_buscado.id_usuario, "id_agendamento": agendamento_buscado.id_agendamento})
                         cursor.connection.commit()
 
                         # FAZENDO UPDATE NO CONSOLE
-                        agendamento_buscado.usuario = novo_usuario
+                        agendamento_buscado.usuario = receptor_buscado
 
                         print("USUÁRIO (RECEPTOR) DO AGENDAMENTO EDITADO COM SUCESSO!")
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                     except sqlite3.DatabaseError as db_error:
                         print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO AGENDAMENTO:")
@@ -390,28 +385,20 @@ class Agendamento:
                     voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntarios)
                     voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntarios)
                     
-                    novo_usuario = Usuario()
-                    novo_usuario.id_usuario = voluntario_buscado.id_usuario
-                    novo_usuario.cpf_usuario = voluntario_buscado.cpf_usuario
-                    novo_usuario.nome_usuario = voluntario_buscado.nome_usuario
-                    novo_usuario.email_usuario = voluntario_buscado.email_usuario
-                    novo_usuario.cel_usuario = voluntario_buscado.cel_usuario
-                    novo_usuario.senha_usuario = voluntario_buscado.senha_usuario
-                    novo_usuario.status_usuario = voluntario_buscado.status_usuario
-                    
                     # CRIANDO CONEXÃO COM O BANCO DE DADOS
                     conn = Funcoes.connect(dsn)
                     cursor = conn.cursor()
 
                     try:           
                         # FAZENDO UPDATE NO BANCO DE DADOS
-                        cursor.execute("UPDATE agendamento SET id_usuario = :novo_usuario.id_usuario WHERE id_agendamento = :id_agendamento", {"novo_usuario.id_usuario": novo_usuario.id_usuario, "id_agendamento": agendamento_buscado.id_agendamento})
+                        cursor.execute("UPDATE agendamento SET id_usuario = :id_usuario WHERE id_agendamento = :id_agendamento", {"id_usuario": voluntario_buscado.id_usuario, "id_agendamento": agendamento_buscado.id_agendamento})
                         cursor.connection.commit()
 
                         # FAZENDO UPDATE NO CONSOLE
-                        agendamento_buscado.usuario = novo_usuario
+                        agendamento_buscado.usuario = voluntario_buscado
 
                         print("USUÁRIO (VOLUNTÁRIO) DO AGENDAMENTO EDITADO COM SUCESSO!")
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                     except sqlite3.DatabaseError as db_error:
                         print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO AGENDAMENTO:")

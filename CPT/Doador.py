@@ -5,7 +5,7 @@ from Usuario import Usuario
 
 class Doador(Usuario):
     def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, nivel_doador: int = None, moedas_doador: int = None, doacoes_doador: list = None):
-        super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
+        super().__init__(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._nivel_doador = nivel_doador
         self._moedas_doador = moedas_doador
         self._doacoes_doador = doacoes_doador if doacoes_doador is not None else []
@@ -52,23 +52,23 @@ class Doador(Usuario):
             for i, doacao in enumerate(doador_buscado.doacoes_doador):
                 doacao_numero = f"{i+1:02d}"
                 if i == 0:
-                    retornoPerfil += f"\n 10.{doacao_numero}. ID: {doacao.id_doacao} | DATA: {doacao.data_doacao}\n"
+                    retornoPerfil += f"\n 10.{doacao_numero}. ID: {doacao.id_doacao} | DATA: {Funcoes.formatarData(doacao.data_doacao)}\n"
                 else:
-                    retornoPerfil += f" 10.{doacao_numero}. ID: {doacao.id_doacao} | DATA: {doacao.data_doacao}\n"
+                    retornoPerfil += f" 10.{doacao_numero}. ID: {doacao.id_doacao} | DATA: {Funcoes.formatarData(doacao.data_doacao)}\n"
         retornoPerfil += "11. SAIR\n"
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
-    def cadastrarDoador(dsn, id_usuario, listaUsuarios, listaDoadores):
+    def cadastrarDoador(dsn, id_usuario, listaUsuariosNaoDoadores, listaDoadores):
         
-        if (len(listaUsuarios) == 0):
+        if (len(listaUsuariosNaoDoadores) == 0):
             input("NENHUM USUÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
         else:
-            Funcoes.exibirUsuariosAdmin(listaUsuarios)
+            Funcoes.exibirUsuariosAdmin(listaUsuariosNaoDoadores)
             id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO DOADOR: \n"))
-            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuarios)
-            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuarios)
+            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuariosNaoDoadores)
+            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuariosNaoDoadores)
 
         # INSTANCIANDO NOVO DOADOR
         novo_doador = Doador()
@@ -86,7 +86,7 @@ class Doador(Usuario):
         nivel_doador = 0
         
         # SETANDO A QUANTIDADE DE MOEDAS DO NOVO DOADOR
-        qtd_moedas_doador = 0
+        moedas_doador = 0
         
         # SETANDO AS DOAÇÕES DO NOVO DOADOR
         doacoes_doador = []
@@ -97,7 +97,7 @@ class Doador(Usuario):
 
         try:           
             # FAZENDO INSERT NO BANCO DE DADOS
-            cursor.execute("INSERT INTO doador (id_usuario, nivel_doador, qtd_moedas_doador) VALUES (:1, :2, :3)", (id_usuario, nivel_doador, qtd_moedas_doador))
+            cursor.execute("INSERT INTO doador (id_usuario, nivel_doador, moedas_doador) VALUES (:1, :2, :3)", (id_usuario, nivel_doador, moedas_doador))
             cursor.connection.commit()
 
             # FAZENDO INSERT NO CONSOLE
@@ -109,11 +109,14 @@ class Doador(Usuario):
             novo_doador.senha_usuario = senha_usuario
             novo_doador.status_usuario = status_usuario
             novo_doador.nivel_doador = nivel_doador
-            novo_doador.moedas_doador = qtd_moedas_doador
+            novo_doador.moedas_doador = moedas_doador
             novo_doador.doacoes_doador = doacoes_doador
+
             listaDoadores.append(novo_doador)
+            listaUsuariosNaoDoadores.remove(usuario_buscado)
 
             print("DOADOR CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO DOADOR:")
@@ -123,7 +126,7 @@ class Doador(Usuario):
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarDoador(dsn, listaDoadores, listaDoacoes):
+    def editarDoador(dsn, listaDoadores, listaDoacoes, emails_cadastrados, cel_cadastrados):
         perfilDoador = True
 
         if (len(listaDoadores) == 0):
@@ -167,7 +170,7 @@ class Doador(Usuario):
                     
                     if (opcao == 1):
                        # EDITAR O EMAIL DO DOADOR - SIM
-                       Doador.editarEmail(dsn, doador_buscado)
+                       Doador.editarEmail(dsn, doador_buscado, emails_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O EMAIL DO DOADOR - NÃO
@@ -180,7 +183,7 @@ class Doador(Usuario):
                     
                     if (opcao == 1):
                        # EDITAR O CELULAR DO DOADOR - SIM
-                       Doador.editarCel(dsn, doador_buscado)
+                       Doador.editarCel(dsn, doador_buscado, cel_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O CELULAR DO DOADOR - NÃO
@@ -245,7 +248,7 @@ class Doador(Usuario):
                     
                     if (opcao == 1):
                        # EDITAR AS DOAÇÕES DO DOADOR - SIM
-                       Doador.editarDoador(dsn, doador_buscado, listaDoacoes)
+                       Doador.editarDoacoes(dsn, doador_buscado, listaDoacoes)
                     
                     elif (opcao == 2):
                         # EDITAR AS DOAÇÕES DO DOADOR - NÃO
@@ -272,6 +275,7 @@ class Doador(Usuario):
                 usuario_buscado.nivel_doador = novo_nivel
 
                 print("NÍVEL DO DOADOR EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO NÍVEL:")
@@ -308,6 +312,7 @@ class Doador(Usuario):
                 usuario_buscado.moedas_doador = novas_moedas
 
                 print("MOEDAS DO DOADOR EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DAS MOEDAS:")
@@ -365,19 +370,17 @@ class Doador(Usuario):
                 cursor.connection.commit()
                 
                 for doacao_doador in novas_doacoes_doador:
-                    cursor.execute("INSERT INTO doacao (id_doacao, id_usuario, data_doacao, qtd_moedas_doacao) VALUES (:1, :2, :3, :4)", (doacao_doador.id_doacao, doador_buscado.id_usuario, doacao_doador.data_doacao, doacao_doador.qtd_moedas_doacao))
+                    cursor.execute("UPDATE doacao SET id_usuario = :id_usuario WHERE id_doacao = :id_doacao", {"id_usuario": doador_buscado.id_usuario, "id_doacao": doacao_doador.id_doacao})
                     cursor.connection.commit()
 
                 # FAZENDO UPDATE NO CONSOLE
-                for doacao in doador_buscado.doacoes_doador:
-                    doacao.remover_doacao(doacao)
-
                 doador_buscado.doacoes_doador = novas_doacoes_doador
 
                 for doacao in doador_buscado.doacoes_doador:
-                    doacao.adicionar_doacao(doacao)                    
+                    doacao.doador = doador_buscado                   
 
                 print("DOAÇÕES DO DOADOR EDITADAS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DAS DOAÇÕES:")

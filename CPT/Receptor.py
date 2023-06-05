@@ -5,7 +5,7 @@ from Usuario import Usuario
 
 class Receptor(Usuario):
     def __init__(self, id_usuario: int = None, cpf_usuario: str = None, nome_usuario: str = None, email_usuario: str = None, cel_usuario: str = None, senha_usuario: str = None, status_usuario: str = None, carga_receptor: int = None, endereco_receptor: str = None, destinos_receptor: list = None, agendamentos_receptor: list = None):
-        super()._init_(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
+        super().__init__(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario)
         self._carga_receptor = carga_receptor
         self._endereco_receptor = endereco_receptor
         self._destinos_receptor = destinos_receptor if destinos_receptor is not None else []
@@ -68,16 +68,16 @@ class Receptor(Usuario):
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
-    def cadastrarReceptor(dsn, id_usuario, listaUsuarios, listaReceptores, listaDestinos):
+    def cadastrarReceptor(dsn, id_usuario, listaUsuariosNaoReceptores, listaReceptores, listaDestinos):
         
-        if (len(listaUsuarios) == 0):
-            input("NENHUM USUÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+        if (len(listaUsuariosNaoReceptores) == 0):
+            input("NENHUM USUÁRIO PARA CADASTRAR COMO RECEPTOR. TECLE ENTER PARA VOLTAR AO MENU\n")
 
         else:
-            Funcoes.exibirUsuariosAdmin(listaUsuarios)
-            id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO DOADOR: \n"))
-            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuarios)
-            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuarios)
+            Funcoes.exibirUsuariosAdmin(listaUsuariosNaoReceptores)
+            id_buscado = int(input("DIGITE O ID DO USUÁRIO QUE DESEJA CADASTRAR COMO RECEPTOR: \n"))
+            usuario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaUsuariosNaoReceptores)
+            usuario_buscado = Funcoes.validarUsuarioBuscado(usuario_buscado, listaUsuariosNaoReceptores)
 
         # INSTANCIANDO NOVO RECEPTOR
         novo_receptor = Receptor()
@@ -182,11 +182,13 @@ class Receptor(Usuario):
             novo_receptor.destinos_receptor = destinos_receptor
             
             listaReceptores.append(novo_receptor)
+            listaUsuariosNaoReceptores.remove(usuario_buscado)
 
             for destino in destinos_receptor:
                 destino.adicionar_receptor(novo_receptor)
 
             print("RECEPTOR CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO RECEPTOR:")
@@ -196,7 +198,7 @@ class Receptor(Usuario):
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarReceptor(dsn, listaReceptores, listaDestinos):
+    def editarReceptor(dsn, listaReceptores, listaDestinos, emails_cadastrados, cel_cadastrados):
         perfilReceptor = True
 
         if (len(listaReceptores) == 0):
@@ -240,7 +242,7 @@ class Receptor(Usuario):
                     
                     if (opcao == 1):
                        # EDITAR O EMAIL DO RECEPTOR - SIM
-                       Receptor.editarEmail(dsn, receptor_buscado)
+                       Receptor.editarEmail(dsn, receptor_buscado, emails_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O EMAIL DO RECEPTOR - NÃO
@@ -253,7 +255,7 @@ class Receptor(Usuario):
                     
                     if (opcao == 1):
                        # EDITAR O CELULAR DO RECEPTOR - SIM
-                       Receptor.editarCel(dsn, receptor_buscado)
+                       Receptor.editarCel(dsn, receptor_buscado, cel_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O CELULAR DO RECEPTOR - NÃO
@@ -286,19 +288,6 @@ class Receptor(Usuario):
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 8):
-                    # EDITAR O ENDEREÇO DO RECEPTOR
-                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O ENDEREÇO DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
-                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O ENDEREÇO DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
-                    
-                    if (opcao == 1):
-                       # EDITAR O ENDEREÇO DO RECEPTOR - SIM
-                       Receptor.editarEndereco(dsn, receptor_buscado)
-                    
-                    elif (opcao == 2):
-                        # EDITAR O ENDEREÇO DO RECEPTOR - NÃO
-                        input("TECLE ENTER PARA VOLTAR AO MENU.")
-
-                elif (opcao == 9):
                     # EDITAR A CARGA DO RECEPTOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR A CARGA DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
                     opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR A CARGA DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
@@ -311,6 +300,19 @@ class Receptor(Usuario):
                         # EDITAR A CARGA DO RECEPTOR - NÃO
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
                 
+                elif (opcao == 9):
+                    # EDITAR O ENDEREÇO DO RECEPTOR
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR O ENDEREÇO DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR O ENDEREÇO DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR O ENDEREÇO DO RECEPTOR - SIM
+                       Receptor.editarEndereco(dsn, receptor_buscado)
+                    
+                    elif (opcao == 2):
+                        # EDITAR O ENDEREÇO DO RECEPTOR - NÃO
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
                 elif (opcao == 10):
                     # EDITAR OS DESTINOS DO RECEPTOR
                     opcao = int(input(Funcoes.confirmarAcao(f"EDITAR OS DESTINOS DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
@@ -345,6 +347,7 @@ class Receptor(Usuario):
                 receptor_buscado.carga_receptor = nova_carga
 
                 print("CARGA DO RECEPTOR EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA CARGA:")
@@ -380,6 +383,7 @@ class Receptor(Usuario):
                 receptor_buscado.endereco_receptor = novo_endereco
 
                 print("ENDEREÇO DO RECEPTOR EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO ENDEREÇO:")
@@ -450,6 +454,7 @@ class Receptor(Usuario):
                     destino.adicionar_receptor(receptor_buscado)                    
 
                 print("DESTINOS DO RECEPTOR EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS DESTINOS:")

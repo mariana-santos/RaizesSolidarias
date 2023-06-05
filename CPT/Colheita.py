@@ -55,8 +55,8 @@ class Colheita:
     def perfilColheita(colheita_buscada):
         retornoPerfil = Funcoes.menuCabecalho()
         retornoPerfil += f"01. ID: {colheita_buscada.id_colheita}\n"
-        retornoPerfil += f"02. DATA: {colheita_buscada.nome_colheita}\n"
-        retornoPerfil += f"03. DESCRIÇÃO: {colheita_buscada.tempo_colheita}\n"
+        retornoPerfil += f"02. DATA: {Funcoes.formatarData(colheita_buscada.data_colheita)}\n"
+        retornoPerfil += f"03. DESCRIÇÃO: {colheita_buscada.descricao_colheita}\n"
         retornoPerfil += "04. VOLUNTÁRIOS: "
         if len(colheita_buscada.voluntarios_colheita) == 0:
             retornoPerfil += "NENHUM VOLUNTÁRIO RESPONSÁVEL.\n"
@@ -95,7 +95,7 @@ class Colheita:
             data_colheita = input(f"DIGITE A DATA DA COLHEITA (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_colheita = Funcoes.validarPreenchimento(f"DIGITE A DATA DA COLHEITA (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_colheita)
             data_formatada = datetime.strptime(data_colheita, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
 
         except ValueError as value_error:
             print("ERRO DE VALOR DURANTE A DIGITAÇÃO DA DATA:")
@@ -200,7 +200,7 @@ class Colheita:
 
         try:           
             # FAZENDO INSERT NO BANCO DE DADOS
-            cursor.execute("INSERT INTO colheita (id_colheita, data_colheita, descricao_colheita) VALUES (:1, :2, :3)", (id_colheita, data_formatada_banco, descricao_colheita))
+            cursor.execute("INSERT INTO colheita (id_colheita, data_colheita, descricao_colheita) VALUES (:1, TO_DATE(:2, 'DD/MM/YYYY'), :3)", (id_colheita, data_formatada_banco, descricao_colheita))
             cursor.connection.commit()
 
             if len(voluntarios_colheita) != 0:
@@ -223,12 +223,13 @@ class Colheita:
             listaColheitas.append(nova_colheita)
 
             for voluntario in voluntarios_colheita:
-                voluntario.adicionar_voluntario(nova_colheita)
+                voluntario.adicionar_colheita(nova_colheita)
 
             for plantio in plantios_colheita:
-                plantio.adicionar_plantio(nova_colheita)
+                plantio.colheita = nova_colheita
 
             print("COLHEITA CADASTRADA COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DA COLHEITA:")
@@ -318,7 +319,7 @@ class Colheita:
             nova_data = input(f"DIGITE A NOVA DATA DA COLHEITA DE ID {colheita_buscada.id_colheita} (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             nova_data = Funcoes.validarPreenchimento(f"DIGITE A NOVA DATA DA COLHEITA DE ID {colheita_buscada.id_colheita} (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", nova_data)
             data_formatada = datetime.strptime(nova_data, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
@@ -326,13 +327,14 @@ class Colheita:
 
             try:
                 # FAZENDO UPDATE NO BANCO DE DADOS
-                cursor.execute("UPDATE colheita SET data_colheita = :data_formatada_banco WHERE id_colheita = :id_colheita", {"data_formatada_banco": data_formatada_banco, "id_colheita": colheita_buscada.id_colheita})
+                cursor.execute("UPDATE colheita SET data_colheita = TO_DATE(:data_formatada_banco, 'DD/MM/YYYY') WHERE id_colheita = :id_colheita", {"data_formatada_banco": data_formatada_banco, "id_colheita": colheita_buscada.id_colheita})
                 cursor.connection.commit()
 
                 # FAZENDO UPDATE NO CONSOLE
                 colheita_buscada.data_colheita = data_formatada
 
                 print("DATA DA COLHEITA EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA DATA:")
@@ -368,6 +370,7 @@ class Colheita:
                 colheita_buscada.descricao_colheita = nova_descricao
 
                 print("DESCRIÇÃO DA COLHEITA EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA DESCRIÇÃO:")
@@ -430,14 +433,15 @@ class Colheita:
 
                 # FAZENDO UPDATE NO CONSOLE
                 for voluntario in colheita_buscada.voluntarios_colheita:
-                    voluntario.remover_voluntario(colheita_buscada)
+                    voluntario.remover_colheita(colheita_buscada)
 
-                voluntario_buscado.voluntarios_colheita = novos_voluntarios_colheita
+                colheita_buscada.voluntarios_colheita = novos_voluntarios_colheita
 
                 for voluntario in colheita_buscada.voluntarios_colheita:
-                    voluntario.adicionar_voluntario(colheita_buscada)   
+                    voluntario.adicionar_colheita(colheita_buscada)   
 
                 print("VOLUNTÁRIOS DA COLHEITA EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS VOLUNTÁRIOS:")
@@ -500,14 +504,17 @@ class Colheita:
 
                 # FAZENDO UPDATE NO CONSOLE
                 for plantio in colheita_buscada.plantios_colheita:
-                    plantio.remover_plantio(colheita_buscada)
+                    plantio.colheita = None
 
-                plantio_buscado.plantios_colheita = novos_plantios_colheita
+                print(colheita_buscada.plantios_colheita)
+                colheita_buscada.plantios_colheita = novos_plantios_colheita
+                print(colheita_buscada.plantios_colheita)
 
                 for plantio in colheita_buscada.plantios_colheita:
-                    plantio.adicionar_plantio(colheita_buscada)   
+                    plantio.colheita = colheita_buscada   
 
                 print("PLANTIOS DA COLHEITA EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS PLANTIOS:")
@@ -582,10 +589,10 @@ class Colheita:
                                 cursor.connection.commit()
 
                                 for voluntario in listaColheitas[i].voluntarios_colheita:
-                                    voluntario.remover_voluntario(listaColheitas[i])
+                                    voluntario.remover_colheita(listaColheitas[i])
 
                                 for plantio in listaColheitas[i].plantios_colheita:
-                                    plantio.remover_plantio(listaColheitas[i])
+                                    plantio.colheita = None
 
                                 del listaColheitas[i]
 

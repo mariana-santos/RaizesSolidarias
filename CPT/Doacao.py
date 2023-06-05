@@ -48,7 +48,7 @@ class Doacao:
         retornoPerfil = Funcoes.menuCabecalho()
         retornoPerfil += f"01. ID: {doacao_buscada.id_doacao}\n"
         retornoPerfil += f"02. DOADOR: {doacao_buscada.doador.nome_usuario}\n"
-        retornoPerfil += f"03. DATA: {doacao_buscada.data_doacao}\n"
+        retornoPerfil += f"03. DATA: {Funcoes.formatarData(doacao_buscada.data_doacao)}\n"
         retornoPerfil += f"04. QUANTIDADE DE MOEDAS: {doacao_buscada.qtd_moedas_doacao}\n"
         retornoPerfil += "05. SAIR\n"
         retornoPerfil += Funcoes.menuRodape()
@@ -65,7 +65,7 @@ class Doacao:
 
         # SETANDO O DOADOR DA NOVA DOAÇÃO
         try:
-            Funcoes.exibirDoacoesAdmin(listaDoacoes)
+            Funcoes.exibirUsuariosAdmin(listaDoadores)
             id_buscado = int(input("DIGITE O ID DO DOADOR QUE DESEJA INCLUIR À DOAÇÃO: \n"))
             doador_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaDoadores)
             doador_buscado = Funcoes.validarUsuarioBuscado(doador_buscado, listaDoadores)
@@ -94,7 +94,7 @@ class Doacao:
             data_doacao = input(f"DIGITE A DATA DA DOAÇÃO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_doacao = Funcoes.validarPreenchimento(f"DIGITE A DATA DA DOAÇÃO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_doacao)
             data_formatada = datetime.strptime(data_doacao, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
         
         except ValueError as value_error:
             print("ERRO DE VALOR DURANTE A DIGITAÇÃO DA DATA:")
@@ -123,7 +123,7 @@ class Doacao:
 
         try:           
             # FAZENDO INSERT NO BANCO DE DADOS
-            cursor.execute("INSERT INTO doacao (id_doacao, doador, data_doacao, qtd_moedas_doacao) VALUES (:1, :2, :3, :4)", (id_doacao, doador, data_formatada_banco, qtd_moedas_doacao))
+            cursor.execute("INSERT INTO doacao (id_doacao, id_usuario, data_doacao, qtd_moedas_doacao) VALUES (:1, :2, TO_DATE(:3, 'DD/MM/YYYY'), :4)", (id_doacao, doador.id_usuario, data_formatada_banco, qtd_moedas_doacao))
             cursor.connection.commit()
 
             # FAZENDO INSERT NO CONSOLE
@@ -134,6 +134,7 @@ class Doacao:
             listaDoacoes.append(novo_doacao)
 
             print("DOAÇÃO CADASTRADA COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DA DOAÇÃO:")
@@ -233,13 +234,14 @@ class Doacao:
 
                 try:           
                     # FAZENDO UPDATE NO BANCO DE DADOS
-                    cursor.execute("UPDATE doacao SET doador = :novo_doador WHERE id_doacao = :id_doacao", {"novo_doador": novo_doador, "id_doacao": doacao_buscada.id_doacao})
+                    cursor.execute("UPDATE doacao SET id_usuario = :id_usuario WHERE id_doacao = :id_doacao", {"id_usuario": novo_doador.id_usuario, "id_doacao": doacao_buscada.id_doacao})
                     cursor.connection.commit()
 
                     # FAZENDO UPDATE NO CONSOLE
                     doacao_buscada.doador = novo_doador
 
                     print("USUÁRIO (DOADOR) DA DOAÇÃO EDITADO COM SUCESSO!")
+                    input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 except sqlite3.DatabaseError as db_error:
                     print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA DOAÇÃO:")
@@ -262,7 +264,7 @@ class Doacao:
             data_doacao = input(f"DIGITE A NOVA DATA DA DOAÇÃO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ")
             data_doacao = Funcoes.validarPreenchimento(f"DIGITE A NOVA DATA DA DOAÇÃO (DD/MM/YYYY, EXEMPLO: 22/06/1993): ", data_doacao)
             data_formatada = datetime.strptime(data_doacao, "%d/%m/%Y").date()
-            data_formatada_banco = data_formatada.strftime("%Y-%m-%d")
+            data_formatada_banco = data_formatada.strftime("%d/%m/%Y")
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
@@ -270,13 +272,14 @@ class Doacao:
 
             try:
                 # FAZENDO UPDATE NO BANCO DE DADOS
-                cursor.execute("UPDATE doacao SET data_doacao = :data_formatada_banco WHERE id_doacao = :id_doacao", {"data_formatada_banco": data_formatada_banco, "id_doacao": doacao_buscada.id_doacao})
+                cursor.execute("UPDATE doacao SET data_doacao = TO_DATE(:data_formatada_banco, 'DD/MM/YYYY') WHERE id_doacao = :id_doacao", {"data_formatada_banco": data_formatada_banco, "id_doacao": doacao_buscada.id_doacao})
                 cursor.connection.commit()
 
                 # FAZENDO UPDATE NO CONSOLE
                 doacao_buscada.data_doacao = data_formatada
 
                 print("DATA DA DOAÇÃO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA DATA:")
@@ -312,6 +315,7 @@ class Doacao:
                 doacao_buscada.qtd_moedas_doacao = nova_qtd_moedas_doacao
 
                 print("QUANTIDADE DE MOEDAS DA DOAÇÃO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA QUANTIDADE DE MOEDAS:")
