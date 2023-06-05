@@ -82,18 +82,23 @@ public class UsuarioResource {
 	 * @param usuario_novo o objeto Usuario contendo os dados do Usuario a ser cadastrado.
 	 * @return uma resposta contendo o Usuario cadastrado em formato JSON.
 	 */
-
-	//TODO: Enviar os erros de chave restrita violada do banco (email, cpf, celular) na response, caso existam
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrarUsuario(@Valid Usuario usuario_novo) {
 		Usuario resp = UsuarioService.cadastrarUsuario(usuario_novo);
-		final URI usuarioUri = UriBuilder.fromResource(UsuarioResource.class).path("/usuario/{id}")
-				.build(resp.getId_usuario());
-		ResponseBuilder response = Response.created(usuarioUri);
-		response.entity(resp);
-		return response.build();
-	}
+
+        if (resp != null) {
+            final URI usuarioUri = UriBuilder.fromResource(UsuarioResource.class).path("/usuario/{id}")
+                    .build(resp.getId_usuario());
+            ResponseBuilder response = Response.created(usuarioUri);
+            response.entity(resp);
+            return response.build();
+        } else {
+            return Response.status(Response.Status.NOT_FOUND)
+                    .entity("{\"error\": \"Não foi possível cadastrar o USUARIO.\"}")
+                    .build();
+        }
+    }
 	
 	/**
 	 * Atualiza os dados de um Usuario existente no sistema.

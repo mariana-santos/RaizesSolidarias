@@ -92,6 +92,15 @@ public class PlantioResource {
         response.entity(resp);
         return response.build();
     }
+    
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public static Response cadastrarPlantios(ArrayList<Plantio> plantios_novos) {
+        ArrayList<Plantio> retorno = PlantioDAO.cadastrarPlantios(plantios_novos);
+        ResponseBuilder response = Response.ok();
+        response.entity(retorno);
+        return response.build();
+    }
 
     /**
 	 * Atualiza os dados de um Plantio existente no sistema.

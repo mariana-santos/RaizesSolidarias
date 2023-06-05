@@ -8,9 +8,26 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import services.ViaCepService;
 
+/**
+ * Classe que representa a API do ViaCep no sistema.
+ *
+ * Esta classe representa a chamada da API externa do ViaCep, retornando os dados do endereço de acordo com o CEP.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see ViaCepService
+ *
+ * @author Raízes Solidárias
+ */
 @Path("/endereco")
 public class ViaCepResource {
    
+	/**
+	 * Recupera os dados do CEP da API externa do ViaCep.
+	 *
+	 * @return uma resposta contendo os dados do CEP em formato JSON.
+	 */
     @GET
     @Path("/{cep}")
     @Produces(MediaType.APPLICATION_JSON)

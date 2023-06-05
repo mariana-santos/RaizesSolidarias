@@ -11,8 +11,24 @@ import org.apache.http.util.EntityUtils;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
+/**
+ * Classe de serviços para API externa do ViaCep.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see controller.ViaCepResource
+ * 
+ * @author Raízes Solidárias
+ *
+ */
 public class ViaCepService {
    
+	/**
+	 * Busca os dados do endereço de acordo com o CEP da API externa do ViaCep
+	 *
+	 * @return os dados do tempo do endereço de acordo com o CEP da API externa do ViaCep.
+	 */
     public String getEndereco(String cep) throws ClientProtocolException, IOException {
        
         String endereco = null;
