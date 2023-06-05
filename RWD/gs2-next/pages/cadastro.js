@@ -27,8 +27,11 @@ import { useMutation } from 'react-query'
 
 import '../app/styles/form.css'
 
+import { useRouter } from 'next/router';
 
 export default function Cadastro() {
+
+    const router = useRouter();
 
     const [nome, setNome] = useState('')
     const [errorNome, setErrorNome] = useState(null)
@@ -75,9 +78,7 @@ export default function Cadastro() {
             setCelular('')
             setSenha('') 
     
-            setTimeout(() => {
-                window.location.href = '/perfil'
-            }, 2000)
+            router.push('/login')
         }
 
         return data;

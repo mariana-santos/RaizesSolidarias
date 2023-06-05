@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './style.css'
 
-// import { useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
@@ -9,108 +9,29 @@ import useSound from 'use-sound';
 
 import { useMutation } from 'react-query';
 
-export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation }) {
+export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation, setNovosPlantios }) {
 
-    // const { isLoading, error, data } = useQuery('repoData', () =>
-    //     fetch('http://localhost:8080/alimento').then(res =>
-    //         res.json()
-    //     )
-    // )
+    const { isLoading: plantiosLoading, error: plantiosError, data: plantiosData } = useQuery('repoPlantioData', () =>
+        fetch('http://localhost:8080/plantio').then(res =>
+            res.json()
+        )
+    )
 
-    // if (isLoading) return 'Carregando...'
+    const ultimosPlantios = plantiosData ? plantiosData.slice(0, 4) : []
+    const [todosPlantios, setTodosPlantios] = useState()
+    
+    useEffect(() => {
+        setTodosPlantios(ultimosPlantios.concat(novosPlantios))
+    }, [novosPlantios, plantiosData])
 
-    // if (error) return 'Ocorreu um erro! ' + error.message
-
-    const data = [
-        {
-            id_plantio: 1,
-            data_plantio: 'data',
-            espaco_plantio: '',
-            alimento:
-            {
-                id_alimento: 1,
-                nome_alimento: "agrião",
-                preco_alimento: 5,
-                tempo_colheita: 2,
-                data_plantio: '22/10/2023',
-                qtd_irrigacao: 2
-            }
-        },
-        {
-            id_plantio: 2,
-            data_plantio: 'data',
-            espaco_plantio: '',
-            alimento:
-            {
-                id_alimento: 1,
-                nome_alimento: "rucula",
-                preco_alimento: 5,
-                tempo_colheita: 2,
-                data_plantio: '22/10/2023',
-                qtd_irrigacao: 2
-            }
-        },
-        {
-            id_plantio: 3,
-            data_plantio: 'data',
-            espaco_plantio: '',
-            alimento:
-            {
-                id_alimento: 1,
-                nome_alimento: "batata",
-                preco_alimento: 5,
-                tempo_colheita: 2,
-                data_plantio: '22/10/2023',
-                qtd_irrigacao: 2
-            }
-        },
-        {
-            id_plantio: 4,
-            data_plantio: 'data',
-            espaco_plantio: '',
-            alimento:
-            {
-                id_alimento: 1,
-                nome_alimento: "cenoura",
-                preco_alimento: 5,
-                tempo_colheita: 2,
-                data_plantio: '22/10/2023',
-                qtd_irrigacao: 2
-            }
-        },
-        {
-            id_plantio: 5,
-            data_plantio: 'data',
-            espaco_plantio: '',
-            alimento:
-            {
-                id_alimento: 1,
-                nome_alimento: "alface",
-                preco_alimento: 5,
-                tempo_colheita: 2,
-                data_plantio: '22/10/2023',
-                qtd_irrigacao: 2
-            }
-        },
-        {
-            id_plantio: 6,
-            data_plantio: 'data',
-            espaco_plantio: '',
-            alimento:
-            {
-                id_alimento: 1,
-                nome_alimento: "mandioca",
-                preco_alimento: 5,
-                tempo_colheita: 2,
-                data_plantio: '22/10/2023',
-                qtd_irrigacao: 2
-            }
-        }
-    ]
+    const [somSaldo] = useSound(
+        '/coins.wav',
+        { volume: 0.25 }
+    )
 
     function handleRegar(e) {
         if (e) e.preventDefault();
-        console.log(saldo)
+
         if (saldo >= 2) {
             setSaldo(saldo - 2);
             setAnimation('shake')
@@ -124,21 +45,8 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation }) 
             );
     }
 
-    const ultimosPlantios = data.slice(0, 4)
-    const [todosPlantios, setTodosPlantios] = useState()
-
-    useEffect(() => {
-        setTodosPlantios(ultimosPlantios.concat(novosPlantios))
-    }, [novosPlantios])
-
-
-    const [somSaldo] = useSound(
-        '/coins.wav',
-        { volume: 0.25 }
-    )
-
     const cadastrarPlantios = async (novosPlantios) => {
-        const response = await fetch('http://localhost:8080/doador', {
+        const response = await fetch('http://localhost:8080/plantio/plantios', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -153,7 +61,10 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation }) 
             toast.error(response.error)
             throw new Error('Erro ao cadastrar novos plantios');
         }
-        else toast.success('Plantação finalizada com sucesso! Nossos voluntários vão cuidar deles com muito carinho.')
+        else {
+            toast.success('Plantação finalizada com sucesso! Nossos voluntários vão cuidar deles com muito carinho.')
+            setNovosPlantios([])
+        }
     };
 
     const atualizarDoador = async (dados_doador) => {
@@ -184,17 +95,24 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation }) 
         const usuarioDoador = typeof window !== 'undefined' ? JSON.parse(sessionStorage.getItem("doador")) : null;
 
         if (novosPlantios.length > 0 && usuarioDoador) {
-
             const usuario_doador = {
                 ...usuarioDoador,
                 nivel_doador: 1,
                 moedas_doador: saldo
             };
 
-            cadastrarPlantiosMutation(novosPlantios)
-            atualizarSaldoMutation(usuario_doador)
+            console.log(novosPlantios)
+            console.log(usuario_doador)
+            cadastrarPlantiosMutation.mutate(novosPlantios)
+            atualizarSaldoMutation.mutate(usuario_doador)
         }
     }
+
+    if (plantiosLoading) return 'Carregando...'
+
+    if (plantiosError) return 'Ocorreu um erro! ' + error.message
+
+    // console.log(dados)
 
     return (
         <section id='horta'>
