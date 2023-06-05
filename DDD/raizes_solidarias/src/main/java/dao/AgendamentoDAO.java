@@ -95,6 +95,69 @@ public class AgendamentoDAO extends Repository {
 	}
 
 	/**
+	 * Retorna uma lista de todos os agendamentos cadastrados no banco de dados.
+	 *
+	 * @return ArrayList contendo os objetos Agendamento correspondentes aos registros encontrados, ou uma lista vazia se nenhum registro for encontrado.
+	 */
+	public ArrayList<Agendamento> listarAgendamentosPorIdUsuario(int id_usuario) {
+		String sql = "SELECT a.id_agendamento, a.data_agendamento, a.turno_agendamento, "
+	            + "u.id_usuario, u.cpf_usuario, u.nome_usuario, u.email_usuario, u.cel_usuario, u.senha_usuario, u.status_usuario "
+	            + "FROM agendamento a "
+	            + "LEFT JOIN usuario u ON a.id_usuario = u.id_usuario "
+	            + "WHERE a.id_usuario = ? "
+	            + "ORDER BY id_agendamento";
+
+	    PreparedStatement ps = null;
+	    ResultSet rs = null;
+	    ArrayList<Agendamento> listaAgendamentos = new ArrayList<>();
+
+	    try {
+	        ps = getConnection().prepareStatement(sql);
+	        ps.setInt(1, id_usuario);
+	        rs = ps.executeQuery();
+
+	        while (rs.next()) {
+	            Agendamento agendamento = new Agendamento();
+	            agendamento.setId_agendamento(rs.getInt("id_agendamento"));
+	            agendamento.setData_agendamento(rs.getDate("data_agendamento"));
+	            agendamento.setTurno_agendamento(rs.getString("turno_agendamento"));
+                
+	            Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getInt("id_usuario"));
+                usuario.setCpf_usuario(rs.getString("cpf_usuario"));
+                usuario.setNome_usuario(rs.getString("nome_usuario"));
+                usuario.setEmail_usuario(rs.getString("email_usuario"));
+                usuario.setCel_usuario(rs.getString("cel_usuario"));
+                usuario.setSenha_usuario(rs.getString("senha_usuario"));
+                usuario.setStatus_usuario(rs.getString("status_usuario"));
+                agendamento.setUsuario(usuario);
+
+	            listaAgendamentos.add(agendamento);
+	        }
+
+	    } catch (SQLException e) {
+	        System.out.println("Não foi possível consultar a listagem da tabela AGENDAMENTO: " + e.getMessage());
+	    } finally {
+	        if (rs != null) {
+	            try {
+	                rs.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar ResultSet: " + e.getMessage());
+	            }
+	        }
+	        if (ps != null) {
+	            try {
+	                ps.close();
+	            } catch (SQLException e) {
+	                System.out.println("Erro ao fechar PreparedStatement: " + e.getMessage());
+	            }
+	        }
+	    }
+
+	    return listaAgendamentos;
+	}
+	
+	/**
 	 * Retorna o agendamento correspondente ao ID fornecido.
 	 *
 	 * @param idAgendamento o ID do agendamento a ser buscado

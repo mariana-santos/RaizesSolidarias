@@ -77,6 +77,22 @@ public class AgendamentoResource {
 	}
 	
 	/**
+	 * Recupera a lista de Agendamentos por Id de Usuário no sistema.
+	 *
+	 * @return uma resposta contendo a lista de Agendamentos por Id de Usuário em formato JSON.
+	 */
+	@GET
+	@Path("/usuario/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listarAgendamentosPorIdUsuario(@PathParam("id") int id_usuario) {
+		AgendamentoDAO repositorio = new AgendamentoDAO();
+		ArrayList<Agendamento> retorno = repositorio.listarAgendamentosPorIdUsuario(id_usuario);
+		ResponseBuilder response = Response.ok();
+		response.entity(retorno);
+		return response.build();
+	}
+	
+	/**
 	 * Cadastra um novo Agendamento no sistema.
 	 *
 	 * @param agendamento_novo o objeto Agendamento contendo os dados do Agendamento a ser cadastrado.
