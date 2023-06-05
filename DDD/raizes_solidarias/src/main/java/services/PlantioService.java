@@ -1,5 +1,7 @@
 package services;
 
+import java.util.ArrayList;
+
 import dao.PlantioDAO;
 import model.Plantio;
 
@@ -68,6 +70,16 @@ public class PlantioService {
 	 */
 	public static Plantio cadastrarPlantio(Plantio plantio_novo) {
 		return PlantioDAO.cadastrarPlantio(plantio_novo);
+	}
+	
+	/**
+	 * Cadastra novos Plantios.
+	 *
+	 * @param plantios_novos o ArrayList de novos Plantios a ser cadastrado.
+	 * @return o ArrayList de Plantios cadastrado.
+	 */
+	public static ArrayList<Plantio> cadastrarPlantios(ArrayList<Plantio> plantios_novos) {
+		return PlantioDAO.cadastrarPlantios(plantios_novos);
 	}
 
 	/**

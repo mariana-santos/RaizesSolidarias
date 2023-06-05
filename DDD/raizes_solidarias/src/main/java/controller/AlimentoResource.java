@@ -35,7 +35,6 @@ import services.AlimentoService;
  *
  * @author Raízes Solidárias
  */
-
 @Path("/alimento")
 public class AlimentoResource {
 	
