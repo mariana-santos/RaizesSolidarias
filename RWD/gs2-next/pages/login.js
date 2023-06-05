@@ -58,9 +58,7 @@ export default function Login() {
       setEmail('')
       setSenha('')
 
-      setTimeout(() => {
-        window.location.href = '/perfil'
-      }, 2000)
+      router.push('/perfil')
     }
 
     return data;

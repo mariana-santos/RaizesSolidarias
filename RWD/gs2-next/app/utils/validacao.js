@@ -2,6 +2,21 @@ import validator from "validator";
 
 export function validaCampo(campo, setError) {
     //função pra validar se o campo tá vazio ou _ (vindos do patternFormat)
+    if (!validator.isEmpty(campo.toString()) && !campo.toString().includes('_')) {
+        setError(null)
+        return true
+    }
+
+    else {
+        setError('Campo obrigatório!')
+        return false
+    }
+    
+}
+
+export function validaNumber(campo, setError) {
+    //função pra validar se o campo tá vazio ou _ (vindos do patternFormat)
+    console.log(!validator.isEmpty(campo.toString()), !campo.toString().includes('_'), parseFloat(campo))
     if (!validator.isEmpty(campo.toString()) && !campo.toString().includes('_') && parseFloat(campo) > 0) {
         setError(null)
         return true
@@ -13,7 +28,6 @@ export function validaCampo(campo, setError) {
         
         if(parseFloat(campo) <= 0)
             setError('Valor inválido!')
-        
 
         return false
     }

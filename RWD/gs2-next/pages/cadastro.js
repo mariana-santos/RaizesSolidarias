@@ -78,7 +78,7 @@ export default function Cadastro() {
             setCelular('')
             setSenha('') 
     
-            router.push('/login')
+            router.push('/perfil')
         }
 
         return data;

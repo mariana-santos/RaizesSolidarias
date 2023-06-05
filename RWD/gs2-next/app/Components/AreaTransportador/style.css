@@ -60,6 +60,23 @@
     padding: 7px 15px;
 }
 
+.novo-transportador{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1em;
+}
+
+#transporte .novo-transportador button {
+    width: calc(50% - 1em) !important;
+    margin-top: auto;
+}
+
+.novo-transportador p {
+    font-weight: 500;
+    margin-top: 1em;
+}
+
 @media screen and (max-width: 768px){
     .destino{
         width: 100%;
