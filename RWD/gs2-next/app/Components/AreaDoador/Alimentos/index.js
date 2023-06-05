@@ -12,22 +12,21 @@ import useSound from 'use-sound';
 
 export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setSaldo, setAnimation }) {
 
-    // const { isLoading, error, data } = useQuery('repoData', () =>
-    //     fetch('http://localhost:8080/alimento').then(res =>
-    //         res.json()
-    //     )
-    // )
+    const { isLoading: alimentosLoading, error: alimentosError, data: alimentosData } = useQuery('repoalimentosData', () =>
+        fetch('http://localhost:8080/alimento').then((res) => res.json())
+    );
 
-    const handleDragStart = (e) => e.preventDefault();
-
-    // if (isLoading) return 'Carregando...'
-
-    // if (error) return 'Ocorreu um erro! ' + error.message
 
     const [somSaldo] = useSound(
         '/coins.wav',
         { volume: 0.25 }
     )
+
+    const handleDragStart = (e) => e.preventDefault();
+
+    if (alimentosLoading) return 'Carregando...'
+
+    if (alimentosError) return 'Ocorreu um erro! ' + error.message
 
     const responsive = {
         0: { items: 1 },
@@ -35,81 +34,13 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
         1024: { items: 6 },
     };
 
-    const data = [
-        {
-            id_alimento: 1,
-            nome_alimento: "tomate",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 2,
-            nome_alimento: "alface",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 3,
-            nome_alimento: "rabanete",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 4,
-            nome_alimento: "mandioca",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 5,
-            nome_alimento: "batata",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 6,
-            nome_alimento: "agrião",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 7,
-            nome_alimento: "cenoura",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 4,
-            nome_alimento: "rucula",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-        {
-            id_alimento: 5,
-            nome_alimento: "pepino",
-            preco_alimento: 5,
-            tempo_colheita: 2,
-            qtd_irrigacao: 2
-        },
-    ]
-
     function handleAdicionarAlimento(e, alimento) {
         if (e) e.preventDefault();
 
         const plantio = {
             id_plantio: 1,
-            data_plantio: 'data',
-            espaco_plantio: 5454,
-            //TODO: ALTERAR PRO FORMATO QUE O JAVA PEDE E PRO DIA DE HOJE
-            data_plantio: moment(new Date()).format('MM/DD/YYYY'),
+            espaco_plantio: novosPlantios.length + 2,
+            data_plantio: moment(new Date()).format('YYYY-MM-DD'),
             alimento: alimento
         };
 
@@ -130,8 +61,8 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
 
     const adicionarAlimentosRecursivamente = (novosPlantios) => {
         if (novosPlantios.length < 12) {
-            const indexAlimentoAleatorio = Math.floor(Math.random() * data.length);
-            const alimento = data[indexAlimentoAleatorio];
+            const indexAlimentoAleatorio = Math.floor(Math.random() * alimentosData.length);
+            const alimento = alimentosData[indexAlimentoAleatorio];
 
             // TODO: ver pq nao ta atualizando o saldo com essa lógica
             if(saldo >= alimento.preco_alimento){
@@ -165,7 +96,7 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
 
             <h3>Alimentos disponíveis para adicionar à horta</h3>
             <AliceCarousel mouseTracking responsive={responsive} disableButtonsControls>
-                {data.map((alimento) => {
+                {alimentosData.map((alimento) => {
                     return (
                         <div className='alimento' key={alimento.alimento_id} role="presentation" onDragStart={handleDragStart}>
                             <div className='wrap-icon'>

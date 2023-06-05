@@ -94,6 +94,7 @@ public class PlantioResource {
     }
     
     @POST
+    @Path("/plantios")
     @Consumes(MediaType.APPLICATION_JSON)
     public static Response cadastrarPlantios(ArrayList<Plantio> plantios_novos) {
         ArrayList<Plantio> retorno = PlantioDAO.cadastrarPlantios(plantios_novos);

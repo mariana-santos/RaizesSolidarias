@@ -48,7 +48,7 @@ export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
         return data;
     };
 
-    const { mutate: doacaoMutate } = useMutation(cadastrarDoacao);
+    const cadastrarDoacaoMutation = useMutation(cadastrarDoacao);
 
     const cadastrarDoador = async (dados_doador) => {
         const response = await fetch('http://localhost:8080/doador', {
@@ -71,12 +71,12 @@ export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
             setSaldo(dados_doador.moedas_doador)
             const dados_doacao = {
                 id_doacao: 0,
-                data_doacao: moment(new Date()).format('DD/MM/YYYY'),
+                data_doacao: moment(new Date()).format('YYYY-MM-DD'),
                 qtd_moedas_doacao: valorDoacao,
-                ...dados_doador,
+                doador: dados_doador,
             }
 
-            return cadastrarDoacao(dados_doacao);
+            return cadastrarDoacaoMutation.mutate(dados_doacao);
         }
     };
 
@@ -99,12 +99,12 @@ export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
             const dados_doacao = {
                 id_doacao: 0,
                 // TODO: Formatar a data de acordo com o que o json pede
-                data_doacao: new Date(),
+                data_doacao: moment(new Date()).format('YYYY-MM-DD'),
                 qtd_moedas_doacao: valorDoacao,
-                ...dados_doador,
+                doador: dados_doador,
             }
 
-            return cadastrarDoacao(dados_doacao);
+            return cadastrarDoacaoMutation.mutate(dados_doacao);
         }
     };
 

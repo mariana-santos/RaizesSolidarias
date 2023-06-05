@@ -1,6 +1,7 @@
 package dao;
 
 import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -259,51 +260,52 @@ public class PlantioDAO extends Repository {
 	 */
 	public static ArrayList<Plantio> cadastrarPlantios(ArrayList<Plantio> plantios_novos) {
 		
-		for (Plantio plantio_novo : plantios_novos) {
-			// @formatter:off
-			String sql = "BEGIN INSERT INTO plantio ("
-					+ " id_plantio,"
-					+ " data_plantio,"
-					+ " espaco_plantio,"
-					+ " id_alimento"
-					+ ") VALUES ("
-					+ " SQ_PLANTIO.nextval,"
-					+ " ?,"
-					+ " ?,"
-					+ " ?"
-					+ ") "
-					+ "RETURNING id_plantio INTO ?; END;";
-			// @formatter:on
-
-			CallableStatement cs = null;
-
-			try {
-				cs = getConnection().prepareCall(sql);
+		CallableStatement cs = null;
+		Connection connection = getConnection();
+		
+		try {
+			for (Plantio plantio_novo : plantios_novos) {
+				// @formatter:off
+				String sql = "BEGIN INSERT INTO plantio ("
+						+ " id_plantio,"
+						+ " data_plantio,"
+						+ " espaco_plantio,"
+						+ " id_alimento"
+						+ ") VALUES ("
+						+ " SQ_PLANTIO.nextval,"
+						+ " ?,"
+						+ " ?,"
+						+ " ?"
+						+ ") "
+						+ "RETURNING id_plantio INTO ?; END;";
+				// @formatter:on
+			
+				cs = connection.prepareCall(sql);
 				cs.setDate(1, plantio_novo.getData_plantio());
 				cs.setInt(2, plantio_novo.getEspaco_plantio());
 				cs.setInt(3, plantio_novo.getAlimento().getId_alimento());
 				cs.registerOutParameter(4, java.sql.Types.INTEGER);
 				cs.executeUpdate();
 				plantio_novo.setId_plantio(cs.getInt(4));
+			}
+			
+			return plantios_novos;
 
-			} catch (SQLException e) {
+		} catch (SQLException e) {
 				System.out.println("Não foi possível cadastrar novo PLANTIO no banco de dados: " + e.getMessage());
-			} finally {
-				if (cs != null) {
-					try {
-						cs.close();
-					} catch (SQLException e) {
-						System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
-					}
+		} finally {
+			if (cs != null) {
+				try {
+					cs.close();
+				} catch (SQLException e) {
+					System.out.println("Não foi possível fechar o Callable Statement: " + e.getMessage());
 				}
 			}
-
-			return null;
 		}
-		
-		return plantios_novos;
 
+		return null;
 	}
+
 	
 	/**
 	 * Deleta um plantio do banco de dados pelo ID do plantio.

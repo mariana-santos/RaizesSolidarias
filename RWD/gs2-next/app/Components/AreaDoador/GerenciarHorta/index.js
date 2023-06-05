@@ -27,6 +27,7 @@ export default function GerenciarHorta({ setTela, setSaldo, saldo, setAnimation 
                 saldo={saldo}
                 setSaldo={setSaldo}
                 setAnimation={setAnimation}
+                setNovosPlantios={setNovosPlantios} 
             />
         </div>
     )
