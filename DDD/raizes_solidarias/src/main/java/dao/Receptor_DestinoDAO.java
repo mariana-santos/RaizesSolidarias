@@ -206,7 +206,6 @@ public class Receptor_DestinoDAO extends Repository {
 	    ResultSet rs = null;
 	    ArrayList<Receptor_Destino> listaReceptor_Destinos = new ArrayList<>();
 	    
-	    
 	    try {
 	        ps = getConnection().prepareStatement(sql);
 	        ps.setInt(1, id_destino);
