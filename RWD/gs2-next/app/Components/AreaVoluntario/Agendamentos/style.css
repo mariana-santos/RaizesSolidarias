@@ -1,0 +1,28 @@
+.agendamento{
+    background: #dddddd;
+    border-radius: 5px;
+    border: solid 1px #ccc;
+    padding: 1em;
+    margin-top: 1em;
+}
+
+.agendamento p{
+    margin-top: 0;
+}
+
+.agendamento .row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-tertiary{
+    width: auto !important;
+    margin-top: 1em !important;
+    padding: 7px 15px;
+    background-color: #e2953d;
+}
+
+.btn-tertiary:hover{
+    background-color: rgb(192, 114, 58);
+}

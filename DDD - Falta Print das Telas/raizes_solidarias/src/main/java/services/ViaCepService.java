@@ -32,7 +32,7 @@ public class ViaCepService {
 	 * @throws ClientProtocolException se ocorrer um erro de protocolo na comunicação com a API.
 	 * @throws IOException se ocorrer um erro de I/O durante a comunicação com a API.
 	 */
-    public String getEndereco(String cep) throws ClientProtocolException, IOException {
+    public String getEndereco(String cep, String numero) throws ClientProtocolException, IOException {
        
         String endereco = null;
        
@@ -58,7 +58,7 @@ public class ViaCepService {
                 String uf = jsonObject.get("uf").getAsString();
                 String cepRetornado = jsonObject.get("cep").getAsString();
                 
-                endereco = logradouro + ", " + bairro + ", " + localidade + " - " + uf + " - " + cepRetornado;
+                endereco = "{\"endereco\": \"" + logradouro + ", " + numero + " - " +  bairro + ", " + localidade + " - " + uf + " - " + cepRetornado + "\"}";
             }
         }
        

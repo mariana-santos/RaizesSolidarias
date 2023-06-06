@@ -40,13 +40,6 @@
     color: #444;
 }
 
-.agendamento .row{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1em;
-}
-
 .horarios{
     display: flex;
     gap: 1em;
@@ -62,6 +55,7 @@ input[type="radio"]{
     border-radius: 3px;
     transition: .25s;
     border: solid 1px #ccc;
+    cursor: pointer;
 }
 
 .horario:has(input:checked){
@@ -69,7 +63,7 @@ input[type="radio"]{
     font-weight: 600;
 }
 
-.novo-agendamento p{
+.novo-agendamento p, .agendamentos p{
     font-weight: 500;
     margin-top: 1.3em;
 }
@@ -78,37 +72,14 @@ input[type="radio"]{
     width: 100% !important;
 }
 
-.agendamento-existente{
-    display: none;
-}
-
-.agendamento{
+.novo-agendamento, .agendamentos{
     width: 50%;
 }
 
-.row-body:has(.mask) .calendario, .row-body:has(.mask) .novo-agendamento {
-    filter: blur(1.5px);
+#voluntario .heading, #voluntario .wrap-btn{
+    width: 50%;
 }
 
-.mask{
-    background: #0000008a;
-    position: absolute;
-    max-width: calc(100% + 2em);
-    height: calc(100%);
-    z-index: 3;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: .5em;
-    /* left: -1em; */
-    /* right: -1em; */
-    color: #fff;
-    font-weight: 900;
-    font-size: 2em;
-    text-align: center;
-    padding: 2em;
-    
-}
 
 @media screen and (max-width: 768px){
     .row-heading{
@@ -125,12 +96,5 @@ input[type="radio"]{
 
     .row-body{
         flex-direction: column;
-    }
-
-    .mask{
-        font-size: 1.5em;
-        padding: 1em;
-        padding-top: 5em;
-        align-items: flex-start;
     }
 }

@@ -3,7 +3,7 @@
 }
 
 .transporte .novo-agendamento{
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     flex-wrap: wrap;
     column-gap: 1em;
@@ -11,6 +11,10 @@
 
 #transporte .campo, #transporte form button{
     width: calc(50% - 0.5em) !important;
+}
+
+#transporte .novo-agendamento .campo{
+    width: 100%  !important;
 }
 
 .transporte h3, .transporte p, .transporte small{
@@ -52,12 +56,19 @@
 
 .destino .detalhes p{
     margin-bottom: .5em;
+    font-size: .9em;
 }
 
-.detalhes button{
+.detalhes .btn{
     width: auto !important;
     margin-top: .5em !important;
     padding: 7px 15px;
+    display: inline-block;
+    font-size: 12px;
+}
+
+.detalhes p a:hover{
+    opacity: .8;
 }
 
 .novo-transportador{
@@ -75,6 +86,15 @@
 .novo-transportador p {
     font-weight: 500;
     margin-top: 1em;
+}
+
+#transporte .row-body{
+    padding: 1em 0;
+}
+
+#transporte .btn-secondary{
+    margin-top: 0;
+    margin-bottom: 1em;
 }
 
 @media screen and (max-width: 768px){

@@ -37,7 +37,7 @@ export default function AreaVoluntario() {
         <form id="doacao">
             <div className="row-heading">
                 <div className="heading">
-                    <h2>Olá, Mariana!</h2>
+                    <h2>Área do doador!</h2>
                     <small>Bem vindo(a) à área do doador. Aqui você pode realizar novos depósitos e gerenciar nossa horta que alimenta várias famílias semanalmente!</small>
                 </div>
 
@@ -51,7 +51,6 @@ export default function AreaVoluntario() {
             </div>
 
             <div className="row-body">
-
                 {tela === 'inicio' ?
                     (<div className="row inicio">
                         <div className="column">
