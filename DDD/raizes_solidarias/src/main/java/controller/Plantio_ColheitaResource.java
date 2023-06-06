@@ -79,7 +79,7 @@ public class Plantio_ColheitaResource {
 	/**
 	 * Recupera uma lista de Plantio_Colheita pelo seu ID Colheita.
 	 *
-	 * @param colheita o ID da Colheita a ser buscada.
+	 * @param id_colheita o ID da Colheita a ser buscada.
 	 * @return uma resposta contendo uma lista de Plantio_Colheita em formato JSON.
 	 */
 	@GET

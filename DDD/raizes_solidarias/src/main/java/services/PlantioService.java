@@ -45,7 +45,7 @@ public class PlantioService {
 	 * Atualiza um Plantio com as informações fornecidas.
 	 *
 	 * @param id_plantio o ID do Plantio a ser atualizado.
-	 * @param usuario o Plantio com as novas informações.
+	 * @param plantio o Plantio com as novas informações.
 	 * @return true se o Plantio foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarPlantio(int id_plantio, Plantio plantio) {

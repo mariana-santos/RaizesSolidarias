@@ -109,9 +109,10 @@ public class Plantio_ColheitaDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna o Plantio_Colheita cadastrados no banco de dados de acordo com o ID do Plantio.
+	 * Retorna o Plantio_Colheita cadastrado no banco de dados de acordo com o ID do Plantio.
 	 *
-	 * @return uma Plantio_Colheita de acordo com o ID do Plantio.
+	 * @param id_plantio o ID do Plantio a ser pesquisado
+	 * @return o Plantio_Colheita de acordo com o ID do Plantio
 	 */
 	public static Plantio_Colheita buscarPlantio_ColheitaPorIdPlantio(int id_plantio) {
 		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, " +
@@ -182,9 +183,10 @@ public class Plantio_ColheitaDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna uma lista de todos os Plantio_Colheitas cadastrados no banco de dados de acordo com o ID do Colheita.
+	 * Retorna uma lista de todos os Plantio_Colheitas cadastrados no banco de dados de acordo com o ID da Colheita.
 	 *
-	 * @return uma lista de Plantio_Colheitas de acordo com o ID do Colheita.
+	 * @param id_colheita o ID da Colheita a ser pesquisada
+	 * @return uma lista de Plantio_Colheitas de acordo com o ID da Colheita
 	 */
 	public static ArrayList<Plantio_Colheita> buscarPlantio_ColheitaPorIdColheita(int id_colheita) {
 		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, " +
@@ -259,9 +261,11 @@ public class Plantio_ColheitaDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna o Plantio_Colheita cadastrados no banco de dados de acordo com o ID do Plantio e o ID da Colheita.
+	 * Retorna o Plantio_Colheita cadastrado no banco de dados de acordo com o ID do Plantio e o ID da Colheita.
 	 *
-	 * @return uma Plantio_Colheita de acordo com o ID do Plantio e o ID da Colheita.
+	 * @param id_plantio o ID do Plantio a ser pesquisado
+	 * @param id_colheita o ID da Colheita a ser pesquisada
+	 * @return o Plantio_Colheita de acordo com o ID do Plantio e o ID da Colheita
 	 */
 	public static Plantio_Colheita buscarPlantio_ColheitaPorIds(int id_plantio, int id_colheita) {
 		String sql = "SELECT pc.id_plantio, p.data_plantio, p.espaco_plantio, " +

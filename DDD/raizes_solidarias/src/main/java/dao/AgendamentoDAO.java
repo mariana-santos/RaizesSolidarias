@@ -97,6 +97,7 @@ public class AgendamentoDAO extends Repository {
 	/**
 	 * Retorna uma lista de todos os agendamentos cadastrados no banco de dados.
 	 *
+	 ** @param id_usuario O ID do usuário para o qual deseja-se obter os agendamentos (não pode ser nulo)
 	 * @return ArrayList contendo os objetos Agendamento correspondentes aos registros encontrados, ou uma lista vazia se nenhum registro for encontrado.
 	 */
 	public ArrayList<Agendamento> listarAgendamentosPorIdUsuario(int id_usuario) {
@@ -160,7 +161,7 @@ public class AgendamentoDAO extends Repository {
 	/**
 	 * Retorna o agendamento correspondente ao ID fornecido.
 	 *
-	 * @param idAgendamento o ID do agendamento a ser buscado
+	 * @param id_agendamento o ID do agendamento a ser buscado
 	 * @return o objeto Agendamento correspondente ao ID fornecido, ou null se nenhum agendamento for encontrado
 	 */
 	public static Agendamento buscarAgendamentoPorId(int id_agendamento) {

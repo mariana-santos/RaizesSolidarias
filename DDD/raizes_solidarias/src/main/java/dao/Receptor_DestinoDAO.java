@@ -108,9 +108,10 @@ public class Receptor_DestinoDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna o Receptor_Destino cadastrado no banco de dados de acordo com o ID do Receptor.
+	 * Retorna uma lista de Receptor_Destino cadastrados no banco de dados de acordo com o ID do Receptor.
 	 *
-	 * @return uma Receptor_Destino de acordo com o ID do Receptor.
+	 * @param id_usuario o ID do Receptor para buscar os Receptor_Destino correspondentes.
+	 * @return uma lista de Receptor_Destino de acordo com o ID do Receptor.
 	 */
 	public static ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdUsuario(int id_usuario) {
 		String sql = "SELECT rd.id_usuario,"
@@ -185,8 +186,9 @@ public class Receptor_DestinoDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna uma lista de todos os Receptor_Destinos cadastrados no banco de dados de acordo com o ID do Destino.
+	 * Retorna uma lista de Receptor_Destinos cadastrados no banco de dados de acordo com o ID do Destino.
 	 *
+	 * @param id_destino o ID do Destino para buscar os Receptor_Destino correspondentes.
 	 * @return uma lista de Receptor_Destinos de acordo com o ID do Destino.
 	 */
 	public static ArrayList<Receptor_Destino> buscarReceptor_DestinoPorIdDestino(int id_destino) {
@@ -262,9 +264,11 @@ public class Receptor_DestinoDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna um Receptor_Destinos cadastrado no banco de dados de acordo com o ID do Receptor (Usuario) e o ID do Destino.
+	 * Retorna um Receptor_Destino cadastrado no banco de dados de acordo com o ID do Receptor (Usuario) e o ID do Destino.
 	 *
-	 * @return um Receptor_Destinos de acordo com o ID do Receptor (Usuario) e o ID do Destino.
+	 * @param id_usuario o ID do Receptor (Usuario) para buscar o Receptor_Destino correspondente.
+	 * @param id_destino o ID do Destino para buscar o Receptor_Destino correspondente.
+	 * @return um Receptor_Destino de acordo com o ID do Receptor (Usuario) e o ID do Destino.
 	 */
 	public static Receptor_Destino buscarReceptor_DestinoPorIds(int id_usuario, int id_destino) {
 		String sql = "SELECT rd.id_usuario,"
@@ -340,9 +344,10 @@ public class Receptor_DestinoDAO extends Repository {
 	/**
 	 * Atualiza um Receptor_Destino no banco de dados.
 	 *
-	 * @param id_usuario_novo  	o id do receptor que será atualizado.
-	 * @param id_usuario_antigo	o id do receptor a ser atualizado.
-	 * @param id_destino 		o id da destino a ser atualizada.
+	 * @param id_destino_novo  	o novo ID do destino a ser atualizado.
+	 * @param id_destino_antigo	o ID do destino a ser atualizado.
+	 * @param id_usuario_novo  	o novo ID do receptor a ser atualizado.
+	 * @param id_usuario_antigo	o ID do receptor a ser atualizado.
 	 * @return true se o Receptor_Destino for atualizado com sucesso, false caso contrário
 	 */
 	public static boolean atualizarReceptor_Destino(int id_destino_novo, int id_destino_antigo, int id_usuario_novo, int id_usuario_antigo) {

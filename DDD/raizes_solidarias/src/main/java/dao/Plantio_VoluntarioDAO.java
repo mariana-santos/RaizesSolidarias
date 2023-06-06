@@ -118,7 +118,8 @@ public class Plantio_VoluntarioDAO extends Repository {
 	/**
 	 * Retorna uma lista de Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Plantio.
 	 *
-	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Plantio.
+	 * @param id_plantio o ID do Plantio a ser pesquisado
+	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Plantio
 	 */
 	public static ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdPlantio(int id_plantio) {
 		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, "
@@ -202,7 +203,8 @@ public class Plantio_VoluntarioDAO extends Repository {
 	/**
 	 * Retorna uma lista de Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Voluntario.
 	 *
-	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Voluntario.
+	 * @param id_usuario o ID do Voluntario a ser pesquisado
+	 * @return uma lista de Plantio_Voluntario de acordo com o ID do Voluntario
 	 */
 	public static ArrayList<Plantio_Voluntario> buscarPlantio_VoluntarioPorIdUsuario(int id_usuario) {
 		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, "
@@ -284,9 +286,11 @@ public class Plantio_VoluntarioDAO extends Repository {
 	}
 	
 	/**
-	 * Retorna o Plantio_Voluntario cadastrados no banco de dados de acordo com o ID do Plantio e o ID do Voluntario.
+	 * Retorna o Plantio_Voluntario cadastrado no banco de dados de acordo com o ID do Plantio e o ID do Voluntario.
 	 *
-	 * @return uma Plantio_Voluntario de acordo com o ID do Plantio e o ID do Voluntario.
+	 * @param id_plantio o ID do Plantio a ser pesquisado
+	 * @param id_usuario o ID do Voluntario a ser pesquisado
+	 * @return o Plantio_Voluntario de acordo com o ID do Plantio e o ID do Voluntario
 	 */
 	public static Plantio_Voluntario buscarPlantio_VoluntarioPorIds(int id_plantio, int id_usuario) {
 		String sql = "SELECT pv.id_plantio, p.data_plantio, p.espaco_plantio, "
@@ -367,11 +371,13 @@ public class Plantio_VoluntarioDAO extends Repository {
 	}
 	
 	/**
-	 * Atualiza um Plantio_Voluntario no banco de dados.
+	 * Atualiza um registro de Plantio_Voluntario no banco de dados.
 	 *
-	 * @param id_plantio		  	o id do plantio a ser atualizado.
-	 * @param id_usuario 		o id da voluntario a ser atualizada.
-	 * @return true se o Plantio_Voluntario for atualizado com sucesso, false caso contrário
+	 * @param id_plantio_novo   o novo ID do plantio a ser atualizado.
+	 * @param id_plantio_antigo o ID antigo do plantio a ser atualizado.
+	 * @param id_usuario_novo   o novo ID do voluntário a ser atualizado.
+	 * @param id_usuario_antigo o ID antigo do voluntário a ser atualizado.
+	 * @return true se o Plantio_Voluntario for atualizado com sucesso, false caso contrário.
 	 */
 	public static boolean atualizarPlantio_Voluntario(int id_plantio_novo, int id_plantio_antigo, int id_usuario_novo, int id_usuario_antigo) {
 		String sql = "UPDATE plantio_voluntario SET id_plantio = ?, id_usuario = ? WHERE id_plantio = ? AND id_usuario = ?";

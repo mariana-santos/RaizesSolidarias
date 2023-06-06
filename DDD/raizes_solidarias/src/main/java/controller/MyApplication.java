@@ -19,7 +19,6 @@ import org.glassfish.jersey.server.ResourceConfig;
  *
  * @see ResourceConfig
  * @see controller.CorsFilter
- * @see controller.MovimentacaoResource
  * 
  * @author Raízes Solidárias
  */

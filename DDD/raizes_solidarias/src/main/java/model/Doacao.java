@@ -14,8 +14,8 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  *
  * @see services.DoacaoService
- * @see dao.DoacaoDao
- * @see controlle.DoacaoResource
+ * @see dao.DoacaoDAO
+ * @see controller.DoacaoResource
  * @see model.Doador
  * 
  * @author Raízes Solidárias

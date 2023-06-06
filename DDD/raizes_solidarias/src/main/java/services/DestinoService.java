@@ -43,7 +43,7 @@ public class DestinoService {
 	 * Atualiza um Destino com as informações fornecidas.
 	 *
 	 * @param id_destino o ID do Destino a ser atualizado.
-	 * @param usuario o Destino com as novas informações.
+	 * @param destino o Destino com as novas informações.
 	 * @return true se o Destino foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarDestino(int id_destino, Destino destino) {

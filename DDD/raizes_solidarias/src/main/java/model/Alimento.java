@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  *
  * @see services.AlimentoService
- * @see dao.AlimentoDao
+ * @see dao.AlimentoDAO
  * @see controller.AlimentoResource
  *
  * @author Raízes Solidárias

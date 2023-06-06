@@ -43,7 +43,7 @@ public class AlimentoService {
 	 * Atualiza um Alimento com as informações fornecidas.
 	 *
 	 * @param id_alimento o ID do Alimento a ser atualizado.
-	 * @param usuario o Alimento com as novas informações.
+	 * @param alimento o Alimento com as novas informações.
 	 * @return true se o Alimento foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarAlimento(int id_alimento, Alimento alimento) {

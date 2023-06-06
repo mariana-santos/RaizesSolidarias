@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.UsuarioService
- * @see dao.UsuarioDao
+ * @see dao.UsuarioDAO
  * @see controller.UsuarioResource
  * @see model.Doador
  * @see model.Receptor
@@ -185,7 +185,7 @@ public class Usuario {
     /**
      * Define o status do Usuario.
      *
-     * @param status O status do Usuario a ser definido.
+     * @param status_usuario O status do Usuario a ser definido.
      */
     public void setStatus_usuario(String status_usuario) {
         this.status_usuario = status_usuario;

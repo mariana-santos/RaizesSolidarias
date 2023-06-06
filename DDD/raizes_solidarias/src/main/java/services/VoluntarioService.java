@@ -44,7 +44,7 @@ public class VoluntarioService {
 	 * Atualiza um Voluntario com as informações fornecidas.
 	 *
 	 * @param id_usuario o ID do Usuario a ser atualizado.
-	 * @param usuario o Voluntario com as novas informações.
+	 * @param voluntario o Voluntario com as novas informações.
 	 * @return true se o Voluntario foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarVoluntario(int id_usuario, Voluntario voluntario) {

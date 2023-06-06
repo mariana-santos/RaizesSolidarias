@@ -43,7 +43,7 @@ public class DoacaoService {
 	 * Atualiza um Doacao com as informações fornecidas.
 	 *
 	 * @param id_doacao o ID do Doacao a ser atualizado.
-	 * @param usuario o Doacao com as novas informações.
+	 * @param doacao o Doacao com as novas informações.
 	 * @return true se o Doacao foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarDoacao(int id_doacao, Doacao doacao) {

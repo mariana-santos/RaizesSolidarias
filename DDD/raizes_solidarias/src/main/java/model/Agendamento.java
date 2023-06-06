@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  *
  * @see services.AgendamentoService
- * @see dao.AgendamentoDao
+ * @see dao.AgendamentoDAO
  * @see controller.AgendamentoResource
  * @see model.Usuario
  *

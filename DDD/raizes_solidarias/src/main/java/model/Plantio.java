@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  *
  * @see services.PlantioService
- * @see dao.PlantioDao
+ * @see dao.PlantioDAO
  * @see controller.PlantioResource
  *
  * @author Raízes Solidárias
