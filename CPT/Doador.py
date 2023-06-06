@@ -427,7 +427,7 @@ class Doador(Usuario):
                 if opcao == 1:
                     for i in range(len(listaDoadores)):
                         if listaDoadores[i].id_usuario == id_buscado:
-                            novo_status_usuario = "INATIVO"
+                            novo_status_usuario = "Inativo"
 
                             # CRIANDO CONEXÃO COM O BANCO DE DADOS
                             conn = Funcoes.connect(dsn)
@@ -457,7 +457,7 @@ class Doador(Usuario):
                     input("TECLE ENTER PARA VOLTAR AO MENU.")
             
             except ValueError as value_error:
-                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO DOADOR A SER EXCLUÍDO:")
+                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO DOADOR A SER INATIVO:")
                 print(str(value_error))
 
             except Exception as e:

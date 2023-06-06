@@ -165,7 +165,7 @@ class Usuario:
             print(str(e))
 
         # SETANDO O STATUS DO NOVO USUÁRIO
-        status_usuario = "ATIVO"
+        status_usuario = "Ativo"
 
         # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
@@ -456,10 +456,10 @@ class Usuario:
             opcao = int(Funcoes.validarOpcao(opcao, 1, 2, novo_status))
 
             if (opcao == 1):
-                novo_status_usuario = "ATIVO"
+                novo_status_usuario = "Ativo"
 
             elif (opcao == 2):
-                novo_status_usuario = "INATIVO"
+                novo_status_usuario = "Inativo"
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
@@ -509,7 +509,7 @@ class Usuario:
                 if opcao == 1:
                     for i in range(len(listaUsuarios)):
                         if listaUsuarios[i].id_usuario == id_buscado:
-                            novo_status_usuario = "INATIVO"
+                            novo_status_usuario = "Inativo"
 
                             # CRIANDO CONEXÃO COM O BANCO DE DADOS
                             conn = Funcoes.connect(dsn)
@@ -539,7 +539,7 @@ class Usuario:
                     input("TECLE ENTER PARA VOLTAR AO MENU.")
             
             except ValueError as value_error:
-                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO USUARIO A SER EXCLUÍDO:")
+                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO USUARIO A SER INATIVO:")
                 print(str(value_error))
 
             except Exception as e:

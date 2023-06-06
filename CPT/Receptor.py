@@ -501,7 +501,7 @@ class Receptor(Usuario):
                 if opcao == 1:
                     for i in range(len(listaReceptores)):
                         if listaReceptores[i].id_usuario == id_buscado:
-                            novo_status_usuario = "INATIVO"
+                            novo_status_usuario = "Inativo"
 
                             # CRIANDO CONEXÃO COM O BANCO DE DADOS
                             conn = Funcoes.connect(dsn)
@@ -537,7 +537,7 @@ class Receptor(Usuario):
                     input("TECLE ENTER PARA VOLTAR AO MENU.")
             
             except ValueError as value_error:
-                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO RECEPTOR A SER EXCLUÍDO:")
+                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO RECEPTOR A SER INATIVO:")
                 print(str(value_error))
 
             except Exception as e:

@@ -463,7 +463,7 @@ class Voluntario(Usuario):
                 if opcao == 1:
                     for i in range(len(listaVoluntarios)):
                         if listaVoluntarios[i].id_usuario == id_buscado:
-                            novo_status_usuario = "INATIVO"
+                            novo_status_usuario = "Inativo"
 
                             # CRIANDO CONEXÃO COM O BANCO DE DADOS
                             conn = Funcoes.connect(dsn)
