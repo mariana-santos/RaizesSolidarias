@@ -1,4 +1,5 @@
 import sqlite3
+import copy
 
 from Funcoes import Funcoes
 from Usuario import Usuario
@@ -334,19 +335,22 @@ class Doador(Usuario):
         try:
             novas_doacoes_doador = []
 
-            if (len(listaDoacoes) == 0):
+            listaDoacoesTemp = copy.copy(listaDoacoes)
+
+            if (len(listaDoacoesTemp) == 0):
                 input("NENHUMA DOAÇÃO CADASTRADA. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirDoacoesAdmin(listaDoacoes)
+                    Funcoes.exibirDoacoesAdmin(listaDoacoesTemp)
                     id_buscado = int(input("DIGITE O ID DA DOAÇÃO QUE DESEJA INCLUIR AO DOADOR: \n"))
-                    doacao_buscada = Funcoes.buscarDoacaoPorId(id_buscado, listaDoacoes)
-                    doacao_buscada = Funcoes.validarDoacaoBuscada(doacao_buscada, listaDoacoes)
+                    doacao_buscada = Funcoes.buscarDoacaoPorId(id_buscado, listaDoacoesTemp)
+                    doacao_buscada = Funcoes.validarDoacaoBuscada(doacao_buscada, listaDoacoesTemp)
                     
                     novas_doacoes_doador.append(doacao_buscada)
+                    listaDoacoesTemp.remove(doacao_buscada)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UMA DOAÇÃO AO DOADOR?\n" + 
                                           "01. SIM\n" + 

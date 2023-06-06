@@ -27,7 +27,8 @@ class Funcoes:
             "08. RECEPTORES\n"
             "09. USUÁRIOS\n"
             "10. VOLUNTÁRIOS\n"
-            "11. SAIR\n" +
+            "11. ATUALIZAR DADOS\n"
+            "12. SAIR\n" +
             Funcoes.menuRodape())
 
     def menuAdminAgendamentos():
@@ -566,7 +567,7 @@ class Funcoes:
         except Exception as e:
             print(f"OCORREU UM ERRO: {str(e)}")
             return None
-    
+
     def buscarAgendamentosBanco(dsn, Agendamento, Usuario):
         try:
             # CRIANDO CONEXÃO COM O BANCO DE DADOS

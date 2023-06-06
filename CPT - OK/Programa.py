@@ -62,7 +62,7 @@ while (iniciar):
         # MENU INICIAL
         print("------------------------------------------")
         opcao = int(input(Funcoes.menuInicial()))
-        opcao = int(Funcoes.validarOpcao(opcao, 1, 11, Funcoes.menuInicial()))
+        opcao = int(Funcoes.validarOpcao(opcao, 1, 12, Funcoes.menuInicial()))
 
         if (opcao == 1):
             # MENU AGENDAMENTO
@@ -365,6 +365,25 @@ while (iniciar):
                     menuAdminVoluntarios = False
 
         elif (opcao == 11):
+            # ATUALIZAR TODAS AS LISTAS
+            listaAgendamentos = Funcoes.buscarAgendamentosBanco(dsn, Agendamento, Usuario)
+            listaAlimentos = Funcoes.buscarAlimentosBanco(dsn, Alimento)
+            listaColheitas = Funcoes.buscarColheitasBanco(dsn, Colheita, Voluntario, Plantio, Alimento)
+            listaDestinos = Funcoes.buscarDestinosBanco(dsn, Destino, Receptor)
+            listaDoacoes = Funcoes.buscarDoacoesBanco(dsn, Doacao, Doador)
+            listaDoadores = Funcoes.buscarDoadoresBanco(dsn, Doador, Doacao)
+            listaPlantios = Funcoes.buscarPlantiosBanco(dsn, Plantio, Alimento, Colheita, Voluntario)
+            listaReceptores = Funcoes.buscarReceptoresBanco(dsn, Receptor, Destino, Agendamento)
+            listaUsuarios = Funcoes.buscarUsuariosBanco(dsn, Usuario)
+            listaVoluntarios = Funcoes.buscarVoluntariosBanco(dsn, Voluntario, Colheita, Plantio, Alimento, Agendamento)
+            cpfs_cadastrados = Funcoes.buscarCpfsCadastrados(dsn)
+            emails_cadastrados = Funcoes.buscarEmailsCadastrados(dsn)
+            cel_cadastrados = Funcoes.buscarCelsCadastrados(dsn)
+            listaUsuariosNaoDoadores = Funcoes.criarListaUsuariosNaoDoadores(listaUsuarios, listaDoadores)
+            listaUsuariosNaoReceptores = Funcoes.criarListaUsuariosNaoReceptores(listaUsuarios, listaReceptores)
+            listaUsuariosNaoVoluntarios = Funcoes.criarListaUsuariosNaoVoluntarios(listaUsuarios, listaVoluntarios)
+
+        elif (opcao == 12):
             # ENCERRAR O PROGRAMA
             opcao = int(input(Funcoes.confirmarAcao("SAIR")))
             opcao = Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao("SAIR"))

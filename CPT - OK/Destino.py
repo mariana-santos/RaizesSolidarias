@@ -1,4 +1,5 @@
 import sqlite3
+import copy
 
 from Funcoes import Funcoes
 
@@ -147,19 +148,22 @@ class Destino:
         try:
             receptores_destino = []
 
-            if (len(listaReceptores) == 0):
+            listaReceptoresTemp = copy.copy(listaReceptores)
+
+            if (len(listaReceptoresTemp) == 0):
                 input("NENHUM RECEPTOR CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirUsuariosAdmin(listaReceptores)
+                    Funcoes.exibirUsuariosAdmin(listaReceptoresTemp)
                     id_buscado = int(input("DIGITE O ID DO RECEPTOR QUE DESEJA INCLUIR AO DESTINO: \n"))
-                    receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaReceptores)
-                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, listaReceptores)
+                    receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaReceptoresTemp)
+                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, listaReceptoresTemp)
                     
                     receptores_destino.append(receptor_buscado)
+                    listaReceptoresTemp.remove(receptor_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM RECEPTOR AO NOVO DESTINO?\n" + 
                                           "01. SIM\n" + 
@@ -457,19 +461,22 @@ class Destino:
         try:
             novos_receptores_destino = []
 
-            if (len(listaReceptores) == 0):
+            listaReceptoresTemp = copy.copy(listaReceptores)
+
+            if (len(listaReceptoresTemp) == 0):
                 input("NENHUM RECEPTOR CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirUsuariosAdmin(listaReceptores)
+                    Funcoes.exibirUsuariosAdmin(listaReceptoresTemp)
                     id_buscado = int(input("DIGITE O ID DO RECEPTOR QUE DESEJA INCLUIR AO DESTINO: \n"))
-                    receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaReceptores)
-                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, listaReceptores)
+                    receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaReceptoresTemp)
+                    receptor_buscado = Funcoes.validarUsuarioBuscado(receptor_buscado, listaReceptoresTemp)
                     
                     novos_receptores_destino.append(receptor_buscado)
+                    listaReceptoresTemp.remove(receptor_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM RECEPTOR AO NOVO DESTINO?\n" + 
                                           "01. SIM\n" + 

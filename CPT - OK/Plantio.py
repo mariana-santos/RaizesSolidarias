@@ -1,4 +1,5 @@
 import sqlite3
+import copy
 
 from datetime import datetime
 
@@ -158,19 +159,22 @@ class Plantio:
         try:
             voluntarios_plantio = []
 
-            if (len(listaVoluntarios) == 0):
+            listaVoluntariosTemp = copy.copy(listaVoluntarios)
+
+            if (len(listaVoluntariosTemp) == 0):
                 input("NENHUM VOLUNTÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirUsuariosAdmin(listaVoluntarios)
+                    Funcoes.exibirUsuariosAdmin(listaVoluntariosTemp)
                     id_buscado = int(input("DIGITE O ID DO VOLUNTÁRIO QUE DESEJA INCLUIR AO PLANTIO: \n"))
-                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntarios)
-                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntarios)
+                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntariosTemp)
+                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntariosTemp)
                     
                     voluntarios_plantio.append(voluntario_buscado)
+                    listaVoluntariosTemp.remove(voluntario_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM VOLUNTÁRIO AO NOVO PLANTIO?\n" + 
                                           "01. SIM\n" + 
@@ -491,19 +495,22 @@ class Plantio:
         try:
             novos_voluntarios_plantio = []
 
-            if (len(listaVoluntarios) == 0):
+            listaVoluntariosTemp = copy.copy(listaVoluntarios)
+
+            if (len(listaVoluntariosTemp) == 0):
                 input("NENHUM VOLUNTÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirUsuariosAdmin(listaVoluntarios)
+                    Funcoes.exibirUsuariosAdmin(listaVoluntariosTemp)
                     id_buscado = int(input("DIGITE O ID DO VOLUNTÁRIO QUE DESEJA INCLUIR AO PLANTIO: \n"))
-                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntarios)
-                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntarios)
+                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntariosTemp)
+                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntariosTemp)
                     
                     novos_voluntarios_plantio.append(voluntario_buscado)
+                    listaVoluntariosTemp.remove(voluntario_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM VOLUNTÁRIO AO PLANTIO?\n" + 
                                           "01. SIM\n" + 

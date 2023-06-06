@@ -1,4 +1,5 @@
 import sqlite3
+import copy
 
 from Funcoes import Funcoes
 from Usuario import Usuario
@@ -131,19 +132,22 @@ class Receptor(Usuario):
         try:
             destinos_receptor = []
 
-            if (len(listaDestinos) == 0):
+            listaDestinosTemp = copy.copy(listaDestinos)
+
+            if (len(listaDestinosTemp) == 0):
                 input("NENHUM DESTINO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirDestinosAdmin(listaDestinos)
+                    Funcoes.exibirDestinosAdmin(listaDestinosTemp)
                     id_buscado = int(input("DIGITE O ID DO DESTINO QUE DESEJA INCLUIR AO RECEPTOR: \n"))
-                    destino_buscado = Funcoes.buscarDestinoPorId(id_buscado, listaDestinos)
-                    destino_buscado = Funcoes.validarDestinoBuscado(destino_buscado, listaDestinos)
+                    destino_buscado = Funcoes.buscarDestinoPorId(id_buscado, listaDestinosTemp)
+                    destino_buscado = Funcoes.validarDestinoBuscado(destino_buscado, listaDestinosTemp)
                     
                     destinos_receptor.append(destino_buscado)
+                    listaDestinosTemp.remove(destino_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM DESTINO AO NOVO RECEPTOR?\n" + 
                                           "01. SIM\n" + 
@@ -432,19 +436,22 @@ class Receptor(Usuario):
         try:
             novos_destinos_receptor = []
 
-            if (len(listaDestinos) == 0):
+            listaDestinosTemp = copy.copy(listaDestinos)
+
+            if (len(listaDestinosTemp) == 0):
                 input("NENHUM DESTINO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirDestinosAdmin(listaDestinos)
+                    Funcoes.exibirDestinosAdmin(listaDestinosTemp)
                     id_buscado = int(input("DIGITE O ID DO DESTINO QUE DESEJA INCLUIR AO RECEPTOR: \n"))
-                    destino_buscado = Funcoes.buscarDestinoPorId(id_buscado, listaDestinos)
-                    destino_buscado = Funcoes.validarDestinoBuscado(destino_buscado, listaDestinos)
+                    destino_buscado = Funcoes.buscarDestinoPorId(id_buscado, listaDestinosTemp)
+                    destino_buscado = Funcoes.validarDestinoBuscado(destino_buscado, listaDestinosTemp)
                     
                     novos_destinos_receptor.append(destino_buscado)
+                    listaDestinosTemp.remove(destino_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM DESTINO AO RECEPTOR?\n" + 
                                           "01. SIM\n" + 
@@ -503,19 +510,22 @@ class Receptor(Usuario):
         try:
             novos_agendamentos_receptor = []
 
-            if (len(listaAgendamentos) == 0):
+            listaAgendamentosTemp = copy.copy(listaAgendamentos)
+
+            if (len(listaAgendamentosTemp) == 0):
                 input("NENHUM AGENDAMENTO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirAgendamentosAdmin(listaAgendamentos)
+                    Funcoes.exibirAgendamentosAdmin(listaAgendamentosTemp)
                     id_buscado = int(input("DIGITE O ID DO AGENDAMENTO QUE DESEJA INCLUIR AO RECEPTOR: \n"))
-                    agendamento_buscado = Funcoes.buscarAgendamentoPorId(id_buscado, listaAgendamentos)
-                    agendamento_buscado = Funcoes.validarAgendamentoBuscado(agendamento_buscado, listaAgendamentos)
+                    agendamento_buscado = Funcoes.buscarAgendamentoPorId(id_buscado, listaAgendamentosTemp)
+                    agendamento_buscado = Funcoes.validarAgendamentoBuscado(agendamento_buscado, listaAgendamentosTemp)
                     
                     novos_agendamentos_receptor.append(agendamento_buscado)
+                    listaAgendamentosTemp.remove(agendamento_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM AGENDAMENTO AO RECEPTOR?\n" + 
                                           "01. SIM\n" + 

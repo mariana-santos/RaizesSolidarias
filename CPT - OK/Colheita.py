@@ -1,4 +1,5 @@
 import sqlite3
+import copy
 
 from datetime import datetime
 
@@ -122,19 +123,22 @@ class Colheita:
         try:
             voluntarios_colheita = []
 
-            if (len(listaVoluntarios) == 0):
+            listaVoluntariosTemp = copy.copy(listaVoluntarios)
+
+            if (len(listaVoluntariosTemp) == 0):
                 input("NENHUM VOLUNTÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirUsuariosAdmin(listaVoluntarios)
+                    Funcoes.exibirUsuariosAdmin(listaVoluntariosTemp)
                     id_buscado = int(input("DIGITE O ID DO VOLUNTÁRIO QUE DESEJA INCLUIR À COLHEITA: \n"))
-                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntarios)
-                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntarios)
+                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntariosTemp)
+                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntariosTemp)
                     
                     voluntarios_colheita.append(voluntario_buscado)
+                    listaVoluntariosTemp.remove(voluntario_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM VOLUNTÁRIO À NOVA COLHEITA?\n" + 
                                           "01. SIM\n" + 
@@ -160,19 +164,22 @@ class Colheita:
         try:
             plantios_colheita = []
 
-            if (len(listaPlantios) == 0):
+            listaPlantiosTemp = copy.copy(listaPlantios)
+
+            if (len(listaPlantiosTemp) == 0):
                 input("NENHUM PLANTIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirPlantiosAdmin(listaPlantios)
+                    Funcoes.exibirPlantiosAdmin(listaPlantiosTemp)
                     id_buscado = int(input("DIGITE O ID DO PLANTIO QUE DESEJA INCLUIR À COLHEITA: \n"))
-                    plantio_buscado = Funcoes.buscarPlantioPorId(id_buscado, listaPlantios)
-                    plantio_buscado = Funcoes.validarPlantioBuscado(plantio_buscado, listaPlantios)
+                    plantio_buscado = Funcoes.buscarPlantioPorId(id_buscado, listaPlantiosTemp)
+                    plantio_buscado = Funcoes.validarPlantioBuscado(plantio_buscado, listaPlantiosTemp)
                     
                     plantios_colheita.append(plantio_buscado)
+                    listaPlantiosTemp.remove(plantio_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM PLANTIO À NOVA COLHEITA?\n" + 
                                           "01. SIM\n" + 
@@ -392,6 +399,8 @@ class Colheita:
         try:
             novos_voluntarios_colheita = []
 
+            listaVoluntariosTemp = copy.copy(listaVoluntarios)
+
             if (len(listaVoluntarios) == 0):
                 input("NENHUM VOLUNTÁRIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
@@ -399,12 +408,13 @@ class Colheita:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirUsuariosAdmin(listaVoluntarios)
+                    Funcoes.exibirUsuariosAdmin(listaVoluntariosTemp)
                     id_buscado = int(input("DIGITE O ID DO VOLUNTÁRIO QUE DESEJA INCLUIR À COLHEITA: \n"))
-                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntarios)
-                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntarios)
+                    voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, listaVoluntariosTemp)
+                    voluntario_buscado = Funcoes.validarUsuarioBuscado(voluntario_buscado, listaVoluntariosTemp)
                     
                     novos_voluntarios_colheita.append(voluntario_buscado)
+                    listaVoluntariosTemp.remove(voluntario_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM VOLUNTÁRIO À COLHEITA?\n" + 
                                           "01. SIM\n" + 
@@ -463,19 +473,22 @@ class Colheita:
         try:
             novos_plantios_colheita = []
 
-            if (len(listaPlantios) == 0):
+            listaPlantiosTemp = copy.copy(listaPlantios)
+
+            if (len(listaPlantiosTemp) == 0):
                 input("NENHUM PLANTIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirPlantiosAdmin(listaPlantios)
+                    Funcoes.exibirPlantiosAdmin(listaPlantiosTemp)
                     id_buscado = int(input("DIGITE O ID DO PLANTIO QUE DESEJA INCLUIR À COLHEITA: \n"))
-                    plantio_buscado = Funcoes.buscarPlantioPorId(id_buscado, listaPlantios)
-                    plantio_buscado = Funcoes.validarPlantioBuscado(plantio_buscado, listaPlantios)
+                    plantio_buscado = Funcoes.buscarPlantioPorId(id_buscado, listaPlantiosTemp)
+                    plantio_buscado = Funcoes.validarPlantioBuscado(plantio_buscado, listaPlantiosTemp)
                     
                     novos_plantios_colheita.append(plantio_buscado)
+                    listaPlantiosTemp.remove(plantio_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM PLANTIO À COLHEITA?\n" + 
                                           "01. SIM\n" + 

@@ -1,4 +1,5 @@
 import sqlite3
+import copy
 
 from datetime import datetime
 
@@ -301,19 +302,22 @@ class Voluntario(Usuario):
         try:
             novas_colheitas_voluntario = []
 
-            if (len(listaColheitas) == 0):
+            listaColheitasTemp = copy.copy(listaColheitas)
+
+            if (len(listaColheitasTemp) == 0):
                 input("NENHUMA COLHEITA CADASTRADA. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirColheitasAdmin(listaColheitas)
+                    Funcoes.exibirColheitasAdmin(listaColheitasTemp)
                     id_buscado = int(input("DIGITE O ID DA COLHEITA QUE DESEJA INCLUIR AO VOLUNTÁRIO: \n"))
-                    colheita_buscada = Funcoes.buscarColheitaPorId(id_buscado, listaColheitas)
-                    colheita_buscada = Funcoes.validarColheitaBuscada(colheita_buscada, listaColheitas)
+                    colheita_buscada = Funcoes.buscarColheitaPorId(id_buscado, listaColheitasTemp)
+                    colheita_buscada = Funcoes.validarColheitaBuscada(colheita_buscada, listaColheitasTemp)
                     
                     novas_colheitas_voluntario.append(colheita_buscada)
+                    listaColheitasTemp.remove(colheita_buscada)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UMA COLHEITA AO VOLUNTÁRIO?\n" + 
                                           "01. SIM\n" + 
@@ -372,19 +376,22 @@ class Voluntario(Usuario):
         try:
             novos_plantios_voluntario = []
 
-            if (len(listaPlantios) == 0):
+            listaPlantiosTemp = copy.copy(listaPlantios)
+
+            if (len(listaPlantiosTemp) == 0):
                 input("NENHUM PLANTIO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirPlantiosAdmin(listaPlantios)
+                    Funcoes.exibirPlantiosAdmin(listaPlantiosTemp)
                     id_buscado = int(input("DIGITE O ID DO PLANTIO QUE DESEJA INCLUIR AO VOLUNTÁRIO: \n"))
-                    plantio_buscado = Funcoes.buscarPlantioPorId(id_buscado, listaPlantios)
-                    plantio_buscado = Funcoes.validarPlantioBuscado(plantio_buscado, listaPlantios)
+                    plantio_buscado = Funcoes.buscarPlantioPorId(id_buscado, listaPlantiosTemp)
+                    plantio_buscado = Funcoes.validarPlantioBuscado(plantio_buscado, listaPlantiosTemp)
                     
                     novos_plantios_voluntario.append(plantio_buscado)
+                    listaPlantiosTemp.remove(plantio_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM PLANTIO AO VOLUNTÁRIO?\n" + 
                                           "01. SIM\n" + 
@@ -443,19 +450,22 @@ class Voluntario(Usuario):
         try:
             novos_agendamentos_voluntario = []
 
-            if (len(listaAgendamentos) == 0):
+            listaAgendamentosTemp = copy.copy(listaAgendamentos)
+
+            if (len(listaAgendamentosTemp) == 0):
                 input("NENHUM AGENDAMENTO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
 
             else:
                 adicionar = True
 
                 while (adicionar):
-                    Funcoes.exibirAgendamentosAdmin(listaAgendamentos)
+                    Funcoes.exibirAgendamentosAdmin(listaAgendamentosTemp)
                     id_buscado = int(input("DIGITE O ID DO AGENDAMENTO QUE DESEJA INCLUIR AO VOLUNTÁRIO: \n"))
-                    agendamento_buscado = Funcoes.buscarAgendamentoPorId(id_buscado, listaAgendamentos)
-                    agendamento_buscado = Funcoes.validarAgendamentoBuscado(agendamento_buscado, listaAgendamentos)
+                    agendamento_buscado = Funcoes.buscarAgendamentoPorId(id_buscado, listaAgendamentosTemp)
+                    agendamento_buscado = Funcoes.validarAgendamentoBuscado(agendamento_buscado, listaAgendamentosTemp)
                     
                     novos_agendamentos_voluntario.append(agendamento_buscado)
+                    listaAgendamentosTemp.remove(agendamento_buscado)
 
                     opcao = int(input("DESEJA ADICIONAR MAIS UM AGENDAMENTO AO VOLUNTÁRIO?\n" + 
                                           "01. SIM\n" + 
