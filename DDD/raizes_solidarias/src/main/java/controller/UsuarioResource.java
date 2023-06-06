@@ -160,7 +160,7 @@ public class UsuarioResource {
 	        Usuario usuario_logado = UsuarioService.validarLogin(email_usuario, senha_usuario);
 
 	        if (usuario_logado != null) {
-	            if ("Excluído".equals(usuario_logado.getStatus_usuario())) {
+	            if ("Inativo".equals(usuario_logado.getStatus_usuario())) {
 	                return Response.status(401).entity("{\"error\":\"Usuário inativo, favor entrar em contato com a administração.\"}").build();
 	            } else {
 	                ResponseBuilder response = Response.ok();

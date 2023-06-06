@@ -306,7 +306,7 @@ public class VoluntarioDAO extends Repository {
 
 	    try {
 	        ps = getConnection().prepareStatement(sql);
-	        ps.setString(1, "Excluído");
+	        ps.setString(1, "Inativo");
 	        ps.setInt(2, id_usuario);
 	        int rowsAffected = ps.executeUpdate();
 	        
