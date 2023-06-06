@@ -56,7 +56,7 @@ class Voluntario(Usuario):
         retornoPerfil += f"05. CELULAR: {voluntario_buscado.cel_usuario}\n"
         retornoPerfil += f"06. SENHA: {voluntario_buscado.senha_usuario}\n"
         retornoPerfil += f"07. STATUS: {voluntario_buscado.status_usuario}\n"
-        retornoPerfil += f"08. DATA DE REGISTRO: {voluntario_buscado.data_registro_voluntario}\n"
+        retornoPerfil += f"08. DATA DE REGISTRO: {Funcoes.formatarData(voluntario_buscado.data_registro_voluntario)}\n"
         retornoPerfil += "09. COLHEITAS: "
         if len(voluntario_buscado.colheitas_voluntario) == 0:
             retornoPerfil += "NENHUMA COLHEITA REALIZADA.\n"
@@ -64,9 +64,9 @@ class Voluntario(Usuario):
             for i, colheita in enumerate(voluntario_buscado.colheitas_voluntario):
                 colheita_numero = f"{i+1:02d}"
                 if i == 0:
-                    retornoPerfil += f"\n 09.{colheita_numero}. ID: {colheita.id_colheita} | DATA: {colheita.data_colheita}\n"
+                    retornoPerfil += f"\n 09.{colheita_numero}. ID: {colheita.id_colheita} | DATA: {Funcoes.formatarData(colheita.data_colheita)}\n"
                 else:
-                    retornoPerfil += f" 09.{colheita_numero}. ID: {colheita.id_colheita} | DATA: {colheita.data_colheita}\n"
+                    retornoPerfil += f" 09.{colheita_numero}. ID: {colheita.id_colheita} | DATA: {Funcoes.formatarData(colheita.data_colheita)}\n"
         retornoPerfil += "10. PLANTIOS: "
         if len(voluntario_buscado.plantios_voluntario) == 0:
             retornoPerfil += "NENHUM PLANTIO REALIZADO.\n"

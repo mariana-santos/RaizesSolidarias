@@ -466,7 +466,7 @@ class Funcoes:
             lista_ordenada = sorted(lista, key=lambda usuario: usuario.id_usuario)
 
             for usuario in lista_ordenada:
-                print(f"ID: {usuario.id_usuario} | NOME: {usuario.nome_usuario}")
+                print(f"ID: {usuario.id_usuario} | NOME: {usuario.nome_usuario} | STATUS: {usuario.status_usuario}")
                 print("------------------------------------------")
 
     # BANCO DE DADOS

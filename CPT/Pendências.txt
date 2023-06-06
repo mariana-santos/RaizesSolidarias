@@ -1,10 +1,3 @@
-- Programa (testar)
-- Se possível, fazer as edições n para n, mostrando a lista e editando apenas 1
-- Se possível, ir deletando das listas de acordo com as adições ou remoções
-
 Agendamento:
 - Atualizar Usuario não funciona
 - Testar o deletar agendamento
-
-Doadores:
-- somente mostrar usuarios ativos
