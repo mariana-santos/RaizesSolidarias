@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.ReceptorService
- * @see dao.ReceptorDao
+ * @see dao.ReceptorDAO
  * @see controller.ReceptorResource
  * @see model.Usuario
  * 
@@ -86,6 +86,7 @@ public class Receptor extends Usuario {
 	 * @param email_usuario   O Email do Usuário (não pode ser nulo).
 	 * @param cel_usuario     O Número de celular do Usuário (não pode ser nulo).
 	 * @param senha_usuario   A Senha do Usuário (não pode ser nula).
+	 * @param status_usuario  O Status do Usuário (não pode ser nulo).
 	 */
 	public Receptor(@NotNull(message = "O ID do Usuário não pode ser nulo.") int id_usuario, 
 			@NotNull(message = "O CPF do Usuário não pode ser nulo.") String cpf_usuario,

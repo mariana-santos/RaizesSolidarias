@@ -105,7 +105,8 @@ public class Colheita_VoluntarioDAO extends Repository {
 	/**
 	 * Retorna uma lista de todos os Colheita_Voluntarios cadastrados no banco de dados de acordo com o ID da Colheita.
 	 *
-	 * @return uma lista de Colheita_Voluntarios de acordo com o ID da Colheita.
+	 * @param id_colheita O ID da colheita para filtrar os registros.
+	 * @return Uma lista de Colheita_Voluntarios correspondente ao ID da Colheita fornecido.
 	 */
 	public ArrayList<Colheita_Voluntario> buscarColheita_VoluntarioPorIdColheita(int id_colheita) {
 	    String sql = "SELECT cv.id_colheita, c.data_colheita, c.descricao_colheita,"
@@ -176,7 +177,8 @@ public class Colheita_VoluntarioDAO extends Repository {
 	/**
 	 * Retorna uma lista de todos os Colheita_Voluntarios cadastrados no banco de dados de acordo com o ID do Voluntario (Usuario).
 	 *
-	 * @return uma lista de Colheita_Voluntarios de acordo com o ID do Voluntario (Usuario).
+	 * @param id_usuario O ID do Voluntario (Usuario) para filtrar os registros.
+	 * @return Uma lista de Colheita_Voluntarios correspondente ao ID do Voluntario (Usuario) fornecido.
 	 */
 	public ArrayList<Colheita_Voluntario> buscarColheita_VoluntarioPorIdUsuario(int id_usuario) {
 	    String sql = "SELECT cv.id_colheita, c.data_colheita, c.descricao_colheita,"
@@ -247,7 +249,9 @@ public class Colheita_VoluntarioDAO extends Repository {
 	/**
 	 * Retorna um Colheita_Voluntarios cadastrado no banco de dados de acordo com o ID da Colheita e o ID do Voluntario (Usuario).
 	 *
-	 * @return um Colheita_Voluntarios de acordo com o ID da Colheita e o ID do Voluntario (Usuario).
+	 * @param id_colheita O ID da Colheita para filtrar o registro.
+	 * @param id_usuario O ID do Voluntario (Usuario) para filtrar o registro.
+	 * @return Um Colheita_Voluntarios correspondente ao ID da Colheita e ao ID do Voluntario (Usuario) fornecidos.
 	 */
 	public static Colheita_Voluntario buscarColheita_VoluntarioPorIds(int id_colheita, int id_usuario) {
 		String sql = "SELECT cv.id_colheita, c.data_colheita, c.descricao_colheita,"

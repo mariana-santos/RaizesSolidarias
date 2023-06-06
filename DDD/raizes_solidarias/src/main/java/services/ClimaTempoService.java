@@ -25,10 +25,12 @@ public class ClimaTempoService {
     private static final String API_KEY = "529d5a6f2eccf6a11d012c995797a521";
     
     /**
-	 * Busca os dados do tempo para a cidade de São Paulo na API externa do ClimaTempo
-	 *
-	 * @return os dados do tempo na API externa do ClimaTempo para a cidade de São Paulo.
-	 */
+     * Busca os dados do tempo para a cidade de São Paulo na API externa do ClimaTempo.
+     *
+     * @return Os dados do tempo na API externa do ClimaTempo para a cidade de São Paulo.
+     * @throws ClientProtocolException Se ocorrer um erro de protocolo na chamada à API.
+     * @throws IOException             Se ocorrer um erro de entrada/saída na chamada à API.
+     */
     public String getPrevisaoTempoSaoPaulo() throws ClientProtocolException, IOException {
 
         String previsaoTempo = null;

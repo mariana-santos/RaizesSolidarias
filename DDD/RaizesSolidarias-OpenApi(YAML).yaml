@@ -1,0 +1,2719 @@
+openapi: 3.0.0
+info:
+  title: Raízes Solidárias
+  contact: {}
+  version: '1.0'
+servers:
+  - url: http://localhost:8080
+    variables: {}
+  - url: https://localhost:8080
+    variables: {}
+paths:
+  /agendamento:
+    get:
+      tags:
+        - Agendamento
+      summary: Listar Agendamentos
+      operationId: ListarAgendamentos
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Agendamento
+      summary: Cadastrar Agendamento
+      operationId: CadastrarAgendamento
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarAgendamentoRequest'
+                - example:
+                    data_agendamento: '2023-05-31'
+                    turno_agendamento: Tarde
+                    usuario:
+                      id_usuario: 5
+            example:
+              data_agendamento: '2023-05-31'
+              turno_agendamento: Tarde
+              usuario:
+                id_usuario: 5
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /agendamento/1:
+    get:
+      tags:
+        - Agendamento
+      summary: Exibir Agendamento
+      operationId: ExibirAgendamento
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    put:
+      tags:
+        - Agendamento
+      summary: Atualizar Agendamento
+      operationId: AtualizarAgendamento
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarAgendamentoRequest'
+                - example:
+                    data_agendamento: '2023-01-12'
+                    turno_agendamento: Tarde
+                    usuario:
+                      id_usuario: 2
+                    id_agendamento: 1
+            example:
+              data_agendamento: '2023-01-12'
+              turno_agendamento: Tarde
+              usuario:
+                id_usuario: 2
+              id_agendamento: 1
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /agendamento/usuario/2:
+    get:
+      tags:
+        - Agendamento
+      summary: Exibir Agendamento Por Id Usuário
+      operationId: ExibirAgendamentoPorIdUsuário
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /agendamento/14:
+    delete:
+      tags:
+        - Agendamento
+      summary: Deletar Agendamento
+      operationId: DeletarAgendamento
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /alimento:
+    get:
+      tags:
+        - Alimento
+      summary: Listar Alimentos
+      operationId: ListarAlimentos
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Alimento
+      summary: Cadastrar Alimento
+      operationId: CadastrarAlimento
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarAlimentoRequest'
+                - example:
+                    nome_alimento: Maçã
+                    tempo_colheita: 60
+                    qtd_irrigacao: 3
+                    preco_alimento: 5
+                    qtd_alimento: 10
+            example:
+              nome_alimento: Maçã
+              tempo_colheita: 60
+              qtd_irrigacao: 3
+              preco_alimento: 5
+              qtd_alimento: 10
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /alimento/11:
+    get:
+      tags:
+        - Alimento
+      summary: Exibir Alimento
+      operationId: ExibirAlimento
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    put:
+      tags:
+        - Alimento
+      summary: Atualizar Alimento
+      operationId: AtualizarAlimento
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarAlimentoRequest'
+                - example:
+                    id_alimento: 11
+                    nome_alimento: Maçã
+                    tempo_colheita: 60
+                    qtd_irrigacao: 3
+                    preco_alimento: 5
+                    qtd_alimento: 100
+            example:
+              id_alimento: 11
+              nome_alimento: Maçã
+              tempo_colheita: 60
+              qtd_irrigacao: 3
+              preco_alimento: 5
+              qtd_alimento: 100
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Alimento
+      summary: Deletar Agendamento
+      operationId: DeleteDeletarAgendamento
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /colheita_voluntario:
+    get:
+      tags:
+        - Colheita_Voluntario
+      summary: Listar Colheita_Voluntarios
+      operationId: ListarColheita_Voluntarios
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Colheita_Voluntario
+      summary: Cadastrar Colheita_Voluntario
+      operationId: CadastrarColheita_Voluntario
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarColheita_VoluntarioRequest'
+                - example:
+                    colheita:
+                      id_colheita: 1
+                    voluntario:
+                      id_usuario: 17
+            example:
+              colheita:
+                id_colheita: 1
+              voluntario:
+                id_usuario: 17
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /colheita_voluntario/1/1:
+    get:
+      tags:
+        - Colheita_Voluntario
+      summary: Exibir Colheita_Voluntario
+      operationId: ExibirColheita_Voluntario
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /colheita_voluntario/1/5/17:
+    put:
+      tags:
+        - Colheita_Voluntario
+      summary: Atualizar Colheita_Voluntario
+      operationId: AtualizarColheita_Voluntario
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarColheita_VoluntarioRequest'
+                - example:
+                    id_usuario_novo: 17
+                    id_usuario_antigo: 5
+                    id_colheita: 1
+            example:
+              id_usuario_novo: 17
+              id_usuario_antigo: 5
+              id_colheita: 1
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /colheita_voluntario/1/16:
+    delete:
+      tags:
+        - Colheita_Voluntario
+      summary: Deletar Colheita_Voluntario
+      operationId: DeletarColheita_Voluntario
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /colheita:
+    get:
+      tags:
+        - Colheita
+      summary: Listar Colheitas
+      operationId: ListarColheitas
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Colheita
+      summary: Cadastrar Colheita
+      operationId: CadastrarColheita
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarColheitaRequest'
+                - example:
+                    data_colheita: '2023-05-31'
+                    descricao_colheita: Descrição da colheita
+            example:
+              data_colheita: '2023-05-31'
+              descricao_colheita: Descrição da colheita
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /colheita/1:
+    get:
+      tags:
+        - Colheita
+      summary: Exibir Colheita
+      operationId: ExibirColheita
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /colheita/12:
+    put:
+      tags:
+        - Colheita
+      summary: Atualizar Colheita
+      operationId: AtualizarColheita
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarColheitaRequest'
+                - example:
+                    id_colheita: 12
+                    data_colheita: '2100-05-31'
+                    descricao_colheita: Descrição da colheita
+            example:
+              id_colheita: 12
+              data_colheita: '2100-05-31'
+              descricao_colheita: Descrição da colheita
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Colheita
+      summary: Deletar Colheita
+      operationId: DeletarColheita
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /destino:
+    get:
+      tags:
+        - Destino
+      summary: Listar Destinos
+      operationId: ListarDestinos
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Destino
+      summary: Cadastrar Destino
+      operationId: CadastrarDestino
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarDestinoRequest'
+                - example:
+                    endereco_destino: Endereço do destino
+                    responsavel_destino: Responsável pelo destino
+                    cel_destino: (11) 98309-0659
+                    qtd_dependentes_destino: 5
+            example:
+              endereco_destino: Endereço do destino
+              responsavel_destino: Responsável pelo destino
+              cel_destino: (11) 98309-0659
+              qtd_dependentes_destino: 5
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /destino/2:
+    get:
+      tags:
+        - Destino
+      summary: Exibir Destino
+      operationId: ExibirDestino
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /destino/12:
+    put:
+      tags:
+        - Destino
+      summary: Atualizar Destino
+      operationId: AtualizarDestino
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarDestinoRequest'
+                - example:
+                    id_destino: 12
+                    endereco_destino: Endereço do destino
+                    responsavel_destino: Responsável pelo sDASDASDASDASD
+                    cel_destino: (11) 98309-0659
+                    qtd_dependentes_destino: 1000000
+            example:
+              id_destino: 12
+              endereco_destino: Endereço do destino
+              responsavel_destino: Responsável pelo sDASDASDASDASD
+              cel_destino: (11) 98309-0659
+              qtd_dependentes_destino: 1000000
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Destino
+      summary: Deletar Destino
+      operationId: DeletarDestino
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /doacao:
+    get:
+      tags:
+        - Doação
+      summary: Listar Doações
+      operationId: ListarDoações
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Doação
+      summary: Cadastrar Doação
+      operationId: CadastrarDoação
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarDoaoRequest'
+                - example:
+                    doador:
+                      id_usuario: 12
+                    data_doacao: '2023-05-31'
+                    qtd_moedas_doacao: 1000000
+            example:
+              doador:
+                id_usuario: 12
+              data_doacao: '2023-05-31'
+              qtd_moedas_doacao: 1000000
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /doacao/3:
+    get:
+      tags:
+        - Doação
+      summary: Exibir Doação
+      operationId: ExibirDoação
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /doacao/15:
+    put:
+      tags:
+        - Doação
+      summary: Atualizar Doacao
+      operationId: AtualizarDoacao
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarDoacaoRequest'
+                - example:
+                    id_doacao: 15
+                    doador:
+                      id_usuario: 12
+                    data_doacao: '2023-05-31'
+                    qtd_moedas_doacao: 1
+            example:
+              id_doacao: 15
+              doador:
+                id_usuario: 12
+              data_doacao: '2023-05-31'
+              qtd_moedas_doacao: 1
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Doação
+      summary: Deletar Destino
+      operationId: DeleteDeletarDestino
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /doador:
+    get:
+      tags:
+        - Doador
+      summary: Listar Doadores
+      operationId: ListarDoadores
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Doador
+      summary: Cadastrar Doador
+      operationId: CadastrarDoador
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarDoadorRequest'
+                - example:
+                    cel_usuario: (11) 98457-6251
+                    cpf_usuario: 405.241.587-44
+                    email_usuario: mariana@mari.com
+                    id_usuario: 3
+                    nome_usuario: Mariana
+                    senha_usuario: mari123
+                    status_usuario: ativo
+                    nivel_doador: 10
+                    moedas_doador: 1000000
+            example:
+              cel_usuario: (11) 98457-6251
+              cpf_usuario: 405.241.587-44
+              email_usuario: mariana@mari.com
+              id_usuario: 3
+              nome_usuario: Mariana
+              senha_usuario: mari123
+              status_usuario: ativo
+              nivel_doador: 10
+              moedas_doador: 1000000
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /doador/3:
+    get:
+      tags:
+        - Doador
+      summary: Exibir Doador
+      operationId: ExibirDoador
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    put:
+      tags:
+        - Doador
+      summary: Atualizar Doador
+      operationId: AtualizarDoador
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarDoadorRequest'
+                - example:
+                    cel_usuario: (11) 98457-6251
+                    cpf_usuario: 405.241.587-44
+                    email_usuario: mariana@mari.com
+                    id_usuario: 3
+                    nome_usuario: Mariana
+                    senha_usuario: mari123
+                    status_usuario: ativo
+                    nivel_doador: 986
+                    moedas_doador: 175
+            example:
+              cel_usuario: (11) 98457-6251
+              cpf_usuario: 405.241.587-44
+              email_usuario: mariana@mari.com
+              id_usuario: 3
+              nome_usuario: Mariana
+              senha_usuario: mari123
+              status_usuario: ativo
+              nivel_doador: 986
+              moedas_doador: 175
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Doador
+      summary: Deletar Doador
+      operationId: DeletarDoador
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /plantio_colheita:
+    get:
+      tags:
+        - Plantio_Colheita
+      summary: Listar Plantio_Colheitas
+      operationId: ListarPlantio_Colheitas
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Plantio_Colheita
+      summary: Cadastrar Plantio_Colheita
+      operationId: CadastrarPlantio_Colheita
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarPlantio_ColheitaRequest'
+                - example:
+                    plantio:
+                      id_plantio: 8
+                    colheita:
+                      id_colheita: 1
+            example:
+              plantio:
+                id_plantio: 8
+              colheita:
+                id_colheita: 1
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_colheita/plantio/1:
+    get:
+      tags:
+        - Plantio_Colheita
+      summary: Exibir Plantio_Colheita por ID Plantio
+      operationId: ExibirPlantio_ColheitaporIDPlantio
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_colheita/colheita/1:
+    get:
+      tags:
+        - Plantio_Colheita
+      summary: Exibir Plantio_Colheita por ID Colheita
+      operationId: ExibirPlantio_ColheitaporIDColheita
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_colheita/1/1:
+    get:
+      tags:
+        - Plantio_Colheita
+      summary: Exibir Plantio_Colheita por ID's
+      operationId: ExibirPlantio_ColheitaporID's
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_colheita/1/8/5:
+    put:
+      tags:
+        - Plantio_Colheita
+      summary: Atualizar Plantio_Colheita
+      operationId: AtualizarPlantio_Colheita
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarPlantio_ColheitaRequest'
+                - example:
+                    id_usuario_novo: 17
+                    id_usuario_antigo: 5
+                    id_colheita: 1
+            example:
+              id_usuario_novo: 17
+              id_usuario_antigo: 5
+              id_colheita: 1
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_colheita/8/1:
+    delete:
+      tags:
+        - Plantio_Colheita
+      summary: Deletar Plantio_Colheita
+      operationId: DeletarPlantio_Colheita
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /plantio_voluntario:
+    get:
+      tags:
+        - Plantio_Voluntario
+      summary: Listar Plantio_Voluntarios
+      operationId: ListarPlantio_Voluntarios
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Plantio_Voluntario
+      summary: Cadastrar Plantio_Voluntario
+      operationId: CadastrarPlantio_Voluntario
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarPlantio_VoluntarioRequest'
+                - example:
+                    plantio:
+                      id_plantio: 1
+                    voluntario:
+                      id_usuario: 2
+            example:
+              plantio:
+                id_plantio: 1
+              voluntario:
+                id_usuario: 2
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_voluntario/plantio/1:
+    get:
+      tags:
+        - Plantio_Voluntario
+      summary: Exibir Plantio_Colheita por ID Plantio
+      operationId: GetExibirPlantio_ColheitaporIDPlantio
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_voluntario/voluntario/1:
+    get:
+      tags:
+        - Plantio_Voluntario
+      summary: Exibir Plantio_Colheita por ID Voluntário
+      operationId: ExibirPlantio_ColheitaporIDVoluntário
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_voluntario/1/1:
+    get:
+      tags:
+        - Plantio_Voluntario
+      summary: Exibir Plantio_Voluntario por ID's
+      operationId: ExibirPlantio_VoluntarioporID's
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_voluntario/2-5/3-4:
+    put:
+      tags:
+        - Plantio_Voluntario
+      summary: Atualizar Plantio_Voluntario
+      operationId: AtualizarPlantio_Voluntario
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarPlantio_VoluntarioRequest'
+                - example:
+                    id_plantio_novo: 3
+                    id_plantio_antigo: 2
+                    id_usuario_novo: 4
+                    id_usuario_antigo: 5
+            example:
+              id_plantio_novo: 3
+              id_plantio_antigo: 2
+              id_usuario_novo: 4
+              id_usuario_antigo: 5
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio_voluntario/1/2:
+    delete:
+      tags:
+        - Plantio_Voluntario
+      summary: Deletar Plantio_Voluntario
+      operationId: DeletarPlantio_Voluntario
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /receptor_destino:
+    get:
+      tags:
+        - Receptor_Destino
+      summary: Listar Receptor_Destinos
+      operationId: ListarReceptor_Destinos
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Receptor_Destino
+      summary: Cadastrar Receptor_Destino
+      operationId: CadastrarReceptor_Destino
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarReceptor_DestinoRequest'
+                - example:
+                    destino:
+                      id_destino: 4
+                    receptor:
+                      id_usuario: 4
+            example:
+              destino:
+                id_destino: 4
+              receptor:
+                id_usuario: 4
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /receptor_destino/receptor/1:
+    get:
+      tags:
+        - Receptor_Destino
+      summary: Exibir Receptor_Destino por ID Receptor
+      operationId: ExibirReceptor_DestinoporIDReceptor
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /receptor_destino/destino/1:
+    get:
+      tags:
+        - Receptor_Destino
+      summary: Exibir Receptor_Destino por ID Destino
+      operationId: ExibirReceptor_DestinoporIDDestino
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /receptor_destino/1/1:
+    get:
+      tags:
+        - Receptor_Destino
+      summary: Exibir Receptor_Destino por ID's
+      operationId: ExibirReceptor_DestinoporID's
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /receptor_destino/4-4/8-7:
+    put:
+      tags:
+        - Receptor_Destino
+      summary: Atualizar Receptor_Destino
+      operationId: AtualizarReceptor_Destino
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarReceptor_DestinoRequest'
+                - example:
+                    id_destino_novo: 8
+                    id_destino_antigo: 4
+                    id_usuario_novo: 7
+                    id_usuario_antigo: 4
+            example:
+              id_destino_novo: 8
+              id_destino_antigo: 4
+              id_usuario_novo: 7
+              id_usuario_antigo: 4
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /receptor_destino/4/4:
+    delete:
+      tags:
+        - Receptor_Destino
+      summary: Deletar Receptor_Destino
+      operationId: DeletarReceptor_Destino
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /plantio:
+    get:
+      tags:
+        - Plantio
+      summary: Listar Plantios
+      operationId: ListarPlantios
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Plantio
+      summary: Cadastrar Plantio
+      operationId: CadastrarPlantio
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarPlantioRequest'
+                - example:
+                    data_plantio: '2023-06-01'
+                    espaco_plantio: 10
+                    alimento:
+                      id_alimento: 1
+            example:
+              data_plantio: '2023-06-01'
+              espaco_plantio: 10
+              alimento:
+                id_alimento: 1
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio/11:
+    get:
+      tags:
+        - Plantio
+      summary: Exibir Plantio
+      operationId: ExibirPlantio
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio/12:
+    put:
+      tags:
+        - Plantio
+      summary: Atualizar Plantio
+      operationId: AtualizarPlantio
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarPlantioRequest'
+                - example:
+                    id_plantio: 12
+                    data_plantio: '2023-06-30'
+                    espaco_plantio: 20
+                    alimento:
+                      id_alimento: 2
+            example:
+              id_plantio: 12
+              data_plantio: '2023-06-30'
+              espaco_plantio: 20
+              alimento:
+                id_alimento: 2
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio/plantios:
+    post:
+      tags:
+        - Plantio
+      summary: Cadastrar Plantios
+      operationId: CadastrarPlantios
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CadastrarPlantiosRequest'
+              description: ''
+              example:
+                - data_plantio: '2023-06-01'
+                  espaco_plantio: 10
+                  alimento:
+                    id_alimento: 1
+                - data_plantio: '2023-06-02'
+                  espaco_plantio: 8
+                  alimento:
+                    id_alimento: 2
+            example:
+              - data_plantio: '2023-06-01'
+                espaco_plantio: 10
+                alimento:
+                  id_alimento: 1
+              - data_plantio: '2023-06-02'
+                espaco_plantio: 8
+                alimento:
+                  id_alimento: 2
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /plantio/13:
+    delete:
+      tags:
+        - Plantio
+      summary: Deletar Plantio
+      operationId: DeletarPlantio
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /receptor:
+    get:
+      tags:
+        - Receptor
+      summary: Listar Receptores
+      operationId: ListarReceptores
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Receptor
+      summary: Cadastrar Receptor
+      operationId: CadastrarReceptor
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarReceptorRequest'
+                - example:
+                    cel_usuario: (11) 98457-6251
+                    cpf_usuario: 405.241.587-44
+                    email_usuario: mariana@mari.com
+                    id_usuario: 2
+                    nome_usuario: Mariana
+                    senha_usuario: mari123
+                    status_usuario: ativo
+                    carga_receptor: 50
+                    endereco_receptor: Rua Exemplo, 123
+            example:
+              cel_usuario: (11) 98457-6251
+              cpf_usuario: 405.241.587-44
+              email_usuario: mariana@mari.com
+              id_usuario: 2
+              nome_usuario: Mariana
+              senha_usuario: mari123
+              status_usuario: ativo
+              carga_receptor: 50
+              endereco_receptor: Rua Exemplo, 123
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /receptor/25:
+    get:
+      tags:
+        - Receptor
+      summary: Exibir Receptor
+      operationId: ExibirReceptor
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /receptor/2:
+    put:
+      tags:
+        - Receptor
+      summary: Atualizar Receptor
+      operationId: AtualizarReceptor
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarReceptorRequest'
+                - example:
+                    id_usuario: 2
+                    cpf_usuario: '12345678901'
+                    nome_usuario: João
+                    email_usuario: joao@asdasd.com
+                    cel_usuario: '987612321'
+                    senha_usuario: senha123
+                    status_usuario: ativo
+                    carga_receptor: 15463
+                    endereco_receptor: Rua B, 456
+            example:
+              id_usuario: 2
+              cpf_usuario: '12345678901'
+              nome_usuario: João
+              email_usuario: joao@asdasd.com
+              cel_usuario: '987612321'
+              senha_usuario: senha123
+              status_usuario: ativo
+              carga_receptor: 15463
+              endereco_receptor: Rua B, 456
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Receptor
+      summary: Deletar Receptor
+      operationId: DeletarReceptor
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /usuario:
+    get:
+      tags:
+        - Usuário
+      summary: Listar Usuários
+      operationId: ListarUsuários
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Usuário
+      summary: Cadastrar Usuário
+      operationId: CadastrarUsuário
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarUsurioRequest'
+                - example:
+                    cpf_usuario: 431.011.678-76
+                    nome_usuario: Kauezinho
+                    email_usuario: kaue@email.com
+                    cel_usuario: (11) 98309-0659
+                    senha_usuario: teste
+                    status_usuario: ativo
+            example:
+              cpf_usuario: 431.011.678-76
+              nome_usuario: Kauezinho
+              email_usuario: kaue@email.com
+              cel_usuario: (11) 98309-0659
+              senha_usuario: teste
+              status_usuario: ativo
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /usuario/1:
+    get:
+      tags:
+        - Usuário
+      summary: Exibir Usuário
+      operationId: ExibirUsuário
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /usuario/22:
+    put:
+      tags:
+        - Usuário
+      summary: Atualizar Usuário
+      operationId: AtualizarUsuário
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarUsurioRequest'
+                - example:
+                    id_usuario: 22
+                    cpf_usuario: 431.011.678-76
+                    nome_usuario: Kauezão
+                    email_usuario: kaue@email.com
+                    cel_usuario: (11) 98309-0659
+                    senha_usuario: ASDASDASDAS
+                    status_usuario: ativo
+            example:
+              id_usuario: 22
+              cpf_usuario: 431.011.678-76
+              nome_usuario: Kauezão
+              email_usuario: kaue@email.com
+              cel_usuario: (11) 98309-0659
+              senha_usuario: ASDASDASDAS
+              status_usuario: ativo
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Usuário
+      summary: Deletar Usuário
+      operationId: DeletarUsuário
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /usuario/login:
+    post:
+      tags:
+        - Usuário
+      summary: Validar Login Usuário
+      operationId: ValidarLoginUsuário
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/ValidarLoginUsurioRequest'
+                - example:
+                    email_usuario: thAles@tha.com
+                    senha_usuario: thales321
+            example:
+              email_usuario: thAles@tha.com
+              senha_usuario: thales321
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /voluntario:
+    get:
+      tags:
+        - Voluntário
+      summary: Listar Voluntários
+      operationId: ListarVoluntários
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    post:
+      tags:
+        - Voluntário
+      summary: Cadastrar Voluntário
+      operationId: CadastrarVoluntário
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/CadastrarVoluntrioRequest'
+                - example:
+                    id_usuario: 6
+                    cpf_usuario: 123.456.789-00
+                    nome_usuario: João da Silva
+                    email_usuario: joao@example.com
+                    cel_usuario: (11) 99999-9999
+                    senha_usuario: senha123
+                    status_usuario: ativo
+                    data_registro_voluntario: '2023-05-31'
+            example:
+              id_usuario: 6
+              cpf_usuario: 123.456.789-00
+              nome_usuario: João da Silva
+              email_usuario: joao@example.com
+              cel_usuario: (11) 99999-9999
+              senha_usuario: senha123
+              status_usuario: ativo
+              data_registro_voluntario: '2023-05-31'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /voluntario/18:
+    get:
+      tags:
+        - Voluntário
+      summary: Exibir Voluntário
+      operationId: ExibirVoluntário
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /voluntario/6:
+    put:
+      tags:
+        - Voluntário
+      summary: Atualizar Voluntário
+      operationId: AtualizarVoluntário
+      parameters: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              allOf:
+                - $ref: '#/components/schemas/AtualizarVoluntrioRequest'
+                - example:
+                    id_usuario: 6
+                    cpf_usuario: 123.456.789-00
+                    nome_usuario: João da Silva
+                    email_usuario: joao@example.com
+                    cel_usuario: (11) 99999-9999
+                    senha_usuario: senha123
+                    status_usuario: ativo
+                    data_registro_voluntario: '2023-05-31'
+            example:
+              id_usuario: 6
+              cpf_usuario: 123.456.789-00
+              nome_usuario: João da Silva
+              email_usuario: joao@example.com
+              cel_usuario: (11) 99999-9999
+              senha_usuario: senha123
+              status_usuario: ativo
+              data_registro_voluntario: '2023-05-31'
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+    delete:
+      tags:
+        - Voluntário
+      summary: Deletar Voluntário
+      operationId: DeletarVoluntário
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: https://localhost:8080
+          variables: {}
+  /endereco/01535000:
+    get:
+      tags:
+        - ViaCep
+      summary: Exibir Endereço pelo CEP
+      operationId: ExibirEndereçopeloCEP
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+  /tempo:
+    get:
+      tags:
+        - Tempo
+      summary: Exibir Dados Climáticos
+      operationId: ExibirDadosClimáticos
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      servers:
+        - url: http://localhost:8080
+          variables: {}
+components:
+  schemas:
+    AtualizarAgendamentoRequest:
+      title: AtualizarAgendamentoRequest
+      required:
+        - data_agendamento
+        - turno_agendamento
+        - usuario
+        - id_agendamento
+      type: object
+      properties:
+        data_agendamento:
+          type: string
+        turno_agendamento:
+          type: string
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+        id_agendamento:
+          type: integer
+          format: int32
+      example:
+        data_agendamento: '2023-01-12'
+        turno_agendamento: Tarde
+        usuario:
+          id_usuario: 2
+        id_agendamento: 1
+    Usuario:
+      title: Usuario
+      required:
+        - id_usuario
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+      example:
+        id_usuario: 2
+    CadastrarAgendamentoRequest:
+      title: CadastrarAgendamentoRequest
+      required:
+        - data_agendamento
+        - turno_agendamento
+        - usuario
+      type: object
+      properties:
+        data_agendamento:
+          type: string
+        turno_agendamento:
+          type: string
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+      example:
+        data_agendamento: '2023-05-31'
+        turno_agendamento: Tarde
+        usuario:
+          id_usuario: 5
+    AtualizarAlimentoRequest:
+      title: AtualizarAlimentoRequest
+      required:
+        - id_alimento
+        - nome_alimento
+        - tempo_colheita
+        - qtd_irrigacao
+        - preco_alimento
+        - qtd_alimento
+      type: object
+      properties:
+        id_alimento:
+          type: integer
+          format: int32
+        nome_alimento:
+          type: string
+        tempo_colheita:
+          type: integer
+          format: int32
+        qtd_irrigacao:
+          type: integer
+          format: int32
+        preco_alimento:
+          type: integer
+          format: int32
+        qtd_alimento:
+          type: integer
+          format: int32
+      example:
+        id_alimento: 11
+        nome_alimento: Maçã
+        tempo_colheita: 60
+        qtd_irrigacao: 3
+        preco_alimento: 5
+        qtd_alimento: 100
+    CadastrarAlimentoRequest:
+      title: CadastrarAlimentoRequest
+      required:
+        - nome_alimento
+        - tempo_colheita
+        - qtd_irrigacao
+        - preco_alimento
+        - qtd_alimento
+      type: object
+      properties:
+        nome_alimento:
+          type: string
+        tempo_colheita:
+          type: integer
+          format: int32
+        qtd_irrigacao:
+          type: integer
+          format: int32
+        preco_alimento:
+          type: integer
+          format: int32
+        qtd_alimento:
+          type: integer
+          format: int32
+      example:
+        nome_alimento: Maçã
+        tempo_colheita: 60
+        qtd_irrigacao: 3
+        preco_alimento: 5
+        qtd_alimento: 10
+    AtualizarColheita_VoluntarioRequest:
+      title: AtualizarColheita_VoluntarioRequest
+      required:
+        - id_usuario_novo
+        - id_usuario_antigo
+        - id_colheita
+      type: object
+      properties:
+        id_usuario_novo:
+          type: integer
+          format: int32
+        id_usuario_antigo:
+          type: integer
+          format: int32
+        id_colheita:
+          type: integer
+          format: int32
+      example:
+        id_usuario_novo: 17
+        id_usuario_antigo: 5
+        id_colheita: 1
+    CadastrarColheita_VoluntarioRequest:
+      title: CadastrarColheita_VoluntarioRequest
+      required:
+        - colheita
+        - voluntario
+      type: object
+      properties:
+        colheita:
+          $ref: '#/components/schemas/Colheita'
+        voluntario:
+          $ref: '#/components/schemas/Voluntario'
+      example:
+        colheita:
+          id_colheita: 1
+        voluntario:
+          id_usuario: 17
+    Colheita:
+      title: Colheita
+      required:
+        - id_colheita
+      type: object
+      properties:
+        id_colheita:
+          type: integer
+          format: int32
+      example:
+        id_colheita: 1
+    Voluntario:
+      title: Voluntario
+      required:
+        - id_usuario
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+      example:
+        id_usuario: 17
+    AtualizarColheitaRequest:
+      title: AtualizarColheitaRequest
+      required:
+        - id_colheita
+        - data_colheita
+        - descricao_colheita
+      type: object
+      properties:
+        id_colheita:
+          type: integer
+          format: int32
+        data_colheita:
+          type: string
+        descricao_colheita:
+          type: string
+      example:
+        id_colheita: 12
+        data_colheita: '2100-05-31'
+        descricao_colheita: Descrição da colheita
+    CadastrarColheitaRequest:
+      title: CadastrarColheitaRequest
+      required:
+        - data_colheita
+        - descricao_colheita
+      type: object
+      properties:
+        data_colheita:
+          type: string
+        descricao_colheita:
+          type: string
+      example:
+        data_colheita: '2023-05-31'
+        descricao_colheita: Descrição da colheita
+    AtualizarDestinoRequest:
+      title: AtualizarDestinoRequest
+      required:
+        - id_destino
+        - endereco_destino
+        - responsavel_destino
+        - cel_destino
+        - qtd_dependentes_destino
+      type: object
+      properties:
+        id_destino:
+          type: integer
+          format: int32
+        endereco_destino:
+          type: string
+        responsavel_destino:
+          type: string
+        cel_destino:
+          type: string
+        qtd_dependentes_destino:
+          type: integer
+          format: int32
+      example:
+        id_destino: 12
+        endereco_destino: Endereço do destino
+        responsavel_destino: Responsável pelo sDASDASDASDASD
+        cel_destino: (11) 98309-0659
+        qtd_dependentes_destino: 1000000
+    CadastrarDestinoRequest:
+      title: CadastrarDestinoRequest
+      required:
+        - endereco_destino
+        - responsavel_destino
+        - cel_destino
+        - qtd_dependentes_destino
+      type: object
+      properties:
+        endereco_destino:
+          type: string
+        responsavel_destino:
+          type: string
+        cel_destino:
+          type: string
+        qtd_dependentes_destino:
+          type: integer
+          format: int32
+      example:
+        endereco_destino: Endereço do destino
+        responsavel_destino: Responsável pelo destino
+        cel_destino: (11) 98309-0659
+        qtd_dependentes_destino: 5
+    AtualizarDoacaoRequest:
+      title: AtualizarDoacaoRequest
+      required:
+        - id_doacao
+        - doador
+        - data_doacao
+        - qtd_moedas_doacao
+      type: object
+      properties:
+        id_doacao:
+          type: integer
+          format: int32
+        doador:
+          $ref: '#/components/schemas/Doador'
+        data_doacao:
+          type: string
+        qtd_moedas_doacao:
+          type: integer
+          format: int32
+      example:
+        id_doacao: 15
+        doador:
+          id_usuario: 12
+        data_doacao: '2023-05-31'
+        qtd_moedas_doacao: 1
+    Doador:
+      title: Doador
+      required:
+        - id_usuario
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+      example:
+        id_usuario: 12
+    CadastrarDoaoRequest:
+      title: CadastrarDoaoRequest
+      required:
+        - doador
+        - data_doacao
+        - qtd_moedas_doacao
+      type: object
+      properties:
+        doador:
+          $ref: '#/components/schemas/Doador'
+        data_doacao:
+          type: string
+        qtd_moedas_doacao:
+          type: integer
+          format: int32
+      example:
+        doador:
+          id_usuario: 12
+        data_doacao: '2023-05-31'
+        qtd_moedas_doacao: 1000000
+    AtualizarDoadorRequest:
+      title: AtualizarDoadorRequest
+      required:
+        - cel_usuario
+        - cpf_usuario
+        - email_usuario
+        - id_usuario
+        - nome_usuario
+        - senha_usuario
+        - status_usuario
+        - nivel_doador
+        - moedas_doador
+      type: object
+      properties:
+        cel_usuario:
+          type: string
+        cpf_usuario:
+          type: string
+        email_usuario:
+          type: string
+        id_usuario:
+          type: integer
+          format: int32
+        nome_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+        nivel_doador:
+          type: integer
+          format: int32
+        moedas_doador:
+          type: integer
+          format: int32
+      example:
+        cel_usuario: (11) 98457-6251
+        cpf_usuario: 405.241.587-44
+        email_usuario: mariana@mari.com
+        id_usuario: 3
+        nome_usuario: Mariana
+        senha_usuario: mari123
+        status_usuario: ativo
+        nivel_doador: 986
+        moedas_doador: 175
+    CadastrarDoadorRequest:
+      title: CadastrarDoadorRequest
+      required:
+        - cel_usuario
+        - cpf_usuario
+        - email_usuario
+        - id_usuario
+        - nome_usuario
+        - senha_usuario
+        - status_usuario
+        - nivel_doador
+        - moedas_doador
+      type: object
+      properties:
+        cel_usuario:
+          type: string
+        cpf_usuario:
+          type: string
+        email_usuario:
+          type: string
+        id_usuario:
+          type: integer
+          format: int32
+        nome_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+        nivel_doador:
+          type: integer
+          format: int32
+        moedas_doador:
+          type: integer
+          format: int32
+      example:
+        cel_usuario: (11) 98457-6251
+        cpf_usuario: 405.241.587-44
+        email_usuario: mariana@mari.com
+        id_usuario: 3
+        nome_usuario: Mariana
+        senha_usuario: mari123
+        status_usuario: ativo
+        nivel_doador: 10
+        moedas_doador: 1000000
+    AtualizarPlantio_ColheitaRequest:
+      title: AtualizarPlantio_ColheitaRequest
+      required:
+        - id_usuario_novo
+        - id_usuario_antigo
+        - id_colheita
+      type: object
+      properties:
+        id_usuario_novo:
+          type: integer
+          format: int32
+        id_usuario_antigo:
+          type: integer
+          format: int32
+        id_colheita:
+          type: integer
+          format: int32
+      example:
+        id_usuario_novo: 17
+        id_usuario_antigo: 5
+        id_colheita: 1
+    CadastrarPlantio_ColheitaRequest:
+      title: CadastrarPlantio_ColheitaRequest
+      required:
+        - plantio
+        - colheita
+      type: object
+      properties:
+        plantio:
+          $ref: '#/components/schemas/Plantio'
+        colheita:
+          $ref: '#/components/schemas/Colheita'
+      example:
+        plantio:
+          id_plantio: 8
+        colheita:
+          id_colheita: 1
+    Plantio:
+      title: Plantio
+      required:
+        - id_plantio
+      type: object
+      properties:
+        id_plantio:
+          type: integer
+          format: int32
+      example:
+        id_plantio: 8
+    AtualizarPlantio_VoluntarioRequest:
+      title: AtualizarPlantio_VoluntarioRequest
+      required:
+        - id_plantio_novo
+        - id_plantio_antigo
+        - id_usuario_novo
+        - id_usuario_antigo
+      type: object
+      properties:
+        id_plantio_novo:
+          type: integer
+          format: int32
+        id_plantio_antigo:
+          type: integer
+          format: int32
+        id_usuario_novo:
+          type: integer
+          format: int32
+        id_usuario_antigo:
+          type: integer
+          format: int32
+      example:
+        id_plantio_novo: 3
+        id_plantio_antigo: 2
+        id_usuario_novo: 4
+        id_usuario_antigo: 5
+    CadastrarPlantio_VoluntarioRequest:
+      title: CadastrarPlantio_VoluntarioRequest
+      required:
+        - plantio
+        - voluntario
+      type: object
+      properties:
+        plantio:
+          $ref: '#/components/schemas/Plantio'
+        voluntario:
+          $ref: '#/components/schemas/Voluntario'
+      example:
+        plantio:
+          id_plantio: 1
+        voluntario:
+          id_usuario: 2
+    AtualizarReceptor_DestinoRequest:
+      title: AtualizarReceptor_DestinoRequest
+      required:
+        - id_destino_novo
+        - id_destino_antigo
+        - id_usuario_novo
+        - id_usuario_antigo
+      type: object
+      properties:
+        id_destino_novo:
+          type: integer
+          format: int32
+        id_destino_antigo:
+          type: integer
+          format: int32
+        id_usuario_novo:
+          type: integer
+          format: int32
+        id_usuario_antigo:
+          type: integer
+          format: int32
+      example:
+        id_destino_novo: 8
+        id_destino_antigo: 4
+        id_usuario_novo: 7
+        id_usuario_antigo: 4
+    CadastrarReceptor_DestinoRequest:
+      title: CadastrarReceptor_DestinoRequest
+      required:
+        - destino
+        - receptor
+      type: object
+      properties:
+        destino:
+          $ref: '#/components/schemas/Destino'
+        receptor:
+          $ref: '#/components/schemas/Receptor'
+      example:
+        destino:
+          id_destino: 4
+        receptor:
+          id_usuario: 4
+    Destino:
+      title: Destino
+      required:
+        - id_destino
+      type: object
+      properties:
+        id_destino:
+          type: integer
+          format: int32
+      example:
+        id_destino: 4
+    Receptor:
+      title: Receptor
+      required:
+        - id_usuario
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+      example:
+        id_usuario: 4
+    AtualizarPlantioRequest:
+      title: AtualizarPlantioRequest
+      required:
+        - id_plantio
+        - data_plantio
+        - espaco_plantio
+        - alimento
+      type: object
+      properties:
+        id_plantio:
+          type: integer
+          format: int32
+        data_plantio:
+          type: string
+        espaco_plantio:
+          type: integer
+          format: int32
+        alimento:
+          $ref: '#/components/schemas/Alimento'
+      example:
+        id_plantio: 12
+        data_plantio: '2023-06-30'
+        espaco_plantio: 20
+        alimento:
+          id_alimento: 2
+    Alimento:
+      title: Alimento
+      required:
+        - id_alimento
+      type: object
+      properties:
+        id_alimento:
+          type: integer
+          format: int32
+      example:
+        id_alimento: 2
+    CadastrarPlantioRequest:
+      title: CadastrarPlantioRequest
+      required:
+        - data_plantio
+        - espaco_plantio
+        - alimento
+      type: object
+      properties:
+        data_plantio:
+          type: string
+        espaco_plantio:
+          type: integer
+          format: int32
+        alimento:
+          $ref: '#/components/schemas/Alimento'
+      example:
+        data_plantio: '2023-06-01'
+        espaco_plantio: 10
+        alimento:
+          id_alimento: 1
+    CadastrarPlantiosRequest:
+      title: CadastrarPlantiosRequest
+      required:
+        - data_plantio
+        - espaco_plantio
+        - alimento
+      type: object
+      properties:
+        data_plantio:
+          type: string
+        espaco_plantio:
+          type: integer
+          format: int32
+        alimento:
+          $ref: '#/components/schemas/Alimento'
+      example:
+        data_plantio: '2023-06-01'
+        espaco_plantio: 10
+        alimento:
+          id_alimento: 1
+    AtualizarReceptorRequest:
+      title: AtualizarReceptorRequest
+      required:
+        - id_usuario
+        - cpf_usuario
+        - nome_usuario
+        - email_usuario
+        - cel_usuario
+        - senha_usuario
+        - status_usuario
+        - carga_receptor
+        - endereco_receptor
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+        cpf_usuario:
+          type: string
+        nome_usuario:
+          type: string
+        email_usuario:
+          type: string
+        cel_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+        carga_receptor:
+          type: integer
+          format: int32
+        endereco_receptor:
+          type: string
+      example:
+        id_usuario: 2
+        cpf_usuario: '12345678901'
+        nome_usuario: João
+        email_usuario: joao@asdasd.com
+        cel_usuario: '987612321'
+        senha_usuario: senha123
+        status_usuario: ativo
+        carga_receptor: 15463
+        endereco_receptor: Rua B, 456
+    CadastrarReceptorRequest:
+      title: CadastrarReceptorRequest
+      required:
+        - cel_usuario
+        - cpf_usuario
+        - email_usuario
+        - id_usuario
+        - nome_usuario
+        - senha_usuario
+        - status_usuario
+        - carga_receptor
+        - endereco_receptor
+      type: object
+      properties:
+        cel_usuario:
+          type: string
+        cpf_usuario:
+          type: string
+        email_usuario:
+          type: string
+        id_usuario:
+          type: integer
+          format: int32
+        nome_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+        carga_receptor:
+          type: integer
+          format: int32
+        endereco_receptor:
+          type: string
+      example:
+        cel_usuario: (11) 98457-6251
+        cpf_usuario: 405.241.587-44
+        email_usuario: mariana@mari.com
+        id_usuario: 2
+        nome_usuario: Mariana
+        senha_usuario: mari123
+        status_usuario: ativo
+        carga_receptor: 50
+        endereco_receptor: Rua Exemplo, 123
+    AtualizarUsurioRequest:
+      title: AtualizarUsurioRequest
+      required:
+        - id_usuario
+        - cpf_usuario
+        - nome_usuario
+        - email_usuario
+        - cel_usuario
+        - senha_usuario
+        - status_usuario
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+        cpf_usuario:
+          type: string
+        nome_usuario:
+          type: string
+        email_usuario:
+          type: string
+        cel_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+      example:
+        id_usuario: 22
+        cpf_usuario: 431.011.678-76
+        nome_usuario: Kauezão
+        email_usuario: kaue@email.com
+        cel_usuario: (11) 98309-0659
+        senha_usuario: ASDASDASDAS
+        status_usuario: ativo
+    CadastrarUsurioRequest:
+      title: CadastrarUsurioRequest
+      required:
+        - cpf_usuario
+        - nome_usuario
+        - email_usuario
+        - cel_usuario
+        - senha_usuario
+        - status_usuario
+      type: object
+      properties:
+        cpf_usuario:
+          type: string
+        nome_usuario:
+          type: string
+        email_usuario:
+          type: string
+        cel_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+      example:
+        cpf_usuario: 431.011.678-76
+        nome_usuario: Kauezinho
+        email_usuario: kaue@email.com
+        cel_usuario: (11) 98309-0659
+        senha_usuario: teste
+        status_usuario: ativo
+    ValidarLoginUsurioRequest:
+      title: ValidarLoginUsurioRequest
+      required:
+        - email_usuario
+        - senha_usuario
+      type: object
+      properties:
+        email_usuario:
+          type: string
+        senha_usuario:
+          type: string
+      example:
+        email_usuario: thAles@tha.com
+        senha_usuario: thales321
+    AtualizarVoluntrioRequest:
+      title: AtualizarVoluntrioRequest
+      required:
+        - id_usuario
+        - cpf_usuario
+        - nome_usuario
+        - email_usuario
+        - cel_usuario
+        - senha_usuario
+        - status_usuario
+        - data_registro_voluntario
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+        cpf_usuario:
+          type: string
+        nome_usuario:
+          type: string
+        email_usuario:
+          type: string
+        cel_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+        data_registro_voluntario:
+          type: string
+      example:
+        id_usuario: 6
+        cpf_usuario: 123.456.789-00
+        nome_usuario: João da Silva
+        email_usuario: joao@example.com
+        cel_usuario: (11) 99999-9999
+        senha_usuario: senha123
+        status_usuario: ativo
+        data_registro_voluntario: '2023-05-31'
+    CadastrarVoluntrioRequest:
+      title: CadastrarVoluntrioRequest
+      required:
+        - id_usuario
+        - cpf_usuario
+        - nome_usuario
+        - email_usuario
+        - cel_usuario
+        - senha_usuario
+        - status_usuario
+        - data_registro_voluntario
+      type: object
+      properties:
+        id_usuario:
+          type: integer
+          format: int32
+        cpf_usuario:
+          type: string
+        nome_usuario:
+          type: string
+        email_usuario:
+          type: string
+        cel_usuario:
+          type: string
+        senha_usuario:
+          type: string
+        status_usuario:
+          type: string
+        data_registro_voluntario:
+          type: string
+      example:
+        id_usuario: 6
+        cpf_usuario: 123.456.789-00
+        nome_usuario: João da Silva
+        email_usuario: joao@example.com
+        cel_usuario: (11) 99999-9999
+        senha_usuario: senha123
+        status_usuario: ativo
+        data_registro_voluntario: '2023-05-31'
+tags:
+  - name: Agendamento
+  - name: Alimento
+  - name: Colheita_Voluntario
+  - name: Colheita
+  - name: Destino
+  - name: Doação
+  - name: Doador
+  - name: Plantio_Colheita
+  - name: Plantio_Voluntario
+  - name: Receptor_Destino
+  - name: Plantio
+  - name: Receptor
+  - name: Usuário
+  - name: Voluntário
+  - name: ViaCep
+  - name: Tempo

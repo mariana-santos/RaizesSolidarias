@@ -1,0 +1,1090 @@
+{
+	"info": {
+		"_postman_id": "f03d6148-12e3-42be-95b1-b2c42a123be3",
+		"name": "Raízes Solidárias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "21551931",
+		"_collection_link": "https://crimson-flare-530638.postman.co/workspace/FIAP~84ce056c-d21b-4ac8-bba8-27bf3bf27d17/collection/21551931-f03d6148-12e3-42be-95b1-b2c42a123be3?action=share&creator=21551931&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Agendamento",
+			"item": [
+				{
+					"name": "Listar Agendamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/agendamento"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Agendamento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/agendamento/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Agendamento Por Id Usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/agendamento/usuario/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Agendamento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data_agendamento\": \"2023-01-12\",\r\n  \"turno_agendamento\": \"Tarde\",\r\n  \"usuario\": {\r\n    \"id_usuario\": 2\r\n  },\r\n  \"id_agendamento\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/agendamento/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Agendamento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data_agendamento\": \"2023-05-31\",\r\n  \"turno_agendamento\": \"Tarde\",\r\n  \"usuario\": {\r\n    \"id_usuario\": 5\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/agendamento"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Agendamento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/agendamento/14"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Alimento",
+			"item": [
+				{
+					"name": "Listar Alimentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/alimento"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Alimento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/alimento/11"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Alimento",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_alimento\": 11,\r\n  \"nome_alimento\": \"Maçã\",\r\n  \"tempo_colheita\": 60,\r\n  \"qtd_irrigacao\": 3,\r\n  \"preco_alimento\": 5,\r\n  \"qtd_alimento\": 100\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/alimento/11"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Alimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nome_alimento\": \"Maçã\",\r\n  \"tempo_colheita\": 60,\r\n  \"qtd_irrigacao\": 3,\r\n  \"preco_alimento\": 5,\r\n  \"qtd_alimento\": 10\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/alimento"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Agendamento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/alimento/11"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Colheita_Voluntario",
+			"item": [
+				{
+					"name": "Listar Colheita_Voluntarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/colheita_voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Colheita_Voluntario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/colheita_voluntario/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Colheita_Voluntario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_usuario_novo\": 17,\r\n  \"id_usuario_antigo\": 5,\r\n  \"id_colheita\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/colheita_voluntario/1/5/17"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Colheita_Voluntario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"colheita\": {\r\n    \"id_colheita\": 1\r\n  },\r\n  \"voluntario\": {\r\n    \"id_usuario\": 17\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/colheita_voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Colheita_Voluntario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/colheita_voluntario/1/16"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Colheita",
+			"item": [
+				{
+					"name": "Listar Colheitas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/colheita"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Colheita",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/colheita/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Colheita",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_colheita\": 12,\r\n  \"data_colheita\": \"2100-05-31\",\r\n  \"descricao_colheita\": \"Descrição da colheita\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/colheita/12"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Colheita",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data_colheita\": \"2023-05-31\",\r\n  \"descricao_colheita\": \"Descrição da colheita\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/colheita"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Colheita",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/colheita/12"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Destino",
+			"item": [
+				{
+					"name": "Listar Destinos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/destino"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Destino",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/destino/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Destino",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_destino\": 12,\r\n  \"endereco_destino\": \"Endereço do destino\",\r\n  \"responsavel_destino\": \"Responsável pelo sDASDASDASDASD\",\r\n  \"cel_destino\": \"(11) 98309-0659\",\r\n  \"qtd_dependentes_destino\": 1000000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/destino/12"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Destino",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"endereco_destino\": \"Endereço do destino\",\r\n  \"responsavel_destino\": \"Responsável pelo destino\",\r\n  \"cel_destino\": \"(11) 98309-0659\",\r\n  \"qtd_dependentes_destino\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/destino"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Destino",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/destino/12"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doação",
+			"item": [
+				{
+					"name": "Listar Doações",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/doacao"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Doação",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/doacao/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Doacao",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_doacao\": 15,\r\n  \"doador\": {\r\n    \"id_usuario\": 12\r\n  },\r\n  \"data_doacao\": \"2023-05-31\",\r\n  \"qtd_moedas_doacao\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/doacao/15"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Doação",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"doador\": {\r\n    \"id_usuario\": 12\r\n  },\r\n  \"data_doacao\": \"2023-05-31\",\r\n  \"qtd_moedas_doacao\": 1000000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/doacao"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Destino",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/doacao/15"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Doador",
+			"item": [
+				{
+					"name": "Listar Doadores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/doador"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Doador",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/doador/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Doador",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cel_usuario\": \"(11) 98457-6251\",\r\n   \"cpf_usuario\": \"405.241.587-44\",\r\n   \"email_usuario\": \"mariana@mari.com\",\r\n   \"id_usuario\": 3,\r\n   \"nome_usuario\": \"Mariana\",\r\n   \"senha_usuario\": \"mari123\",\r\n   \"status_usuario\": \"ativo\",\r\n   \"nivel_doador\": 986,\r\n   \"moedas_doador\": 175\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/doador/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Doador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cel_usuario\": \"(11) 98457-6251\",\r\n   \"cpf_usuario\": \"405.241.587-44\",\r\n   \"email_usuario\": \"mariana@mari.com\",\r\n   \"id_usuario\": 3,\r\n   \"nome_usuario\": \"Mariana\",\r\n   \"senha_usuario\": \"mari123\",\r\n   \"status_usuario\": \"ativo\",\r\n  \"nivel_doador\": 10,\r\n  \"moedas_doador\": 1000000\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/doador"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Doador",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/doador/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plantio_Colheita",
+			"item": [
+				{
+					"name": "Listar Plantio_Colheitas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_colheita"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Plantio_Colheita por ID Plantio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_colheita/plantio/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Plantio_Colheita por ID Colheita",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_colheita/colheita/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Plantio_Colheita por ID's",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_colheita/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Plantio_Colheita",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_usuario_novo\": 17,\r\n  \"id_usuario_antigo\": 5,\r\n  \"id_colheita\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/plantio_colheita/1/8/5"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Plantio_Colheita",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"plantio\": {\r\n    \"id_plantio\": 8\r\n  },\r\n  \"colheita\": {\r\n    \"id_colheita\": 1\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/plantio_colheita"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Plantio_Colheita",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/plantio_colheita/8/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plantio_Voluntario",
+			"item": [
+				{
+					"name": "Listar Plantio_Voluntarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Plantio_Colheita por ID Plantio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_voluntario/plantio/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Plantio_Colheita por ID Voluntário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_voluntario/voluntario/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Plantio_Voluntario por ID's",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio_voluntario/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Plantio_Voluntario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_plantio_novo\": 3,\r\n  \"id_plantio_antigo\": 2,\r\n  \"id_usuario_novo\": 4,\r\n  \"id_usuario_antigo\": 5\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/plantio_voluntario/2-5/3-4"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Plantio_Voluntario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"plantio\": {\r\n    \"id_plantio\": 1\r\n  },\r\n  \"voluntario\": {\r\n    \"id_usuario\": 2\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/plantio_voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Plantio_Voluntario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/plantio_voluntario/1/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Receptor_Destino",
+			"item": [
+				{
+					"name": "Listar Receptor_Destinos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/receptor_destino"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Receptor_Destino por ID Receptor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/receptor_destino/receptor/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Receptor_Destino por ID Destino",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/receptor_destino/destino/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Receptor_Destino por ID's",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/receptor_destino/1/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Receptor_Destino",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_destino_novo\": 8,\r\n  \"id_destino_antigo\": 4,\r\n  \"id_usuario_novo\": 7,\r\n  \"id_usuario_antigo\": 4\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/receptor_destino/4-4/8-7"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Receptor_Destino",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"destino\": {\r\n    \"id_destino\": 4\r\n  },\r\n  \"receptor\": {\r\n    \"id_usuario\": 4\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/receptor_destino"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Receptor_Destino",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/receptor_destino/4/4"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plantio",
+			"item": [
+				{
+					"name": "Listar Plantios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Plantio",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/plantio/11"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Plantio",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_plantio\": 12,\r\n  \"data_plantio\": \"2023-06-30\",\r\n  \"espaco_plantio\": 20,\r\n  \"alimento\": {\r\n    \"id_alimento\": 2\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/plantio/12"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Plantio",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"data_plantio\": \"2023-06-01\",\r\n  \"espaco_plantio\": 10,\r\n  \"alimento\": {\r\n    \"id_alimento\": 1\r\n  }\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/plantio"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Plantios",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"data_plantio\": \"2023-06-01\",\r\n    \"espaco_plantio\": 10,\r\n    \"alimento\": {\r\n      \"id_alimento\": 1\r\n    }\r\n  },\r\n  {\r\n    \"data_plantio\": \"2023-06-02\",\r\n    \"espaco_plantio\": 8,\r\n    \"alimento\": {\r\n      \"id_alimento\": 2\r\n    }\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/plantio/plantios"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Plantio",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/plantio/13"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Receptor",
+			"item": [
+				{
+					"name": "Listar Receptores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/receptor"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Receptor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/receptor/25"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Receptor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_usuario\": 2,\r\n  \"cpf_usuario\": \"12345678901\",\r\n  \"nome_usuario\": \"João\",\r\n  \"email_usuario\": \"joao@asdasd.com\",\r\n  \"cel_usuario\": \"987612321\",\r\n  \"senha_usuario\": \"senha123\",\r\n  \"status_usuario\": \"ativo\",\r\n  \"carga_receptor\": 15463,\r\n  \"endereco_receptor\": \"Rua B, 456\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/receptor/2"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Receptor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"cel_usuario\": \"(11) 98457-6251\",\r\n   \"cpf_usuario\": \"405.241.587-44\",\r\n   \"email_usuario\": \"mariana@mari.com\",\r\n   \"id_usuario\": 2,\r\n   \"nome_usuario\": \"Mariana\",\r\n   \"senha_usuario\": \"mari123\",\r\n   \"status_usuario\": \"ativo\",\r\n   \"carga_receptor\": 50,\r\n   \"endereco_receptor\": \"Rua Exemplo, 123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/receptor"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Receptor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/receptor/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuário",
+			"item": [
+				{
+					"name": "Listar Usuários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Usuário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/usuario/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Usuário",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_usuario\": 22,\r\n  \"cpf_usuario\": \"431.011.678-76\",\r\n  \"nome_usuario\": \"Kauezão\",\r\n  \"email_usuario\": \"kaue@email.com\",\r\n  \"cel_usuario\": \"(11) 98309-0659\",\r\n  \"senha_usuario\": \"ASDASDASDAS\",\r\n  \"status_usuario\": \"ativo\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/usuario/22"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cpf_usuario\": \"431.011.678-76\",\r\n  \"nome_usuario\": \"Kauezinho\",\r\n  \"email_usuario\": \"kaue@email.com\",\r\n  \"cel_usuario\": \"(11) 98309-0659\",\r\n  \"senha_usuario\": \"teste\",\r\n  \"status_usuario\": \"ativo\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Validar Login Usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email_usuario\": \"thAles@tha.com\",\r\n  \"senha_usuario\": \"thales321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/usuario/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/usuario/22"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Voluntário",
+			"item": [
+				{
+					"name": "Listar Voluntários",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Exibir Voluntário",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/voluntario/18"
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Voluntário",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_usuario\": 6,\r\n  \"cpf_usuario\": \"123.456.789-00\",\r\n  \"nome_usuario\": \"João da Silva\",\r\n  \"email_usuario\": \"joao@example.com\",\r\n  \"cel_usuario\": \"(11) 99999-9999\",\r\n  \"senha_usuario\": \"senha123\",\r\n  \"status_usuario\": \"ativo\",\r\n  \"data_registro_voluntario\": \"2023-05-31\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/voluntario/6"
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Voluntário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id_usuario\": 6,\r\n  \"cpf_usuario\": \"123.456.789-00\",\r\n  \"nome_usuario\": \"João da Silva\",\r\n  \"email_usuario\": \"joao@example.com\",\r\n  \"cel_usuario\": \"(11) 99999-9999\",\r\n  \"senha_usuario\": \"senha123\",\r\n  \"status_usuario\": \"ativo\",\r\n  \"data_registro_voluntario\": \"2023-05-31\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/voluntario"
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Voluntário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "localhost:8080/voluntario/6"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ViaCep",
+			"item": [
+				{
+					"name": "Exibir Endereço pelo CEP",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/endereco/01535000"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tempo",
+			"item": [
+				{
+					"name": "Exibir Dados Climáticos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/tempo"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

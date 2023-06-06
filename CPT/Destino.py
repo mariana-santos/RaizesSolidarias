@@ -104,15 +104,15 @@ class Destino:
     
        # SETANDO O RESPONSÁVEL DO NOVO DESTINO
         try:
-            responsavel_destino = input(f"DIGITE O ENDEREÇO DO RESPONSÁVEL DO NOVO DESTINO: ")
-            responsavel_destino = Funcoes.validarPreenchimento(f"DIGITE O ENDEREÇO DO RESPONSÁVEL DO NOVO DESTINO: ", responsavel_destino)
+            responsavel_destino = input(f"DIGITE O NOME DO RESPONSÁVEL DO NOVO DESTINO: ")
+            responsavel_destino = Funcoes.validarPreenchimento(f"DIGITE O NOME DO RESPONSÁVEL DO NOVO DESTINO: ", responsavel_destino)
 
         except ValueError as value_error:
-            print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ENDEREÇO DO RESPONSÁVEL:")
+            print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO NOME DO RESPONSÁVEL:")
             print(str(value_error))
 
         except Exception as e:
-            print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO ENDEREÇO DO RESPONSÁVEL DO DESTINO:")
+            print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO NOME DO RESPONSÁVEL DO DESTINO:")
             print(str(e))
         
         # SETANDO O CELULAR DO NOVO DESTINO
@@ -130,7 +130,7 @@ class Destino:
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO CELULAR DO DESTINO:")
             print(str(e))
 
-        # SETANDO O PREÇO DO NOVO DESTINO
+        # SETANDO A QUANTIDADE DE DEPENDENTES DO NOVO DESTINO
         try:
             qtd_dependentes_destino = int(input(f"DIGITE A QUANTIDADE DE DEPENDENTES DO DESTINO (NÚMERO INTEIRO): "))
             qtd_dependentes_destino = int(Funcoes.validarPreenchimento(f"DIGITE A QUANTIDADE DE DEPENDENTES DO DESTINO (NÚMERO INTEIRO): ", qtd_dependentes_destino))
@@ -209,6 +209,7 @@ class Destino:
                 receptor.adicionar_destino(novo_destino)
 
             print("DESTINO CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO DESTINO:")
@@ -324,6 +325,7 @@ class Destino:
                 destino_buscado.endereco_destino = novo_endereco
 
                 print("ENDEREÇO DO DESTINO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO ENDEREÇO:")
@@ -359,6 +361,7 @@ class Destino:
                 destino_buscado.responsavel_destino = novo_responsavel
 
                 print("RESPONSÁVEL DO DESTINO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO RESPONSÁVEL:")
@@ -396,6 +399,7 @@ class Destino:
                 destino_buscado.cel_destino = novo_cel
 
                 print("CELULAR DO DESTINO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO CELULAR:")
@@ -431,6 +435,7 @@ class Destino:
                 destino_buscado.qtd_dependentes_destino = nova_qtd_dependentes_destino
 
                 print("QUANTIDADE DE DEPENDENTES DO DESTINO EDITADA COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA QUANTIDADE DE DEPENDENTES DO DESTINO:")
@@ -495,12 +500,13 @@ class Destino:
                 for receptor in destino_buscado.receptores_destino:
                     receptor.remover_destino(destino_buscado)
 
-                receptor_buscado.receptores_destino = novos_receptores_destino
+                destino_buscado.receptores_destino = novos_receptores_destino
 
                 for receptor in destino_buscado.receptores_destino:
-                    receptor.adicionar_receptor(destino_buscado)   
+                    receptor.adicionar_destino(destino_buscado)   
 
                 print("RECEPTORES DO DESTINO EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS RECEPTORES:")

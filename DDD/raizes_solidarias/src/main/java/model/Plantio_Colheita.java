@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.Plantio_ColheitaService
- * @see dao.Plantio_ColheitaDao
+ * @see dao.Plantio_ColheitaDAO
  * @see controller.Plantio_ColheitaResource
  * @see model.Plantio
  * @see model.Colheita

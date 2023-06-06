@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.ColheitaService
- * @see dao.ColheitaDao
+ * @see dao.ColheitaDAO
  * @see controller.ColheitaResource
  * 
  * @author Raízes Solidárias

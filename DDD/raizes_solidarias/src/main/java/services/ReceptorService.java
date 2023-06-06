@@ -44,7 +44,7 @@ public class ReceptorService {
 	 * Atualiza um Receptor com as informações fornecidas.
 	 *
 	 * @param id_usuario o ID do Usuario a ser atualizado.
-	 * @param usuario o Receptor com as novas informações.
+	 * @param receptor o Receptor com as novas informações.
 	 * @return true se o Receptor foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarReceptor(int id_usuario, Receptor receptor) {

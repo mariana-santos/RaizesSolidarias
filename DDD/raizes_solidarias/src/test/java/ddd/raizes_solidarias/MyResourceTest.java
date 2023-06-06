@@ -11,11 +11,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * Classe de teste para a classe MyResource.
+ */
 public class MyResourceTest {
 
     private HttpServer server;
     private WebTarget target;
 
+    /**
+     * Configuração inicial do ambiente de teste.
+     *
+     * @throws Exception se ocorrer algum erro durante a configuração do ambiente de teste.
+     */
     @BeforeEach
     public void setUp() throws Exception {
         // start the server
@@ -32,13 +40,19 @@ public class MyResourceTest {
         target = c.target(Main.BASE_URI);
     }
 
-    @AfterEach
+    /**
+     * Finaliza o ambiente de teste.
+     *
+     * @throws Exception se ocorrer algum erro durante a finalização do ambiente de teste.
+     */
+    @SuppressWarnings("deprecation")
+	@AfterEach
     public void tearDown() throws Exception {
         server.stop();
     }
 
     /**
-     * Test to see that the message "Got it!" is sent in the response.
+     * Testa se a mensagem "Got it!" é enviada na resposta.
      */
     @Test
     public void testGetIt() {

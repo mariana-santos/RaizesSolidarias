@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.DestinoService
- * @see dao.DestinoDao
+ * @see dao.DestinoDAO
  * @see controller.DestinoResource
  * @see model.Receptor
  * 

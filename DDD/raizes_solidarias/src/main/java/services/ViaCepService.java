@@ -25,9 +25,12 @@ import com.google.gson.JsonObject;
 public class ViaCepService {
    
 	/**
-	 * Busca os dados do endereço de acordo com o CEP da API externa do ViaCep
+	 * Busca os dados do endereço de acordo com o CEP da API externa do ViaCep.
 	 *
-	 * @return os dados do tempo do endereço de acordo com o CEP da API externa do ViaCep.
+	 * @param cep o CEP a ser pesquisado.
+	 * @return os dados do endereço de acordo com o CEP da API externa do ViaCep.
+	 * @throws ClientProtocolException se ocorrer um erro de protocolo na comunicação com a API.
+	 * @throws IOException se ocorrer um erro de I/O durante a comunicação com a API.
 	 */
     public String getEndereco(String cep, String numero) throws ClientProtocolException, IOException {
        

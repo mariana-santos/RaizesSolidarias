@@ -2,7 +2,8 @@
 # OS DADOS PARA VALIDAÇÃO DAS ALTERAÇÕES NO BANCO SÃO:  
 # dsn = cx_Oracle.makedsn(host='oracle.fiap.com.br', port=1521, sid='ORCL')
 # conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
-# PARA LOGAR COMO ADMIN, UTILIZAR O EMAIL "admin" E A SENHA "admin"
+# 
+# NO CASO DE DELETAR USUÁRIOS (RECEPTOR, DOADOR OU VOLUNTÁRIO) OPTAMOS POR NÃO FAZER O DELETE E SIM ALTERAR O STATUS DO MESMO PARA MANTER AS AÇÕES JÁ REALIZADAS NO BANCO DE DADOS
 
 # IMPORTANDO CLASSES
 from Agendamento import Agendamento
@@ -42,6 +43,9 @@ listaVoluntarios = Funcoes.buscarVoluntariosBanco(dsn, Voluntario, Colheita, Pla
 cpfs_cadastrados = Funcoes.buscarCpfsCadastrados(dsn)
 emails_cadastrados = Funcoes.buscarEmailsCadastrados(dsn)
 cel_cadastrados = Funcoes.buscarCelsCadastrados(dsn)
+listaUsuariosNaoDoadores = Funcoes.criarListaUsuariosNaoDoadores(listaUsuarios, listaDoadores)
+listaUsuariosNaoReceptores = Funcoes.criarListaUsuariosNaoReceptores(listaUsuarios, listaReceptores)
+listaUsuariosNaoVoluntarios = Funcoes.criarListaUsuariosNaoVoluntarios(listaUsuarios, listaVoluntarios)
 
 # DECLARANDO VARIÁVEIS INICIAIS - OK
 iniciar = True
@@ -50,11 +54,8 @@ id_alimento = Funcoes.buscarIdMax(dsn, "id_alimento", "alimento")
 id_colheita = Funcoes.buscarIdMax(dsn, "id_colheita", "colheita")
 id_destino = Funcoes.buscarIdMax(dsn, "id_destino", "destino")
 id_doacao = Funcoes.buscarIdMax(dsn, "id_doacao", "doacao")
-id_doador = Funcoes.buscarIdMax(dsn, "id_doador", "doador")
 id_plantio = Funcoes.buscarIdMax(dsn, "id_plantio", "plantio")
-id_receptor = Funcoes.buscarIdMax(dsn, "id_receptor", "receptor")
 id_usuario = Funcoes.buscarIdMax(dsn, "id_usuario", "usuario")
-id_voluntario = Funcoes.buscarIdMax(dsn, "id_voluntario", "voluntario")
 
 while (iniciar):
     try:
@@ -223,7 +224,7 @@ while (iniciar):
 
                 if (opcao == 1):
                     # CADASTRAR DOADOR
-                    Doador.cadastrarDoador(dsn, id_usuario, listaUsuarios, listaDoadores)
+                    Doador.cadastrarDoador(dsn, id_usuario, listaUsuariosNaoDoadores, listaDoadores)
                     id_usuario = id_usuario + 1
 
                 elif (opcao == 2):
@@ -233,7 +234,7 @@ while (iniciar):
                 
                 elif (opcao == 3):
                     # EDITAR DOADOR
-                    Doador.editarDoador(dsn, listaDoadores, listaDoacoes)
+                    Doador.editarDoador(dsn, listaDoadores, listaDoacoes, emails_cadastrados, cel_cadastrados)
                 
                 elif (opcao == 4):
                     # EXCLUIR DOADOR
@@ -283,7 +284,7 @@ while (iniciar):
 
                 if (opcao == 1):
                     # CADASTRAR RECEPTOR
-                    Receptor.cadastrarReceptor(dsn, id_usuario, listaUsuarios, listaReceptores)
+                    Receptor.cadastrarReceptor(dsn, id_usuario, listaUsuariosNaoReceptores, listaReceptores, listaDestinos)
                     id_usuario = id_usuario + 1
 
                 elif (opcao == 2):
@@ -293,7 +294,7 @@ while (iniciar):
                 
                 elif (opcao == 3):
                     # EDITAR RECEPTOR
-                    Receptor.editarReceptor(dsn, listaReceptores, listaDestinos)
+                    Receptor.editarReceptor(dsn, listaReceptores, listaDestinos, emails_cadastrados, cel_cadastrados)
                 
                 elif (opcao == 4):
                     # EXCLUIR RECEPTOR
@@ -313,7 +314,7 @@ while (iniciar):
 
                 if (opcao == 1):
                     # CADASTRAR USUÁRIO
-                    Usuario.cadastrarUsuario(dsn, id_usuario, listaUsuarios)
+                    Usuario.cadastrarUsuario(dsn, id_usuario, listaUsuarios, cpfs_cadastrados, emails_cadastrados, cel_cadastrados)
                     id_usuario = id_usuario + 1
 
                 elif (opcao == 2):
@@ -323,7 +324,7 @@ while (iniciar):
                 
                 elif (opcao == 3):
                     # EDITAR USUÁRIO
-                    Usuario.editarUsuario(dsn, listaUsuarios)
+                    Usuario.editarUsuario(dsn, listaUsuarios, emails_cadastrados, cel_cadastrados)
                 
                 elif (opcao == 4):
                     # EXCLUIR USUÁRIO
@@ -343,7 +344,7 @@ while (iniciar):
 
                 if (opcao == 1):
                     # CADASTRAR VOLUNTÁRIO
-                    Voluntario.cadastrarVoluntario(dsn, id_usuario, listaUsuarios, listaVoluntarios)
+                    Voluntario.cadastrarVoluntario(dsn, id_usuario, listaUsuariosNaoVoluntarios, listaVoluntarios)
                     id_usuario = id_usuario + 1
 
                 elif (opcao == 2):
@@ -353,7 +354,7 @@ while (iniciar):
                 
                 elif (opcao == 3):
                     # EDITAR VOLUNTÁRIO
-                    Voluntario.editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios)
+                    Voluntario.editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios, emails_cadastrados, cel_cadastrados)
                 
                 elif (opcao == 4):
                     # EXCLUIR VOLUNTÁRIO

@@ -77,9 +77,10 @@ public class AgendamentoResource {
 	}
 	
 	/**
-	 * Recupera a lista de Agendamentos por Id de Usuário no sistema.
+	 * Recupera a lista de Agendamentos por ID de Usuário no sistema.
 	 *
-	 * @return uma resposta contendo a lista de Agendamentos por Id de Usuário em formato JSON.
+	 * @param id_usuario O ID do usuário para o qual deseja-se obter os agendamentos (vem do path da URL)
+	 * @return Uma resposta contendo a lista de Agendamentos por ID de Usuário em formato JSON.
 	 */
 	@GET
 	@Path("/usuario/{id}")

@@ -79,7 +79,6 @@ public class ReceptorResource {
     /**
 	 * Cadastra um novo Receptor no sistema.
 	 *
-	 * @param idUsuarioExistente O ID do usuário existente.
 	 * @param receptor_novo     O objeto Receptor contendo os dados do Receptor (Usuario) a ser cadastrado.
 	 * @return uma resposta contendo o Receptor cadastrado em formato JSON.
 	 */

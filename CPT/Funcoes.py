@@ -128,6 +128,19 @@ class Funcoes:
         "------------------------------------------\n"
         "DIGITE A OPÇÃO DESEJADA: \n")
     
+    # CRIAR LISTAS COM EXCLUSÕES
+    def criarListaUsuariosNaoDoadores(listaUsuarios, listaDoadores):
+        usuarios_nao_doadores = [usuario for usuario in listaUsuarios if usuario.id_usuario not in [doador.id_usuario for doador in listaDoadores]]
+        return usuarios_nao_doadores
+    
+    def criarListaUsuariosNaoReceptores(listaUsuarios, listaReceptores):
+        usuarios_nao_receptores = [usuario for usuario in listaUsuarios if usuario.id_usuario not in [receptor.id_usuario for receptor in listaReceptores]]
+        return usuarios_nao_receptores
+    
+    def criarListaUsuariosNaoVoluntarios(listaUsuarios, listaVoluntarios):
+        usuarios_nao_voluntarios = [usuario for usuario in listaUsuarios if usuario.id_usuario not in [voluntario.id_usuario for voluntario in listaVoluntarios]]
+        return usuarios_nao_voluntarios
+
     # VALIDAR
     def validarCPF(cpf_usuario):
         if (cpf_usuario == "00000000000" or cpf_usuario == "11111111111" or cpf_usuario == "22222222222" or cpf_usuario == "33333333333" or cpf_usuario == "44444444444" or cpf_usuario == "55555555555" or cpf_usuario == "66666666666" or cpf_usuario == "77777777777" or cpf_usuario == "88888888888" or cpf_usuario == "99999999999" or (len(cpf_usuario) != 11)):
@@ -197,7 +210,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirAgendamentosAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO AGENDAMENTO NOVAMENTE: \n"))
-            agendamento_buscado = Funcoes.buscarPorIdAgendamento(id_buscado, lista)
+            agendamento_buscado = Funcoes.buscarAgendamentoPorId(id_buscado, lista)
         
         return agendamento_buscado
 
@@ -206,7 +219,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirAlimentosAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO ALIMENTO NOVAMENTE: \n"))
-            alimento_buscado = Funcoes.buscarPorIdAlimento(id_buscado, lista)
+            alimento_buscado = Funcoes.buscarAlimentoPorId(id_buscado, lista)
         
         return alimento_buscado
 
@@ -215,7 +228,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirColheitasAdmin(lista)
             id_buscado = int(input("DIGITE O ID DA COLHEITA NOVAMENTE: \n"))
-            colheita_buscada = Funcoes.buscarPorIdColheita(id_buscado, lista)
+            colheita_buscada = Funcoes.buscarColheitaPorId(id_buscado, lista)
         
         return colheita_buscada
 
@@ -224,7 +237,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirDestinosAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO DESTINO NOVAMENTE: \n"))
-            destino_buscado = Funcoes.buscarPorIdDestino(id_buscado, lista)
+            destino_buscado = Funcoes.buscarDestinoPorId(id_buscado, lista)
         
         return destino_buscado
 
@@ -233,7 +246,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirDoacoesAdmin(lista)
             id_buscado = int(input("DIGITE O ID DA DOAÇÃO NOVAMENTE: \n"))
-            doacao_buscada = Funcoes.buscarPorIdDoacao(id_buscado, lista)
+            doacao_buscada = Funcoes.buscarDoacaoPorId(id_buscado, lista)
         
         return doacao_buscada
 
@@ -242,7 +255,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirDoadoresAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO DOADOR NOVAMENTE: \n"))
-            doador_buscado = Funcoes.buscarPorIdDoador(id_buscado, lista)
+            doador_buscado = Funcoes.buscarUsuarioPorId(id_buscado, lista)
         
         return doador_buscado
 
@@ -251,7 +264,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirPlantiosAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO PLANTIO NOVAMENTE: \n"))
-            plantio_buscado = Funcoes.buscarPorIdPlantio(id_buscado, lista)
+            plantio_buscado = Funcoes.buscarPlantioPorId(id_buscado, lista)
         
         return plantio_buscado
 
@@ -260,7 +273,7 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirReceptoresAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO RECEPTOR NOVAMENTE: \n"))
-            receptor_buscado = Funcoes.buscarPorIdReceptor(id_buscado, lista)
+            receptor_buscado = Funcoes.buscarUsuarioPorId(id_buscado, lista)
         
         return receptor_buscado
     
@@ -278,12 +291,13 @@ class Funcoes:
             input("ID INVÁLIDO. TECLE ENTER PARA VOLTAR AO MENU")
             Funcoes.exibirVoluntariosAdmin(lista)
             id_buscado = int(input("DIGITE O ID DO VOLUNTÁRIO NOVAMENTE: \n"))
-            voluntario_buscado = Funcoes.buscarPorIdVoluntario(id_buscado, lista)
+            voluntario_buscado = Funcoes.buscarUsuarioPorId(id_buscado, lista)
         
         return voluntario_buscado
 
     # VERIFICAR
     def verificarCPF(cpf_usuario, cpfs_cadastrados):
+        cpf_usuario = Funcoes.formatarCpf(cpf_usuario)
         while (cpf_usuario in cpfs_cadastrados or Funcoes.validarCPF(cpf_usuario) == False):
             print("CPF INVÁLIDO OU JÁ CADASTRADO.")
             cpf_usuario = input("DIGITE O SEU CPF (APENAS NÚMEROS, EXEMPLO: 43102154278): ")
@@ -298,9 +312,11 @@ class Funcoes:
         return email_usuario
 
     def verificarCel(cel_usuario, cel_cadastrados):
-        while (cel_usuario in cel_cadastrados or cel_usuario == "" or len(cel_usuario) != 11):
+        cel_usuario = Funcoes.formatarCel(cel_usuario)
+        while (cel_usuario in cel_cadastrados or cel_usuario == "" or len(cel_usuario) != 15):
             print("CELULAR INVÁLIDO OU JÁ CADASTRADO.")
             cel_usuario = input("DIGITE O SEU CELULAR (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ")
+            cel_usuario = Funcoes.formatarCel(cel_usuario)
         
         return cel_usuario
 
@@ -321,46 +337,46 @@ class Funcoes:
 
     # BUSCAR
     def buscarAgendamentoPorId(id_buscado, lista):
-        agendamento_buscado = lista.get(id_buscado)
-        if agendamento_buscado is None:
-            return None
-        return agendamento_buscado
-    
+        for agendamento in lista:
+            if agendamento.id_agendamento == id_buscado:
+                return agendamento
+        return None
+
     def buscarAlimentoPorId(id_buscado, lista):
-        alimento_buscado = lista.get(id_buscado)
-        if alimento_buscado is None:
-            return None
-        return alimento_buscado
+        for alimento in lista:
+            if alimento.id_alimento == id_buscado:
+                return alimento
+        return None
 
     def buscarColheitaPorId(id_buscado, lista):
-        colheita_buscada = lista.get(id_buscado)
-        if colheita_buscada is None:
-            return None
-        return colheita_buscada
+        for colheita in lista:
+            if colheita.id_colheita == id_buscado:
+                return colheita
+        return None
 
     def buscarDestinoPorId(id_buscado, lista):
-        destino_buscado = lista.get(id_buscado)
-        if destino_buscado is None:
-            return None
-        return destino_buscado
+        for destino in lista:
+            if destino.id_destino == id_buscado:
+                return destino
+        return None
 
     def buscarDoacaoPorId(id_buscado, lista):
-        doacao_buscada = lista.get(id_buscado)
-        if doacao_buscada is None:
-            return None
-        return doacao_buscada
+        for doacao in lista:
+            if doacao.id_doacao == id_buscado:
+                return doacao
+        return None
 
     def buscarPlantioPorId(id_buscado, lista):
-        plantio_buscado = lista.get(id_buscado)
-        if plantio_buscado is None:
-            return None
-        return plantio_buscado
+        for plantio in lista:
+            if plantio.id_plantio == id_buscado:
+                return plantio
+        return None
     
     def buscarUsuarioPorId(id_buscado, lista):
-        objeto_buscado = lista.get(id_buscado)
-        if objeto_buscado is None:
-            return None
-        return objeto_buscado
+        for objeto in lista:
+            if objeto.id_usuario == id_buscado:
+                return objeto
+        return None
 
     # EDITAR
     def editarNegativo():
@@ -374,9 +390,12 @@ class Funcoes:
         if len(listaAgendamentos) == 0:
             print("NÃO EXISTEM AGENDAMENTOS CADASTRADOS.")
         else:
-            for agendamento in listaAgendamentos:
-                print(f"ID: {agendamento.id_agendamento} | USUÁRIO DO AGENDAMENTO: {agendamento.usuario}")
-                print(f"------------------------------------------")
+            # Ordenar a lista de agendamentos pelo campo 'id_agendamento'
+            lista_ordenada = sorted(listaAgendamentos, key=lambda agendamento: agendamento.id_agendamento)
+
+            for agendamento in lista_ordenada:
+                print(f"ID: {agendamento.id_agendamento} | USUÁRIO DO AGENDAMENTO: {agendamento.usuario.nome_usuario}")
+                print("------------------------------------------")
 
     def exibirAlimentosAdmin(listaAlimentos):
         Funcoes.menuCabecalho()
@@ -384,9 +403,11 @@ class Funcoes:
         if len(listaAlimentos) == 0:
             print("NÃO EXISTEM ALIMENTOS CADASTRADOS.")
         else:
-            for alimento in listaAlimentos:
+            lista_ordenada = sorted(listaAlimentos, key=lambda alimento: alimento.id_alimento)
+
+            for alimento in lista_ordenada:
                 print(f"ID: {alimento.id_alimento} | NOME DO ALIMENTO: {alimento.nome_alimento}")
-                print(f"------------------------------------------")
+                print("------------------------------------------")
 
     def exibirColheitasAdmin(listaColheitas):
         Funcoes.menuCabecalho()
@@ -394,9 +415,11 @@ class Funcoes:
         if len(listaColheitas) == 0:
             print("NÃO EXISTEM COLHEITAS CADASTRADAS.")
         else:
-            for colheita in listaColheitas:
-                print(f"ID: {colheita.id_colheita} | DATA DA COLHEITA: {colheita.data_colheita}")
-                print(f"------------------------------------------")
+            lista_ordenada = sorted(listaColheitas, key=lambda colheita: colheita.id_colheita)
+
+            for colheita in lista_ordenada:
+                print(f"ID: {colheita.id_colheita} | DATA DA COLHEITA: {Funcoes.formatarData(colheita.data_colheita)}")
+                print("------------------------------------------")
 
     def exibirDestinosAdmin(listaDestinos):
         Funcoes.menuCabecalho()
@@ -404,9 +427,11 @@ class Funcoes:
         if len(listaDestinos) == 0:
             print("NÃO EXISTEM DESTINOS CADASTRADOS.")
         else:
-            for destino in listaDestinos:
+            lista_ordenada = sorted(listaDestinos, key=lambda destino: destino.id_destino)
+
+            for destino in lista_ordenada:
                 print(f"ID: {destino.id_destino} | ENDEREÇO DO DESTINO: {destino.endereco_destino}")
-                print(f"------------------------------------------")
+                print("------------------------------------------")
 
     def exibirDoacoesAdmin(listaDoacoes):
         Funcoes.menuCabecalho()
@@ -414,9 +439,11 @@ class Funcoes:
         if len(listaDoacoes) == 0:
             print("NÃO EXISTEM DOAÇÕES CADASTRADAS.")
         else:
-            for doacao in listaDoacoes:
-                print(f"ID: {doacao.id_doacao} | DOADOR: {doacao.doador.nome}")
-                print(f"------------------------------------------")
+            lista_ordenada = sorted(listaDoacoes, key=lambda doacao: doacao.id_doacao)
+
+            for doacao in lista_ordenada:
+                print(f"ID: {doacao.id_doacao} | DOADOR: {doacao.doador.nome_usuario}")
+                print("------------------------------------------")
 
     def exibirPlantiosAdmin(listaPlantios):
         Funcoes.menuCabecalho()
@@ -424,9 +451,11 @@ class Funcoes:
         if len(listaPlantios) == 0:
             print("NÃO EXISTEM PLANTIOS CADASTRADOS.")
         else:
-            for plantio in listaPlantios:
-                print(f"ID: {plantio.id_plantio} | DATA DO PLANTIO: {plantio.data_plantio}")
-                print(f"------------------------------------------")
+            lista_ordenada = sorted(listaPlantios, key=lambda plantio: plantio.id_plantio)
+
+            for plantio in lista_ordenada:
+                print(f"ID: {plantio.id_plantio} | DATA DO PLANTIO: {Funcoes.formatarData(plantio.data_plantio)}")
+                print("------------------------------------------")
 
     def exibirUsuariosAdmin(lista):
         Funcoes.menuCabecalho()
@@ -434,14 +463,16 @@ class Funcoes:
         if len(lista) == 0:
             print("NÃO EXISTEM USUÁRIOS CADASTRADOS.")
         else:
-            for usuario in lista:
-                print(f"ID: {usuario.id_usuario} | NOME: {usuario.nome_usuario}")
-                print(f"------------------------------------------")
+            lista_ordenada = sorted(lista, key=lambda usuario: usuario.id_usuario)
+
+            for usuario in lista_ordenada:
+                print(f"ID: {usuario.id_usuario} | NOME: {usuario.nome_usuario} | STATUS: {usuario.status_usuario}")
+                print("------------------------------------------")
 
     # BANCO DE DADOS
     def connect(dsn):
         try:
-            conn = Funcoes.connect(dsn)
+            conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
             return conn
         except cx_Oracle.Error as e:
             print(f"ERRO AO CONECTAR COM O BANCO DE DADOS: {e}")
@@ -570,7 +601,7 @@ class Funcoes:
                         email_usuario = usuario_agendamento_row[3],
                         cel_usuario = usuario_agendamento_row[4],
                         senha_usuario = usuario_agendamento_row[5],
-                        status_usuario = cursor_usuario_agendamento[6]
+                        status_usuario = usuario_agendamento_row[6]
                     )
 
                     agendamento_banco.usuario = usuario_agendamento_banco
@@ -582,7 +613,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaAgendamentos)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE AGENDAMENTOS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -620,7 +651,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaAlimentos)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE ALIMENTOS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -698,7 +729,7 @@ class Funcoes:
 
                     id_alimento = plantios_colheita_row[3]
 
-                    cursor_alimento_plantio = conn.cursor
+                    cursor_alimento_plantio = conn.cursor()
                     cursor_alimento_plantio.execute("""
                         SELECT * FROM alimento
                         WHERE id_alimento = :id_alimento 
@@ -728,7 +759,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaColheitas)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE COLHEITAS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -795,7 +826,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaDestinos)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE DESTINOS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -860,7 +891,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaDoacoes)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE DOAÇÕES: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -889,9 +920,9 @@ class Funcoes:
                     u.senha_usuario,
                     u.status_usuario,
                     d.nivel_doador,
-                    d.moedas_doador, 
+                    d.moedas_doador 
                     FROM usuario u 
-                    INNER JOIN doador a ON d.id_usuario = u.id_usuario
+                    INNER JOIN doador d ON d.id_usuario = u.id_usuario
                     ORDER BY u.id_usuario
             """)
 
@@ -929,7 +960,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaDoadores)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE DOADORES: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -961,7 +992,7 @@ class Funcoes:
 
                 id_alimento = plantio_row[3]
 
-                cursor_alimento_plantio = conn.cursor
+                cursor_alimento_plantio = conn.cursor()
                 cursor_alimento_plantio.execute("""
                     SELECT * FROM alimento
                     WHERE id_alimento = :id_alimento 
@@ -989,7 +1020,7 @@ class Funcoes:
                     FROM Plantio_Colheita pc 
                     JOIN Colheita c ON pc.id_colheita = c.id_colheita 
                     WHERE pc.id_plantio = :id_plantio 
-                    ORDER BY pc_id_plantio
+                    ORDER BY pc.id_plantio
                 """, {"id_plantio": plantio_banco.id_plantio})
                 
                 for colheita_plantio_row in cursor_colheita_plantio:
@@ -1035,7 +1066,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaPlantios)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE PLANTIOS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -1064,7 +1095,7 @@ class Funcoes:
                     u.senha_usuario,
                     u.status_usuario,
                     r.carga_receptor,
-                    r.endereco_receptor, 
+                    r.endereco_receptor 
                     FROM usuario u 
                     INNER JOIN receptor r ON r.id_usuario = u.id_usuario
                     ORDER BY u.id_usuario
@@ -1126,7 +1157,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaReceptores)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE RECEPTORES: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -1146,7 +1177,7 @@ class Funcoes:
 
             listaUsuarios = []
             cursor.execute("""
-                SELECT * FROM usuario
+                SELECT * FROM usuario ORDER BY id_usuario
             """)
 
             for row in cursor:
@@ -1165,7 +1196,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaUsuarios)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE USUÁRIOS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
@@ -1193,7 +1224,7 @@ class Funcoes:
                     u.cel_usuario, 
                     u.senha_usuario,
                     u.status_usuario,
-                    v.data_registro_voluntario, 
+                    v.data_registro_voluntario 
                     FROM usuario u 
                     INNER JOIN voluntario v ON v.id_usuario = u.id_usuario
                     ORDER BY u.id_usuario
@@ -1251,7 +1282,7 @@ class Funcoes:
 
                     id_alimento = plantios_voluntario_row[3]
 
-                    cursor_alimento_plantio_voluntario = conn.cursor
+                    cursor_alimento_plantio_voluntario = conn.cursor()
                     cursor_alimento_plantio_voluntario.execute("""
                         SELECT * FROM alimento
                         WHERE id_alimento = :id_alimento 
@@ -1294,7 +1325,7 @@ class Funcoes:
             # MOSTRANDO BARRA DE PROGRESSO
             barra_progresso = tqdm(listaVoluntarios)
             for i in barra_progresso:
-                time.sleep(0.25)
+                time.sleep(0.05)
                 barra_progresso.set_description('CARREGANDO BASE DE DADOS DE VOLUNTÁRIOS: ')
 
             # FECHANDO CONEXÃO COM O BANCO DE DADOS

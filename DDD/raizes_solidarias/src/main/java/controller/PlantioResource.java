@@ -93,6 +93,12 @@ public class PlantioResource {
         return response.build();
     }
     
+    /**
+	 * Cadastra novos Plantis no sistema.
+	 *
+	 * @param plantios_novos um ArrayList de objeto Plantio contendo os dados dos Plantios a serem cadastrados.
+	 * @return uma resposta contendo os Plantios cadastrados em formato JSON.
+	 */
     @POST
     @Path("/plantios")
     @Consumes(MediaType.APPLICATION_JSON)

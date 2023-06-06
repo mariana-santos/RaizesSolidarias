@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.Colheita_VoluntarioService
- * @see dao.Colheita_VoluntarioDao
+ * @see dao.Colheita_VoluntarioDAO
  * @see controller.Colheita_VoluntarioResource
  * @see model.Colheita
  * @see model.Voluntario

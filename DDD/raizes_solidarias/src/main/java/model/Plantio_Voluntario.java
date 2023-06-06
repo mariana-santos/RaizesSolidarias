@@ -13,7 +13,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.Plantio_VoluntarioService
- * @see dao.Plantio_VoluntarioDao
+ * @see dao.Plantio_VoluntarioDAO
  * @see controller.Plantio_VoluntarioResource
  * @see model.Plantio
  * @see model.Voluntario

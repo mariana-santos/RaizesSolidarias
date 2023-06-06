@@ -43,7 +43,7 @@ public class AgendamentoService {
 	 * Atualiza um Agendamento com as informações fornecidas.
 	 *
 	 * @param id_agendamento o ID do Agendamento a ser atualizado.
-	 * @param usuario o Agendamento com as novas informações.
+	 * @param agendamento o Agendamento com as novas informações.
 	 * @return true se o Agendamento foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarAgendamento(int id_agendamento, Agendamento agendamento) {

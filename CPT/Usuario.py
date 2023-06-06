@@ -81,7 +81,7 @@ class Usuario:
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
-    def cadastrarUsuario(dsn, id_usuario, listaUsuarios):
+    def cadastrarUsuario(dsn, id_usuario, listaUsuarios, cpfs_cadastrados, emails_cadastrados, cel_cadastrados):
         # INSTANCIANDO NOVO USUARIO
         novo_usuario = Usuario()
 
@@ -94,7 +94,7 @@ class Usuario:
         try:
             cpf_usuario = input(f"DIGITE O CPF DO USUÁRIO (SEM PONTOS OU TRAÇOS, EXEMPLO: 74253599010): ")
             cpf_usuario = Funcoes.validarPreenchimento(f"DIGITE O CPF DO USUÁRIO (SEM PONTOS OU TRAÇOS, EXEMPLO: 74253599010): ", cpf_usuario)
-            cpf_usuario = Funcoes.verificarCPF(cpf_usuario)
+            cpf_usuario = Funcoes.verificarCPF(cpf_usuario, cpfs_cadastrados)
             cpf_usuario = Funcoes.formatarCpf(cpf_usuario)
 
         except ValueError as value_error:
@@ -122,7 +122,7 @@ class Usuario:
         try:
             email_usuario = input(f"DIGITE O EMAIL DO NOVO USUÁRIO: ")
             email_usuario = Funcoes.validarPreenchimento(f"DIGITE O EMAIL DO NOVO USUÁRIO: ", email_usuario)
-            email_usuario = Funcoes.verificarEmail(email_usuario)
+            email_usuario = Funcoes.verificarEmail(email_usuario, emails_cadastrados)
 
         except ValueError as value_error:
             print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO EMAIL:")
@@ -137,7 +137,7 @@ class Usuario:
             cel_usuario = input(f"DIGITE O CELULAR DO USUÁRIO (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ")
             cel_usuario = Funcoes.validarPreenchimento(f"DIGITE O CELULAR DO USUÁRIO (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ", cel_usuario)
             cel_usuario = Funcoes.validarCel(cel_usuario)
-            cel_usuario = Funcoes.verificarCel(cel_usuario)
+            cel_usuario = Funcoes.verificarCel(cel_usuario, cel_cadastrados)
             cel_usuario = Funcoes.formatarCel(cel_usuario)
 
         except ValueError as value_error:
@@ -165,7 +165,7 @@ class Usuario:
             print(str(e))
 
         # SETANDO O STATUS DO NOVO USUÁRIO
-        status_usuario = "ATIVO"
+        status_usuario = "Ativo"
 
         # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
@@ -187,6 +187,7 @@ class Usuario:
             listaUsuarios.append(novo_usuario)
 
             print("USUARIO CADASTRADO COM SUCESSO!")
+            input("TECLE ENTER PARA VOLTAR AO MENU.")
 
         except sqlite3.DatabaseError as db_error:
             print("ERRO NO BANCO DE DADOS DURANTE O CADASTRO DO USUARIO:")
@@ -196,7 +197,7 @@ class Usuario:
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarUsuario(dsn, listaUsuarios):
+    def editarUsuario(dsn, listaUsuarios, emails_cadastrados, cel_cadastrados):
         perfilUsuario = True
 
         if (len(listaUsuarios) == 0):
@@ -240,7 +241,7 @@ class Usuario:
                     
                     if (opcao == 1):
                        # EDITAR O EMAIL DO USUARIO - SIM
-                       Usuario.editarEmail(dsn, usuario_buscado)
+                       Usuario.editarEmail(dsn, usuario_buscado, emails_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O EMAIL DO USUARIO - NÃO
@@ -253,7 +254,7 @@ class Usuario:
                     
                     if (opcao == 1):
                        # EDITAR O CELULAR DO USUARIO - SIM
-                       Usuario.editarCel(dsn, usuario_buscado)
+                       Usuario.editarCel(dsn, usuario_buscado, cel_cadastrados)
                     
                     elif (opcao == 2):
                         # EDITAR O CELULAR DO USUARIO - NÃO
@@ -306,6 +307,7 @@ class Usuario:
                 usuario_buscado.nome_usuario = novo_nome
 
                 print("NOME DO USUÁRIO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO NOME:")
@@ -346,6 +348,7 @@ class Usuario:
                 usuario_buscado.email_usuario = novo_email
 
                 print("EMAIL DO USUÁRIO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO EMAIL:")
@@ -369,7 +372,6 @@ class Usuario:
             novo_cel = Funcoes.validarPreenchimento(f"DIGITE O NOVO CELULAR DO USUÁRIO {usuario_buscado.nome_usuario} (SOMENTE NÚMEROS, COM DDD, EXEMPLO: 11983050165): ", novo_cel)
             novo_cel = Funcoes.validarCel(novo_cel)
             novo_cel = Funcoes.verificarCel(novo_cel, cel_cadastrados)
-            novo_cel = Funcoes.formatarCel(novo_cel)
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
@@ -388,6 +390,7 @@ class Usuario:
                 usuario_buscado.cel_usuario = novo_cel
 
                 print("CELULAR DO USUÁRIO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO CELULAR:")
@@ -424,6 +427,7 @@ class Usuario:
                 usuario_buscado.senha_usuario = nova_senha_usuario
 
                 print("SENHA DO USUÁRIO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DA SENHA:")
@@ -452,10 +456,10 @@ class Usuario:
             opcao = int(Funcoes.validarOpcao(opcao, 1, 2, novo_status))
 
             if (opcao == 1):
-                novo_status_usuario = "ATIVO"
+                novo_status_usuario = "Ativo"
 
             elif (opcao == 2):
-                novo_status_usuario = "INATIVO"
+                novo_status_usuario = "Inativo"
 
             # CRIANDO CONEXÃO COM O BANCO DE DADOS
             conn = Funcoes.connect(dsn)
@@ -470,6 +474,7 @@ class Usuario:
                 usuario_buscado.status_usuario = novo_status_usuario
 
                 print("STATUS DO USUÁRIO EDITADO COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
 
             except sqlite3.DatabaseError as db_error:
                 print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DO STATUS:")
@@ -504,7 +509,7 @@ class Usuario:
                 if opcao == 1:
                     for i in range(len(listaUsuarios)):
                         if listaUsuarios[i].id_usuario == id_buscado:
-                            novo_status_usuario = "INATIVO"
+                            novo_status_usuario = "Inativo"
 
                             # CRIANDO CONEXÃO COM O BANCO DE DADOS
                             conn = Funcoes.connect(dsn)
@@ -534,7 +539,7 @@ class Usuario:
                     input("TECLE ENTER PARA VOLTAR AO MENU.")
             
             except ValueError as value_error:
-                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO USUARIO A SER EXCLUÍDO:")
+                print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO ID DO USUARIO A SER INATIVO:")
                 print(str(value_error))
 
             except Exception as e:

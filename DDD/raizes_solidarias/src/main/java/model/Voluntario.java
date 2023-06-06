@@ -15,7 +15,7 @@ import jakarta.validation.constraints.NotNull;
  * @version 1.0
  * 
  * @see services.VoluntarioService
- * @see dao.VoluntarioDao
+ * @see dao.VoluntarioDAO
  * @see controller.VoluntarioResource
  * @see model.Usuario
  * 
@@ -57,22 +57,24 @@ public class Voluntario extends Usuario {
 	/**
 	 * Construtor não padrão da classe Voluntario.
 	 * 
-	 * @param id_usuario      O ID do Usuário (não pode ser nulo)
-	 * @param cpf_usuario     O CPF do Usuário (não pode ser nulo)
-	 * @param nome_usuario    O Nome do Usuário (não pode ser nulo)
-	 * @param email_usuario   O Email do Usuário (não pode ser nulo)
-	 * @param cel_usuario     O Número de celular do Usuário (não pode ser nulo)
-	 * @param senha_usuario   A Senha do Usuário (não pode ser nula)
+	 * @param id_usuario        O ID do Usuário (não pode ser nulo)
+	 * @param cpf_usuario       O CPF do Usuário (não pode ser nulo)
+	 * @param nome_usuario      O Nome do Usuário (não pode ser nulo)
+	 * @param email_usuario     O Email do Usuário (não pode ser nulo)
+	 * @param cel_usuario       O Número de celular do Usuário (não pode ser nulo)
+	 * @param senha_usuario     A Senha do Usuário (não pode ser nula)
+	 * @param status_usuario    O Status do Usuário (não pode ser nulo)
 	 */
 	public Voluntario(@NotNull(message = "O ID do Usuário não pode ser nulo.") int id_usuario, 
-			@NotNull(message = "O CPF do Usuário não pode ser nulo.") String cpf_usuario,
-			@NotNull(message = "O Nome do Usuário não pode ser nulo.") String nome_usuario,
-			@NotNull(message = "O Email do Usuário não pode ser nulo.") String email_usuario,
-			@NotNull(message = "O Celular do Usuário não pode ser nulo.") String cel_usuario,
-			@NotNull(message = "A Senha do Usuário não pode ser nula.") String senha_usuario,
-			@NotNull(message = "O Status do Usuário não pode ser nulo.") String status_usuario) {
-		super(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario);
+	        @NotNull(message = "O CPF do Usuário não pode ser nulo.") String cpf_usuario,
+	        @NotNull(message = "O Nome do Usuário não pode ser nulo.") String nome_usuario,
+	        @NotNull(message = "O Email do Usuário não pode ser nulo.") String email_usuario,
+	        @NotNull(message = "O Celular do Usuário não pode ser nulo.") String cel_usuario,
+	        @NotNull(message = "A Senha do Usuário não pode ser nula.") String senha_usuario,
+	        @NotNull(message = "O Status do Usuário não pode ser nulo.") String status_usuario) {
+	    super(id_usuario, cpf_usuario, nome_usuario, email_usuario, cel_usuario, senha_usuario, status_usuario);
 	}
+
 
 	/**
 	 * Construtor não padrão da classe Voluntario.

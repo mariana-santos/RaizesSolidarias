@@ -133,7 +133,13 @@ public class DoadorResource {
 			return response.build();
 		}
 	}	
-
+	
+	/**
+	 * Valida o login do doador com base no email e senha fornecidos.
+	 *
+	 * @param doadorLogin O objeto doador contendo o email e senha do usuário.
+	 * @return Uma resposta contendo o doador logado em caso de sucesso de autenticação. Caso contrário, retorna uma resposta de erro com status 401.
+	 */
 	@POST
 	@Path("/login")
 	@Consumes(MediaType.APPLICATION_JSON)

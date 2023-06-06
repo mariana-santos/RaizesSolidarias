@@ -44,7 +44,7 @@ public class DoadorService {
 	 * Atualiza um Doador com as informações fornecidas.
 	 *
 	 * @param id_usuario o ID do Usuario a ser atualizado.
-	 * @param usuario o Doador com as novas informações.
+	 * @param doador o Doador com as novas informações.
 	 * @return true se o Doador foi atualizado com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarDoador(int id_usuario, Doador doador) {

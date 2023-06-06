@@ -43,7 +43,7 @@ public class ColheitaService {
 	 * Atualiza um Colheita com as informações fornecidas.
 	 *
 	 * @param id_colheita o ID do Colheita a ser atualizado.
-	 * @param usuario o Colheita com as novas informações.
+	 * @param colheita o Colheita com as novas informações.
 	 * @return true se a Colheita foi atualizada com sucesso, caso contrário, false.
 	 */
 	public static boolean atualizarColheita(int id_colheita, Colheita colheita) {
