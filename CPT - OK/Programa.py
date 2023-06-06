@@ -294,7 +294,7 @@ while (iniciar):
                 
                 elif (opcao == 3):
                     # EDITAR RECEPTOR
-                    Receptor.editarReceptor(dsn, listaReceptores, listaDestinos, emails_cadastrados, cel_cadastrados)
+                    Receptor.editarReceptor(dsn, listaReceptores, listaDestinos, listaAgendamentos, emails_cadastrados, cel_cadastrados)
                 
                 elif (opcao == 4):
                     # EXCLUIR RECEPTOR
@@ -354,7 +354,7 @@ while (iniciar):
                 
                 elif (opcao == 3):
                     # EDITAR VOLUNTÁRIO
-                    Voluntario.editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios, emails_cadastrados, cel_cadastrados)
+                    Voluntario.editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios, listaAgendamentos, emails_cadastrados, cel_cadastrados)
                 
                 elif (opcao == 4):
                     # EXCLUIR VOLUNTÁRIO

@@ -77,7 +77,17 @@ class Voluntario(Usuario):
                     retornoPerfil += f"\n 10.{plantio_numero}. ID: {plantio.id_plantio} | ALIMENTO: {plantio.alimento.nome_alimento}\n"
                 else:
                     retornoPerfil += f" 10.{plantio_numero}. ID: {plantio.id_plantio} | ALIMENTO: {plantio.alimento.nome_alimento}\n"
-        retornoPerfil += "11. SAIR\n"
+        retornoPerfil += "11. AGENDAMENTOS: "
+        if len(voluntario_buscado.agendamentos_voluntario) == 0:
+            retornoPerfil += "NENHUM AGENDAMENTO REALIZADO.\n"
+        else:
+            for i, agendamento in enumerate(voluntario_buscado.agendamentos_voluntario):
+                agendamento_numero = f"{i+1:02d}"
+                if i == 0:
+                    retornoPerfil += f"\n 11.{agendamento_numero}. ID: {agendamento.id_agendamento} | DATA: {Funcoes.formatarData(agendamento.data_agendamento)}\n"
+                else:
+                    retornoPerfil += f" 11.{agendamento_numero}. ID: {agendamento.id_agendamento} | DATA: {Funcoes.formatarData(agendamento.data_agendamento)}\n"
+        retornoPerfil += "12. SAIR\n"
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
@@ -113,6 +123,9 @@ class Voluntario(Usuario):
         # SETANDO OS PLANTIOS DO NOVO VOLUNTARIO
         plantios_voluntario = []
 
+        # SETANDO OS AGENDAMENTOS DO NOVO VOLUNTARIO
+        agendamentos_voluntario = []
+
         # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
@@ -121,16 +134,6 @@ class Voluntario(Usuario):
             # FAZENDO INSERT NO BANCO DE DADOS
             cursor.execute("INSERT INTO voluntario (id_usuario, data_registro_voluntario) VALUES (:1, TO_DATE(:2, 'DD/MM/YYYY'))", (id_usuario, data_registro_voluntario))
             cursor.connection.commit()
-
-            if len(colheitas_voluntario) != 0:
-                for colheita_voluntario in colheitas_voluntario:
-                    cursor.execute("INSERT INTO colheita_voluntario (id_colheita, id_usuario) VALUES (:1, :2)", (colheita_voluntario.id_colheita, id_usuario))
-                    cursor.connection.commit()
-
-            if len(plantios_voluntario) != 0:
-                for plantio_voluntario in plantios_voluntario:
-                    cursor.execute("INSERT INTO plantio_voluntario (id_plantio, id_usuario) VALUES (:1, :2)", (plantio_voluntario.id_plantio, id_usuario))
-                    cursor.connection.commit()
 
             # FAZENDO INSERT NO CONSOLE
             novo_voluntario.id_usuario = id_usuario
@@ -143,6 +146,7 @@ class Voluntario(Usuario):
             novo_voluntario.data_registro_voluntario = data_registro_voluntario
             novo_voluntario.colheitas_voluntario = colheitas_voluntario
             novo_voluntario.plantios_voluntario = plantios_voluntario
+            novo_voluntario.agendamentos_voluntario = agendamentos_voluntario
 
             listaVoluntarios.append(novo_voluntario)
             listaUsuariosNaoVoluntarios.remove(usuario_buscado)
@@ -158,7 +162,7 @@ class Voluntario(Usuario):
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios, emails_cadastrados, cel_cadastrados):
+    def editarVoluntario(dsn, listaVoluntarios, listaColheitas, listaPlantios, listaAgendamentos, emails_cadastrados, cel_cadastrados):
         perfilVoluntario = True
 
         if (len(listaVoluntarios) == 0):
@@ -172,7 +176,7 @@ class Voluntario(Usuario):
 
             while (perfilVoluntario):
                 opcao = int(input(Voluntario.perfilVoluntario(voluntario_buscado)))
-                opcao = int(Funcoes.validarOpcao(opcao, 1, 11, Voluntario.perfilVoluntario(voluntario_buscado)))
+                opcao = int(Funcoes.validarOpcao(opcao, 1, 12, Voluntario.perfilVoluntario(voluntario_buscado)))
 
                 if (opcao == 1):
                     # EDITAR O ID DO VOLUNTARIO
@@ -278,6 +282,19 @@ class Voluntario(Usuario):
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 11):
+                    # EDITAR OS AGENDAMENTOS DO VOLUNTARIO
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR OS AGENDAMENTOS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR OS AGENDAMENTOS DO VOLUNTARIO DE ID {voluntario_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR OS AGENDAMENTOS DO VOLUNTARIO - SIM
+                       Voluntario.editarAgendamentos(dsn, voluntario_buscado, listaAgendamentos)
+                    
+                    elif (opcao == 2):
+                        # EDITAR OS AGENDAMENTOS DO VOLUNTARIO - NÃO
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 12):
                     perfilVoluntario = False
 
     def editarColheitas(dsn, voluntario_buscado, listaColheitas):
@@ -422,6 +439,89 @@ class Voluntario(Usuario):
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO PLANTIO DO VOLUNTÁRIO:")
             print(str(e))
 
+    def editarAgendamentos(dsn, voluntario_buscado, listaAgendamentos):
+        try:
+            novos_agendamentos_voluntario = []
+
+            if (len(listaAgendamentos) == 0):
+                input("NENHUM AGENDAMENTO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+
+            else:
+                adicionar = True
+
+                while (adicionar):
+                    Funcoes.exibirAgendamentosAdmin(listaAgendamentos)
+                    id_buscado = int(input("DIGITE O ID DO AGENDAMENTO QUE DESEJA INCLUIR AO VOLUNTÁRIO: \n"))
+                    agendamento_buscado = Funcoes.buscarAgendamentoPorId(id_buscado, listaAgendamentos)
+                    agendamento_buscado = Funcoes.validarAgendamentoBuscado(agendamento_buscado, listaAgendamentos)
+                    
+                    novos_agendamentos_voluntario.append(agendamento_buscado)
+
+                    opcao = int(input("DESEJA ADICIONAR MAIS UM AGENDAMENTO AO VOLUNTÁRIO?\n" + 
+                                          "01. SIM\n" + 
+                                          "02. NÃO\n"))
+                    
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, "DESEJA ADICIONAR MAIS UM AGENDAMENTO AO VOLUNTÁRIO?\n01. SIM\n02. NÃO\n"))
+
+                    if (opcao == 1):
+                        adicionar = True
+                    
+                    elif (opcao == 2):
+                        adicionar = False
+
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
+            conn = Funcoes.connect(dsn)
+            cursor = conn.cursor()
+
+            try:
+                # FAZENDO UPDATE NO BANCO DE DADOS              
+                agendamentos_excluir = []
+
+                for agendamento_antigo_voluntario in voluntario_buscado.agendamentos_voluntario:
+                    agendamento_encontrado = False
+                    for agendamento_voluntario in novos_agendamentos_voluntario:
+                        if agendamento_antigo_voluntario.id_agendamento == agendamento_voluntario.id_agendamento:
+                            agendamento_encontrado = True
+                            cursor.execute("UPDATE agendamento SET id_usuario = :1 WHERE id_agendamento = :2", (voluntario_buscado.id_usuario, agendamento_antigo_voluntario.id_agendamento))
+                            cursor.connection.commit()
+                            break
+
+                    if not agendamento_encontrado:
+                        agendamentos_excluir.append(agendamento_antigo_voluntario.id_agendamento)
+
+                for id_agendamento_excluir in agendamentos_excluir:
+                    cursor.execute("DELETE FROM agendamento WHERE id_agendamento = :1", (id_agendamento_excluir,))
+                    cursor.connection.commit()
+
+                for agendamento_voluntario in novos_agendamentos_voluntario:
+                    cursor.execute("UPDATE agendamento SET id_usuario = :1 WHERE id_agendamento = :2", (voluntario_buscado.id_usuario, agendamento_voluntario.id_agendamento))
+                    cursor.connection.commit()
+
+                # FAZENDO UPDATE NO CONSOLE
+                voluntario_buscado.agendamentos_voluntario = novos_agendamentos_voluntario
+
+                for agendamento in voluntario_buscado.agendamentos_voluntario:
+                    agendamento.usuario = voluntario_buscado   
+
+                print("AGENDAMENTOS DO VOLUNTÁRIO EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+            except sqlite3.DatabaseError as db_error:
+                print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS PLANTIOS:")
+                print(str(db_error))
+
+            finally:
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
+                Funcoes.disconnect(conn, cursor)
+
+        except ValueError as value_error:
+            print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO NOVO PLANTIO:")
+            print(str(value_error))
+
+        except Exception as e:
+            print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO PLANTIO DO VOLUNTÁRIO:")
+            print(str(e))
+
     def adicionar_plantio(self, plantio_adicionar):
         for plantio_existente in self.plantios_voluntario:
             if plantio_existente.id_plantio == plantio_adicionar.id_plantio:
@@ -444,6 +544,18 @@ class Voluntario(Usuario):
         for colheita_existente in self.colheitas_voluntario:
             if colheita_existente.id_colheita == colheita_remover.id_colheita:
                 self.colheitas_voluntario.remove(colheita_existente)
+                return
+
+    def adicionar_agendamento(self, agendamento_adicionar):
+        for agendamento_existente in self.agendamentos_voluntario:
+            if agendamento_existente.id_agendamento == agendamento_adicionar.id_agendamento:
+                return
+        self.agendamentos_voluntario.append(agendamento_adicionar)
+
+    def remover_agendamento(self, agendamento_remover):
+        for agendamento_existente in self.agendamentos_voluntario:
+            if agendamento_existente.id_agendamento == agendamento_remover.id_agendamento:
+                self.agendamentos_voluntario.remove(agendamento_existente)
                 return
 
     def excluirVoluntario(dsn, listaVoluntarios):

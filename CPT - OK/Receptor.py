@@ -64,7 +64,17 @@ class Receptor(Usuario):
                     retornoPerfil += f"\n 10.{destino_numero}. ID: {destino.id_destino} | ENDEREÇO: {destino.endereco_destino}\n"
                 else:
                     retornoPerfil += f" 10.{destino_numero}. ID: {destino.id_destino} | ENDEREÇO: {destino.endereco_destino}\n"
-        retornoPerfil += "11. SAIR\n"
+        retornoPerfil += "11. AGENDAMENTOS: "
+        if len(receptor_buscado.agendamentos_receptor) == 0:
+            retornoPerfil += "NENHUM AGENDAMENTO REALIZADO.\n"
+        else:
+            for i, agendamento in enumerate(receptor_buscado.agendamentos_receptor):
+                agendamento_numero = f"{i+1:02d}"
+                if i == 0:
+                    retornoPerfil += f"\n 11.{agendamento_numero}. ID: {agendamento.id_agendamento} | DATA: {Funcoes.formatarData(agendamento.data_agendamento)}\n"
+                else:
+                    retornoPerfil += f" 11.{agendamento_numero}. ID: {agendamento.id_agendamento} | DATA: {Funcoes.formatarData(agendamento.data_agendamento)}\n"
+        retornoPerfil += "12. SAIR\n"
         retornoPerfil += Funcoes.menuRodape()
         return retornoPerfil
     
@@ -155,6 +165,9 @@ class Receptor(Usuario):
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO DESTINO DO RECEPTOR:")
             print(str(e))
         
+        # SETANDO OS AGENDAMENTOS DO NOVO RECEPTOR
+        agendamentos_receptor = []
+
         # CRIANDO CONEXÃO COM O BANCO DE DADOS
         conn = Funcoes.connect(dsn)
         cursor = conn.cursor()
@@ -180,6 +193,7 @@ class Receptor(Usuario):
             novo_receptor.carga_receptor = carga_receptor
             novo_receptor.endereco_receptor = endereco_receptor
             novo_receptor.destinos_receptor = destinos_receptor
+            novo_receptor.agendamentos_receptor = agendamentos_receptor
             
             listaReceptores.append(novo_receptor)
             listaUsuariosNaoReceptores.remove(usuario_buscado)
@@ -198,7 +212,7 @@ class Receptor(Usuario):
             # FECHANDO CONEXÃO COM O BANCO DE DADOS
             Funcoes.disconnect(conn, cursor)
 
-    def editarReceptor(dsn, listaReceptores, listaDestinos, emails_cadastrados, cel_cadastrados):
+    def editarReceptor(dsn, listaReceptores, listaDestinos, listaAgendamentos, emails_cadastrados, cel_cadastrados):
         perfilReceptor = True
 
         if (len(listaReceptores) == 0):
@@ -212,7 +226,7 @@ class Receptor(Usuario):
 
             while (perfilReceptor):
                 opcao = int(input(Receptor.perfilReceptor(receptor_buscado)))
-                opcao = int(Funcoes.validarOpcao(opcao, 1, 11, Receptor.perfilReceptor(receptor_buscado)))
+                opcao = int(Funcoes.validarOpcao(opcao, 1, 12, Receptor.perfilReceptor(receptor_buscado)))
 
                 if (opcao == 1):
                     # EDITAR O ID DO RECEPTOR
@@ -327,6 +341,19 @@ class Receptor(Usuario):
                         input("TECLE ENTER PARA VOLTAR AO MENU.")
 
                 elif (opcao == 11):
+                    # EDITAR OS AGENDAMENTOS DO RECEPTOR
+                    opcao = int(input(Funcoes.confirmarAcao(f"EDITAR OS AGENDAMENTOS DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, Funcoes.confirmarAcao(f"EDITAR OS AGENDAMENTOS DO RECEPTOR DE ID {receptor_buscado.id_usuario}")))
+                    
+                    if (opcao == 1):
+                       # EDITAR OS AGENDAMENTOS DO RECEPTOR - SIM
+                       Receptor.editarAgendamentos(dsn, receptor_buscado, listaAgendamentos)
+                    
+                    elif (opcao == 2):
+                        # EDITAR OS AGENDAMENTOS DO RECEPTOR - NÃO
+                        input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+                elif (opcao == 12):
                     perfilReceptor = False
 
     def editarCarga(dsn, receptor_buscado):
@@ -472,6 +499,89 @@ class Receptor(Usuario):
             print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO DESTINO DO RECEPTOR:")
             print(str(e))
 
+    def editarAgendamentos(dsn, receptor_buscado, listaAgendamentos):
+        try:
+            novos_agendamentos_receptor = []
+
+            if (len(listaAgendamentos) == 0):
+                input("NENHUM AGENDAMENTO CADASTRADO. TECLE ENTER PARA VOLTAR AO MENU\n")
+
+            else:
+                adicionar = True
+
+                while (adicionar):
+                    Funcoes.exibirAgendamentosAdmin(listaAgendamentos)
+                    id_buscado = int(input("DIGITE O ID DO AGENDAMENTO QUE DESEJA INCLUIR AO RECEPTOR: \n"))
+                    agendamento_buscado = Funcoes.buscarAgendamentoPorId(id_buscado, listaAgendamentos)
+                    agendamento_buscado = Funcoes.validarAgendamentoBuscado(agendamento_buscado, listaAgendamentos)
+                    
+                    novos_agendamentos_receptor.append(agendamento_buscado)
+
+                    opcao = int(input("DESEJA ADICIONAR MAIS UM AGENDAMENTO AO RECEPTOR?\n" + 
+                                          "01. SIM\n" + 
+                                          "02. NÃO\n"))
+                    
+                    opcao = int(Funcoes.validarOpcao(opcao, 1, 2, "DESEJA ADICIONAR MAIS UM AGENDAMENTO AO RECEPTOR?\n01. SIM\n02. NÃO\n"))
+
+                    if (opcao == 1):
+                        adicionar = True
+                    
+                    elif (opcao == 2):
+                        adicionar = False
+
+            # CRIANDO CONEXÃO COM O BANCO DE DADOS
+            conn = Funcoes.connect(dsn)
+            cursor = conn.cursor()
+
+            try:
+                # FAZENDO UPDATE NO BANCO DE DADOS
+                agendamentos_excluir = []
+
+                for agendamento_antigo_receptor in receptor_buscado.agendamentos_receptor:
+                    agendamento_encontrado = False
+                    for agendamento_receptor in novos_agendamentos_receptor:
+                        if agendamento_antigo_receptor.id_agendamento == agendamento_receptor.id_agendamento:
+                            agendamento_encontrado = True
+                            cursor.execute("UPDATE agendamento SET id_usuario = :1 WHERE id_agendamento = :2", (receptor_buscado.id_usuario, agendamento_antigo_receptor.id_agendamento))
+                            cursor.connection.commit()
+                            break
+
+                    if not agendamento_encontrado:
+                        agendamentos_excluir.append(agendamento_antigo_receptor.id_agendamento)
+
+                for id_agendamento_excluir in agendamentos_excluir:
+                    cursor.execute("DELETE FROM agendamento WHERE id_agendamento = :1", (id_agendamento_excluir,))
+                    cursor.connection.commit()
+
+                for agendamento_receptor in novos_agendamentos_receptor:
+                    cursor.execute("UPDATE agendamento SET id_usuario = :1 WHERE id_agendamento = :2", (receptor_buscado.id_usuario, agendamento_receptor.id_agendamento))
+                    cursor.connection.commit()
+
+                # FAZENDO UPDATE NO CONSOLE
+                receptor_buscado.agendamentos_receptor = novos_agendamentos_receptor
+
+                for agendamento in receptor_buscado.agendamentos_receptor:
+                    agendamento.usuario = receptor_buscado   
+
+                print("AGENDAMENTOS DO RECEPTOR EDITADOS COM SUCESSO!")
+                input("TECLE ENTER PARA VOLTAR AO MENU.")
+
+            except sqlite3.DatabaseError as db_error:
+                print("ERRO NO BANCO DE DADOS DURANTE A ATUALIZAÇÃO DOS PLANTIOS:")
+                print(str(db_error))
+
+            finally:
+                # FECHANDO CONEXÃO COM O BANCO DE DADOS
+                Funcoes.disconnect(conn, cursor)
+
+        except ValueError as value_error:
+            print("ERRO DE VALOR DURANTE A DIGITAÇÃO DO NOVO PLANTIO:")
+            print(str(value_error))
+
+        except Exception as e:
+            print("OCORREU UM ERRO DURANTE A DIGITAÇÃO DO PLANTIO DO RECEPTOR:")
+            print(str(e))
+
     def adicionar_destino(self, destino_adicionar):
         for destino_existente in self.destinos_receptor:
             if destino_existente.id_destino == destino_adicionar.id_destino:
@@ -482,6 +592,18 @@ class Receptor(Usuario):
         for destino_existente in self.destinos_receptor:
             if destino_existente.id_destino == destino_remover.id_destino:
                 self.destinos_receptor.remove(destino_existente)
+                return
+
+    def adicionar_agendamento(self, agendamento_adicionar):
+        for agendamento_existente in self.agendamentos_receptor:
+            if agendamento_existente.id_agendamento == agendamento_adicionar.id_agendamento:
+                return
+        self.agendamentos_receptor.append(agendamento_adicionar)
+
+    def remover_agendamento(self, agendamento_remover):
+        for agendamento_existente in self.agendamentos_receptor:
+            if agendamento_existente.id_agendamento == agendamento_remover.id_agendamento:
+                self.agendamentos_receptor.remove(agendamento_existente)
                 return
 
     def excluirReceptor(dsn, listaReceptores):
