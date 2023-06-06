@@ -1,3 +1,0 @@
-Agendamento:
-- Atualizar Usuario não funciona
-- Testar o deletar agendamento
