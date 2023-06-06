@@ -96,7 +96,8 @@ public class UsuarioService {
 	public static Usuario validarLogin(String email_usuario, String senha_usuario) {
 	    Usuario usuario_login = UsuarioDAO.buscarUsuarioPorEmail(email_usuario);
 
-	    if (usuario_login != null && senha_usuario.equals(usuario_login.getSenha_usuario())) {
+	    if (usuario_login != null && senha_usuario.equals(usuario_login.getSenha_usuario()) 
+	    		&& usuario_login.getStatus_usuario().equalsIgnoreCase("ativo") ) {
 	        return usuario_login;
 	    } else {
 	        return null;

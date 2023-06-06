@@ -1,4 +1,4 @@
-import { validaCampo } from "../../../utils/validacao";
+import { validaNumber } from "../../../utils/validacao";
 import Campo from "../../Campo";
 
 import { useMutation } from "react-query";
@@ -115,7 +115,7 @@ export default function NovaDoacao({ setTela, setAnimation, setSaldo }) {
         e.preventDefault();
 
         // console.log(valorDoacao)
-        if (validaCampo(valorDoacao, setErrorValor)) {
+        if (validaNumber(valorDoacao, setErrorValor)) {
 
             const usuario = typeof window !== 'undefined' ? JSON.parse(sessionStorage.getItem("usuario")) : null;
             const usuarioDoador = typeof window !== 'undefined' ? JSON.parse(sessionStorage.getItem("doador")) : null;

@@ -29,7 +29,7 @@ public class ViaCepService {
 	 *
 	 * @return os dados do tempo do endereço de acordo com o CEP da API externa do ViaCep.
 	 */
-    public String getEndereco(String cep) throws ClientProtocolException, IOException {
+    public String getEndereco(String cep, String numero) throws ClientProtocolException, IOException {
        
         String endereco = null;
        
@@ -55,7 +55,7 @@ public class ViaCepService {
                 String uf = jsonObject.get("uf").getAsString();
                 String cepRetornado = jsonObject.get("cep").getAsString();
                 
-                endereco = logradouro + ", " + bairro + ", " + localidade + " - " + uf + " - " + cepRetornado;
+                endereco = "{\"endereco\": \"" + logradouro + ", " + numero + " - " +  bairro + ", " + localidade + " - " + uf + " - " + cepRetornado + "\"}";
             }
         }
        

@@ -29,14 +29,14 @@ public class ViaCepResource {
 	 * @return uma resposta contendo os dados do CEP em formato JSON.
 	 */
     @GET
-    @Path("/{cep}")
+    @Path("/{cep}/{numero}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getEnderecoByCep(@PathParam("cep") String cep) {
+    public Response getEnderecoByCep(@PathParam("cep") String cep, @PathParam("numero") String numero) {
         ViaCepService viaCepService = new ViaCepService();
         String endereco = null;
        
         try {
-            endereco = viaCepService.getEndereco(cep);
+            endereco = viaCepService.getEndereco(cep, numero);
         } catch (Exception e) {
             e.printStackTrace();
             return Response.serverError().build();
