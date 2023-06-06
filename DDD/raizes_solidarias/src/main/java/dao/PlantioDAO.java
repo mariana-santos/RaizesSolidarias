@@ -306,7 +306,6 @@ public class PlantioDAO extends Repository {
 		return null;
 	}
 
-	
 	/**
 	 * Deleta um plantio do banco de dados pelo ID do plantio.
 	 *
