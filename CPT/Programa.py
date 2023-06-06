@@ -2,7 +2,8 @@
 # OS DADOS PARA VALIDAÇÃO DAS ALTERAÇÕES NO BANCO SÃO:  
 # dsn = cx_Oracle.makedsn(host='oracle.fiap.com.br', port=1521, sid='ORCL')
 # conn = cx_Oracle.connect(user='RM97503', password='280304', dsn=dsn)
-# PARA LOGAR COMO ADMIN, UTILIZAR O EMAIL "admin" E A SENHA "admin"
+# 
+# NO CASO DE DELETAR USUÁRIOS (RECEPTOR, DOADOR OU VOLUNTÁRIO) OPTAMOS POR NÃO FAZER O DELETE E SIM ALTERAR O STATUS DO MESMO PARA MANTER AS AÇÕES JÁ REALIZADAS NO BANCO DE DADOS
 
 # IMPORTANDO CLASSES
 from Agendamento import Agendamento
