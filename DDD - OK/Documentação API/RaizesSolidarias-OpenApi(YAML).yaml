@@ -6,8 +6,6 @@ info:
 servers:
   - url: http://localhost:8080
     variables: {}
-  - url: https://localhost:8080
-    variables: {}
 paths:
   /agendamento:
     get:
@@ -21,9 +19,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Agendamento
@@ -53,9 +48,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /agendamento/1:
     get:
       tags:
@@ -68,9 +60,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     put:
       tags:
         - Agendamento
@@ -102,9 +91,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /agendamento/usuario/2:
     get:
       tags:
@@ -117,9 +103,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /agendamento/14:
     delete:
       tags:
@@ -132,9 +115,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /alimento:
     get:
       tags:
@@ -147,9 +127,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Alimento
@@ -181,9 +158,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /alimento/11:
     get:
       tags:
@@ -196,9 +170,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     put:
       tags:
         - Alimento
@@ -232,9 +203,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Alimento
@@ -246,9 +214,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /colheita_voluntario:
     get:
       tags:
@@ -261,9 +226,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Colheita_Voluntario
@@ -293,9 +255,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /colheita_voluntario/1/1:
     get:
       tags:
@@ -308,9 +267,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /colheita_voluntario/1/5/17:
     put:
       tags:
@@ -339,9 +295,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /colheita_voluntario/1/16:
     delete:
       tags:
@@ -354,9 +307,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /colheita:
     get:
       tags:
@@ -369,9 +319,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Colheita
@@ -397,9 +344,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /colheita/1:
     get:
       tags:
@@ -412,9 +356,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /colheita/12:
     put:
       tags:
@@ -443,9 +384,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Colheita
@@ -457,9 +395,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /destino:
     get:
       tags:
@@ -472,9 +407,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Destino
@@ -504,9 +436,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /destino/2:
     get:
       tags:
@@ -519,9 +448,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /destino/12:
     put:
       tags:
@@ -554,9 +480,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Destino
@@ -568,9 +491,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /doacao:
     get:
       tags:
@@ -583,9 +503,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Doação
@@ -615,9 +532,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /doacao/3:
     get:
       tags:
@@ -630,9 +544,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /doacao/15:
     put:
       tags:
@@ -665,9 +576,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Doação
@@ -679,9 +587,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /doador:
     get:
       tags:
@@ -694,9 +599,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Doador
@@ -736,9 +638,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /doador/3:
     get:
       tags:
@@ -751,9 +650,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     put:
       tags:
         - Doador
@@ -793,9 +689,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Doador
@@ -807,9 +700,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /plantio_colheita:
     get:
       tags:
@@ -822,9 +712,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Plantio_Colheita
@@ -854,9 +741,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_colheita/plantio/1:
     get:
       tags:
@@ -869,9 +753,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_colheita/colheita/1:
     get:
       tags:
@@ -884,9 +765,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_colheita/1/1:
     get:
       tags:
@@ -899,9 +777,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_colheita/1/8/5:
     put:
       tags:
@@ -930,9 +805,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_colheita/8/1:
     delete:
       tags:
@@ -945,9 +817,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /plantio_voluntario:
     get:
       tags:
@@ -960,9 +829,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Plantio_Voluntario
@@ -992,9 +858,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_voluntario/plantio/1:
     get:
       tags:
@@ -1007,9 +870,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_voluntario/voluntario/1:
     get:
       tags:
@@ -1022,9 +882,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_voluntario/1/1:
     get:
       tags:
@@ -1037,9 +894,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_voluntario/2-5/3-4:
     put:
       tags:
@@ -1070,9 +924,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio_voluntario/1/2:
     delete:
       tags:
@@ -1085,9 +936,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /receptor_destino:
     get:
       tags:
@@ -1100,9 +948,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Receptor_Destino
@@ -1132,9 +977,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /receptor_destino/receptor/1:
     get:
       tags:
@@ -1147,9 +989,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /receptor_destino/destino/1:
     get:
       tags:
@@ -1162,9 +1001,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /receptor_destino/1/1:
     get:
       tags:
@@ -1177,9 +1013,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /receptor_destino/4-4/8-7:
     put:
       tags:
@@ -1210,9 +1043,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /receptor_destino/4/4:
     delete:
       tags:
@@ -1225,9 +1055,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /plantio:
     get:
       tags:
@@ -1240,9 +1067,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Plantio
@@ -1272,9 +1096,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio/11:
     get:
       tags:
@@ -1287,9 +1108,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio/12:
     put:
       tags:
@@ -1322,9 +1140,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio/plantios:
     post:
       tags:
@@ -1365,9 +1180,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /plantio/13:
     delete:
       tags:
@@ -1380,9 +1192,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /receptor:
     get:
       tags:
@@ -1395,9 +1204,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Receptor
@@ -1437,9 +1243,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /receptor/25:
     get:
       tags:
@@ -1452,9 +1255,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /receptor/2:
     put:
       tags:
@@ -1495,9 +1295,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Receptor
@@ -1509,9 +1306,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /usuario:
     get:
       tags:
@@ -1524,9 +1318,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Usuário
@@ -1560,9 +1351,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /usuario/1:
     get:
       tags:
@@ -1575,9 +1363,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /usuario/22:
     put:
       tags:
@@ -1614,9 +1399,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Usuário
@@ -1628,9 +1410,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /usuario/login:
     post:
       tags:
@@ -1657,9 +1436,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /voluntario:
     get:
       tags:
@@ -1672,9 +1448,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     post:
       tags:
         - Voluntário
@@ -1712,9 +1485,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /voluntario/18:
     get:
       tags:
@@ -1727,9 +1497,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /voluntario/6:
     put:
       tags:
@@ -1768,9 +1535,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
     delete:
       tags:
         - Voluntário
@@ -1782,9 +1546,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: https://localhost:8080
-          variables: {}
   /endereco/01535000:
     get:
       tags:
@@ -1797,9 +1558,6 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
   /tempo:
     get:
       tags:
@@ -1812,9 +1570,18 @@ paths:
           description: ''
           headers: {}
       deprecated: false
-      servers:
-        - url: http://localhost:8080
-          variables: {}
+  /noticia:
+    get:
+      tags:
+        - Noticia
+      summary: Listar Notícias
+      operationId: ListarNotícias
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
 components:
   schemas:
     AtualizarAgendamentoRequest:
@@ -2717,3 +2484,4 @@ tags:
   - name: Voluntário
   - name: ViaCep
   - name: Tempo
+  - name: Noticia

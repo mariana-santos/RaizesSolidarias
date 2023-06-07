@@ -27,6 +27,8 @@ public class ViaCepResource {
 	 * Recupera os dados do CEP da API externa do ViaCep.
 	 *
 	 * @param cep O CEP a ser pesquisado
+	 * @param numero O numero do endereco
+	 * 
 	 * @return uma resposta contendo os dados do CEP em formato JSON.
 	 */
     @GET

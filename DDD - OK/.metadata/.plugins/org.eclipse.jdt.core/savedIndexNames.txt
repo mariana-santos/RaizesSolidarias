@@ -1,0 +1,2 @@
+INDEX VERSION 1.132+C:\Users\kauec\OneDrive\Documentos\GitHub\GS2\DDD - OK\.metadata\.plugins\org.eclipse.jdt.core
+1813302561.index

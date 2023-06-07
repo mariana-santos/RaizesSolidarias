@@ -1,2 +1,0 @@
-//TODO: Enviar os erros de chave restrita violada do banco (email, cpf, celular) na response, caso existam (UsuarioResource linha 86)
-//TODO: Método buscar agendamentos por id do usuário (Agendamento Resource)

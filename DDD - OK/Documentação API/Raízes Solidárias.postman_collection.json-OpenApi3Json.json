@@ -9,10 +9,6 @@
     {
       "url": "http://localhost:8080",
       "variables": {}
-    },
-    {
-      "url": "https://localhost:8080",
-      "variables": {}
     }
   ],
   "paths": {
@@ -30,13 +26,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -82,13 +72,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/agendamento/1": {
@@ -105,13 +89,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -159,13 +137,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/agendamento/usuario/2": {
@@ -182,13 +154,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/agendamento/14": {
@@ -205,13 +171,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/alimento": {
@@ -228,13 +188,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -280,13 +234,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/alimento/11": {
@@ -303,13 +251,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -357,13 +299,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -378,13 +314,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/colheita_voluntario": {
@@ -401,13 +331,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -455,13 +379,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/colheita_voluntario/1/1": {
@@ -478,13 +396,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/colheita_voluntario/1/5/17": {
@@ -528,13 +440,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/colheita_voluntario/1/16": {
@@ -551,13 +457,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/colheita": {
@@ -574,13 +474,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -620,13 +514,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/colheita/1": {
@@ -643,13 +531,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/colheita/12": {
@@ -693,13 +575,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -714,13 +590,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/destino": {
@@ -737,13 +607,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -787,13 +651,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/destino/2": {
@@ -810,13 +668,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/destino/12": {
@@ -864,13 +716,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -885,13 +731,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/doacao": {
@@ -908,13 +748,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -960,13 +794,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/doacao/3": {
@@ -983,13 +811,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/doacao/15": {
@@ -1039,13 +861,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -1060,13 +876,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/doador": {
@@ -1083,13 +893,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1143,13 +947,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/doador/3": {
@@ -1166,13 +964,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "put": {
         "tags": [
@@ -1226,13 +1018,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -1247,13 +1033,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_colheita": {
@@ -1270,13 +1050,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1324,13 +1098,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_colheita/plantio/1": {
@@ -1347,13 +1115,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_colheita/colheita/1": {
@@ -1370,13 +1132,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_colheita/1/1": {
@@ -1393,13 +1149,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_colheita/1/8/5": {
@@ -1443,13 +1193,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_colheita/8/1": {
@@ -1466,13 +1210,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_voluntario": {
@@ -1489,13 +1227,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1543,13 +1275,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_voluntario/plantio/1": {
@@ -1566,13 +1292,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_voluntario/voluntario/1": {
@@ -1589,13 +1309,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_voluntario/1/1": {
@@ -1612,13 +1326,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_voluntario/2-5/3-4": {
@@ -1664,13 +1372,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio_voluntario/1/2": {
@@ -1687,13 +1389,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor_destino": {
@@ -1710,13 +1406,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1764,13 +1454,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor_destino/receptor/1": {
@@ -1787,13 +1471,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor_destino/destino/1": {
@@ -1810,13 +1488,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor_destino/1/1": {
@@ -1833,13 +1505,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor_destino/4-4/8-7": {
@@ -1885,13 +1551,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor_destino/4/4": {
@@ -1908,13 +1568,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio": {
@@ -1931,13 +1585,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -1983,13 +1631,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio/11": {
@@ -2006,13 +1648,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio/12": {
@@ -2062,13 +1698,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio/plantios": {
@@ -2132,13 +1762,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/plantio/13": {
@@ -2155,13 +1779,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor": {
@@ -2178,13 +1796,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -2238,13 +1850,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor/25": {
@@ -2261,13 +1867,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/receptor/2": {
@@ -2323,13 +1923,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -2344,13 +1938,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/usuario": {
@@ -2367,13 +1955,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -2421,13 +2003,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/usuario/1": {
@@ -2444,13 +2020,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/usuario/22": {
@@ -2502,13 +2072,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -2523,13 +2087,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/usuario/login": {
@@ -2571,13 +2129,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/voluntario": {
@@ -2594,13 +2146,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "post": {
         "tags": [
@@ -2652,13 +2198,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/voluntario/18": {
@@ -2675,13 +2215,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/voluntario/6": {
@@ -2735,13 +2269,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       },
       "delete": {
         "tags": [
@@ -2756,13 +2284,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "https://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/endereco/01535000": {
@@ -2779,13 +2301,7 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
-          }
-        ]
+        "deprecated": false
       }
     },
     "/tempo": {
@@ -2802,13 +2318,24 @@
             "headers": {}
           }
         },
-        "deprecated": false,
-        "servers": [
-          {
-            "url": "http://localhost:8080",
-            "variables": {}
+        "deprecated": false
+      }
+    },
+    "/noticia": {
+      "get": {
+        "tags": [
+          "Noticia"
+        ],
+        "summary": "Listar Notícias",
+        "operationId": "ListarNotícias",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
           }
-        ]
+        },
+        "deprecated": false
       }
     }
   },
@@ -4060,6 +3587,9 @@
     },
     {
       "name": "Tempo"
+    },
+    {
+      "name": "Noticia"
     }
   ]
 }

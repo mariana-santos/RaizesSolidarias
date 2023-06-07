@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "f03d6148-12e3-42be-95b1-b2c42a123be3",
 		"name": "Raízes Solidárias",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "21551931",
 		"_collection_link": "https://crimson-flare-530638.postman.co/workspace/FIAP~84ce056c-d21b-4ac8-bba8-27bf3bf27d17/collection/21551931-f03d6148-12e3-42be-95b1-b2c42a123be3?action=share&creator=21551931&source=collection_link"
 	},
@@ -15,7 +15,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/agendamento"
+						"url": {
+							"raw": "http://localhost:8080/agendamento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento"
+							]
+						}
 					},
 					"response": []
 				},
@@ -24,7 +34,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/agendamento/1"
+						"url": {
+							"raw": "http://localhost:8080/agendamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -33,7 +54,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/agendamento/usuario/2"
+						"url": {
+							"raw": "http://localhost:8080/agendamento/usuario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento",
+								"usuario",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
@@ -51,7 +84,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/agendamento/1"
+						"url": {
+							"raw": "http://localhost:8080/agendamento/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -69,7 +113,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/agendamento"
+						"url": {
+							"raw": "http://localhost:8080/agendamento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento"
+							]
+						}
 					},
 					"response": []
 				},
@@ -78,7 +132,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/agendamento/14"
+						"url": {
+							"raw": "localhost:8080/agendamento/14",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"agendamento",
+								"14"
+							]
+						}
 					},
 					"response": []
 				}
@@ -92,7 +156,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/alimento"
+						"url": {
+							"raw": "http://localhost:8080/alimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimento"
+							]
+						}
 					},
 					"response": []
 				},
@@ -101,7 +175,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/alimento/11"
+						"url": {
+							"raw": "http://localhost:8080/alimento/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimento",
+								"11"
+							]
+						}
 					},
 					"response": []
 				},
@@ -119,7 +204,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/alimento/11"
+						"url": {
+							"raw": "http://localhost:8080/alimento/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimento",
+								"11"
+							]
+						}
 					},
 					"response": []
 				},
@@ -137,7 +233,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/alimento"
+						"url": {
+							"raw": "http://localhost:8080/alimento",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimento"
+							]
+						}
 					},
 					"response": []
 				},
@@ -146,7 +252,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/alimento/11"
+						"url": {
+							"raw": "localhost:8080/alimento/11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"alimento",
+								"11"
+							]
+						}
 					},
 					"response": []
 				}
@@ -160,7 +276,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/colheita_voluntario"
+						"url": {
+							"raw": "http://localhost:8080/colheita_voluntario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita_voluntario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -169,7 +295,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/colheita_voluntario/1/1"
+						"url": {
+							"raw": "http://localhost:8080/colheita_voluntario/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita_voluntario",
+								"1",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -187,7 +325,20 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/colheita_voluntario/1/5/17"
+						"url": {
+							"raw": "http://localhost:8080/colheita_voluntario/1/5/17",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita_voluntario",
+								"1",
+								"5",
+								"17"
+							]
+						}
 					},
 					"response": []
 				},
@@ -205,7 +356,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/colheita_voluntario"
+						"url": {
+							"raw": "http://localhost:8080/colheita_voluntario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita_voluntario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -214,7 +375,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/colheita_voluntario/1/16"
+						"url": {
+							"raw": "localhost:8080/colheita_voluntario/1/16",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita_voluntario",
+								"1",
+								"16"
+							]
+						}
 					},
 					"response": []
 				}
@@ -228,7 +400,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/colheita"
+						"url": {
+							"raw": "http://localhost:8080/colheita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita"
+							]
+						}
 					},
 					"response": []
 				},
@@ -237,7 +419,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/colheita/1"
+						"url": {
+							"raw": "http://localhost:8080/colheita/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -255,7 +448,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/colheita/12"
+						"url": {
+							"raw": "http://localhost:8080/colheita/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita",
+								"12"
+							]
+						}
 					},
 					"response": []
 				},
@@ -273,7 +477,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/colheita"
+						"url": {
+							"raw": "http://localhost:8080/colheita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita"
+							]
+						}
 					},
 					"response": []
 				},
@@ -282,7 +496,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/colheita/12"
+						"url": {
+							"raw": "localhost:8080/colheita/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"colheita",
+								"12"
+							]
+						}
 					},
 					"response": []
 				}
@@ -296,7 +520,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/destino"
+						"url": {
+							"raw": "http://localhost:8080/destino",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"destino"
+							]
+						}
 					},
 					"response": []
 				},
@@ -305,7 +539,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/destino/2"
+						"url": {
+							"raw": "http://localhost:8080/destino/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"destino",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
@@ -323,7 +568,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/destino/12"
+						"url": {
+							"raw": "http://localhost:8080/destino/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"destino",
+								"12"
+							]
+						}
 					},
 					"response": []
 				},
@@ -341,7 +597,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/destino"
+						"url": {
+							"raw": "http://localhost:8080/destino",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"destino"
+							]
+						}
 					},
 					"response": []
 				},
@@ -350,7 +616,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/destino/12"
+						"url": {
+							"raw": "localhost:8080/destino/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"destino",
+								"12"
+							]
+						}
 					},
 					"response": []
 				}
@@ -364,7 +640,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/doacao"
+						"url": {
+							"raw": "http://localhost:8080/doacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doacao"
+							]
+						}
 					},
 					"response": []
 				},
@@ -373,7 +659,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/doacao/3"
+						"url": {
+							"raw": "http://localhost:8080/doacao/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doacao",
+								"3"
+							]
+						}
 					},
 					"response": []
 				},
@@ -391,7 +688,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/doacao/15"
+						"url": {
+							"raw": "http://localhost:8080/doacao/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doacao",
+								"15"
+							]
+						}
 					},
 					"response": []
 				},
@@ -409,7 +717,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/doacao"
+						"url": {
+							"raw": "http://localhost:8080/doacao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doacao"
+							]
+						}
 					},
 					"response": []
 				},
@@ -418,7 +736,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/doacao/15"
+						"url": {
+							"raw": "localhost:8080/doacao/15",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doacao",
+								"15"
+							]
+						}
 					},
 					"response": []
 				}
@@ -432,7 +760,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/doador"
+						"url": {
+							"raw": "http://localhost:8080/doador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doador"
+							]
+						}
 					},
 					"response": []
 				},
@@ -441,7 +779,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/doador/3"
+						"url": {
+							"raw": "http://localhost:8080/doador/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doador",
+								"3"
+							]
+						}
 					},
 					"response": []
 				},
@@ -459,7 +808,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/doador/3"
+						"url": {
+							"raw": "http://localhost:8080/doador/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doador",
+								"3"
+							]
+						}
 					},
 					"response": []
 				},
@@ -477,7 +837,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/doador"
+						"url": {
+							"raw": "http://localhost:8080/doador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doador"
+							]
+						}
 					},
 					"response": []
 				},
@@ -486,7 +856,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/doador/3"
+						"url": {
+							"raw": "localhost:8080/doador/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"doador",
+								"3"
+							]
+						}
 					},
 					"response": []
 				}
@@ -500,7 +880,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_colheita"
+						"url": {
+							"raw": "http://localhost:8080/plantio_colheita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_colheita"
+							]
+						}
 					},
 					"response": []
 				},
@@ -509,7 +899,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_colheita/plantio/1"
+						"url": {
+							"raw": "http://localhost:8080/plantio_colheita/plantio/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_colheita",
+								"plantio",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -518,7 +920,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_colheita/colheita/1"
+						"url": {
+							"raw": "http://localhost:8080/plantio_colheita/colheita/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_colheita",
+								"colheita",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -527,7 +941,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_colheita/1/1"
+						"url": {
+							"raw": "http://localhost:8080/plantio_colheita/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_colheita",
+								"1",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -545,7 +971,20 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/plantio_colheita/1/8/5"
+						"url": {
+							"raw": "http://localhost:8080/plantio_colheita/1/8/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_colheita",
+								"1",
+								"8",
+								"5"
+							]
+						}
 					},
 					"response": []
 				},
@@ -563,7 +1002,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/plantio_colheita"
+						"url": {
+							"raw": "http://localhost:8080/plantio_colheita",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_colheita"
+							]
+						}
 					},
 					"response": []
 				},
@@ -572,7 +1021,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/plantio_colheita/8/1"
+						"url": {
+							"raw": "localhost:8080/plantio_colheita/8/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_colheita",
+								"8",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
@@ -586,7 +1046,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_voluntario"
+						"url": {
+							"raw": "http://localhost:8080/plantio_voluntario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_voluntario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -595,7 +1065,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_voluntario/plantio/1"
+						"url": {
+							"raw": "http://localhost:8080/plantio_voluntario/plantio/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_voluntario",
+								"plantio",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -604,7 +1086,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_voluntario/voluntario/1"
+						"url": {
+							"raw": "http://localhost:8080/plantio_voluntario/voluntario/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_voluntario",
+								"voluntario",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -613,7 +1107,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio_voluntario/1/1"
+						"url": {
+							"raw": "http://localhost:8080/plantio_voluntario/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_voluntario",
+								"1",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -631,7 +1137,19 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/plantio_voluntario/2-5/3-4"
+						"url": {
+							"raw": "http://localhost:8080/plantio_voluntario/2-5/3-4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_voluntario",
+								"2-5",
+								"3-4"
+							]
+						}
 					},
 					"response": []
 				},
@@ -649,7 +1167,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/plantio_voluntario"
+						"url": {
+							"raw": "http://localhost:8080/plantio_voluntario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_voluntario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -658,7 +1186,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/plantio_voluntario/1/2"
+						"url": {
+							"raw": "localhost:8080/plantio_voluntario/1/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio_voluntario",
+								"1",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
@@ -672,7 +1211,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/receptor_destino"
+						"url": {
+							"raw": "http://localhost:8080/receptor_destino",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor_destino"
+							]
+						}
 					},
 					"response": []
 				},
@@ -681,7 +1230,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/receptor_destino/receptor/1"
+						"url": {
+							"raw": "http://localhost:8080/receptor_destino/receptor/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor_destino",
+								"receptor",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -690,7 +1251,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/receptor_destino/destino/1"
+						"url": {
+							"raw": "http://localhost:8080/receptor_destino/destino/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor_destino",
+								"destino",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -699,7 +1272,19 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/receptor_destino/1/1"
+						"url": {
+							"raw": "http://localhost:8080/receptor_destino/1/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor_destino",
+								"1",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -717,7 +1302,19 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/receptor_destino/4-4/8-7"
+						"url": {
+							"raw": "http://localhost:8080/receptor_destino/4-4/8-7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor_destino",
+								"4-4",
+								"8-7"
+							]
+						}
 					},
 					"response": []
 				},
@@ -735,7 +1332,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/receptor_destino"
+						"url": {
+							"raw": "http://localhost:8080/receptor_destino",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor_destino"
+							]
+						}
 					},
 					"response": []
 				},
@@ -744,7 +1351,18 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/receptor_destino/4/4"
+						"url": {
+							"raw": "localhost:8080/receptor_destino/4/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor_destino",
+								"4",
+								"4"
+							]
+						}
 					},
 					"response": []
 				}
@@ -758,7 +1376,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio"
+						"url": {
+							"raw": "http://localhost:8080/plantio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio"
+							]
+						}
 					},
 					"response": []
 				},
@@ -767,7 +1395,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/plantio/11"
+						"url": {
+							"raw": "http://localhost:8080/plantio/11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio",
+								"11"
+							]
+						}
 					},
 					"response": []
 				},
@@ -785,7 +1424,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/plantio/12"
+						"url": {
+							"raw": "http://localhost:8080/plantio/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio",
+								"12"
+							]
+						}
 					},
 					"response": []
 				},
@@ -803,7 +1453,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/plantio"
+						"url": {
+							"raw": "http://localhost:8080/plantio",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio"
+							]
+						}
 					},
 					"response": []
 				},
@@ -821,7 +1481,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/plantio/plantios"
+						"url": {
+							"raw": "http://localhost:8080/plantio/plantios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio",
+								"plantios"
+							]
+						}
 					},
 					"response": []
 				},
@@ -830,7 +1501,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/plantio/13"
+						"url": {
+							"raw": "localhost:8080/plantio/13",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"plantio",
+								"13"
+							]
+						}
 					},
 					"response": []
 				}
@@ -844,7 +1525,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/receptor"
+						"url": {
+							"raw": "http://localhost:8080/receptor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor"
+							]
+						}
 					},
 					"response": []
 				},
@@ -853,7 +1544,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/receptor/25"
+						"url": {
+							"raw": "http://localhost:8080/receptor/25",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor",
+								"25"
+							]
+						}
 					},
 					"response": []
 				},
@@ -871,7 +1573,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/receptor/2"
+						"url": {
+							"raw": "http://localhost:8080/receptor/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor",
+								"2"
+							]
+						}
 					},
 					"response": []
 				},
@@ -889,7 +1602,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/receptor"
+						"url": {
+							"raw": "http://localhost:8080/receptor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor"
+							]
+						}
 					},
 					"response": []
 				},
@@ -898,7 +1621,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/receptor/2"
+						"url": {
+							"raw": "localhost:8080/receptor/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"receptor",
+								"2"
+							]
+						}
 					},
 					"response": []
 				}
@@ -912,7 +1645,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/usuario"
+						"url": {
+							"raw": "http://localhost:8080/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -921,7 +1664,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/usuario/1"
+						"url": {
+							"raw": "http://localhost:8080/usuario/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"1"
+							]
+						}
 					},
 					"response": []
 				},
@@ -939,7 +1693,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/usuario/22"
+						"url": {
+							"raw": "http://localhost:8080/usuario/22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"22"
+							]
+						}
 					},
 					"response": []
 				},
@@ -957,7 +1722,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/usuario"
+						"url": {
+							"raw": "http://localhost:8080/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -975,7 +1750,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/usuario/login"
+						"url": {
+							"raw": "http://localhost:8080/usuario/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"login"
+							]
+						}
 					},
 					"response": []
 				},
@@ -984,7 +1770,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/usuario/22"
+						"url": {
+							"raw": "localhost:8080/usuario/22",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario",
+								"22"
+							]
+						}
 					},
 					"response": []
 				}
@@ -998,7 +1794,17 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/voluntario"
+						"url": {
+							"raw": "http://localhost:8080/voluntario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voluntario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1007,7 +1813,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/voluntario/18"
+						"url": {
+							"raw": "http://localhost:8080/voluntario/18",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voluntario",
+								"18"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1025,7 +1842,18 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/voluntario/6"
+						"url": {
+							"raw": "http://localhost:8080/voluntario/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voluntario",
+								"6"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1043,7 +1871,17 @@
 								}
 							}
 						},
-						"url": "http://localhost:8080/voluntario"
+						"url": {
+							"raw": "http://localhost:8080/voluntario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voluntario"
+							]
+						}
 					},
 					"response": []
 				},
@@ -1052,7 +1890,17 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"url": "localhost:8080/voluntario/6"
+						"url": {
+							"raw": "localhost:8080/voluntario/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"voluntario",
+								"6"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1066,7 +1914,18 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/endereco/01535000"
+						"url": {
+							"raw": "http://localhost:8080/endereco/01535000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"endereco",
+								"01535000"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1080,7 +1939,41 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8080/tempo"
+						"url": {
+							"raw": "http://localhost:8080/tempo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"tempo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Noticia",
+			"item": [
+				{
+					"name": "Listar Notícias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/noticia",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"noticia"
+							]
+						}
 					},
 					"response": []
 				}
