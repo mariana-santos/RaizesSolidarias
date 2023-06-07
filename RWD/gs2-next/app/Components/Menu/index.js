@@ -65,13 +65,10 @@ export default function Menu() {
                             <Link href="/#noticias">Notícias</Link>
                         </li>
                         <li>
-                            <Link href="/combate-a-fome">Combate à fome</Link>
+                            <Link href="/contato">Contato</Link>
                         </li>
                         <li>
-                            <Link href="/combate-a-fome">Como a tecnologia pode ajudar</Link>
-                        </li>
-                        <li>
-                            <Link href="/raizes-solidarias">Conheça o projeto</Link>
+                            <Link href="/#solucao">Conheça o projeto</Link>
                         </li>
                     </ul>
                 </nav>

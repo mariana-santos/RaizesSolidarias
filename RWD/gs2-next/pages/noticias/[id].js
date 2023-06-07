@@ -11,9 +11,30 @@ import Noticias from "../../app/Components/Noticias";
 
 const fontBody = Quicksand({ subsets: ['latin'] })
 
+import { useQuery } from "react-query";
+import { useState, useEffect } from "react";
+
 export default function Noticia({ id }) {
 
-    const noticia = noticias[0]
+  const [noticia, setNoticia] = useState({})
+
+    const { isLoading, error, data } = useQuery('repoNoticiasData', () =>
+        fetch(`http://localhost:8080/noticia/`)
+        .then((res) => res.json())
+    );
+
+    useEffect(() => {
+      if (data && Array.isArray(data)) {
+        const filteredNoticia = data.find((noticia) => noticia.id == id);
+        setNoticia(filteredNoticia || {});
+      }
+    }, [data, error, isLoading, id])
+
+    if (isLoading) return 'Carregando...'
+
+    if (error) return 'Ocorreu um erro: ' + error.message
+
+    console.log(noticia)
 
     return (
       <div>

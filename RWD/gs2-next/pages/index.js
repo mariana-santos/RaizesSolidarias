@@ -18,6 +18,9 @@ import { Quicksand } from 'next/font/google'
 const fontBody = Quicksand({ subsets: ['latin'] })
 
 export default function Home() {
+
+  const usuario = typeof window !== 'undefined' ? JSON.parse(sessionStorage.getItem("usuario")) : null;
+
   return (
     <div className={fontBody.className} id='home'>
       <main className={styles.main}>
@@ -48,7 +51,7 @@ export default function Home() {
           <CardInfo numero="47%" desc="foi a parcela de países sobrecarregados por preços elevados de alimentos" />
         </section>
 
-        <section className={styles.containerImage}>
+        <section className={styles.containerImage} id='solucao'>
           <div className={styles.column}>
             <h2 className='title'>A solução</h2>
             <p>Pensando nisso, a <strong>Raízes Solidárias</strong> foi criada. Nosso projeto consiste em uma <strong>horta solidária </strong>mantida por doações e voluntários para a manutenção da horta e o transporte da colheita de alimentos para famílias necessitadas e ONGs responsáveis. </p>
@@ -56,8 +59,8 @@ export default function Home() {
             <p>Nossos doadores tem a opção de escolher no que seu dinheiro será usado: em sementes de diferentes <strong>alimentos</strong> importantes para a nutrição humana ou para a manutenção da horta, com a irrigação e outros itens voltados ao <strong>bom funcionamento do sistema</strong></p>
 
             <div className={styles.buttons}>
-              <Link href="/doar" className='btn'>Seja um doador</Link>
-              <Link href="/ser-um-voluntario" className='btn'>Seja um voluntário</Link>
+              <Link href={usuario ? '/perfil' : '/login'} className='btn'>Seja um doador</Link>
+              <Link href={usuario ? '/perfil' : '/login'} className='btn'>Seja um voluntário</Link>
             </div>
           </div>
 
