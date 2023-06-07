@@ -29,8 +29,8 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
     if (alimentosError) return 'Ocorreu um erro! ' + error.message
 
     const responsive = {
-        0: { items: 1 },
-        568: { items: 2 },
+        0: { items: 2 },
+        568: { items: 3 },
         1024: { items: 6 },
     };
 
@@ -113,7 +113,7 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
             <button
                 className='btn'
                 onClick={(e) => adicionarAlimentosAutomaticamente(e)}>
-                Adicionar alimentos automaticamente
+                Adicionar automaticamente
             </button>
 
             <h3>Alimentos disponíveis para adicionar à horta</h3>

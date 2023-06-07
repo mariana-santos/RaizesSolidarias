@@ -108,8 +108,21 @@ button{
         /* padding-bottom: 1em; */
     }
 
-    .campo, .wrap-profile form button{
-        width: 100%;
+    .wrap-profile .campo, 
+    .wrap-profile form button
+    #voluntario .heading, 
+    .wrap-btn, .novo-agendamento, 
+    .agendamentos, .row.inicio .column, 
+    .wrap-moedas, .wrap-profile form button{
+        width: 100% !important;
+    }
+
+    .wrap-btn{
+        padding-left: 0 !important;
+    }
+
+    .row.inicio{
+        flex-direction: column;
     }
 
     .css-fgwl1b-MuiTabs-indicator{
