@@ -39,24 +39,24 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
 
         const plantio = {
             id_plantio: 1,
-            espaco_plantio: novosPlantios.length + 2,
+            espaco_plantio: novosPlantios.length + 1,
             data_plantio: moment(new Date()).format('YYYY-MM-DD'),
             alimento: alimento
         };
 
-        if (novosPlantios.length < 12 && saldo >= alimento.preco_alimento){
+        if (novosPlantios.length < 12 && saldo >= alimento.preco_alimento) {
             setNovosPlantios(plantios => [...plantios, plantio]);
             setSaldo(saldo - alimento.preco_alimento)
             setAnimation('shake')
             setTimeout(() => setAnimation(''), 500)
             somSaldo()
-        } else{
-            if(novosPlantios.length >= 12) 
+        } else {
+            if (novosPlantios.length >= 12)
                 toast.error('Opa! Limite excedido. Finalize a plantação para plantar mais.');
 
-            if(saldo < alimento.preco_alimento) 
+            if (saldo < alimento.preco_alimento)
                 toast.error('Opa! Você não tem moedas o suficiente para adicionar esse alimento à horta. Por favor, faça uma nova doação para continuar');
-        } 
+        }
     }
 
     const adicionarAlimentosRecursivamente = (novosPlantios) => {
@@ -65,9 +65,9 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
             const alimento = alimentosData[indexAlimentoAleatorio];
 
             // TODO: ver pq nao ta atualizando o saldo com essa lógica
-            if(saldo >= alimento.preco_alimento){
+            if (saldo >= alimento.preco_alimento) {
                 handleAdicionarAlimento(null, alimento);
-                setTimeout(() => adicionarAlimentosRecursivamente([...novosPlantios, alimento]), 100); // Passa o novo estado atualizado como argumento
+                setTimeout(() => adicionarAlimentosRecursivamente([...novosPlantios, alimento]), 100);
             }
 
             else toast.error('Opa! Você não tem moedas o suficiente para adicionar esse alimento à horta. Por favor, faça uma nova doação para continuar')
@@ -75,13 +75,35 @@ export default function Alimentos({ setNovosPlantios, novosPlantios, saldo, setS
 
         else toast.success(`Plantios adicionados à horta automaticamente com sucesso! 
         Não se esqueça de finalizar a plantação no fim da página!`)
-    };
-
-    function adicionarAlimentosAutomaticamente(e) {
-        e.preventDefault();
-        adicionarAlimentosRecursivamente(novosPlantios);
     }
 
+    const adicionarAlimentosAutomaticamente = async (e) => {
+        e.preventDefault();
+
+        for (let i = 0; i < 12; i++) {
+            if (novosPlantios.length >= 12) {
+                toast.error('Opa! Limite excedido. Finalize a plantação para plantar mais.');
+                break;
+            }
+
+            const indexAlimentoAleatorio = Math.floor(Math.random() * alimentosData.length);
+            const alimento = alimentosData[indexAlimentoAleatorio];
+
+            if (saldo < alimento.preco_alimento) {
+                toast.error(
+                    'Opa! Você não tem moedas o suficiente para adicionar esse alimento à horta. Por favor, faça uma nova doação para continuar'
+                );
+                break;
+            }
+
+            await new Promise((resolve) => setTimeout(resolve, 100)); // Aguardar um intervalo de 100ms
+
+            handleAdicionarAlimento(null, alimento);
+        }
+
+        toast.success(`Plantios adicionados à horta automaticamente com sucesso! 
+            Não se esqueça de finalizar a plantação no fim da página!`);
+    };
 
     return (
         <section id='alimentos'>

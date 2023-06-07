@@ -23,7 +23,11 @@ import '../app/styles/form.css'
 
 import { useMutation } from 'react-query'
 
+import { useRouter } from 'next/router';
+
 export default function Login() {
+
+  const router = useRouter();
 
   const [email, setEmail] = useState('')
   const [errorEmail, setErrorEmail] = useState(null)
@@ -40,7 +44,6 @@ export default function Login() {
       body: JSON.stringify(dados_usuario),
     });
 
-    // TODO: Verificar a razão de não vir response pra mostrar o erro
     const data = await response.json();
 
     console.log(data)
@@ -52,6 +55,18 @@ export default function Login() {
 
     else {
       sessionStorage.setItem('usuario', JSON.stringify(data));
+
+      const responseReceptor = await fetch('http://localhost:8080/receptor/' + data.id_usuario)
+      .then(resp => resp.json())
+      .then(data => !data.error && sessionStorage.setItem('receptor', JSON.stringify(data)))
+
+      const responseVoluntario = await fetch('http://localhost:8080/voluntario/' + data.id_usuario)
+      .then(resp => resp.json())
+      .then(data => !data.error && sessionStorage.setItem('voluntario', JSON.stringify(data)))
+
+      const responseDoador = await fetch('http://localhost:8080/doador/' + data.id_usuario)
+      .then(resp => resp.json())
+      .then(data => !data.error && sessionStorage.setItem('doador', JSON.stringify(data)))
 
       toast.success('Sucesso no login! Aguarde para ser redirecionado')
       //Limpando os dados

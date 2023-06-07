@@ -5,8 +5,12 @@ import Moment from "react-moment";
 import './style.css'
 
 import { toast } from 'react-toastify'
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Agendamentos({ id_usuario }) {
+
+    const [agendamentos, setAgendamentos] = useState([])
 
     const cancelarAgendamento = async (id_agendamento) => {
         const response = await fetch(`http://localhost:8080/agendamento/${id_agendamento}`, {
@@ -18,7 +22,11 @@ export default function Agendamentos({ id_usuario }) {
             toast.error('Erro ao cancelar agendamento!')
         }
 
-        else toast.success('Agendamento cancelado com sucesso. Esperamos que consiga agendar novos trabalhos voluntários em breve!')
+        else {
+            toast.success('Agendamento cancelado com sucesso. Esperamos que consiga agendar novos trabalhos voluntários em breve!')
+            setAgendamentos((agendamentos) => agendamentos.filter(item => item.id_agendamento !== id_agendamento));
+            console.log(agendamentos)
+        }
     };
 
     const cancelarAgendamentoMutation = useMutation(cancelarAgendamento);
@@ -28,9 +36,14 @@ export default function Agendamentos({ id_usuario }) {
         cancelarAgendamentoMutation.mutate(id_agendamento)
     }
 
-    const { isLoading: agendLoading, error: agendErro, data: agendamentos } = useQuery('repoAgendamentosData', () =>
-        fetch(`http://localhost:8080/agendamento/usuario/${id_usuario}`).then((res) => res.json())
+    const { isLoading: agendLoading, error: agendErro, data: dados } = useQuery('repoAgendamentosData', () =>
+        fetch(`http://localhost:8080/agendamento/usuario/${id_usuario}`)
+        .then((res) => res.json())
     );
+
+    useEffect(() => {
+        if(dados) setAgendamentos(dados)
+    }, [dados, agendErro, agendLoading])
 
     if (agendLoading) return 'Carregando...'
 

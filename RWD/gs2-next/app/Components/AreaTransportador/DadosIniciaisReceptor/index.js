@@ -11,7 +11,7 @@ import { GiWeight } from "react-icons/gi"
 
 import { useEffect, useState } from "react"
 
-export default function DadosIniciaisReceptor({ setTela }) {
+export default function DadosIniciaisReceptor({ setTela, setReceptor }) {
 
     const [carga, setCarga] = useState(1);
     const [errorCarga, setErrorCarga] = useState(null);
@@ -73,6 +73,7 @@ export default function DadosIniciaisReceptor({ setTela }) {
             sessionStorage.setItem('receptor', JSON.stringify(data));
             toast.success('Dados cadastrados com sucesso!')
             setTela('inicio')
+            setReceptor(data)
         }
     };
 
@@ -89,6 +90,7 @@ export default function DadosIniciaisReceptor({ setTela }) {
                 fetch(`http://localhost:8080/endereco/${cep_formatado}/${numero}`)
                 .then(resp => resp.json())
                 .then(data => {
+                    console.log(data)
                     setEndereco(data.endereco)
                 })
                 .catch((error) => {
@@ -106,6 +108,7 @@ export default function DadosIniciaisReceptor({ setTela }) {
                     endereco_receptor: endereco
                 }
 
+                console.log(usuario_receptor)
                 cadastrarReceptorMutation.mutate(usuario_receptor)
         }
     }

@@ -9,6 +9,8 @@ import useSound from 'use-sound';
 
 import { useMutation } from 'react-query';
 
+import { WiHumidity } from 'react-icons/wi'
+
 export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation, setNovosPlantios }) {
 
     const { isLoading: plantiosLoading, error: plantiosError, data: plantiosData } = useQuery('repoPlantioData', () =>
@@ -19,7 +21,7 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation, se
 
     const ultimosPlantios = plantiosData ? plantiosData.slice(0, 4) : []
     const [todosPlantios, setTodosPlantios] = useState()
-    
+
     useEffect(() => {
         setTodosPlantios(ultimosPlantios.concat(novosPlantios))
     }, [novosPlantios, plantiosData])
@@ -85,7 +87,7 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation, se
             // setSaldo(dados_doador.moedas_doador)
         }
     };
-    
+
     const cadastrarPlantiosMutation = useMutation(cadastrarPlantios);
     const atualizarSaldoMutation = useMutation(atualizarDoador);
 
@@ -108,14 +110,36 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation, se
         }
     }
 
+    const [destinosDisponiveis, setDestinosDisponiveis] = useState([])
+
+    const { isLoading: tempoLoading, error: tempoErro, data: tempo } = useQuery('repoTempoData', () =>
+        fetch('http://localhost:8080/tempo').then((res) => res.json())
+    )
+
     if (plantiosLoading) return 'Carregando...'
-
     if (plantiosError) return 'Ocorreu um erro! ' + error.message
-
-    // console.log(dados)
 
     return (
         <section id='horta'>
+            {(!tempoLoading && !tempoErro) &&
+                <section id='clima'>
+                    <h3>Temperatura atual em {tempo.name} </h3>
+                    <div className='wrap-dado'>
+                        <img src={`/clima-icons/${tempo.data.icon}.png`} />
+                        <span className='temperatura'>{tempo.data.temperature} °C</span>
+                    </div>
+                    <div className='wrap-dado'>
+                        <span className='temperatura'>
+                            <WiHumidity />
+                            <strong>Humidade: </strong>
+                            {tempo.data.humidity}%
+                        </span>
+                    </div>
+                    <p>{tempo.data.condition}</p>
+                </section>
+            }
+
+
             <small className='metade'>Os quatro primeiros alimentos são os últimos plantios realizados. Adicione novos alimentos para serem plantados na horta!</small>
             <div className='plantios'>
                 {todosPlantios &&
@@ -140,7 +164,7 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation, se
         </section>
     )
 
-    function InformacoesPlantio({plantio}) {
+    function InformacoesPlantio({ plantio }) {
         return (
             <div className="informacoes-plantio">
                 <p className="nome-alimento">
@@ -166,7 +190,7 @@ export default function Horta({ novosPlantios, saldo, setSaldo, setAnimation, se
     }
 }
 
-function ImagensPlantio({nome_alimento}) {
+function ImagensPlantio({ nome_alimento }) {
     return (
         <>
             <img

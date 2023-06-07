@@ -44,6 +44,8 @@ export default function Menu() {
         // Limpeza dos dados no sessionStorage
         if (typeof window !== 'undefined') {
             sessionStorage.removeItem('usuario')
+            sessionStorage.removeItem('receptor')
+            sessionStorage.removeItem('doador')
             router.push('/login')
         }
     }

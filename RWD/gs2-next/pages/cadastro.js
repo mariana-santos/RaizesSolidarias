@@ -11,7 +11,7 @@ const fontBody = Quicksand({ subsets: ['latin'] })
 import '../app/globals.css'
 
 import validator from "validator"
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useState } from 'react'
@@ -52,36 +52,29 @@ export default function Cadastro() {
         const response = await fetch('http://localhost:8080/usuario', {
             method: 'POST',
             headers: {
-            'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify(dados_usuario),
         });
-     
-        // TODO: Verificar a razão de não vir response pra mostrar o erro
-        const data = await response.json();
 
-        if (!response.ok || data.error) {
-            toast.error(response.error)
-            throw new Error('Erro ao cadastrar o usuário');
-        }
-        
-        else{
-            console.log(data)
+        if (!response.ok) {
+            toast.error('Erro ao cadastrar o usuário');
+        } else {
+            const data = await response.json();
+            console.log(data);
             sessionStorage.setItem('usuario', JSON.stringify(data));
-            toast.success('Sucesso no cadastro! Aguarde para ser redirecionado')   
-    
-            //Limpando os dados
-            setNome('')
-            setCelular('')
-            setCpf('')
-            setEmail('')
-            setCelular('')
-            setSenha('') 
-    
-            router.push('/perfil')
-        }
+            toast.success('Sucesso no cadastro! Aguarde para ser redirecionado');
 
-        return data;
+            //Limpando os dados
+            setNome('');
+            setCelular('');
+            setCpf('');
+            setEmail('');
+            setCelular('');
+            setSenha('');
+
+            router.push('/perfil');
+        }
     };
 
     const { mutate } = useMutation(cadastrarUsuario);
@@ -159,6 +152,13 @@ export default function Cadastro() {
         <div className={fontBody.className}>
             <Menu />
             <main className='form-wrapper' id='login'>
+
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={2000}
+                    closeOnClick
+                    pauseOnHover
+                />
 
                 <form onSubmit={handleSubmit}>
                     <h2>Seja bem vindo!</h2>

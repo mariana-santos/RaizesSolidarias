@@ -30,7 +30,7 @@ export default function AreaTransportador() {
     }, [])
 
     function handleData(data) {
-        if (tela == 'novo-agendamento') {
+        if (subtela == 'novo-agendamento') {
             if (data <= new Date()) toast.error("A data não pode ser hoje ou dias anteriores!")
             else setData(data)
         }
@@ -38,7 +38,6 @@ export default function AreaTransportador() {
 
     return (
         <form id="transporte">
-
             <div className="row-heading"><div className="heading">
                 <h2>Área do transportador</h2>
                 <small>Bem vindo(a) à área do transportador! Aqui você pode cadastrar os dados do seu veículo e das colheitas disponíveis para entrega.</small>
@@ -66,7 +65,7 @@ export default function AreaTransportador() {
 
                     {/* Se a tabela transporte ainda não existir pra esse usuário, vai ser mostrado esse bloco pra cadastrar os dados iniciais da tabela */}
                     {(!receptor) ?
-                        <DadosIniciaisReceptor setTela={setTela}/>
+                        <DadosIniciaisReceptor setTela={setTela} setReceptor={setReceptor}/>
                         :
                         <div>
                             {tela === 'inicio' ?

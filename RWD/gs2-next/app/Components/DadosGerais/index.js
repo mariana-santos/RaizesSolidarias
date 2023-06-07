@@ -2,8 +2,6 @@ import { useEffect, useState } from "react"
 
 import Campo from "../Campo"
 
-import validator from "validator"
-
 import { HiOutlineEnvelope, HiOutlineIdentification } from 'react-icons/hi2'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { RxPerson } from 'react-icons/rx'
@@ -19,7 +17,7 @@ import { GiWeight } from "react-icons/gi"
 
 import '../../styles/form.css'
 
-import { validaEmail, validaSenha, validaCampo } from "../../utils/validacao"
+import { validaEmail, validaSenha, validaCampo, validaNumber } from "../../utils/validacao"
 
 export default function DadosGerais() {
     const [nome, setNome] = useState('')
@@ -70,13 +68,14 @@ export default function DadosGerais() {
             setId(usuario.id_usuario)
         }
 
-        const dadosReceptor = JSON.parse(sessionStorage.getItem("usuario"));
+        const dadosReceptor = JSON.parse(sessionStorage.getItem("receptor"));
 
         //populando os campos do usuário com os valores existentes
         if (dadosReceptor) {
             setReceptor(dadosReceptor)
             setCarga(usuario.carga_usuario);
         }
+
     }, [])
 
     useEffect(() => {
@@ -107,7 +106,7 @@ export default function DadosGerais() {
     }, [cep])
 
     const atualizarReceptor = async (dados_receptor) => {
-        const response = await fetch('http://localhost:8080/receptor' + dados_receptor.id_usuario, {
+        const response = await fetch('http://localhost:8080/receptor/' + dados_receptor.id_usuario, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -115,12 +114,12 @@ export default function DadosGerais() {
             body: JSON.stringify(dados_receptor),
         });
 
-        if (!response.ok) toast.error('Erro ao atualizar dados!')
+        if (!response.ok) toast.error('Erro ao atualizar endereço!')
 
         else {
             const data = await response.json();
             sessionStorage.setItem('receptor', JSON.stringify(data));
-            toast.success('Dados atualizados com sucesso!')
+            toast.success('Sucesso ao atualizar endereço!')
         }
     };
 
@@ -128,8 +127,8 @@ export default function DadosGerais() {
 
     function handleAtualizarReceptor() {
 
-        if (validaCampo(carga, setErrorCarga) && validaCampo(cep, setErrorCep) &&
-            validaCampo(logradouro, setErrorLogradouro) && validaNumber(numero, setErrorNumero)) {
+        if (validaNumber(carga, setErrorCarga) && validaCampo(cep, setErrorCep) &&
+            validaCampo(logradouro, setErrorLogradouro) && validaCampo(numero, setErrorNumero)) {
 
             const cep_formatado = cep.replace('-', '')
             fetch(`http://localhost:8080/endereco/${cep_formatado}/${numero}`)

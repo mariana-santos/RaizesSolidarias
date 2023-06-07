@@ -20,7 +20,7 @@ export default function AreaVoluntario() {
 
     const [animation, setAnimation] = useState('')
 
-    const [saldo, setSaldo] = useState(50)
+    const [saldo, setSaldo] = useState(0)
 
     const atualizarSaldo = (novoSaldo) => {
         setSaldo(novoSaldo);
@@ -37,7 +37,7 @@ export default function AreaVoluntario() {
         <form id="doacao">
             <div className="row-heading">
                 <div className="heading">
-                    <h2>Área do doador!</h2>
+                    <h2>Área do doador</h2>
                     <small>Bem vindo(a) à área do doador. Aqui você pode realizar novos depósitos e gerenciar nossa horta que alimenta várias famílias semanalmente!</small>
                 </div>
 
