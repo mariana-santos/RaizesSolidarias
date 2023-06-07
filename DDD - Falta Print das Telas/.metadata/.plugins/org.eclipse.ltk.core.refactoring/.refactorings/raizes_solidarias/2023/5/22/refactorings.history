@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;AlimentoService.java&apos; to &apos;raizes_solidarias/src/main/java/services&apos;&#x0D;&#x0A;- Original project: &apos;raizes_solidarias&apos;&#x0D;&#x0A;- Destination element: &apos;raizes_solidarias/src/main/java/services&apos;&#x0D;&#x0A;- Original element: &apos;dao.AlimentoService.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;services" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;dao{AlimentoService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1685298995655" units="1" version="1.0"/>
+</session>

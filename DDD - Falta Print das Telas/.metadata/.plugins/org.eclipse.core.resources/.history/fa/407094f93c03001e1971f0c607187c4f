@@ -1,0 +1,3 @@
+//TODO: Enviar os erros de chave restrita violada do banco (email, cpf, celular) na response, caso existam (UsuarioResource linha 86)
+
+//TODO: Adicionar ao Postman as novas apis: - CadastrarPlantios e AgendamentoPorIdUsuario

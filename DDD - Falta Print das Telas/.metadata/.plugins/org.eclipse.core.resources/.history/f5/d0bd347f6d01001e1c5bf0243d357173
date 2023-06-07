@@ -1,0 +1,55 @@
+package controller;
+
+import java.net.URI;
+import java.util.ArrayList;
+
+import dao.AgendamentoDAO;
+import jakarta.validation.Valid;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
+import jakarta.ws.rs.core.UriBuilder;
+import model.Agendamento;
+import services.AgendamentoService;
+
+/**
+ * Classe que representa o recurso de Agendamento do sistema.
+ *
+ * Esta classe define as operações CRUD para os Agendamentos, incluindo listar, buscar por ID,
+ * cadastrar, atualizar e deletar Agendamentos.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see dao.AgendamentoDAO
+ * @see services.AgendamentoService
+ * @see model.Agendamento
+ *
+ * @author Raízes Solidárias
+ */
+
+@Path("/agendamento")
+public class AgendamentoResource {
+	
+	/**
+	 * Recupera a lista de Agendamentos cadastrados no sistema.
+	 *
+	 * @return uma resposta contendo a lista de Agendamentos em formato JSON.
+	 */
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response listarAgendamentos() {
+		AgendamentoDAO repositorio = new AgendamentoDAO();
+		ArrayList<Agendamento> retorno = repositorio.listarAgendamentos();
+		ResponseBuilder response = Response.ok();
+		response.entity(retorno);
+		return response.build();
+	}

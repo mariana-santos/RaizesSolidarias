@@ -1,0 +1,43 @@
+package controller;
+
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import services.ClimaTempoService;
+
+/**
+ * Classe que representa a API do ClimaTempo do sistema.
+ *
+ * Esta classe define as operações CRUD para os Alimentos, incluindo listar, buscar por ID,
+ * cadastrar, atualizar e deletar Alimentos.
+ *
+ * @since 1.0
+ * @version 1.0
+ *
+ * @see dao.AlimentoDAO
+ * @see services.AlimentoService
+ * @see model.Alimento
+ *
+ * @author Raízes Solidárias
+ */
+@Path("/tempo")
+public class ClimaTempoResource {
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getPrevisaoTempoSaoPaulo() {
+        ClimaTempoService climaTempoService = new ClimaTempoService();
+        String previsaoTempo = null;
+
+        try {
+            previsaoTempo = climaTempoService.getPrevisaoTempoSaoPaulo();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+
+        return Response.ok(previsaoTempo).build();
+    }
+}
