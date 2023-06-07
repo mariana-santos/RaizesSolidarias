@@ -103,6 +103,10 @@ button{
   opacity: .8;
 }
 
+#noticias{
+  margin-top: 3em;
+}
+
 @media screen and (max-width: 768px) {
   .title{
     font-size: 1.8em;

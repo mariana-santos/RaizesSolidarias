@@ -17,6 +17,15 @@
     font-family: 'Raleway', sans-serif;
 }
 
+
+.card .btn{
+    width: fit-content;
+    font-size: .7em;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
+
 @media screen and (max-width: 768px){
     .card{
         width: 100%;

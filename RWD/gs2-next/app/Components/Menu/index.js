@@ -70,6 +70,9 @@ export default function Menu() {
                         <li>
                             <Link href="/#solucao">Conheça o projeto</Link>
                         </li>
+                        <li>
+                            <Link href="/#como-ajudar">Como ajudar</Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

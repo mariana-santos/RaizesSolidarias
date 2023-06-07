@@ -17,9 +17,11 @@ export default function Destinos({ setTela, id_usuario }) {
     useEffect(() => {
         if (!destLoading && !destErro) {
             console.log(dados);
+            setDestinosDisponiveis(dados)
             fetch(`http://localhost:8080/receptor_destino/receptor/${id_usuario}`)
                 .then((res) => res.json())
                 .then((data) => setDestinosTransportados(data));
+            console.log(destinosTransportados)
         }
     }, [dados, destErro, destLoading]);
 

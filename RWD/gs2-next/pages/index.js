@@ -46,9 +46,9 @@ export default function Home() {
         </p>
 
         <section className={styles.cardsWrapper}>
-          <CardInfo numero="Entre 720 e 811 milhões" desc="de pessoas em todo o mundo estavam sofrendo de fome" />
-          <CardInfo numero="2,4 bilhões" desc="de pessoas estavam sem acesso regular a alimentos adequados." />
-          <CardInfo numero="47%" desc="foi a parcela de países sobrecarregados por preços elevados de alimentos" />
+          <CardInfo titulo="Entre 720 e 811 milhões" desc="de pessoas em todo o mundo estavam sofrendo de fome" />
+          <CardInfo titulo="2,4 bilhões" desc="de pessoas estavam sem acesso regular a alimentos adequados." />
+          <CardInfo titulo="47%" desc="foi a parcela de países sobrecarregados por preços elevados de alimentos" />
         </section>
 
         <section className={styles.containerImage} id='solucao'>
@@ -69,8 +69,18 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="noticias">
+        <h2 className="title">Como ajudar</h2>
 
+        <p className={styles.metade}>Existem muitas formas diferentes de <strong>contribuir com o nosso projeto</strong> e isso fará uma diferença enorme na vida de famílias que se beneficiam da nossa horta! Veja como ajudar:
+        </p>
+
+        <section className={styles.cardsWrapper} id='como-ajudar'>
+          <CardInfo titulo="Sendo um voluntário" desc="Ajude na manutenção e plantio da horta sempre que quiser!" tem_botao txt_botao="agendar trabalho voluntário" />
+          <CardInfo titulo="Sendo um transportador" desc="É só cadastrar seus dados e agendar um horário para levar nossas colheitas para as famílias." tem_botao txt_botao="Agendar transporte" />
+          <CardInfo titulo="Sendo um doador" desc="Para isso, você pode doar qualquer valor e selecionar quaisquer alimentos quiser para serem plantados na horta!" tem_botao txt_botao="DOAR" />
+        </section>
+
+        <section id="noticias">
           <h2 className='title'>Notícias</h2>
           <Noticias />
 
